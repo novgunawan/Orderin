@@ -1,0 +1,37 @@
+name: Orderin
+options: # Some general settings for the projectproject.yml
+  createIntermediateGroups: true # If the folders are nested, also nest the groups in Xcode
+  indentWidth: 4
+  tabWidth: 4
+  bundleIdPrefix: "com.Novi.Orderin"
+configs:
+  Debug: debug
+  integ: debug
+  test: debug
+  Release: release
+targets:
+  Orderin:
+    type: application
+    platform: iOS
+    deploymentTarget: "15.0"
+    sources:
+      - path: Orderin
+
+Orderin-iOS-Tests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "15.0"
+    sources:
+      - path: OrderinTests
+    dependencies:
+      - target: Orderin
+
+Orderin-iOS-UITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: OrderinUITests
+    dependencies:
+      - target: Orderin
+  
+
