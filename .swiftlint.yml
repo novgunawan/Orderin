@@ -1,0 +1,8 @@
+disabled_rules:
+  - vertical_whitespace
+  - line_length
+  - trailing_newline
+  
+  
+excluded:
+  - Pods
