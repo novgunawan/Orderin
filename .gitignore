@@ -7,6 +7,9 @@
 #==============================================================================#
 
 
+##Google Service Info.plist
+GoogleService-Info-2.plist
+
 ##User settings
 xcuserdata/
 *.xcodeproj
