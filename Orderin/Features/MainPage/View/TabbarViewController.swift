@@ -1,0 +1,36 @@
+//
+//  TabbarViewController.swift
+//  Orderin
+//
+//  Created by Novi Gunawan on 28/10/21.
+//
+
+import UIKit
+
+class TabbarViewController: UITabBarController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+        setupVC()
+    }
+    
+    //MARK: -Create Navigation Controller for Main Page with Tab Bar
+    fileprivate func createNavigationController(for rootViewController: UIViewController, title: String, image: UIImage) -> UIViewController {
+        
+        let navigationController = UINavigationController(rootViewController: rootViewController)
+        navigationController.tabBarItem.title = title
+        navigationController.tabBarItem.image = image
+        navigationController.navigationBar.prefersLargeTitles = true
+        rootViewController.navigationItem.title = title
+        return navigationController
+    }
+    
+    //MARK: -Setup ViewController for HomePage
+    func setupVC() {
+        viewControllers = [
+            createNavigationController(for: HomeViewController(), title: NSLocalizedString("Home", comment: ""), image: UIImage(systemName: "house.fill")!),
+            createNavigationController(for: HistoryViewController(), title: NSLocalizedString("History", comment: ""), image: UIImage(systemName: "house.fill")!),
+        ]
+    }
+}
