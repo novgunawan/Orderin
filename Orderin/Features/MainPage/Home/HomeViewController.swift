@@ -8,11 +8,11 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
+    static var signinViewController = SignInViewController()
     override func viewDidLoad() {
         super.viewDidLoad()
+        HomeViewController.signinViewController.setupSignInButton()
         view.backgroundColor = .white
-        // Do any additional setup after loading the view.
     }
 
 
