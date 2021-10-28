@@ -9,21 +9,18 @@ import UIKit
 
 class MenuDetailViewController: UIViewController {
 
+    @IBOutlet weak var topCursor: UIView!{
+        didSet{
+            topCursor.layer.cornerRadius = 2.5
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
+//Function to push this modal
+//let vc = MenuDetailViewController()
+// vc.modalPresentationStyle = .formSheet
+// self.present(vc, animated: true, completion: nil)

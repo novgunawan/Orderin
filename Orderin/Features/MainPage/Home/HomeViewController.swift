@@ -26,4 +26,9 @@ class HomeViewController: UIViewController {
     }
     */
 
+    @IBAction func menuDetailDidtTapped(_ sender: Any) {
+       let vc = MenuDetailViewController()
+        vc.modalPresentationStyle = .formSheet
+        self.present(vc, animated: true, completion: nil)
+    }
 }
