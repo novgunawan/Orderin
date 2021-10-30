@@ -16,6 +16,15 @@ class MenuDetailViewController: UIViewController {
             topCursor.layer.cornerRadius = 2.5
         }
     }
+    @IBOutlet weak var normalPrice: UILabel!{
+        didSet{
+            //strikethrough label
+            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: normalPrice.text ?? "")
+                attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
+            normalPrice.attributedText = attributeString
+            
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +32,13 @@ class MenuDetailViewController: UIViewController {
     }
     
    private func setup(){
-       //xib register
-        detailListTable.register(OptionalTableViewCell.nib(), forCellReuseIdentifier: OptionalTableViewCell.identifier)
+       //xib register cell
+       detailListTable.register(OptionalTableViewCell.nib(), forCellReuseIdentifier: OptionalTableViewCell.identifier)
+       detailListTable.register(ChooseTableViewCell.nib(), forCellReuseIdentifier: ChooseTableViewCell.identifier)
+       detailListTable.register(NotesTableViewCell.nib(), forCellReuseIdentifier: NotesTableViewCell.identifier)
+       detailListTable.register(TotalItemTableViewCell.nib(), forCellReuseIdentifier: TotalItemTableViewCell.identifier)
+       detailListTable.register(CartButtonTableViewCell.nib(), forCellReuseIdentifier: CartButtonTableViewCell.identifier)
+       
        detailListTable.delegate = self
        detailListTable.dataSource = self
     }

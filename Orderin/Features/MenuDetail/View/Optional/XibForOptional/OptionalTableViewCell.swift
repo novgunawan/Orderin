@@ -10,12 +10,18 @@ import UIKit
 class OptionalTableViewCell: UITableViewCell {
 
     @IBOutlet weak var maxLabel: UILabel!
-    @IBOutlet weak var optionalTitleLabel: UILabel!{
+    @IBOutlet weak var optionalTitleLabel: UILabel!
+    @IBOutlet weak var viewCell: UIView!{
         didSet{
-            optionalTitleLabel.layer.cornerRadius = 5
+            //corner radius
+            viewCell.layer.cornerRadius = 5
+            //shadow
+            viewCell.layer.shadowColor = UIColor.black.cgColor
+            viewCell.layer.shadowOpacity = 0.2
+            viewCell.layer.shadowOffset = CGSize(width: 0.0,height: 1.0)
         }
     }
-    @IBOutlet weak var viewCell: UIView!
+    //register XIB
     static let identifier = "cell"
     static func nib() -> UINib{
         return UINib(nibName: "OptionalTableViewCell", bundle: nil)

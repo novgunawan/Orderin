@@ -19,6 +19,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuDetailViewController" customModule="Orderin" customModuleProvider="target">
             <connections>
                 <outlet property="detailListTable" destination="knT-ME-Jnk" id="3wV-kM-Frn"/>
+                <outlet property="normalPrice" destination="iGJ-dz-Bir" id="Hi4-M3-xDG"/>
                 <outlet property="topCursor" destination="qVu-Mn-HND" id="1ba-Vx-WPT"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -71,11 +72,11 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3aX-FI-hlq">
-                    <rect key="frame" x="15" y="374" width="358" height="416"/>
+                    <rect key="frame" x="15" y="374" width="359" height="416"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="knT-ME-Jnk">
-                            <rect key="frame" x="0.0" y="8" width="358" height="408"/>
+                            <rect key="frame" x="0.0" y="8" width="359" height="408"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </tableView>
                     </subviews>

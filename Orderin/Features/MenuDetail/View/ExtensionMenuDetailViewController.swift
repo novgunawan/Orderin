@@ -14,17 +14,47 @@ extension MenuDetailViewController: UITableViewDelegate, UITableViewDataSource{
 //MARK: - Setup Cell In Table View
 
 func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 160
+    if indexPath.row < 1{
+        return 148
+    }
+    if indexPath.row < 2{
+        return 148
+    }
+    if indexPath.row < 3{
+        return 43
+    }
+    if indexPath.row < 4{
+        return 68
+    }
+    if indexPath.row < 5{
+        return 88
+    }
+    return 148
 }
 
 
 func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 2
+    return 5
 }
 
 func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    if indexPath.row < 1{
     let cell = detailListTable.dequeueReusableCell(withIdentifier: OptionalTableViewCell.identifier) as! OptionalTableViewCell
     return cell
+        }
+    if indexPath.row < 2{
+    let cellChoose = detailListTable.dequeueReusableCell(withIdentifier: ChooseTableViewCell.identifier) as! ChooseTableViewCell
+        return cellChoose
+        }
+    if indexPath.row < 3{
+        let cellNotes = detailListTable.dequeueReusableCell(withIdentifier: NotesTableViewCell.identifier) as! NotesTableViewCell
+        return cellNotes
+    }
+    if indexPath.row < 4{
+        let cellTotalItem = detailListTable.dequeueReusableCell(withIdentifier: TotalItemTableViewCell.identifier) as! TotalItemTableViewCell
+        return cellTotalItem
+    }
+    let cellCartButton = detailListTable.dequeueReusableCell(withIdentifier: CartButtonTableViewCell.identifier) as! CartButtonTableViewCell
+    return cellCartButton
     }
 }
-
