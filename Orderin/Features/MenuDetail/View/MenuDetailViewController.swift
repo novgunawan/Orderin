@@ -9,6 +9,8 @@ import UIKit
 
 class MenuDetailViewController: UIViewController {
 
+    @IBOutlet weak var detailListTable: UITableView!
+    
     @IBOutlet weak var topCursor: UIView!{
         didSet{
             topCursor.layer.cornerRadius = 2.5
@@ -17,6 +19,14 @@ class MenuDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
+    }
+    
+   private func setup(){
+       //xib register
+        detailListTable.register(OptionalTableViewCell.nib(), forCellReuseIdentifier: OptionalTableViewCell.identifier)
+       detailListTable.delegate = self
+       detailListTable.dataSource = self
     }
 }
 
