@@ -20,6 +20,20 @@ class CancelOrderViewController: UIViewController {
     var timer = Timer()
     
     // Buat UI
+ 
+    let topLabel: UILabel = {
+        
+        let label = UILabel(frame: CGRect(x: 57, y: 94, width: 276, height: 72))
+        label.numberOfLines = 2
+        label.textAlignment = .center
+        
+        label.font = UIFont(name: Constant.CancelOrder.fontName, size: 20)
+        label.text = "Cancel to recheck or change your order"
+        
+        return label
+        
+    }()
+    
     
     let cancelButon: UIButton = {
         let button = UIButton()
@@ -34,17 +48,18 @@ class CancelOrderViewController: UIViewController {
         
     }()
     
-    let textLabel: UILabel = {
+    
+    let bottomLabel: UIButton = {
         
-        let label = UILabel(frame: CGRect(x: 57, y: 94, width: 276, height: 72))
-        label.numberOfLines = 2
-        label.textAlignment = .center
+        let button = UIButton()
+        button.frame = CGRect(x: 122, y: 622, width: 156, height: 24)
+        button.setTitle("Proceed to Order", for: .normal)
+        button.setTitleColor(UIColor.red, for: .normal)
+        button.titleLabel?.font = UIFont(name: Constant.CancelOrder.fontName, size: 17)
+        button.backgroundColor = UIColor.clear
         
-        label.font = UIFont(name: Constant.CancelOrder.fontName, size: 20)
-        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-        label.text = "Cancel to recheck or change your order"
-        
-        return label
+        button.addTarget(self, action: #selector(proceedButtonDidTap), for: .touchUpInside)
+        return button
         
     }()
     
@@ -55,7 +70,8 @@ class CancelOrderViewController: UIViewController {
         addTimeLabel()
         timerCountDown()
         view.addSubview(cancelButon)
-        view.addSubview(textLabel)
+        view.addSubview(topLabel)
+        view.addSubview(bottomLabel)
         
     }
     
@@ -117,6 +133,7 @@ class CancelOrderViewController: UIViewController {
         } else {
             timeLabel.text = "0"
             timer.invalidate()
+            print("go to summary page")
         }
         
     }
@@ -124,6 +141,12 @@ class CancelOrderViewController: UIViewController {
     @objc func cancelButtonDidTap() {
         
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func proceedButtonDidTap() {
+        
+        print("go to summary page")
+        
     }
 }
 
