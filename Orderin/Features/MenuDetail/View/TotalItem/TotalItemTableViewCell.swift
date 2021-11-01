@@ -8,7 +8,7 @@
 import UIKit
 
 class TotalItemTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var minusButton: UIButton!{
         didSet{
             minusButton.layer.cornerRadius = 13

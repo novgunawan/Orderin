@@ -27,6 +27,9 @@
                         <color key="tintColor" red="0.90980392156862744" green="0.29803921568627451" blue="0.20392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" image="minus" catalog="system"/>
+                        <connections>
+                            <action selector="minButtonDidTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="LFE-I8-YAh"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zOm-gs-bqc">
                         <rect key="frame" x="163" y="34" width="38" height="24"/>
@@ -41,6 +44,9 @@
                         <color key="tintColor" red="0.90980392160000001" green="0.29803921570000003" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
+                        <connections>
+                            <action selector="plusButtonDidTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="EAw-jI-dce"/>
+                        </connections>
                     </button>
                 </subviews>
             </tableViewCellContentView>

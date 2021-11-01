@@ -29,12 +29,14 @@
             <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qVu-Mn-HND">
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qVu-Mn-HND">
                     <rect key="frame" x="160" y="5" width="60" height="5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.74509803919999995" green="0.74509803919999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H2N-HZ-F2d">
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H2N-HZ-F2d">
                     <rect key="frame" x="16" y="16" width="357" height="265"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="menu1" translatesAutoresizingMaskIntoConstraints="NO" id="WDi-pA-FAi">
                             <rect key="frame" x="0.0" y="0.0" width="357" height="265"/>
@@ -85,17 +87,6 @@
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <constraints>
-                <constraint firstItem="qVu-Mn-HND" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="5" id="Qiu-zd-f42"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="qVu-Mn-HND" secondAttribute="trailing" constant="170" id="YN1-d1-Upr"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="H2N-HZ-F2d" secondAttribute="trailing" constant="17" id="cKs-lK-HCz"/>
-                <constraint firstItem="H2N-HZ-F2d" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="16" id="dPR-CY-DF1"/>
-                <constraint firstItem="H2N-HZ-F2d" firstAttribute="top" secondItem="qVu-Mn-HND" secondAttribute="bottom" constant="6" id="dud-8y-PC7"/>
-                <constraint firstItem="H2N-HZ-F2d" firstAttribute="top" secondItem="qVu-Mn-HND" secondAttribute="bottom" constant="6" id="grS-yx-vUT"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="H2N-HZ-F2d" secondAttribute="bottom" constant="475" id="pHv-CW-hIK"/>
-                <constraint firstItem="qVu-Mn-HND" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="160" id="r54-m8-SBC"/>
-                <constraint firstItem="H2N-HZ-F2d" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="xNq-fI-kbi"/>
-            </constraints>
             <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="130.76923076923077" y="115.87677725118483"/>
         </view>

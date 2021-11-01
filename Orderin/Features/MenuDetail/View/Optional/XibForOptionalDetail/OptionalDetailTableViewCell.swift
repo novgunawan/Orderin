@@ -19,5 +19,7 @@ class OptionalDetailTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    @IBAction func checkButtonDidTapped(_ sender: Any) {
+    }
     
 }

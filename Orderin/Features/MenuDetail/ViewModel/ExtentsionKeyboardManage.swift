@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension MenuDetailViewController: UITextFieldDelegate{
+extension MenuDetailViewController{
     
     // MARK: - Keyboard Function
     // auto adjust keyboard and view
