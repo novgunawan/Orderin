@@ -7,8 +7,9 @@
 
 import UIKit
 
-class OptionalTableViewCell: UITableViewCell {
+class OptionalTableViewCell: UITableViewCell{
 
+    @IBOutlet weak var optionalTable: UITableView!
     @IBOutlet weak var maxLabel: UILabel!
     @IBOutlet weak var optionalTitleLabel: UILabel!
     @IBOutlet weak var viewCell: UIView!{
@@ -29,7 +30,10 @@ class OptionalTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        optionalTable.register(OptionalDetailTableViewCell.nib(), forCellReuseIdentifier: OptionalDetailTableViewCell.identifier)
+        
+        optionalTable.delegate = self
+        optionalTable.dataSource = self
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

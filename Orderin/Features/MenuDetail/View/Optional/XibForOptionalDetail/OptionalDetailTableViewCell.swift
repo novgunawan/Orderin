@@ -19,6 +19,13 @@ class OptionalDetailTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    //create identifier XIB
+    static let identifier = "cellOptionalDetail"
+    static func nib() -> UINib{
+        return UINib(nibName: "OptionalDetailTableViewCell", bundle: nil)
+    }
+    
     @IBAction func checkButtonDidTapped(_ sender: Any) {
     }
     
