@@ -9,6 +9,8 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -29,8 +31,13 @@ class HomeViewController: UIViewController {
         
     }
     
+    
     @objc func buttonAction(sender: UIButton!) {
-        print("Button tapped")
+        
+        let cancelViewController = CancelOrderViewController(nibName: Constant.CancelOrder.cancelViewController, bundle: nil)
+        cancelViewController.modalPresentationStyle = .fullScreen
+        self.present(cancelViewController, animated: true, completion: nil)
+        
     }
     
     

@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+struct Constant {
+    struct CancelOrder {
+        static let cancelViewController = "CancelOrderViewController"
+        static let keypathAnimation = "strokeEnd"
+    }
+   
+    
+    
+}
