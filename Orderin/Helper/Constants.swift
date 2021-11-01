@@ -13,6 +13,10 @@ struct Constant {
         static let keypathAnimation = "strokeEnd"
         static let fontName = "Poppins-Semibold"
     }
+    
+    struct OrderSummary {
+        static let orderViewController = "OrderSummary"
+    }
    
     
     

@@ -133,7 +133,7 @@ class CancelOrderViewController: UIViewController {
         } else {
             timeLabel.text = "0"
             timer.invalidate()
-            print("go to summary page")
+            goToPageSummary()
         }
         
     }
@@ -145,8 +145,15 @@ class CancelOrderViewController: UIViewController {
     
     @objc func proceedButtonDidTap() {
         
-        print("go to summary page")
+        goToPageSummary()
         
+    }
+    
+    func goToPageSummary() {
+        
+        let orderPageSummary = OrderSummary(nibName: Constant.OrderSummary.orderViewController, bundle: nil)
+        
+        self.present(orderPageSummary, animated: true, completion: nil)
     }
 }
 
