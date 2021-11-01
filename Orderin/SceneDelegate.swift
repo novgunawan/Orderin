@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Firebase
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -17,7 +17,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
                 window = UIWindow(frame: UIScreen.main.bounds)
                 let home = TabbarViewController()
+        
+        Auth.auth().addStateDidChangeListener({ auth, user in
+            if let user = user {
+                // MARK: User is signed in.
                 self.window?.rootViewController = home
+                
+            } else {
+                // MARK: User is not signed in.
+                let signInVC = SignInViewController(nibName: C.signinNibName, bundle: nil)
+                self.window?.rootViewController = signInVC
+
+            }
+        })
                 window?.makeKeyAndVisible()
                 window?.windowScene = windowScene
     }

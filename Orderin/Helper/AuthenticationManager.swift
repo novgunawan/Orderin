@@ -12,7 +12,7 @@ import AuthenticationServices
 
 class AuthenticationManager {
     // Unhashed nonce.
-    fileprivate var currentNonce: String?
+    public var currentNonce: String?
     
     @available(iOS 13, *)
     private func sha256(_ input: String) -> String {
@@ -37,7 +37,6 @@ class AuthenticationManager {
         
         return request
     }
-
 
     // Adapted from https://auth0.com/docs/api-auth/tutorials/nonce#generate-a-cryptographically-random-nonce
     // MARK: Generate a cryptographically nonce for making an authorisation request from Apple
