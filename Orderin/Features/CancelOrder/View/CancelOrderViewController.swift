@@ -24,6 +24,7 @@ class CancelOrderViewController: UIViewController {
         getCircle()
         addTimeLabel()
         timerCountDown()
+        cancelButton()
         
     }
     
@@ -39,8 +40,8 @@ class CancelOrderViewController: UIViewController {
     
     func getCircle() {
         // Path
-        let center = CGPoint(x: view.frame.midX , y: view.frame.midY)
-        let path = UIBezierPath(arcCenter: center, radius: 150, startAngle: -CGFloat.pi/2, endAngle: 2 * CGFloat.pi, clockwise: true)
+        let center = CGPoint(x: view.frame.midX, y: view.frame.midY - 110)
+        let path = UIBezierPath(arcCenter: center, radius: 120, startAngle: -CGFloat.pi/2, endAngle: 2 * CGFloat.pi, clockwise: true)
         
         bgShapeLayer.path = path.cgPath
       
@@ -63,7 +64,7 @@ class CancelOrderViewController: UIViewController {
     }
     
     func addTimeLabel() {
-        timeLabel = UILabel(frame: CGRect(x: view.frame.midX-50, y: view.frame.midY-25, width: 100, height: 80))
+        timeLabel = UILabel(frame: CGRect(x: 158, y: 302, width: 100, height: 80))
         
         timeLabel.textAlignment = .center
         timeLabel.font = UIFont(name: Constant.CancelOrder.fontName, size: 80)
@@ -87,6 +88,25 @@ class CancelOrderViewController: UIViewController {
             timer.invalidate()
         }
         
+    }
+    
+    func cancelButton() {
+        
+        let button = UIButton()
+        button.frame = CGRect(x: 15, y: 545, width: 359, height: 53)
+        button.setTitle("Cancel", for: .normal)
+        button.titleLabel?.font = UIFont(name: Constant.CancelOrder.fontName, size: 17)
+        button.backgroundColor = UIColor.red
+        button.layer.cornerRadius = 15
+        
+        button.addTarget(self, action: #selector(cancelButtonDidTap), for: .touchUpInside)
+        
+        self.view.addSubview(button)
+    }
+    
+    @objc func cancelButtonDidTap() {
+        
+        dismiss(animated: true, completion: nil)
     }
     
     
