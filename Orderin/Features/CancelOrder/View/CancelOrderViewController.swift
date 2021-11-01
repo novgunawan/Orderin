@@ -9,6 +9,7 @@ import UIKit
 
 class CancelOrderViewController: UIViewController {
     
+    // Buat Circle
     let bgShapeLayer = CAShapeLayer()
     let trackLayer = CAShapeLayer()
     var timeLabel =  UILabel()
@@ -17,14 +18,44 @@ class CancelOrderViewController: UIViewController {
     let viewModel = CancelOrderViewModel()
     var endTime: Date?
     var timer = Timer()
- 
+    
+    // Buat UI
+    
+    let cancelButon: UIButton = {
+        let button = UIButton()
+        button.frame = CGRect(x: 15, y: 545, width: 359, height: 53)
+        button.setTitle("Cancel", for: .normal)
+        button.titleLabel?.font = UIFont(name: Constant.CancelOrder.fontName, size: 17)
+        button.backgroundColor = UIColor.red
+        button.layer.cornerRadius = 15
+        
+        button.addTarget(self, action: #selector(cancelButtonDidTap), for: .touchUpInside)
+        return button
+        
+    }()
+    
+    let textLabel: UILabel = {
+        
+        let label = UILabel(frame: CGRect(x: 57, y: 94, width: 276, height: 72))
+        label.numberOfLines = 2
+        label.textAlignment = .center
+        
+        label.font = UIFont(name: Constant.CancelOrder.fontName, size: 20)
+        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        label.text = "Cancel to recheck or change your order"
+        
+        return label
+        
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getCircle()
         addTimeLabel()
         timerCountDown()
-        cancelButton()
+        view.addSubview(cancelButon)
+        view.addSubview(textLabel)
         
     }
     
@@ -44,7 +75,7 @@ class CancelOrderViewController: UIViewController {
         let path = UIBezierPath(arcCenter: center, radius: 120, startAngle: -CGFloat.pi/2, endAngle: 2 * CGFloat.pi, clockwise: true)
         
         bgShapeLayer.path = path.cgPath
-      
+        
         bgShapeLayer.fillColor = UIColor.clear.cgColor
         bgShapeLayer.strokeColor = UIColor.red.cgColor
         
@@ -58,7 +89,7 @@ class CancelOrderViewController: UIViewController {
         trackLayer.strokeColor = UIColor(named: "cancelOrderTrackColor")?.cgColor
         
         trackLayer.lineWidth = 25
-      
+        
         view.layer.addSublayer(trackLayer)
         view.layer.addSublayer(bgShapeLayer)
     }
@@ -90,25 +121,9 @@ class CancelOrderViewController: UIViewController {
         
     }
     
-    func cancelButton() {
-        
-        let button = UIButton()
-        button.frame = CGRect(x: 15, y: 545, width: 359, height: 53)
-        button.setTitle("Cancel", for: .normal)
-        button.titleLabel?.font = UIFont(name: Constant.CancelOrder.fontName, size: 17)
-        button.backgroundColor = UIColor.red
-        button.layer.cornerRadius = 15
-        
-        button.addTarget(self, action: #selector(cancelButtonDidTap), for: .touchUpInside)
-        
-        self.view.addSubview(button)
-    }
-    
     @objc func cancelButtonDidTap() {
         
         dismiss(animated: true, completion: nil)
     }
-    
-    
 }
 
