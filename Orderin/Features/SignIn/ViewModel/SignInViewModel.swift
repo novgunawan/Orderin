@@ -10,9 +10,11 @@ import AuthenticationServices
 import FirebaseAuth
 
 class SignInViewModel: NSObject {
+    
     static var authenticationManager = AuthenticationManager()
     static var signinViewController = SignInViewController()
     
+    // MARK: Functions
     func performSignIn() {
         let request = SignInViewModel.authenticationManager.createAppleIDRequest()
         request.requestedScopes = [.fullName, .email]
@@ -26,8 +28,10 @@ class SignInViewModel: NSObject {
     
     @objc func skipButton(from: UIViewController) {
         let homeVC = TabbarViewController()
-        from.dismiss(animated: true, completion: nil)
-        from.view.window?.rootViewController = homeVC
+        homeVC.modalPresentationStyle = .fullScreen
+        homeVC.modalTransitionStyle = .crossDissolve
+        from.present(homeVC, animated: true, completion: nil)
+//        from.view.window?.rootViewController = homeVC
     }
 }
 extension SignInViewModel: ASAuthorizationControllerDelegate {
