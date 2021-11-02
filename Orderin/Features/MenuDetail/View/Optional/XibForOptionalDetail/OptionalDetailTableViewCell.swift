@@ -27,6 +27,7 @@ class OptionalDetailTableViewCell: UITableViewCell {
     }
     
     @IBAction func checkButtonDidTapped(_ sender: Any) {
+        print("tapped")
     }
     
 }

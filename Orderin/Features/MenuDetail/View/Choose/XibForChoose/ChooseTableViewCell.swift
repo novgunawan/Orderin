@@ -9,6 +9,7 @@ import UIKit
 
 class ChooseTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var chooseTable: UITableView!
     @IBOutlet weak var viewCell: UIView!
         {
             didSet{
@@ -27,7 +28,10 @@ class ChooseTableViewCell: UITableViewCell {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        chooseTable.register(OptionalDetailTableViewCell.nib(), forCellReuseIdentifier: OptionalDetailTableViewCell.identifier)
+        
+        chooseTable.delegate = self
+        chooseTable.dataSource = self
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
