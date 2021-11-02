@@ -60,19 +60,18 @@ struct C {
             alpha: CGFloat(1.0)
         )
     }
-    
-    struct Constant {
-        struct CancelOrder {
-            static let cancelViewController = "CancelOrderViewController"
-            static let keypathAnimation = "strokeEnd"
-            static let fontName = "Poppins-Semibold"
-        }
-        
-        struct OrderSummary {
-            static let orderViewController = "OrderSummary"
-        }
-        
-        
-        
+}
+struct Constant {
+    struct CancelOrder {
+        static let cancelViewController = "CancelOrderViewController"
+        static let keypathAnimation = "strokeEnd"
+        static let fontName = "Poppins-Semibold"
     }
+    
+    struct OrderSummary {
+        static let orderViewController = "OrderSummary"
+    }
+    
+    
+    
 }
