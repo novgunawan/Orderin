@@ -10,11 +10,11 @@ import AuthenticationServices
 import Firebase
 
 class HomeViewController: UIViewController {
-
+    
     static var signinViewController = SignInViewController()
     
     lazy var scanQRButton: UIButton = {
-       let button = UIButton()
+        let button = UIButton()
         button.setTitle("Scan QR Code", for: .normal)
         button.tintColor = .black
         button.backgroundColor = .red
@@ -27,7 +27,9 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(scanQRButton)
-     
+        cancelOrder()
+        view.backgroundColor = .white
+        
     }
     @objc func scanQR() {
         // MARK: Check user has signed in or not
@@ -51,22 +53,13 @@ class HomeViewController: UIViewController {
         scanQRButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16.0).isActive = true
         scanQRButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
         scanQRButton.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
-
+    }
+    
     @IBAction func menuDetailDidtTapped(_ sender: Any) {
-       let vc = MenuDetailViewController()
+        let vc = MenuDetailViewController()
         vc.modalPresentationStyle = .formSheet
         self.present(vc, animated: true, completion: nil)
     }
-    
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-        // Do any additional setup after loading the view.
-        cancelOrder()
-    }
-    
     // Cancel Orde
     func cancelOrder() {
         
@@ -80,7 +73,6 @@ class HomeViewController: UIViewController {
         
     }
     
-    
     @objc func buttonAction(sender: UIButton!) {
         
         let cancelViewController = CancelOrderViewController(nibName: Constant.CancelOrder.cancelViewController, bundle: nil)
@@ -88,8 +80,6 @@ class HomeViewController: UIViewController {
         self.present(cancelViewController, animated: true, completion: nil)
         
     }
-    
-    
     /*
      // MARK: - Navigation
      
@@ -101,3 +91,4 @@ class HomeViewController: UIViewController {
      */
     
 }
+
