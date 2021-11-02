@@ -15,7 +15,7 @@ class TabbarViewController: UITabBarController {
         setupVC()
     }
     
-    //MARK: -Create Navigation Controller for Main Page with Tab Bar
+    // MARK: -Create Navigation Controller for Main Page with Tab Bar
     fileprivate func createNavigationController(for rootViewController: UIViewController, title: String, image: UIImage) -> UIViewController {
         
         let navigationController = UINavigationController(rootViewController: rootViewController)
@@ -30,7 +30,6 @@ class TabbarViewController: UITabBarController {
     func setupVC() {
         viewControllers = [
             createNavigationController(for: HomeViewController(), title: NSLocalizedString("Home", comment: ""), image: UIImage(systemName: "house.fill")!),
-            createNavigationController(for: HistoryViewController(), title: NSLocalizedString("History", comment: ""), image: UIImage(systemName: "house.fill")!),
-        ]
+            createNavigationController(for: HistoryViewController(), title: NSLocalizedString("History", comment: ""), image: UIImage(systemName: "house.fill")!)]
     }
 }
