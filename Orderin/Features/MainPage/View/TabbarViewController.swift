@@ -9,11 +9,13 @@ import UIKit
 
 class TabbarViewController: UITabBarController {
     
+    // -MARK: App Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupVC()
     }
+
     
     // MARK: -Create Navigation Controller for Main Page with Tab Bar
     fileprivate func createNavigationController(for rootViewController: UIViewController, title: String, image: UIImage) -> UIViewController {
@@ -29,7 +31,7 @@ class TabbarViewController: UITabBarController {
     //MARK: -Setup ViewController for HomePage
     func setupVC() {
         viewControllers = [
-            createNavigationController(for: HomeViewController(), title: NSLocalizedString("Home", comment: ""), image: UIImage(systemName: "house.fill")!),
-            createNavigationController(for: HistoryViewController(), title: NSLocalizedString("History", comment: ""), image: UIImage(systemName: "house.fill")!)]
+            createNavigationController(for: HomeViewController(), title: NSLocalizedString("Menu", comment: ""), image: UIImage(systemName: "menucard")!),
+            createNavigationController(for: HistoryViewController(), title: NSLocalizedString("History", comment: ""), image: UIImage(systemName: "clock")!)]
     }
 }
