@@ -57,7 +57,11 @@ extension SignInViewModel: ASAuthorizationControllerDelegate {
             Auth.auth().signIn(with: credential) { authDataResult, error in
                 if let user = authDataResult?.user {
                     //MARK: Sign in successful
-                    print(user.displayName)
+                    let homeVC = TabbarViewController()
+                    homeVC.modalPresentationStyle = .fullScreen
+                    let signinVC = SignInViewController()
+                    signinVC.view.window?.rootViewController? = homeVC
+    
                 }
                 if (error != nil) {
                     print("\(error?.localizedDescription)")
