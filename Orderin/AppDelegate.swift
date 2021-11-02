@@ -21,14 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let user = Auth.auth().currentUser
         var credential: AuthCredential
-        StorageManager.shared.setNewUser()
+        
         user?.delete { error in
             if let error = error {
                 // An error happened.
             } else {
                 // Account deleted.
                 print("acount deleted")
-                StorageManager.shared.setNewUser()
             }
         }
                 Auth.auth().addStateDidChangeListener({ auth, user in
@@ -42,18 +41,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         self.window?.rootViewController = signInVC
                     }
                 })
-        
-        if StorageManager.shared.isNewUser() == false {
-            self.window?.rootViewController = home
-        } else {
-            let signInVC = SignInViewController()
-            self.window?.rootViewController = signInVC
-        }
         window?.makeKeyAndVisible()
         return true
     }
-    
-    
+ 
     func applicationWillTerminate(_ application: UIApplication) {
         let user = Auth.auth().currentUser
         user?.delete { error in
@@ -64,7 +55,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
               print("acount deleted")
           }
         }
-        StorageManager.shared.setNewUser()
     }
     // MARK: UISceneSession Lifecycle
     

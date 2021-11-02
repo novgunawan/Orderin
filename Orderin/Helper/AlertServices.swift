@@ -13,6 +13,10 @@ class AlertServices {
         let signinAlertVC = UIAlertController(title: "Sign in to continue", message: message, preferredStyle: .alert)
         // MARK: Signed In Action Handler
         let signinAction = UIAlertAction(title: "Sign In", style: .default) { _ in
+//            onVC.navigationController?.pushViewController(SignInViewController(), animated: true)
+//            onVC.modalTransitionStyle = .crossDissolve
+//            onVC.modalPresentationStyle = .fullScreen
+            
             onVC.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
             onVC.view.window?.rootViewController = SignInViewController()
         }
