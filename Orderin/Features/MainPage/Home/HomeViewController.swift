@@ -10,6 +10,7 @@ import AuthenticationServices
 import Firebase
 
 class HomeViewController: UIViewController {
+
     static var signinViewController = SignInViewController()
     
     lazy var scanQRButton: UIButton = {
@@ -48,6 +49,6 @@ class HomeViewController: UIViewController {
         scanQRButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16.0).isActive = true
         scanQRButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
         scanQRButton.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
-        
+
     }
 }
