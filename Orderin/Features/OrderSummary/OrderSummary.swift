@@ -9,8 +9,6 @@ import UIKit
 
 class OrderSummary: UIViewController {
     
-    
-    
        let topLabel: UILabel = {
            
            let label = UILabel(frame: CGRect(x: 57, y: 94, width: 276, height: 72))
