@@ -87,9 +87,10 @@ class CancelOrderViewController: UIViewController {
     
     func getCircle() {
         // Path
-        let center = CGPoint(x: view.frame.midX, y: view.frame.midY - 110)
+        let center = CGPoint(x: view.bounds.size.width / 2, y: view.frame.midY - 110)
         let path = UIBezierPath(arcCenter: center, radius: 120, startAngle: -CGFloat.pi/2, endAngle: 2 * CGFloat.pi, clockwise: true)
-        
+       
+        bgShapeLayer.frame = self.view.frame
         bgShapeLayer.path = path.cgPath
         
         bgShapeLayer.fillColor = UIColor.clear.cgColor
@@ -97,6 +98,8 @@ class CancelOrderViewController: UIViewController {
         
         bgShapeLayer.lineWidth = 25
         bgShapeLayer.strokeEnd = 1
+//        bgShapeLayer.position = self.view.center
+        
         
         // Track
         trackLayer.path = path.cgPath
