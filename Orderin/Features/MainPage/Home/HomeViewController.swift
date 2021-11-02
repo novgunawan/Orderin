@@ -33,10 +33,12 @@ class HomeViewController: UIViewController {
         
         Auth.auth().addStateDidChangeListener({ auth, user in
             if let user = user {
-                AlertServices.presentAlertSignedIn(onVC: self, message: "To Scan QR Code, you need to sign in first")
-            } else {
+                // MARK: User is signed in.
                 // TODO: Go to Scan QR
                 print("Scan QR")
+            } else {
+                // MARK: User is signed in.
+                AlertServices.presentAlertSignedIn(onVC: self, message: "To Scan QR Code, you need to sign in first")
             }
         })
     }

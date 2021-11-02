@@ -15,7 +15,6 @@ class SignInViewController: UIViewController {
     lazy var signinButton: ASAuthorizationAppleIDButton = {
         setupSignInButton()
     }()
-    
     // MARK: Property Title Label
     let titleLabel: UILabel = {
        let label = UILabel()
@@ -72,6 +71,8 @@ class SignInViewController: UIViewController {
         view.addSubview(titleLabel2)
         view.addSubview(image)
         view.addSubview(skipButton)
+        // MARK: Navigation
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     @objc func skipSignin() {

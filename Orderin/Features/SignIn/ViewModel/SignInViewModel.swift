@@ -26,12 +26,8 @@ class SignInViewModel: NSObject {
     
     @objc func skipButton(from: UIViewController) {
         let homeVC = TabbarViewController()
-//        let nav = UINavigationController(rootViewController: from)
         from.dismiss(animated: true, completion: nil)
         from.view.window?.rootViewController = homeVC
-//        nav.pushViewController(homeVC, animated: true)
-//        from.view.window?.rootViewController?.dismiss(animated: false)
-        
     }
 }
 extension SignInViewModel: ASAuthorizationControllerDelegate {
