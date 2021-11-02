@@ -12,56 +12,7 @@ class SignInViewController: UIViewController {
     
     let signinViewModel = SignInViewModel()
     
-    lazy var signinButton: ASAuthorizationAppleIDButton = {
-        setupSignInButton()
-    }()
-    // MARK: Property Title Label
-    let titleLabel: UILabel = {
-       let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = C.titleLabel
-        label.textAlignment = .center
-        label.font = UIFont(name: C.fontPoppinsRegular, size: C.fontsizeTitle)
-        return label
-    }()
-    
-    let titleLabel2: UILabel = {
-       let newLabel = UILabel()
-        newLabel.translatesAutoresizingMaskIntoConstraints = false
-        newLabel.text = C.titleLabel2
-        newLabel.textAlignment = .center
-        newLabel.font = UIFont(name: C.fontPoppinsSemibold, size: C.fontsizeTitle)
-        
-        return newLabel
-    }()
-    
-    // MARK: Property Image
-    let image: UIImageView = {
-        var img = UIImage()
-        img = UIImage(named: C.signinImg) ?? UIImage()
-        var images = UIImageView(image: img)
-        images.frame = CGRect(x: 50, y: 242, width: 291, height: 291)
-        return images
-    }()
-    
-    // MARK: Property Skip Button
-    let skipButton: UIButton = {
-       let button = UIButton()
-        button.setTitle(C.titleskipButton, for: .normal)
-        button.titleLabel?.font = UIFont(name: C.fontPoppinsRegular, size: C.fontsizeBody)
-        button.setTitleColor(C.hexStringToUIColor(hex: C.red50), for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(skipSignin), for: .touchUpInside)
-        return button
-    }()
-    
-    // MARK: Property Sign in Button
-    func setupSignInButton() -> ASAuthorizationAppleIDButton {
-        let button = ASAuthorizationAppleIDButton()
-        button.addTarget(self, action: #selector(handleSignInwithAppleTapped), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }
+    // MARK: -App Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,17 +26,13 @@ class SignInViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
-    @objc func skipSignin() {
-        signinViewModel.skipButton(from: self)
-//        print("button skip tapped")
-    }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         // MARK: Constraint Title Label
         titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 63).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40.0).isActive = true
-      
+        
         
         // MARK: Constraint Title Label 2
         titleLabel2.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0.0).isActive = true
@@ -105,12 +52,73 @@ class SignInViewController: UIViewController {
         skipButton.topAnchor.constraint(equalTo: signinButton.bottomAnchor, constant: 32.0).isActive = true
         skipButton.leadingAnchor.constraint(equalTo: signinButton.leadingAnchor, constant: 0.0).isActive = true
         skipButton.trailingAnchor.constraint(equalTo: signinButton.trailingAnchor, constant: 0.0).isActive = true
-        
     }
+    
+    // MARK: -Properties
+    
+    // MARK: Title Label
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = C.titleLabel
+        label.textAlignment = .center
+        label.font = UIFont(name: C.fontPoppinsRegular, size: C.fontsizeTitle)
+        return label
+    }()
+    
+    // MARK: Title Label 2
+    let titleLabel2: UILabel = {
+        let newLabel = UILabel()
+        newLabel.translatesAutoresizingMaskIntoConstraints = false
+        newLabel.text = C.titleLabel2
+        newLabel.textAlignment = .center
+        newLabel.font = UIFont(name: C.fontPoppinsSemibold, size: C.fontsizeTitle)
+        
+        return newLabel
+    }()
+    
+    // MARK: Image
+    let image: UIImageView = {
+        var img = UIImage()
+        img = UIImage(named: C.signinImg) ?? UIImage()
+        var images = UIImageView(image: img)
+        images.frame = CGRect(x: 50, y: 242, width: 291, height: 291)
+        return images
+    }()
+    
+    // MARK: Skip Button
+    let skipButton: UIButton = {
+        let button = UIButton()
+        button.setTitle(C.titleskipButton, for: .normal)
+        button.titleLabel?.font = UIFont(name: C.fontPoppinsRegular, size: C.fontsizeBody)
+        button.setTitleColor(C.hexStringToUIColor(hex: C.red50), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(skipSignin), for: .touchUpInside)
+        return button
+    }()
+    
+    // MARK: Sign in Button
+    
+    lazy var signinButton: ASAuthorizationAppleIDButton = {
+        setupSignInButton()
+    }()
+    
+    func setupSignInButton() -> ASAuthorizationAppleIDButton {
+        let button = ASAuthorizationAppleIDButton()
+        button.addTarget(self, action: #selector(handleSignInwithAppleTapped), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }
+
+    // MARK: -Functions
+    @objc func skipSignin() {
+        signinViewModel.skipButton(from: self)
+        //        print("button skip tapped")
+    }
+
     @objc func handleSignInwithAppleTapped() {
         signinViewModel.performSignIn()
     }
-    
 
 }
 
