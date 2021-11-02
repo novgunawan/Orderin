@@ -22,7 +22,7 @@
                         <state key="normal" title="Button" image="unchecked "/>
                         <state key="selected" image="checked"/>
                         <connections>
-                            <action selector="checkButtonDidTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="37c-1q-yI9"/>
+                            <action selector="checkButtonDidTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="H6R-7k-GAh"/>
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BBQ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1BD-JN-9ow">
@@ -35,6 +35,10 @@
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="checkButtonDidTapped" destination="bUG-cN-vOK" id="LBy-HV-85u"/>
+                <outlet property="optionalNameLabel" destination="1BD-JN-9ow" id="8Bc-ul-CPw"/>
+            </connections>
             <point key="canvasLocation" x="131.8840579710145" y="116.51785714285714"/>
         </tableViewCell>
     </objects>

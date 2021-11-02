@@ -9,6 +9,10 @@ import UIKit
 
 class OptionalDetailTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var checkButton: UIButton!
+    @IBOutlet weak var optionalNameLabel: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
