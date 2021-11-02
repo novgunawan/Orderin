@@ -50,5 +50,9 @@ class HomeViewController: UIViewController {
         scanQRButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
         scanQRButton.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
 
+    @IBAction func menuDetailDidtTapped(_ sender: Any) {
+       let vc = MenuDetailViewController()
+        vc.modalPresentationStyle = .formSheet
+        self.present(vc, animated: true, completion: nil)
     }
 }
