@@ -8,13 +8,25 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
         // Do any additional setup after loading the view.
     }
 
+
+    @IBAction func tapped(_ sender: Any) {
+        let vc = MenuListViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 
     /*
     // MARK: - Navigation
