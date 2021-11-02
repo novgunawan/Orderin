@@ -8,11 +8,13 @@
 import UIKit
 
 class OptionalDetailTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var checkButton: UIButton!
+    @IBOutlet weak var checkButton: UIButton!{
+        didSet{
+            checkButton.addTarget(self, action: #selector(checkButtonDidTapped), for: .touchUpInside)
+        }
+    }
+    
     @IBOutlet weak var optionalNameLabel: UILabel!
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -29,9 +31,7 @@ class OptionalDetailTableViewCell: UITableViewCell {
     static func nib() -> UINib{
         return UINib(nibName: "OptionalDetailTableViewCell", bundle: nil)
     }
-    
     @IBAction func checkButtonDidTapped(_ sender: Any) {
-        print("tapped")
+        let buttonTag = sender.tag
     }
-    
 }
