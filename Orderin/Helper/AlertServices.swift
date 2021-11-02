@@ -13,7 +13,8 @@ class AlertServices {
         let signinAlertVC = UIAlertController(title: "Sign in to continue", message: message, preferredStyle: .alert)
         // MARK: Signed In Action Handler
         let signinAction = UIAlertAction(title: "Sign In", style: .default) { _ in
-            signinAlertVC.dismiss(animated: true, completion: nil)
+            onVC.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+            onVC.view.window?.rootViewController = SignInViewController()
         }
         
         // MARK: Not Now Action Handler

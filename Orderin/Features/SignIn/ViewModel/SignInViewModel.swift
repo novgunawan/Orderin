@@ -24,10 +24,13 @@ class SignInViewModel: NSObject {
         authorizationController.performRequests()
     }
     
-    @objc func skipButton() {
-        let homeVC = HomeViewController()
-        let nav = UINavigationController(nibName: C.signinNibName, bundle: nil)
-        nav.pushViewController(homeVC, animated: true)
+    @objc func skipButton(from: UIViewController) {
+        let homeVC = TabbarViewController()
+//        let nav = UINavigationController(rootViewController: from)
+        from.dismiss(animated: true, completion: nil)
+        from.view.window?.rootViewController = homeVC
+//        nav.pushViewController(homeVC, animated: true)
+//        from.view.window?.rootViewController?.dismiss(animated: false)
         
     }
 }

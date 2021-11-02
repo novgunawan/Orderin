@@ -52,7 +52,7 @@ class SignInViewController: UIViewController {
         button.titleLabel?.font = UIFont(name: C.fontPoppinsRegular, size: C.fontsizeBody)
         button.setTitleColor(C.hexStringToUIColor(hex: C.red50), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: "skipSignin", for: .touchUpInside)
+        button.addTarget(self, action: #selector(skipSignin), for: .touchUpInside)
         return button
     }()
     
@@ -66,6 +66,7 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         view.addSubview(signinButton)
         view.addSubview(titleLabel)
         view.addSubview(titleLabel2)
@@ -73,8 +74,9 @@ class SignInViewController: UIViewController {
         view.addSubview(skipButton)
     }
     
-    func skipSignin() {
-        signinViewModel.skipButton()
+    @objc func skipSignin() {
+        signinViewModel.skipButton(from: self)
+//        print("button skip tapped")
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -91,7 +93,6 @@ class SignInViewController: UIViewController {
         
         // MARK: Constraint Image Sign In
         image.topAnchor.constraint(equalTo: titleLabel2.bottomAnchor, constant: 32.0).isActive = true
-        image.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24.0).isActive = true
         
         // MARK: Constraint Sign In Button
         signinButton.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 32.0).isActive = true

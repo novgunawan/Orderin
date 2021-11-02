@@ -17,7 +17,7 @@ class HomeViewController: UIViewController {
         button.setTitle("Scan QR Code", for: .normal)
         button.tintColor = .black
         button.backgroundColor = .red
-        button.addTarget(self, action: #selector(showAlertSignIn), for: .touchUpInside)
+        button.addTarget(self, action: #selector(scanQR), for: .touchUpInside)
         button.layer.masksToBounds = false
         button.clipsToBounds = true
         
@@ -28,8 +28,17 @@ class HomeViewController: UIViewController {
         view.addSubview(scanQRButton)
      
     }
-    @objc func showAlertSignIn() {
-        AlertServices.presentAlertSignedIn(onVC: self, message: "To Scan QRCode, you need to sign in first")
+    @objc func scanQR() {
+        // MARK: Check user has signed in or not
+        
+        Auth.auth().addStateDidChangeListener({ auth, user in
+            if let user = user {
+                AlertServices.presentAlertSignedIn(onVC: self, message: "To Scan QR Code, you need to sign in first")
+            } else {
+                // TODO: Go to Scan QR
+                print("Scan QR")
+            }
+        })
     }
     
     override func viewDidLayoutSubviews() {
