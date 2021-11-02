@@ -27,11 +27,16 @@ struct C {
     static let red30 = "#F49688"
     static let red10 = "#FCDCD8"
     
+    static let teal50 = "#406169"
+    
+    static let gray70 = "#BEBEBE"
+    
     // MARK: -Labels
     // MARK: Sign in
     static let titleLabel = "Enjoy Dine In with"
     static let titleLabel2 = "OrderIn"
     static let titleskipButton = "Skip for now"
+    static let signoutButton = "Sign Out"
     
     // MARK: -Images Name
     // MARK: Sign in
