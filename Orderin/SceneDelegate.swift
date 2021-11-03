@@ -18,30 +18,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         let home = TabbarViewController()
         let user = Auth.auth().currentUser
-        StorageManager.shared.setNewUser()
         
-        user?.delete { error in
-            if let error = error {
-                // An error happened.
-            } else {
-                // Account deleted.
-//                print("acount deleted")
-//                StorageManager.shared.setNewUser()
-            }
-        }
+//        user?.delete { error in
+//            if let error = error {
+//                // An error happened.
+//            } else {
+//                // Account deleted.
+////                print("acount deleted")
+//            }
+//        }
         
         Auth.auth().addStateDidChangeListener({ auth, user in
             if let user = user {
                 // MARK: User is signed in.
                 self.window?.rootViewController = home
-                StorageManager.shared.setExistingUser()
                 
             } else {
                 // MARK: User is not signed in.
                 let signInVC = SignInViewController()
                 self.window?.rootViewController = signInVC
-                StorageManager.shared.setNewUser()
-                //                self.window?.rootViewController = home
             }
         })
         
