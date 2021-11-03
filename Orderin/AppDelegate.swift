@@ -11,7 +11,7 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
@@ -19,43 +19,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         let home = TabbarViewController()
         
-        let user = Auth.auth().currentUser
-        var credential: AuthCredential
-        
-        user?.delete { error in
-            if let error = error {
-                // An error happened.
+        Auth.auth().addStateDidChangeListener({ auth, user in
+            if let user = user {
+                // MARK: User is signed in.
+                self.window?.rootViewController = home
+                
             } else {
-                // Account deleted.
-                print("acount deleted")
+                // MARK: User is not signed in.
+                let signInVC = SignInViewController()
+                self.window?.rootViewController = signInVC
             }
-        }
-                Auth.auth().addStateDidChangeListener({ auth, user in
-                    if let user = user {
-                        // MARK: User is signed in.
-                        self.window?.rootViewController = home
-        
-                    } else {
-                        // MARK: User is not signed in.
-                        let signInVC = SignInViewController()
-                        self.window?.rootViewController = signInVC
-                    }
-                })
+        })
         window?.makeKeyAndVisible()
         return true
     }
- 
-    func applicationWillTerminate(_ application: UIApplication) {
-        let user = Auth.auth().currentUser
-        user?.delete { error in
-          if let error = error {
-            // An error happened.
-          } else {
-            // Account deleted.
-              print("acount deleted")
-          }
-        }
-    }
+    
+
     // MARK: UISceneSession Lifecycle
     
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
