@@ -15,10 +15,12 @@ extension MenuDetailViewController: UITableViewDelegate, UITableViewDataSource{
 
 func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     if indexPath.row < 1{
-        return 148
+        let HeightCell = 55 + (32 * 3)//count of cell
+        return CGFloat(HeightCell)
     }
     if indexPath.row < 2{
-        return 148
+        let HeightCell = 55 + (32 * 3)//count of cell
+        return CGFloat(HeightCell)
     }
     if indexPath.row < 3{
         return 43
@@ -39,12 +41,12 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
 
 func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if indexPath.row < 1{
-    let cell = detailListTable.dequeueReusableCell(withIdentifier: OptionalTableViewCell.identifier) as! OptionalTableViewCell
-    return cell
+    let cellChoose = detailListTable.dequeueReusableCell(withIdentifier: ChooseTableViewCell.identifier) as! ChooseTableViewCell
+            return cellChoose
         }
     if indexPath.row < 2{
-    let cellChoose = detailListTable.dequeueReusableCell(withIdentifier: ChooseTableViewCell.identifier) as! ChooseTableViewCell
-        return cellChoose
+    let cell = detailListTable.dequeueReusableCell(withIdentifier: OptionalTableViewCell.identifier) as! OptionalTableViewCell
+        return cell
         }
     if indexPath.row < 3{
         let cellNotes = detailListTable.dequeueReusableCell(withIdentifier: NotesTableViewCell.identifier) as! NotesTableViewCell

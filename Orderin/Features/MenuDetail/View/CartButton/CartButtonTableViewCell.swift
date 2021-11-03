@@ -9,6 +9,7 @@ import UIKit
 
 class CartButtonTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var totalPrice: UILabel!
     @IBOutlet weak var viewCell: UIView!{
         didSet{
         viewCell.layer.cornerRadius = 13
