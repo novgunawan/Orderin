@@ -9,6 +9,7 @@ import UIKit
 
 class OptionalDetailTableViewCell: UITableViewCell {
  
+    @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var optionalNameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,5 +26,12 @@ class OptionalDetailTableViewCell: UITableViewCell {
     static let identifier = "cellOptionalDetail"
     static func nib() -> UINib{
         return UINib(nibName: "OptionalDetailTableViewCell", bundle: nil)
+    }
+    @IBAction func checkDidTapped(_ sender: UIButton) {
+        if sender.isSelected{
+            sender.isSelected = false
+        } else{
+            sender.isSelected = true
+        }
     }
 }

@@ -9,6 +9,7 @@ import UIKit
 
 class ChooseDetailTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var checkButton: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,4 +26,11 @@ class ChooseDetailTableViewCell: UITableViewCell {
         return UINib(nibName: "ChooseDetailTableViewCell", bundle: nil)
     }
     
+    @IBAction func checkButtonDidTapped(_ sender: UIButton) {
+        if sender.isSelected{
+            sender.isSelected = false
+        } else{
+            sender.isSelected = true
+        }
+    }
 }

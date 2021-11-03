@@ -26,6 +26,9 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" title="Button" image="unchecked "/>
                         <state key="selected" image="checked"/>
+                        <connections>
+                            <action selector="checkDidTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="AK4-Qu-iDT"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="French Fries" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1BD-JN-9ow">
                         <rect key="frame" x="48" y="0.0" width="264" height="21"/>
@@ -46,6 +49,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
+                <outlet property="checkButton" destination="bUG-cN-vOK" id="cyw-aU-xNk"/>
                 <outlet property="optionalNameLabel" destination="1BD-JN-9ow" id="8Bc-ul-CPw"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="116.51785714285714"/>
