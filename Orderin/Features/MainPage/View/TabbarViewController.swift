@@ -10,6 +10,7 @@ import UIKit
 class TabbarViewController: UITabBarController {
     
     // -MARK: App Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -25,6 +26,7 @@ class TabbarViewController: UITabBarController {
         navigationController.tabBarItem.image = image
         navigationController.navigationBar.prefersLargeTitles = true
         rootViewController.navigationItem.title = title
+        
         return navigationController
     }
     

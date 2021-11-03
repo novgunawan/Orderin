@@ -40,6 +40,19 @@ class HomeViewController: UIViewController {
         return button
     }()
     
+    // MARK: Menu List Button
+    let menulistButton: UIButton = {
+       
+        let button = UIButton()
+        button.setTitle("Menu List", for: .normal)
+        button.titleLabel?.font = UIFont(name: C.fontPoppinsRegular, size: C.fontsizeBody)
+        button.setTitleColor(C.hexStringToUIColor(hex: C.red50), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(goToMenuListVC), for: .touchUpInside)
+        
+        return button
+    }()
+    
     // MARK: -App Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -51,6 +64,8 @@ class HomeViewController: UIViewController {
             self.tabBarController?.tabBar.tintColor = C.hexStringToUIColor(hex: C.gray70)
         }
         
+        // MARK: Set Tab Bar Not To Be Hidden
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     override func viewDidLayoutSubviews() {
@@ -66,15 +81,24 @@ class HomeViewController: UIViewController {
         signoutButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 72.0).isActive = true
         signoutButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10.0).isActive = true
         signoutButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 10.0).isActive = true
+        
+        // MARK: Constraint Menu List Button
+        // TODO: Fix placement button
+        
+        menulistButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 110.0).isActive = true
+        menulistButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20.0).isActive = true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(scanQRButton)
         view.addSubview(signoutButton)
+        view.addSubview(menulistButton)
         cancelOrder()
         view.backgroundColor = .white
         
+        // MARK: Set navigation bar hidden [the large title in the left]
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     // MARK: -Functions
@@ -119,6 +143,13 @@ class HomeViewController: UIViewController {
                 print("from home view controller : you haven't even signed in")
             }
         })
+    }
+    
+    
+    // MARK: Go to Menu List
+    @objc func goToMenuListVC() {
+        let menulistVC = MenuListViewController()
+        self.navigationController?.pushViewController(menulistVC, animated: true)
     }
     
     @IBAction func menuDetailDidtTapped(_ sender: Any) {
