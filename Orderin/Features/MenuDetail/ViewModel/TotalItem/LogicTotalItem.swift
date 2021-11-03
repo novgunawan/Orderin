@@ -15,15 +15,18 @@ extension TotalItemTableViewCell{
         guard let totalItem = Int(totalItemLabel!.text ?? "1") else {return}
         let sumItem = totalItem + 1
         totalItemLabel!.text = String(sumItem)
+        if sumItem > 0{
+            minusButton.isEnabled = true
+        }
     }
     
     @IBAction func minButtonDidTapped(_ sender: Any) {
         guard let totalItem = Int(totalItemLabel!.text ?? "1") else {return}
-        if totalItem < 2{
-            minusButton.isEnabled = false
-        }
         let sumItem = totalItem - 1
         totalItemLabel!.text = String(sumItem)
+        if sumItem < 1{
+            minusButton.isEnabled = false
+        }
     }
     
     

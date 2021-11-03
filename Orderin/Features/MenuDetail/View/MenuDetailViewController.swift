@@ -15,7 +15,10 @@ class MenuDetailViewController: UIViewController{
         didSet{
             topCursor.layer.cornerRadius = 2.5
         }
+        
     }
+    
+    //UI Label Normal Price
     @IBOutlet weak var normalPrice: UILabel!{
         didSet{
             //strikethrough label

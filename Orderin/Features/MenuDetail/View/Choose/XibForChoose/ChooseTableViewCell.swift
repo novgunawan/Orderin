@@ -9,16 +9,23 @@ import UIKit
 
 class ChooseTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var chooseTable: UITableView!
+    @IBOutlet weak var chooseTable: UITableView!{
+        didSet{
+            chooseTable.frame.size.height = 80 + (32 * 3)//count of cell
+        }
+    }
     @IBOutlet weak var viewCell: UIView!
         {
             didSet{
+                //height view
+                viewCell.frame.size.height = 80 + (32 * 3)//count of cell
                 //corner radius
                 viewCell.layer.cornerRadius = 5
                 //shadow
-                viewCell.layer.shadowColor = UIColor.black.cgColor
-                viewCell.layer.shadowOpacity = 0.2
-                        viewCell.layer.shadowOffset = CGSize(width: 0.0,height: 1.0)
+//                viewCell.layer.shadowColor = UIColor.black.cgColor
+//                viewCell.layer.shadowOpacity = 0.3
+//                viewCell.layer.shadowOffset = CGSize(width: 0.0,height: 1.0)
+//                viewCell.layer.shadowRadius = 4
             }
         }
     //create identifier XIB
@@ -28,7 +35,7 @@ class ChooseTableViewCell: UITableViewCell {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
-        chooseTable.register(OptionalDetailTableViewCell.nib(), forCellReuseIdentifier: OptionalDetailTableViewCell.identifier)
+        chooseTable.register(ChooseDetailTableViewCell.nib(), forCellReuseIdentifier: ChooseDetailTableViewCell.identifier)
         
         chooseTable.delegate = self
         chooseTable.dataSource = self

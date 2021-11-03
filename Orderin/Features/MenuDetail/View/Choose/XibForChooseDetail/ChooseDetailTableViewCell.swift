@@ -1,16 +1,15 @@
 //
-//  OptionalDetailTableViewCell.swift
+//  ChooseDetailTableViewCell.swift
 //  Orderin
 //
-//  Created by Pieter Yonathan on 28/10/21.
+//  Created by Pieter Yonathan on 03/11/21.
 //
 
 import UIKit
 
-class OptionalDetailTableViewCell: UITableViewCell {
- 
+class ChooseDetailTableViewCell: UITableViewCell {
+
     @IBOutlet weak var checkButton: UIButton!
-    @IBOutlet weak var optionalNameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,12 +21,12 @@ class OptionalDetailTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    //create identifier XIB
-    static let identifier = "cellOptionalDetail"
+    static let identifier = "cellChooseDetail"
     static func nib() -> UINib{
-        return UINib(nibName: "OptionalDetailTableViewCell", bundle: nil)
+        return UINib(nibName: "ChooseDetailTableViewCell", bundle: nil)
     }
-    @IBAction func checkDidTapped(_ sender: UIButton) {
+    
+    @IBAction func checkButtonDidTapped(_ sender: UIButton) {
         if sender.isSelected{
             sender.isSelected = false
         } else{
