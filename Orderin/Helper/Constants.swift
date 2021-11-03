@@ -15,6 +15,8 @@ struct C {
     static let fontPoppinsRegular = "Poppins-Regular"
     static let fontPoppinsSemibold = "Poppins-SemiBold"
     static let fontsizeTitle = 34.0
+    static let fontsizeTitle1 = 28.0
+    static let fontsizeTitle2 = 22.0
     static let fontsizeTitle3 = 20.0
     static let fontsizeBody = 17.0
     static let fontsizeFootnote = 13.0
@@ -27,9 +29,22 @@ struct C {
     static let red30 = "#F49688"
     static let red10 = "#FCDCD8"
     
+    static let teal90 = "#0B1316"
+    static let teal70 = "#273A3F"
     static let teal50 = "#406169"
+    static let teal30 = "#81A5AE"
+    static let teal10 = "#D5E1E4"
     
+    static let mint90 = "#233528"
+    static let mint70 = "#6D9C79"
+    static let mint50 = "#DEE8E0"
+    static let mint30 = "#EBF1ED"
+    static let mint10 = "#F9FAF9"
+    
+    static let black90 = "202020"
     static let gray70 = "#BEBEBE"
+    static let gray50 = "#DDDDDD"
+    static let white = "#FBFBFB"
     
     // MARK: -Labels
     // MARK: Sign in
@@ -38,10 +53,22 @@ struct C {
     static let titleskipButton = "Skip for now"
     static let signoutButton = "Sign Out"
     
+    // MARK: Home Before Sign In
+    static let titleLabelHome0 = "Hello There"
+    static let captionLabelHome0 = "Delicious food are waiting for you"
+    static let buttonTextHome0 = "Scan Menu"
+    static let smallCaptionLabelHome0 = "Scan the QR at your table to start ordering."
+    
     // MARK: -Images Name
     // MARK: Sign in
     static let signinImg = "front-image-0"
+    static let homeImg0 = "home-image-0"
     
+    
+    
+    // MARK: -Button Text
+    // MARK: Home Before Sign In
+    static let scanMenu = "Scan Menu"
     
     // MARK: Functions
     static func hexStringToUIColor (hex:String) -> UIColor {
