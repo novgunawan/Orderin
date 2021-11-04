@@ -11,21 +11,21 @@ class ChooseTableViewCell: UITableViewCell {
 
     @IBOutlet weak var chooseTable: UITableView!{
         didSet{
-            chooseTable.frame.size.height = 80 + (32 * 3)//count of cell
+            chooseTable.frame.size.height = (32 * 3)//count of cell
         }
     }
     @IBOutlet weak var viewCell: UIView!
         {
             didSet{
                 //height view
-                viewCell.frame.size.height = 80 + (32 * 3)//count of cell
+                viewCell.frame.size.height = 55 + (32 * 3)//count of cell
                 //corner radius
                 viewCell.layer.cornerRadius = 5
                 //shadow
-//                viewCell.layer.shadowColor = UIColor.black.cgColor
-//                viewCell.layer.shadowOpacity = 0.3
-//                viewCell.layer.shadowOffset = CGSize(width: 0.0,height: 1.0)
-//                viewCell.layer.shadowRadius = 4
+                viewCell.layer.shadowColor = UIColor.black.cgColor
+                viewCell.layer.shadowOpacity = 0.1
+                viewCell.layer.shadowOffset = CGSize(width: 0.0,height: 1.0)
+                viewCell.layer.shadowRadius = 4
             }
         }
     //create identifier XIB
