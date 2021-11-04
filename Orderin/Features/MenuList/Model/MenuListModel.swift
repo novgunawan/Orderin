@@ -8,18 +8,25 @@
 import Foundation
 import UIKit
 
+struct Menu{
+    var category: Category
+    var MenuList: [MenuListModel]
+}
+
 struct MenuListModel{
+    
     var image: UIImage
     var title: String
     var description: String
     var price: String
-    var category: Category
 }
 
 
 enum Category{
+    
     case appetizer
     case main
     case desert
     case beverage
 }
+

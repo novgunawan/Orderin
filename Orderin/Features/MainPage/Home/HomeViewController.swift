@@ -66,6 +66,8 @@ class HomeViewController: UIViewController {
         
         // MARK: Set Tab Bar Not To Be Hidden
         self.tabBarController?.tabBar.isHidden = false
+        
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     override func viewDidLayoutSubviews() {

@@ -14,7 +14,9 @@ class MenuUIView: UIView {
     // MARK: Top view
     
     let segmentedControl: UISegmentedControl = {
+        
         let segment = UISegmentedControl()
+        
         segment.insertSegment(withTitle: "All", at: 0, animated: true)
         segment.insertSegment(withTitle: "Appetizer", at: 1, animated: true)
         segment.insertSegment(withTitle: "Main", at: 2, animated: true)
@@ -31,8 +33,12 @@ class MenuUIView: UIView {
         return segment
     }()
     
+ 
+    
     let searchController: UISearchController = {
+        
         let searchController = UISearchController()
+        
         searchController.searchBar.showsBookmarkButton = true
         searchController.searchBar.setImage(UIImage(systemName: "arrow.up.arrow.down.circle"), for: .bookmark, state: .normal)
         searchController.searchBar.setPositionAdjustment(UIOffset(horizontal: 0, vertical: 0), for: .bookmark)
@@ -43,11 +49,14 @@ class MenuUIView: UIView {
     // MARK: Table View [Content View]
     
     let tableView: UITableView = {
-        let table = UITableView()
+        
+        let table = UITableView(frame: .zero, style: .grouped)
+        
         table.translatesAutoresizingMaskIntoConstraints = false
         table.separatorStyle = .none
         table.allowsSelection = true
         table.isUserInteractionEnabled  = true
+        table.backgroundColor = .white
         
         return table
         

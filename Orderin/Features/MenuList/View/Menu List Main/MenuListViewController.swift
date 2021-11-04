@@ -12,8 +12,9 @@ class MenuListViewController: UIViewController {
     // MARK: - Components Declaration
     
     let menuListView = MenuUIView()
-    var data: [MenuListModel] = []
-    
+    var data: [Menu] = []
+    var menuListVM = MenuListViewModel()
+   
     
     // MARK: - Life Cycle
     
@@ -26,12 +27,16 @@ class MenuListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        data = fetchData()
+//        data = fetchData()
+        bindData()
         addComponents()
         view.backgroundColor = .white
         setup()
         tableViewConfiguration()
         self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.isNavigationBarHidden = false
+        menuListView.segmentedControl.addTarget(self, action: #selector(didSegmentChange), for: .valueChanged)
+        
     }
     
     // MARK: - UI Setup
@@ -44,6 +49,7 @@ class MenuListViewController: UIViewController {
         // Setup delegates
         menuListView.tableView.delegate = self
         menuListView.tableView.dataSource = self
+
     }
     
     private func addComponents(){
@@ -80,24 +86,41 @@ class MenuListViewController: UIViewController {
   
     // MARK: - UI Logic
     
-    // MARK: - Dummy Data
-    
-    func fetchData()->[MenuListModel]{
-        let data1 = MenuListModel(image: UIImage(named: "food-dummy")!, title: "Food Name", description: "lalalallallalaalla lalalala", price: "Rp. Price", category: .main)
-        let data2 = MenuListModel(image: UIImage(named: "food-dummy")!, title: "Food Name", description: "lalalallallalaalla lalalala", price: "Rp. Price", category: .main)
-        let data3 = MenuListModel(image: UIImage(named: "food-dummy")!, title: "Food Name", description: "lalalallallalaalla lalalala", price: "Rp. Price", category: .main)
-        let data4 = MenuListModel(image: UIImage(named: "food-dummy")!, title: "Food Name", description: "lalalallallalaalla lalalala", price: "Rp. Price", category: .main)
-        let data5 = MenuListModel(image: UIImage(named: "food-dummy")!, title: "Food Name", description: "lalalallallalaalla lalalala", price: "Rp. Price", category: .main)
-        let data6 = MenuListModel(image: UIImage(named: "food-dummy")!, title: "Food Name", description: "lalalallallalaalla lalalala", price: "Rp. Price", category: .main)
-        let data7 = MenuListModel(image: UIImage(named: "food-dummy")!, title: "Food Name", description: "lalalallallalaalla lalalala", price: "Rp. Price", category: .main)
-        let data8 = MenuListModel(image: UIImage(named: "food-dummy")!, title: "Food Name", description: "lalalallallalaalla lalalala", price: "Rp. Price", category: .main)
-        let data9 = MenuListModel(image: UIImage(named: "food-dummy")!, title: "Food Name", description: "lalalallallalaalla lalalala", price: "Rp. Price", category: .main)
-        let data10 = MenuListModel(image: UIImage(named: "food-dummy")!, title: "Food Name", description: "lalalallallalaalla lalalala", price: "Rp. Price", category: .main)
-        
-        return[data1, data2, data3, data4, data5, data6, data7, data8, data9, data10]
+    func bindData(){
+        menuListVM.fetchMenuListData { value in
+            self.data = value
+            
+            DispatchQueue.main.async {
+                self.menuListView.tableView.reloadData()
+            }
+        }
     }
-
+    @objc func didSegmentChange(_ sender: UISegmentedControl){
+        switch menuListView.segmentedControl.selectedSegmentIndex{
+        case 0 :
+            print("show all 0 ")
+        case 1:
+            let index = NSIndexPath(row: 0, section: 0)
+            menuListView.tableView.scrollToRow(at: index as IndexPath, at: .top, animated: true)
+            
+        case 2:
+            let index = NSIndexPath(row: 0, section: 1)
+            menuListView.tableView.scrollToRow(at: index as IndexPath, at: .top, animated: true)
+            
+        case 3:
+            let index = NSIndexPath(row: 0, section: 2)
+            menuListView.tableView.scrollToRow(at: index as IndexPath, at: .top, animated: true)
+        case 4:
+            print("show all 4 ")
+            let index = NSIndexPath(row: 0, section: 3)
+            menuListView.tableView.scrollToRow(at: index as IndexPath, at: .top, animated: true)
+            
+        default:
+            print("nothing")
+        }
+    }
    
+    
 
 }
 
