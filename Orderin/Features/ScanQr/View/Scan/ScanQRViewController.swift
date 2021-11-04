@@ -10,34 +10,6 @@ import AVFoundation
 
 class ScanQRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
-//    var video = AVCaptureVideoPreviewLayer()
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//    }
-//
-//    func setup(){
-//        //Creating Session
-//        let session = AVCaptureSession()
-//
-//        //Define Capture Device
-//        guard let captureDevice = AVCaptureDevice.default(for: .video) else { return }
-//
-//        do{
-//            let input = try AVCaptureDeviceInput(device: captureDevice)
-//            session.addInput(input)
-//        }
-//        catch{
-//            print("Error")
-//        }
-//
-//        let output = AVCaptureMetadataOutput()
-//        session.addOutput(output)
-//
-//        output.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-//        output.metadataObjectTypes = [AVMetadataObjectTy]
-//    }
     var captureSession: AVCaptureSession!
       var previewLayer: AVCaptureVideoPreviewLayer!
 
@@ -134,5 +106,4 @@ class ScanQRViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
       override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
           return .portrait
       }
-  
 }
