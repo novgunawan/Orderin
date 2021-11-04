@@ -44,7 +44,7 @@ class MenuListTableViewCell: UITableViewCell {
     var titleLabel: UILabel = {
         var label = UILabel()
         label.adjustsFontSizeToFitWidth = true
-        label.font = UIFont.boldSystemFont(ofSize: 17.0)
+        label.font = UIFont(name: C.fontPoppinsSemibold, size: C.fontsizeBody)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -52,7 +52,8 @@ class MenuListTableViewCell: UITableViewCell {
     var descriptionLabel: UILabel = {
         var label = UILabel()
         label.numberOfLines = 2
-        label.font = label.font.withSize(12.0)
+        label.font = UIFont(name: C.fontPoppinsRegular, size: C.fontsizeFootnote)
+        label.textColor = C.hexStringToUIColor(hex: C.blackOlive)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -60,18 +61,18 @@ class MenuListTableViewCell: UITableViewCell {
     var priceLabel: UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 17.0)
+        label.font = UIFont(name: C.fontPoppinsSemibold, size: C.fontsizeBody)
         return label
     }()
     
     let button: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius =  13.0
-        button.backgroundColor = UIColor(named: "orange")
+        button.backgroundColor = C.hexStringToUIColor(hex: C.red50)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Add", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17.0)
+        button.titleLabel?.font = UIFont(name: C.fontPoppinsSemibold, size: C.fontsizeBody)
         button.addTarget(self, action: #selector(didButtonTapped), for: .touchUpInside)
         
         return button

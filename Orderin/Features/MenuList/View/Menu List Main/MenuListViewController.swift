@@ -100,3 +100,9 @@ class MenuListViewController: UIViewController {
    
 
 }
+
+extension MenuListViewController: UIViewControllerTransitioningDelegate{
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+       PresentationController(presentedViewController: presented, presenting: presenting)
+   }
+}
