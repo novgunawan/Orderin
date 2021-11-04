@@ -33,6 +33,10 @@ extension MenuListViewController: UITableViewDelegate, UITableViewDataSource, Ce
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // TODO: show bottom card
+        let vc = BottomSheetViewController()
+        vc.modalPresentationStyle = .custom
+        vc.transitioningDelegate = self
+        self.present(vc, animated: true, completion: nil)
     }
     
     

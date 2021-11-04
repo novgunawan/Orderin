@@ -23,6 +23,7 @@ class MenuUIView: UIView {
         segment.translatesAutoresizingMaskIntoConstraints = false
         segment.selectedSegmentIndex = 0
         segment.selectedSegmentTintColor = .clear
+        segment.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: C.fontPoppinsRegular, size: C.fontsizeFootnote)!], for: .normal)
         segment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.lightGray], for: .normal)
         segment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(named: "dark green")!], for: .selected)
         

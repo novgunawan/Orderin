@@ -31,6 +31,10 @@ struct C {
     
     static let gray70 = "#BEBEBE"
     
+    static let blackOlive = "3F3F3F"
+    
+    static let chineseWhite = "E0E0E0"
+    
     // MARK: -Labels
     // MARK: Sign in
     static let titleLabel = "Enjoy Dine In with"
