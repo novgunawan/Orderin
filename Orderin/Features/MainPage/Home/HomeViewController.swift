@@ -20,6 +20,7 @@ class HomeViewController: UIViewController {
     lazy var scanQRButton: UIButton = {
         let button = UIButton()
         button.setTitle("Scan QR Code", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = .black
         button.backgroundColor = .red
         button.addTarget(self, action: #selector(scanQR), for: .touchUpInside)
@@ -66,6 +67,9 @@ class HomeViewController: UIViewController {
         
         // MARK: Set Tab Bar Not To Be Hidden
         self.tabBarController?.tabBar.isHidden = false
+        // MARK: Set navigation bar hidden [the large title in the left]
+        self.navigationController?.isNavigationBarHidden = false
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -96,9 +100,6 @@ class HomeViewController: UIViewController {
         view.addSubview(menulistButton)
         cancelOrder()
         view.backgroundColor = .white
-        
-        // MARK: Set navigation bar hidden [the large title in the left]
-        self.navigationController?.isNavigationBarHidden = true
     }
     
     // MARK: -Functions
