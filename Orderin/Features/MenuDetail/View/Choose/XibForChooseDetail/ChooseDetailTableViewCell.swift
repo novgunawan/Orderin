@@ -8,8 +8,9 @@
 import UIKit
 
 class ChooseDetailTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var checkButton: UIButton!
+    @IBOutlet weak var chooseName: UILabel!
+    @IBOutlet weak var checkerUI: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,13 +25,5 @@ class ChooseDetailTableViewCell: UITableViewCell {
     static let identifier = "cellChooseDetail"
     static func nib() -> UINib{
         return UINib(nibName: "ChooseDetailTableViewCell", bundle: nil)
-    }
-    
-    @IBAction func checkButtonDidTapped(_ sender: UIButton) {
-        if sender.isSelected{
-            sender.isSelected = false
-        } else{
-            sender.isSelected = true
-        }
     }
 }

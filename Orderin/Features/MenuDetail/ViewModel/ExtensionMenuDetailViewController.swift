@@ -15,11 +15,11 @@ extension MenuDetailViewController: UITableViewDelegate, UITableViewDataSource{
 
 func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     if indexPath.row < 1{
-        let HeightCell = 55 + (32 * 3)//count of cell
+        let HeightCell = 75 + (32 * 3)//count of cell
         return CGFloat(HeightCell)
     }
     if indexPath.row < 2{
-        let HeightCell = 55 + (32 * 3)//count of cell
+        let HeightCell = 75 + (32 * 3)//count of cell
         return CGFloat(HeightCell)
     }
     if indexPath.row < 3{
