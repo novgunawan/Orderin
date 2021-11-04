@@ -27,12 +27,19 @@
                         <action selector="menuDetailDidtTapped:" destination="-1" eventType="touchUpInside" id="mAB-z6-g5h"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D1T-9Y-WlM">
+                    <rect key="frame" x="159" y="327" width="96" height="31"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                    <connections>
+                        <action selector="directScanQR:" destination="-1" eventType="touchUpInside" id="0iO-DA-oaM"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <point key="canvasLocation" x="131.8840579710145" y="109.82142857142857"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <point key="canvasLocation" x="139" y="90"/>
         </view>
     </objects>
     <resources>
