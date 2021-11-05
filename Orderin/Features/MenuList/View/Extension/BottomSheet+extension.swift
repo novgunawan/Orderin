@@ -17,8 +17,19 @@ extension BottomSheetViewController : UITableViewDelegate, UITableViewDataSource
       
       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
           let cell = tableView.dequeueReusableCell(withIdentifier: "item") as! FoodItemTableViewCell
+          cell.editButton.addTarget(self, action: #selector(didButtonEditTapped), for: .touchUpInside)
           return cell
       }
+    
+    // MARK: - Logic
+    
+    @objc func didButtonEditTapped(){
+        let vc = MenuDetailViewController()
+        self.present(vc, animated: true, completion: nil)
+        
+        
+    }
+    
 
 
 
