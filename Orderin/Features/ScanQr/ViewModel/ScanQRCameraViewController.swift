@@ -19,44 +19,50 @@ class ScanQRCameraViewController: UIViewController, AVCaptureMetadataOutputObjec
     override func viewDidLoad() {
           super.viewDidLoad()
 
-          captureSession = AVCaptureSession()
-
-          guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else { return }
-          let videoInput: AVCaptureDeviceInput
-
-          do {
-              videoInput = try AVCaptureDeviceInput(device: videoCaptureDevice)
-          } catch {
-              return
-          }
-
-          if (captureSession.canAddInput(videoInput)) {
-              captureSession.addInput(videoInput)
-          } else {
-              failed()
-              return
-          }
-
-          let metadataOutput = AVCaptureMetadataOutput()
-
-          if (captureSession.canAddOutput(metadataOutput)) {
-              captureSession.addOutput(metadataOutput)
-
-              metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-              metadataOutput.metadataObjectTypes = [.qr]
-          } else {
-              failed()
-              return
-          }
-
-        //Assign camera to UIView
-          previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-          previewLayer.frame = cameraPreview.layer.bounds
-          previewLayer.videoGravity = .resizeAspectFill
-          cameraPreview.layer.addSublayer(previewLayer)
-
-          captureSession.startRunning()
+          scanQRCamera()
+        
       }
+    
+    //function sccan QR
+    func scanQRCamera(){
+        captureSession = AVCaptureSession()
+
+        guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else { return }
+        let videoInput: AVCaptureDeviceInput
+
+        do {
+            videoInput = try AVCaptureDeviceInput(device: videoCaptureDevice)
+        } catch {
+            return
+        }
+
+        if (captureSession.canAddInput(videoInput)) {
+            captureSession.addInput(videoInput)
+        } else {
+            failed()
+            return
+        }
+
+        let metadataOutput = AVCaptureMetadataOutput()
+
+        if (captureSession.canAddOutput(metadataOutput)) {
+            captureSession.addOutput(metadataOutput)
+
+            metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
+            metadataOutput.metadataObjectTypes = [.qr]
+        } else {
+            failed()
+            return
+        }
+
+      //Assign camera to UIView
+        previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        previewLayer.frame = cameraPreview.layer.bounds
+        previewLayer.videoGravity = .resizeAspectFill
+        cameraPreview.layer.addSublayer(previewLayer)
+
+        captureSession.startRunning()
+    }
 
     //Failed Scan QR
       func failed() {
