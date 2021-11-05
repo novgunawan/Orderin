@@ -38,22 +38,7 @@ extension MenuListViewController: UITableViewDelegate, UITableViewDataSource, Ce
         }
     }
     
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let myLabel = UILabel()
-//        myLabel.frame = CGRect(x:16, y: 8, width: 320, height: 20)
-//        myLabel.font = UIFont(name: C.fontPoppinsSemibold, size: 32.0)
-//        myLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
-//
-//        let headerView = UIView()
-//        headerView.addSubview(myLabel)
-//        headerView.frame = CGRect(x: 0, y: 0, width: 320, height: 50.0)
-//        headerView.backgroundColor = .white
-//        return headerView
-//    }
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 50.0
-//    }
-    
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
         view.backgroundColor = .white
@@ -80,6 +65,7 @@ extension MenuListViewController: UITableViewDelegate, UITableViewDataSource, Ce
         cell.dataModel = dummy
         cell.button.tag = indexPath.row
         cell.delegate = self
+        cell.button.addTarget(self, action: #selector(didAddButtonTapped), for: .touchUpInside)
         
         return cell
     }
@@ -89,6 +75,12 @@ extension MenuListViewController: UITableViewDelegate, UITableViewDataSource, Ce
         let vc = BottomSheetViewController()
         vc.modalPresentationStyle = .custom
         vc.transitioningDelegate = self
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    
+    @objc func didAddButtonTapped(){
+        let vc = MenuDetailViewController()
         self.present(vc, animated: true, completion: nil)
     }
     

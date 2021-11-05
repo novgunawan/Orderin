@@ -53,8 +53,9 @@ class FoodItemTableViewCell: UITableViewCell {
         
         button.setTitle("Edit", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.titleLabel?.font = UIFont(name: C.fontPoppinsSemibold, size: C.fontsizeFootnote)
+        button.titleLabel?.font = UIFont(name: C.fontPoppinsSemibold, size: C.fontsizeBody)
         button.setTitleColor(C.hexStringToUIColor(hex: C.red50), for: .normal)
+       
         
         return button
     }()
@@ -153,4 +154,8 @@ class FoodItemTableViewCell: UITableViewCell {
         priceLabel.text = price
         
     }
+    
+    // MARK: - Logic
+    
+  
 }
