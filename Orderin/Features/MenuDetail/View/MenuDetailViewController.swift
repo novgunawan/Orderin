@@ -8,7 +8,7 @@
 import UIKit
 
 class MenuDetailViewController: UIViewController{
-
+    
     @IBOutlet weak var detailListTable: UITableView!
     
     @IBOutlet weak var topCursor: UIView!{
@@ -26,6 +26,13 @@ class MenuDetailViewController: UIViewController{
                 attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
             normalPrice.attributedText = attributeString
             
+        }
+    }
+    
+    //didset function to assign data
+    var objectModel: ChooseListModel?{
+        didSet{
+            assignData()
         }
     }
     
