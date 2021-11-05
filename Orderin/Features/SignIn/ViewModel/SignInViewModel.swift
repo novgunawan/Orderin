@@ -31,7 +31,7 @@ class SignInViewModel: NSObject {
         homeVC.modalPresentationStyle = .fullScreen
         homeVC.modalTransitionStyle = .crossDissolve
         from.present(homeVC, animated: true, completion: nil)
-//        from.view.window?.rootViewController = homeVC
+        // from.view.window?.rootViewController = homeVC
     }
 }
 extension SignInViewModel: ASAuthorizationControllerDelegate {
@@ -61,7 +61,6 @@ extension SignInViewModel: ASAuthorizationControllerDelegate {
                     homeVC.modalPresentationStyle = .fullScreen
                     let signinVC = SignInViewController()
                     signinVC.view.window?.rootViewController? = homeVC
-    
                 }
                 if (error != nil) {
                     print("\(error?.localizedDescription)")
