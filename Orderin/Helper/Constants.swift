@@ -41,10 +41,13 @@ struct C {
     static let mint30 = "#EBF1ED"
     static let mint10 = "#F9FAF9"
     
-    static let black90 = "202020"
+    static let black90 = "#202020"
+    static let shadowColor = "#DDDDDD"
     static let gray70 = "#BEBEBE"
     static let gray50 = "#DDDDDD"
     static let white = "#FBFBFB"
+    static let whiteGradientUp = "#F1F1F1"
+    static let whiteGradientDown = "#F6F5F5"
     
     // MARK: -Labels
     // MARK: Sign in
@@ -59,18 +62,34 @@ struct C {
     static let buttonTextHome0 = "Scan Menu"
     static let smallCaptionLabelHome0 = "Scan the QR at your table to start ordering."
     
+    
+    // MARK: Home After Sign In
+    static let infoLabel = "You are currently dining in at"
+    static let recommendedMenuLabel = "Recommended Menu"
     // MARK: -Images Name
     // MARK: Sign in
     static let signinImg = "front-image-0"
+    
+    // MARK: Home
     static let homeImg0 = "home-image-0"
     
+    // MARK: OrderShortcut
+    static let orderShortcutImg = "orderShortcutImage"
     
     
     // MARK: -Button Text
     // MARK: Home Before Sign In
     static let scanMenu = "Scan Menu"
     
-    // MARK: Functions
+    
+    // MARK: Home After Sign In
+    static let browseMenu = "Browse All Menu"
+    static let scanOtherMenu = "Scan Another Menu"
+    
+    
+    // MARK: -Name
+    static let recommendedMenuCellIdentifier = "RecommendedMenuCell"
+    // MARK: -Functions
     static func hexStringToUIColor (hex:String) -> UIColor {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         
