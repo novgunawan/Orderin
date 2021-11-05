@@ -13,6 +13,7 @@ class HomeViewController: UIViewController {
     
     static var signinViewController = SignInViewController()
     var tabBarTag: Bool = true
+    var scanQRVC = ScanQRCameraViewController()
     
     // MARK: -Properties for Home Before Sign In
     // MARK: Title Label
@@ -56,6 +57,7 @@ class HomeViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = C.hexStringToUIColor(hex: C.red50)
         button.layer.cornerRadius = 12
+        button.addTarget(self, action: #selector(scanQR), for: .touchUpInside)
         return button
     }()
     
@@ -117,6 +119,7 @@ class HomeViewController: UIViewController {
         button.backgroundColor = C.hexStringToUIColor(hex: C.red50)
         button.setTitle(C.browseMenu, for: .normal)
         button.setTitleColor(C.hexStringToUIColor(hex: C.white), for: .normal)
+        button.addTarget(self, action: #selector(goToMenuListVC), for: .touchUpInside)
         return button
     }()
     
@@ -129,49 +132,11 @@ class HomeViewController: UIViewController {
         button.backgroundColor = C.hexStringToUIColor(hex: C.white)
         button.setTitle(C.scanOtherMenu, for: .normal)
         button.setTitleColor(C.hexStringToUIColor(hex: C.red50), for: .normal)
+        button.addTarget(self, action: #selector(scanQR), for: .touchUpInside)
         return button
     }()
     
-//    // MARK: -Properties
-//
-//    // MARK: Scan QR Button
-//    lazy var scanQRButton: UIButton = {
-//        let button = UIButton()
-//        button.setTitle("Scan QR Code", for: .normal)
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.tintColor = .black
-//        button.backgroundColor = .red
-//        button.addTarget(self, action: #selector(scanQR), for: .touchUpInside)
-//        button.layer.masksToBounds = false
-//        button.clipsToBounds = true
-//
-//        return button
-//    }()
-//
-//    // MARK: Sign Out Button
-//    let signoutButton: UIButton = {
-//        let button = UIButton()
-//        button.setTitle(C.signoutButton, for: .normal)
-//        button.titleLabel?.font = UIFont(name: C.fontPoppinsRegular, size: C.fontsizeBody)
-//        button.setTitleColor(C.hexStringToUIColor(hex: C.red50), for: .normal)
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.addTarget(self, action: #selector(signout), for: .touchUpInside)
-//        return button
-//    }()
-//
-//    // MARK: Menu List Button
-//    let menulistButton: UIButton = {
-//
-//        let button = UIButton()
-//        button.setTitle("Menu List", for: .normal)
-//        button.titleLabel?.font = UIFont(name: C.fontPoppinsRegular, size: C.fontsizeBody)
-//        button.setTitleColor(C.hexStringToUIColor(hex: C.red50), for: .normal)
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.addTarget(self, action: #selector(goToMenuListVC), for: .touchUpInside)
-//
-//        return button
-//    }()
-    
+
     // MARK: -App Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -188,7 +153,6 @@ class HomeViewController: UIViewController {
         
         // MARK: Set navigation bar hidden [the large title in the left]
         self.navigationController?.isNavigationBarHidden = true
-        
         Auth.auth().addStateDidChangeListener({ auth, user in
             if let user = user {
                 // MARK: User is signed in.
@@ -281,29 +245,10 @@ class HomeViewController: UIViewController {
         scanAnotherMenuButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15.0).isActive = true
         scanAnotherMenuButton.heightAnchor.constraint(equalToConstant: 53.3).isActive = true
 
-//        scanQRButton.translatesAutoresizingMaskIntoConstraints = false
-//        scanQRButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
-//        scanQRButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16.0).isActive = true
-//        scanQRButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
-//        scanQRButton.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
-        
-        // MARK: Constraint Sign Out Button
-        
-//        signoutButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 72.0).isActive = true
-//        signoutButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10.0).isActive = true
-//        signoutButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 10.0).isActive = true
-        
-        // MARK: Constraint Menu List Button
-        
-//        menulistButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 110.0).isActive = true
-//        menulistButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20.0).isActive = true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.addSubview(scanQRButton)
-//        view.addSubview(signoutButton)
-//        view.addSubview(menulistButton)
 //        cancelOrder()
         // MARK: -Add subview Home Before Sign In
         view.addSubview(titleLabel)
@@ -330,7 +275,7 @@ class HomeViewController: UIViewController {
             if let user = user {
                 // MARK: User is signed in.
                 // TODO: Go to Scan QR
-                print("Scan QR")
+                self.present(self.scanQRVC, animated: true, completion: nil)
             } else {
                 // MARK: User is signed in.
                 AlertServices.presentAlertSignedIn(onVC: self, message: "To Scan QR Code, you need to sign in first")

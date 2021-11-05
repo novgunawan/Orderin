@@ -39,7 +39,8 @@ class MenuListViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.isNavigationBarHidden = false
         menuListView.segmentedControl.addTarget(self, action: #selector(didSegmentChange), for: .valueChanged)
-        
+        self.navigationController?.navigationBar.tintColor = C.hexStringToUIColor(hex: C.red50)
+
         
         
     }
