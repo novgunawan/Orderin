@@ -24,7 +24,7 @@ class TabbarViewController: UITabBarController {
         let navigationController = UINavigationController(rootViewController: rootViewController)
         navigationController.tabBarItem.title = title
         navigationController.tabBarItem.image = image
-        navigationController.navigationBar.prefersLargeTitles = true
+//        navigationController.navigationBar.prefersLargeTitles = true
         rootViewController.navigationItem.title = title
         
         return navigationController
@@ -36,4 +36,6 @@ class TabbarViewController: UITabBarController {
             createNavigationController(for: HomeViewController(), title: NSLocalizedString("Menu", comment: ""), image: UIImage(systemName: "menucard")!),
             createNavigationController(for: HistoryViewController(), title: NSLocalizedString("History", comment: ""), image: UIImage(systemName: "clock")!)]
     }
+    
+    
 }
