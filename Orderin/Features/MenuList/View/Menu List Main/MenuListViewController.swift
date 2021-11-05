@@ -12,9 +12,11 @@ class MenuListViewController: UIViewController {
     // MARK: - Components Declaration
     
     let menuListView = MenuUIView()
+    let floatingButton = FloatingButtonView()
     var data: [Menu] = []
     var menuListVM = MenuListViewModel()
-   
+    
+
     
     // MARK: - Life Cycle
     
@@ -23,11 +25,12 @@ class MenuListViewController: UIViewController {
         
         setSegmentedControlConstraint()
         setTableViewConstraint()
+        setModalBackViewConstraint()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        data = fetchData()
+
         bindData()
         addComponents()
         view.backgroundColor = .white
@@ -36,6 +39,8 @@ class MenuListViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.isNavigationBarHidden = false
         menuListView.segmentedControl.addTarget(self, action: #selector(didSegmentChange), for: .valueChanged)
+        
+        
         
     }
     
@@ -55,6 +60,7 @@ class MenuListViewController: UIViewController {
     private func addComponents(){
         view.addSubview(menuListView.segmentedControl)
         view.addSubview(menuListView.tableView)
+        view.addSubview(floatingButton)
             
     }
     
@@ -76,10 +82,21 @@ class MenuListViewController: UIViewController {
     }
     
     private func setTableViewConstraint(){
+        
         menuListView.tableView.topAnchor.constraint(equalTo: menuListView.segmentedControl.bottomAnchor, constant: 26.0).isActive = true
         menuListView.tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         menuListView.tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive =  true
-        menuListView.tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        menuListView.tableView.bottomAnchor.constraint(equalTo: floatingButton.topAnchor).isActive = true
+
+    }
+    
+    private func setModalBackViewConstraint(){
+
+        floatingButton.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive =  true
+        floatingButton.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive =  true
+        floatingButton.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.25).isActive = true
+        floatingButton.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
     }
     
     
@@ -98,7 +115,9 @@ class MenuListViewController: UIViewController {
     @objc func didSegmentChange(_ sender: UISegmentedControl){
         switch menuListView.segmentedControl.selectedSegmentIndex{
         case 0 :
-            print("show all 0 ")
+            let index = NSIndexPath(row: 0, section: 0)
+            menuListView.tableView.scrollToRow(at: index as IndexPath, at: .top, animated: true)
+            
         case 1:
             let index = NSIndexPath(row: 0, section: 0)
             menuListView.tableView.scrollToRow(at: index as IndexPath, at: .top, animated: true)
@@ -110,8 +129,8 @@ class MenuListViewController: UIViewController {
         case 3:
             let index = NSIndexPath(row: 0, section: 2)
             menuListView.tableView.scrollToRow(at: index as IndexPath, at: .top, animated: true)
+            
         case 4:
-            print("show all 4 ")
             let index = NSIndexPath(row: 0, section: 3)
             menuListView.tableView.scrollToRow(at: index as IndexPath, at: .top, animated: true)
             
