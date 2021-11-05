@@ -167,6 +167,13 @@ class HomeViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
     }
     
+    @IBAction func generateQRAction(_ sender: Any) {
+        let generateQR = GenerateQRViewController()
+        self.navigationController?.pushViewController(generateQR, animated: true)
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    
     // MARK: Cancel Order
     func cancelOrder() {
         

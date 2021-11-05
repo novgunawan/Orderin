@@ -31,9 +31,19 @@
                     <rect key="frame" x="159" y="327" width="96" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Scan QR Direct"/>
                     <connections>
                         <action selector="directScanQR:" destination="-1" eventType="touchUpInside" id="0iO-DA-oaM"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jub-aH-2ch">
+                    <rect key="frame" x="159" y="501" width="96" height="31"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Generate QR"/>
+                    <connections>
+                        <action selector="directScanQR:" destination="-1" eventType="touchUpInside" id="CnY-Xl-oiU"/>
+                        <action selector="generateQRAction:" destination="-1" eventType="touchUpInside" id="ExJ-Kz-gWJ"/>
                     </connections>
                 </button>
             </subviews>
