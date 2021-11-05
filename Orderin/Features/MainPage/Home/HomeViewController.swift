@@ -162,8 +162,9 @@ class HomeViewController: UIViewController {
     
     //go to direct scan qr
     @IBAction func directScanQR(_ sender: Any) {
-        let directScanQR = ScanQRViewController()
+        let directScanQR = ScanQRCameraViewController()
         self.navigationController?.pushViewController(directScanQR, animated: true)
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     // MARK: Cancel Order

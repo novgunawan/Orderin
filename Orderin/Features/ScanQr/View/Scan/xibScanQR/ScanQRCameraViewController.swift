@@ -1,22 +1,23 @@
 //
-//  ScanQRViewController.swift
+//  ScanQRCameraViewController.swift
 //  Orderin
 //
-//  Created by Pieter Yonathan on 04/11/21.
+//  Created by Pieter Yonathan on 05/11/21.
 //
 
 import UIKit
 import AVFoundation
 
-class ScanQRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
-    
-    var captureSession: AVCaptureSession!
-      var previewLayer: AVCaptureVideoPreviewLayer!
+class ScanQRCameraViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate{
 
-      override func viewDidLoad() {
+    @IBOutlet weak var cameraPreview: UIView!
+    var captureSession: AVCaptureSession!
+    var previewLayer: AVCaptureVideoPreviewLayer!
+    
+    override func viewDidLoad() {
           super.viewDidLoad()
 
-          view.backgroundColor = UIColor.black
+          cameraPreview.backgroundColor = UIColor.green
           captureSession = AVCaptureSession()
 
           guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else { return }
@@ -47,10 +48,11 @@ class ScanQRViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
               return
           }
 
+        //Assign camera to UIView
           previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-          previewLayer.frame = view.layer.bounds
+          previewLayer.frame = cameraPreview.layer.bounds
           previewLayer.videoGravity = .resizeAspectFill
-          view.layer.addSublayer(previewLayer)
+          cameraPreview.layer.addSublayer(previewLayer)
 
           captureSession.startRunning()
       }
@@ -86,9 +88,6 @@ class ScanQRViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
               guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
               guard let stringValue = readableObject.stringValue else { return }
               AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-              DispatchQueue.main.async {
-                  print(stringValue)
-              }
               found(code: stringValue)
           }
 
@@ -106,4 +105,8 @@ class ScanQRViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
       override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
           return .portrait
       }
+    
+    func setupUI(){
+        
+    }
 }
