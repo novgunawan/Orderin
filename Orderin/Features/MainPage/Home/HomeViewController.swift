@@ -323,7 +323,6 @@ class HomeViewController: UIViewController {
     }
     
     // MARK: -Functions
-    
     @objc func scanQR() {
         // MARK: Check user has signed in or not
         
@@ -373,11 +372,26 @@ class HomeViewController: UIViewController {
         self.navigationController?.pushViewController(menulistVC, animated: true)
     }
     
+    //go to menudetail when tapped button
     @IBAction func menuDetailDidtTapped(_ sender: Any) {
         let vc = MenuDetailViewController()
         vc.modalPresentationStyle = .formSheet
         self.present(vc, animated: true, completion: nil)
     }
+    
+    //go to direct scan qr
+    @IBAction func directScanQR(_ sender: Any) {
+        let directScanQR = ScanQRCameraViewController()
+        self.navigationController?.pushViewController(directScanQR, animated: true)
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    @IBAction func generateQRAction(_ sender: Any) {
+        let generateQR = GenerateQRViewController()
+        self.navigationController?.pushViewController(generateQR, animated: true)
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
     
     // MARK: Cancel Order
     func cancelOrder() {
