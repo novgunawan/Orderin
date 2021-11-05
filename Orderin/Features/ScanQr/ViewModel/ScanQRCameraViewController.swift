@@ -94,6 +94,7 @@ class ScanQRCameraViewController: UIViewController, AVCaptureMetadataOutputObjec
               guard let stringValue = readableObject.stringValue else { return }
               AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
               found(code: stringValue)
+              gotoMenuList()
           }
 
           dismiss(animated: true)
@@ -112,4 +113,10 @@ class ScanQRCameraViewController: UIViewController, AVCaptureMetadataOutputObjec
       override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
           return .portrait
       }
+    
+    //go to menu list
+    func gotoMenuList(){
+    let menulistVC = MenuListViewController()
+    self.navigationController?.pushViewController(menulistVC, animated: true)
+    }
 }
