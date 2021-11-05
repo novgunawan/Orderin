@@ -13,6 +13,7 @@ class HomeViewController: UIViewController {
     
     static var signinViewController = SignInViewController()
     var tabBarTag: Bool = true
+    var scanQRVC = ScanQRCameraViewController()
     
     // MARK: -Properties for Home Before Sign In
     // MARK: Title Label
@@ -56,6 +57,7 @@ class HomeViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = C.hexStringToUIColor(hex: C.red50)
         button.layer.cornerRadius = 12
+        button.addTarget(self, action: #selector(scanQR), for: .touchUpInside)
         return button
     }()
     
@@ -117,6 +119,7 @@ class HomeViewController: UIViewController {
         button.backgroundColor = C.hexStringToUIColor(hex: C.red50)
         button.setTitle(C.browseMenu, for: .normal)
         button.setTitleColor(C.hexStringToUIColor(hex: C.white), for: .normal)
+        button.addTarget(self, action: #selector(goToMenuListVC), for: .touchUpInside)
         return button
     }()
     
@@ -129,6 +132,7 @@ class HomeViewController: UIViewController {
         button.backgroundColor = C.hexStringToUIColor(hex: C.white)
         button.setTitle(C.scanOtherMenu, for: .normal)
         button.setTitleColor(C.hexStringToUIColor(hex: C.red50), for: .normal)
+        button.addTarget(self, action: #selector(scanQR), for: .touchUpInside)
         return button
     }()
     
@@ -330,7 +334,7 @@ class HomeViewController: UIViewController {
             if let user = user {
                 // MARK: User is signed in.
                 // TODO: Go to Scan QR
-                print("Scan QR")
+                self.scanQRVC.scanQRCamera()
             } else {
                 // MARK: User is signed in.
                 AlertServices.presentAlertSignedIn(onVC: self, message: "To Scan QR Code, you need to sign in first")
