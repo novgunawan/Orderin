@@ -10,14 +10,15 @@ import AVFoundation
 
 class ScanQRCameraViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate{
 
+    @IBOutlet weak var labelInformation: UILabel!
     @IBOutlet weak var cameraPreview: UIView!
+    
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     
     override func viewDidLoad() {
           super.viewDidLoad()
 
-          cameraPreview.backgroundColor = UIColor.green
           captureSession = AVCaptureSession()
 
           guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else { return }
@@ -57,13 +58,16 @@ class ScanQRCameraViewController: UIViewController, AVCaptureMetadataOutputObjec
           captureSession.startRunning()
       }
 
+    //Failed Scan QR
       func failed() {
-          let ac = UIAlertController(title: "Scanning not supported", message: "Your device does not support scanning a code from an item. Please use a device with a camera.", preferredStyle: .alert)
-          ac.addAction(UIAlertAction(title: "OK", style: .default))
-          present(ac, animated: true)
-          captureSession = nil
+          labelInformation.text = "Fail to detect QR. Please place your camera over the entire QR."
+          //          let ac = UIAlertController(title: "Scanning not supported", message: "Your device does not support scanning a code from an item. Please use a device with a camera.", preferredStyle: .alert)
+          //          ac.addAction(UIAlertAction(title: "OK", style: .default))
+          //          present(ac, animated: true)
+          //          captureSession = nil
       }
 
+    
       override func viewWillAppear(_ animated: Bool) {
           super.viewWillAppear(animated)
 
@@ -72,6 +76,7 @@ class ScanQRCameraViewController: UIViewController, AVCaptureMetadataOutputObjec
           }
       }
 
+    
       override func viewWillDisappear(_ animated: Bool) {
           super.viewWillDisappear(animated)
 
@@ -94,6 +99,7 @@ class ScanQRCameraViewController: UIViewController, AVCaptureMetadataOutputObjec
           dismiss(animated: true)
       }
 
+    //Funtion When QR Detect
       func found(code: String) {
           print(code)
       }
@@ -101,12 +107,9 @@ class ScanQRCameraViewController: UIViewController, AVCaptureMetadataOutputObjec
       override var prefersStatusBarHidden: Bool {
           return true
       }
-
+    
+    //Roatation Device
       override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
           return .portrait
       }
-    
-    func setupUI(){
-        
-    }
 }
