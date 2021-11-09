@@ -116,6 +116,7 @@ struct C {
         )
     }
 }
+
 struct Constant {
     struct CancelOrder {
         static let cancelViewController = "CancelOrderViewController"
@@ -125,6 +126,9 @@ struct Constant {
     
     struct OrderSummary {
         static let orderViewController = "OrderSummary"
+    }
+    struct ConfirmOrder {
+        static let tableViewCellIdentifier = "ConfirmMenuCell"
     }
     
     
