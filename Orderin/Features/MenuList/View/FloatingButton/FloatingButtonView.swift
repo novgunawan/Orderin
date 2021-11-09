@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol NavigationControllerDelegate {
+    func pushToConfirmOrder()
+}
+
 class FloatingButtonView: UIView {
+    
+    
+    var delegate: NavigationControllerDelegate?
     
     // MARK: - Declare UI Components
     
@@ -135,7 +142,8 @@ class FloatingButtonView: UIView {
     @objc func didCartButtonTapped(){
         
         // TODO: Go to summary page
-
+       
+        delegate?.pushToConfirmOrder()
     }
     
     

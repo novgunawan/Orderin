@@ -16,6 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: UIScreen.main.bounds)
+    
         let home = TabbarViewController()
         Auth.auth().addStateDidChangeListener({ auth, user in
             if let user = user {
@@ -24,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 
             } else {
                 // MARK: User is not signed in.
-                let signInVC = SignInViewController()
+                let signInVC = MenuListViewController()   // MARK: RootVC are changed, please refer back to the original one, which is SignInViewController
                 self.window?.rootViewController = signInVC
             }
         })
