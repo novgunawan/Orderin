@@ -9,6 +9,8 @@ import UIKit
 
 class ConfirmOrderViewController: UIViewController {
     
+    let orderButton = OrderNowButton()
+    
     let confirmMenuTableView: UITableView = {
         
         let table = UITableView()
@@ -22,22 +24,41 @@ class ConfirmOrderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDelegate()
+        setupNavigationController()
+        setupAddView()
+        orderNowButtonConstraint()
+    }
+    
+    func setupAddView() {
         
+        view.addSubview(confirmMenuTableView)
+        view.addSubview(orderButton)
     }
     
     func setupDelegate() {
-        
         
         confirmMenuTableView.delegate = self
         confirmMenuTableView.dataSource = self
         confirmMenuTableView.frame = view.bounds
         
+        
         confirmMenuTableView.register(ConfirmMenuCell.self, forCellReuseIdentifier: Constant.ConfirmOrder.tableViewCellIdentifier)
         confirmMenuTableView.rowHeight = 150
+        
+    }
+    
+    func setupNavigationController() {
+        navigationItem.title = "Confirm Order"
+    }
+    
+    private func orderNowButtonConstraint() {
+        
+        orderButton.frame = CGRect(x: 0, y: 700, width: 390, height: 130)
        
         
-        view.addSubview(confirmMenuTableView)
+        // orderNowButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
+    
 
 }
 
