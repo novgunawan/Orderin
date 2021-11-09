@@ -33,4 +33,10 @@ class CartButtonTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func cartButtonDidTapped(_ sender: Any) {
+//        let vc = OrderSummaryViewController()
+//        vc.modalPresentationStyle = .fullScreen
+//        self.present(vc, animated: true, completion: nil)
+        print("cartbuttondidtapped")
+    }
 }
