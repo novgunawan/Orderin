@@ -47,17 +47,15 @@ class ConfirmMenuCell: UITableViewCell {
         return label
     }()
     
-    
-    let customizeLabel: UILabel = {
-        let label = UILabel()
+    let menuCustomizationTableView: UITableView = {
         
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "BBQ Sauce, French Fries"
-        label.font = UIFont(name: C.fontPoppinsRegular, size: C.fontsizeFootnote)
-        label.numberOfLines = 2
+        let customizeMenu = UITableView()
+        customizeMenu.separatorStyle = .none
         
-        return label
+        return customizeMenu
+        
     }()
+    
     
     
     // MARK: - Life Cycle
@@ -68,11 +66,11 @@ class ConfirmMenuCell: UITableViewCell {
         self.contentView.addSubview(quantitiyLabel)
         self.contentView.addSubview(titleOrderLabel)
         self.contentView.addSubview(priceLabel)
-        self.contentView.addSubview(customizeLabel)
         setQuantityLabelConstraint()
         setTitleOrderLabelConstarint()
         setPriceLabelConstraint()
-        setCustomizeConstraint()
+        cellAddSubviews()
+        setup()
         
     }
     
@@ -90,6 +88,23 @@ class ConfirmMenuCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setup() {
+        
+        menuCustomizationTableView.register(MenuCustomizationCell.self, forCellReuseIdentifier: Constant.ConfirmOrder.menuCustomCell)
+        
+        menuCustomizationTableView.dataSource = self
+        menuCustomizationTableView.delegate = self
+        
+        menuCustomizationTableView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        menuCustomizationTableView.backgroundColor = .red
+        
+        
+    }
+    
+    func cellAddSubviews() {
+        self.contentView.addSubview(menuCustomizationTableView)
     }
     
     
@@ -115,14 +130,7 @@ class ConfirmMenuCell: UITableViewCell {
     func setPriceLabelConstraint(){
         
         priceLabel.topAnchor.constraint(equalTo: topAnchor,constant: 20.0).isActive = true
-        priceLabel.trailingAnchor.constraint(equalTo: trailingAnchor,constant:  -19.0 ).isActive = true
-    }
-    
-    func setCustomizeConstraint(){
-        
-        customizeLabel.topAnchor.constraint(equalTo: quantitiyLabel.bottomAnchor, constant: 16.0).isActive = true
-        customizeLabel.leadingAnchor.constraint(equalTo: titleOrderLabel.leadingAnchor).isActive = true
-        customizeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant:  -19.0).isActive = true
+        priceLabel.leadingAnchor.constraint(equalTo: titleOrderLabel.trailingAnchor,constant: 165.0 ).isActive = true
     }
     
     // MARK: - Cell Content

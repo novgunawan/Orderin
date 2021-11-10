@@ -129,7 +129,9 @@ struct Constant {
     }
     struct ConfirmOrder {
         static let tableViewCellIdentifier = "ConfirmMenuCell"
+        static let menuCustomCell = "menuCustomCell"
     }
+    
     
     
     
