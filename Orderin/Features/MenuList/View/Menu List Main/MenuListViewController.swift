@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MenuListViewController: UIViewController, UISearchResultsUpdating, UISearchBarDelegate {
+class MenuListViewController: UIViewController{
     
     
     // MARK: - Components Declaration
@@ -152,39 +152,6 @@ class MenuListViewController: UIViewController, UISearchResultsUpdating, UISearc
             print("nothing")
         }
     }
-    
-    func filterCurrentData(searchText: String){
-       filteredData = dataWithoutCategory.filter({ menu in
-           return menu.title.lowercased().contains(searchText.lowercased())
-        })
-        print(filteredData.count)
-        searchingState  = true
-        
-        searchingResult.tableView.reloadData()
-       
-
-    }
-
-
-    func updateSearchResults(for searchController: UISearchController) {
-        
-        if let searchText = searchController.searchBar.text{
-            self.filterCurrentData(searchText: searchText)
-
-        }
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchingState = false
-        filteredData.removeAll()
-       menuListView.tableView.reloadData()
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        menuListView.tableView.reloadData()
-    }
-    
-    
     
 
 }
