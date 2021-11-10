@@ -9,10 +9,15 @@ import UIKit
 
 class OrderSummaryTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var OrderSummaryDetailTable: UITableView!
+    @IBOutlet weak var orderSummaryDetailTable: UITableView!{
+        didSet{
+            orderSummaryDetailTable.frame.size.height = (20 * 3)
+        }
+    }
     
     @IBOutlet weak var orderSummaryCellView: UIView!{
         didSet{
+            orderSummaryCellView.frame.size.height = 68 + (20 * 3)
             orderSummaryCellView.layer.cornerRadius = 13
         }
     }
@@ -32,6 +37,12 @@ class OrderSummaryTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        orderSummaryDetailTable.register(OrderSummaryDetailTableViewCell.nib(), forCellReuseIdentifier: OrderSummaryDetailTableViewCell.identifier)
+        orderSummaryDetailTable.register(NoteforMenuTableViewCell.nib(), forCellReuseIdentifier: NoteforMenuTableViewCell.identifier)
+        
+        orderSummaryDetailTable.delegate = self
+        orderSummaryDetailTable.dataSource = self
 
     }
 

@@ -30,6 +30,15 @@ class OrderSummaryViewController: UIViewController {
         }
     }
     
+    
+    @IBOutlet weak var normalPrice: UILabel!{
+        didSet{
+            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: normalPrice.text ?? "")
+                attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
+            normalPrice.attributedText = attributeString
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()

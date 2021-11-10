@@ -20,6 +20,7 @@
             <connections>
                 <outlet property="addOrderButton" destination="kph-Sz-hS2" id="IFZ-qg-ow1"/>
                 <outlet property="bottomView" destination="753-jB-7t8" id="U5k-pT-7E4"/>
+                <outlet property="normalPrice" destination="KcM-nq-WuO" id="fkR-bU-GGe"/>
                 <outlet property="orderSummaryTable" destination="xkD-46-ihw" id="4Af-HL-zlF"/>
                 <outlet property="priceView" destination="OGO-1K-8TU" id="Xs4-6G-JFg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

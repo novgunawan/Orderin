@@ -1,17 +1,17 @@
 //
-//  OrderSummaryDetailTableViewCell.swift
+//  NoteforMenuTableViewCell.swift
 //  Orderin
 //
-//  Created by Pieter Yonathan on 09/11/21.
+//  Created by Pieter Yonathan on 10/11/21.
 //
 
 import UIKit
 
-class OrderSummaryDetailTableViewCell: UITableViewCell {
+class NoteforMenuTableViewCell: UITableViewCell {
 
-    static let identifier = "cellOrderSummaryDetail"
+    static let identifier = "cellNoteMenu"
     static func nib() -> UINib{
-        return UINib(nibName: "OrderSummaryDetailTableViewCell", bundle: nil)
+        return UINib(nibName: "NoteforMenuTableViewCell", bundle: nil)
     }
     
     override func awakeFromNib() {
