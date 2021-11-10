@@ -13,9 +13,7 @@ class ConfirmOrderViewController: UIViewController {
         
         let view = OrderNowButton()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .red
-        view.layer.borderColor = UIColor.red.cgColor
-        view.layer.borderWidth = 4
+        
         return view
         
     }()
@@ -29,7 +27,7 @@ class ConfirmOrderViewController: UIViewController {
         return table
         
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDelegate()
@@ -41,12 +39,12 @@ class ConfirmOrderViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        orderButtonView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-        orderButtonView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-        orderButtonView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-        orderButtonView.frame.size.height = 130
-        
-   //     orderButtonView.frame = CGRect(x: 0, y: 729, width: 390, height: 113)
+        //        orderButtonView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        //        orderButtonView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+        //        orderButtonView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        //        orderButtonView.frame.size.height = 130
+        //
+        orderButtonView.frame = CGRect(x: 0, y: 729, width: 390, height: 113)
     }
     
     func setupAddView() {
@@ -74,10 +72,10 @@ class ConfirmOrderViewController: UIViewController {
     }
     
     private func orderNowButtonConstraint() {
-       
+        
     }
     
-
+    
 }
 
 extension ConfirmOrderViewController: UITableViewDelegate, UITableViewDataSource {
@@ -101,7 +99,7 @@ extension ConfirmOrderViewController: UITableViewDelegate, UITableViewDataSource
         actualTableNumber.frame = CGRect.init(x: 330, y: 20, width: headerView.frame.width-10, height: headerView.frame.height-10)
         actualTableNumber.text = "#20"
         actualTableNumber.font = UIFont(name: C.fontPoppinsSemibold, size: 17)
-       
+        
         headerView.addSubview(tableNumberlabel)
         headerView.addSubview(actualTableNumber)
         
