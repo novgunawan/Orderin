@@ -22,28 +22,26 @@ class OrderNowButton: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        constraintButton()
+        
         addSubview(orderNowButton)
     }
     
      
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func constraintButton() {
-        
-        NSLayoutConstraint.activate([
-            
-            orderNowButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-            orderNowButton.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 16.0),
-            orderNowButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16.0),
-            orderNowButton.heightAnchor.constraint(equalToConstant: 53.0)
-            
-        ])
-        
-    }
-    
-    
+//
+//    func autoLayoutButton() {
+
+//        NSLayoutConstraint.activate([
+//            orderNowButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+//            orderNowButton.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+//            button.widthAnchor.constraint(equalToConstant: 359)
+//            button.heightAnchor.constraint(equalToConstant: 53)
+//
+//
+//        ])
+//    }
 }

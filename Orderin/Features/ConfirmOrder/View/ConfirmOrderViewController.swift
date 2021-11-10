@@ -9,7 +9,16 @@ import UIKit
 
 class ConfirmOrderViewController: UIViewController {
     
-    let orderButton = OrderNowButton()
+    lazy var orderButtonView: OrderNowButton = {
+        
+        let view = OrderNowButton()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .red
+        view.layer.borderColor = UIColor.red.cgColor
+        view.layer.borderWidth = 4
+        return view
+        
+    }()
     
     let confirmMenuTableView: UITableView = {
         
@@ -29,10 +38,23 @@ class ConfirmOrderViewController: UIViewController {
         orderNowButtonConstraint()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        orderButtonView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        orderButtonView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+        orderButtonView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        orderButtonView.frame.size.height = 130
+        
+   //     orderButtonView.frame = CGRect(x: 0, y: 729, width: 390, height: 113)
+    }
+    
     func setupAddView() {
         
         view.addSubview(confirmMenuTableView)
-        view.addSubview(orderButton)
+        view.addSubview(orderButtonView)
+        
+        
     }
     
     func setupDelegate() {
@@ -52,11 +74,7 @@ class ConfirmOrderViewController: UIViewController {
     }
     
     private func orderNowButtonConstraint() {
-        
-        orderButton.frame = CGRect(x: 0, y: 700, width: 390, height: 130)
        
-        
-        // orderNowButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
     
 
