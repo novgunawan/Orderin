@@ -14,11 +14,12 @@ struct Menu{
 }
 
 struct MenuListModel{
-    
+    var menuID: String
     var image: UIImage
     var title: String
     var description: String
     var price: String
+    var availability: Bool
 }
 
 
