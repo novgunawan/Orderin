@@ -51,6 +51,7 @@ class ConfirmMenuCell: UITableViewCell {
         
         let customizeMenu = UITableView()
         customizeMenu.separatorStyle = .none
+        customizeMenu.translatesAutoresizingMaskIntoConstraints = false
         
         return customizeMenu
         
@@ -70,6 +71,7 @@ class ConfirmMenuCell: UITableViewCell {
         setTitleOrderLabelConstarint()
         setPriceLabelConstraint()
         cellAddSubviews()
+        setTableViewConstraint()
         setup()
         
     }
@@ -97,7 +99,7 @@ class ConfirmMenuCell: UITableViewCell {
         menuCustomizationTableView.dataSource = self
         menuCustomizationTableView.delegate = self
         
-        menuCustomizationTableView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+       // menuCustomizationTableView.frame = CGRect(x: 13, y: 42, width: 140, height: 50)
         menuCustomizationTableView.backgroundColor = .red
         
         
@@ -131,6 +133,15 @@ class ConfirmMenuCell: UITableViewCell {
         
         priceLabel.topAnchor.constraint(equalTo: topAnchor,constant: 20.0).isActive = true
         priceLabel.leadingAnchor.constraint(equalTo: titleOrderLabel.trailingAnchor,constant: 165.0 ).isActive = true
+    }
+    
+    func setTableViewConstraint() {
+        
+        menuCustomizationTableView.topAnchor.constraint(equalTo: titleOrderLabel.bottomAnchor, constant: 0).isActive = true
+        menuCustomizationTableView.leadingAnchor.constraint(equalTo: quantitiyLabel.trailingAnchor, constant: 13.0).isActive = true
+        menuCustomizationTableView.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        menuCustomizationTableView.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
+        
     }
     
     // MARK: - Cell Content

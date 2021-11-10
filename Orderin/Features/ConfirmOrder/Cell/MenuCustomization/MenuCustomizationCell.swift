@@ -8,6 +8,28 @@
 import UIKit
 
 class MenuCustomizationCell: UITableViewCell {
+    
+    let menuCustomization: UILabel = {
+       
+        let label =  UILabel()
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: C.fontPoppinsRegular, size: 15)
+        label.text = "French Fries"
+        
+        
+        return label
+    }()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.contentView.addSubview(menuCustomization)
+        setConstraintOnLabel()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,4 +42,16 @@ class MenuCustomizationCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    func setConstraintOnLabel(){
+        
+        menuCustomization.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
+        menuCustomization.topAnchor.constraint(equalTo: topAnchor,constant: 0).isActive = true
+        menuCustomization.widthAnchor.constraint(equalToConstant: 140).isActive = true
+        menuCustomization.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        
+    }
+    
+    func setContextCustomization(whatMenuCustom: String) {
+        menuCustomization.text = whatMenuCustom
+    }
 }
