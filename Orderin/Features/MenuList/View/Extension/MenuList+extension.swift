@@ -16,26 +16,45 @@ extension MenuListViewController: UITableViewDelegate, UITableViewDataSource, Ce
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return data.count
+        if searchingState == true{
+            return 1
+        }
+        else{
+            return data.count
+        }
+       
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data[section].MenuList.count
+        
+        if searchingState == true{
+            return filteredData.count
+        }
+        else{
+            return data[section].MenuList.count
+        }
+        
+      
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
-            return "Appetizer"
-        case 1:
-            return "Main"
-        case 2:
-            return "Desert"
-        case 3:
-            return "Beverage"
-        default:
-            return nil
+        
+        if searchingState == false{
+            switch section {
+            case 0:
+                return "Appetizer"
+            case 1:
+                return "Main"
+            case 2:
+                return "Desert"
+            case 3:
+                return "Beverage"
+            default:
+                return nil
+            }
         }
+        return ""
+        
     }
     
 
@@ -52,20 +71,39 @@ extension MenuListViewController: UITableViewDelegate, UITableViewDataSource, Ce
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40.0
+        
+        if searchingState == true{
+            return 0
+        }
+        else{
+            return 40.0
+        }
+        
     }
 
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FoodCell") as! MenuListTableViewCell
         cell.selectionStyle = .none
         cell.isUserInteractionEnabled = true
-        let dummy = data[indexPath.section].MenuList[indexPath.row]
-        cell.dataModel = dummy
-        cell.button.tag = indexPath.row
-        cell.delegate = self
-        cell.button.addTarget(self, action: #selector(didAddButtonTapped), for: .touchUpInside)
+        
+        if searchingState == true{
+            let dummy = filteredData[indexPath.row]
+            print(indexPath.row)
+            cell.dataModel = dummy
+            cell.button.tag = indexPath.row
+            cell.delegate = self
+            cell.button.addTarget(self, action: #selector(didAddButtonTapped), for: .touchUpInside)
+            
+        }
+        else{
+            let dummy = data[indexPath.section].MenuList[indexPath.row]
+            cell.dataModel = dummy
+            cell.button.tag = indexPath.row
+            cell.delegate = self
+            cell.button.addTarget(self, action: #selector(didAddButtonTapped), for: .touchUpInside)
+            
+        }
         
         return cell
     }

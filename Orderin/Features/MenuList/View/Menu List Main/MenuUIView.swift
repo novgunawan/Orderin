@@ -37,7 +37,7 @@ class MenuUIView: UIView {
     
     let searchController: UISearchController = {
         
-        let searchController = UISearchController()
+        let searchController = UISearchController(searchResultsController: nil)
         
         searchController.searchBar.showsBookmarkButton = true
         searchController.searchBar.setImage(UIImage(systemName: "arrow.up.arrow.down.circle"), for: .bookmark, state: .normal)

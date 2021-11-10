@@ -7,7 +7,8 @@
 
 import UIKit
 
-class MenuListViewController: UIViewController {
+class MenuListViewController: UIViewController, UISearchResultsUpdating, UISearchBarDelegate {
+    
     
     // MARK: - Components Declaration
     
@@ -15,6 +16,10 @@ class MenuListViewController: UIViewController {
     let floatingButton = FloatingButtonView()
     var data: [Menu] = []
     var menuListVM = MenuListViewModel()
+    var dataWithoutCategory: [MenuListModel] = []
+    var filteredData: [MenuListModel] = []
+    var searchingResult = ResultVC()
+    var searchingState = false
     
 
     
@@ -32,6 +37,7 @@ class MenuListViewController: UIViewController {
         super.viewDidLoad()
 
         bindData()
+        
         addComponents()
         view.backgroundColor = .white
         setup()
@@ -55,6 +61,9 @@ class MenuListViewController: UIViewController {
         // Setup delegates
         menuListView.tableView.delegate = self
         menuListView.tableView.dataSource = self
+        menuListView.searchController.searchBar.delegate = self
+        menuListView.searchController.searchResultsUpdater = self
+        
 
     }
     
@@ -112,6 +121,10 @@ class MenuListViewController: UIViewController {
                 self.menuListView.tableView.reloadData()
             }
         }
+        
+        menuListVM.fetchMenuWithoutCategory { value in
+            self.dataWithoutCategory = value
+        }
     }
     @objc func didSegmentChange(_ sender: UISegmentedControl){
         switch menuListView.segmentedControl.selectedSegmentIndex{
@@ -139,7 +152,39 @@ class MenuListViewController: UIViewController {
             print("nothing")
         }
     }
-   
+    
+    func filterCurrentData(searchText: String){
+       filteredData = dataWithoutCategory.filter({ menu in
+           return menu.title.lowercased().contains(searchText.lowercased())
+        })
+        print(filteredData.count)
+        searchingState  = true
+        
+        searchingResult.tableView.reloadData()
+       
+
+    }
+
+
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        if let searchText = searchController.searchBar.text{
+            self.filterCurrentData(searchText: searchText)
+
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchingState = false
+        filteredData.removeAll()
+       menuListView.tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        menuListView.tableView.reloadData()
+    }
+    
+    
     
 
 }
