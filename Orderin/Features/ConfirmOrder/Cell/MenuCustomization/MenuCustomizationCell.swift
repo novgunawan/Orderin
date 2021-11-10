@@ -53,7 +53,8 @@ class MenuCustomizationCell: UITableViewCell {
         menuCustomization.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
         menuCustomization.topAnchor.constraint(equalTo: topAnchor,constant: 0).isActive = true
         menuCustomization.widthAnchor.constraint(equalToConstant: 140).isActive = true
-        menuCustomization.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        menuCustomization.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0) .isActive = true
+        //menuCustomization.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
     }
     

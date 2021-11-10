@@ -9,6 +9,10 @@ import UIKit
 
 class ConfirmOrderViewController: UIViewController {
     
+    var viewModel = CellConfirmationViewModel()
+    var data: [MenuCustomizationDummyData] = []
+    var rowHeight: CGFloat = 50
+    
     lazy var orderButtonView: OrderNowButton = {
         
         let view = OrderNowButton()
@@ -30,10 +34,11 @@ class ConfirmOrderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindingData()
         setupDelegate()
         setupNavigationController()
         setupAddView()
-        orderNowButtonConstraint()
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -63,7 +68,10 @@ class ConfirmOrderViewController: UIViewController {
         
         
         confirmMenuTableView.register(ConfirmMenuCell.self, forCellReuseIdentifier: Constant.ConfirmOrder.tableViewCellIdentifier)
-        confirmMenuTableView.rowHeight = 150
+        rowHeight += CGFloat(25 * data.count)
+        
+        confirmMenuTableView.rowHeight = rowHeight
+        
        
         
     }
@@ -72,7 +80,12 @@ class ConfirmOrderViewController: UIViewController {
         navigationItem.title = "Confirm Order"
     }
     
-    private func orderNowButtonConstraint() {
+    private func bindingData() {
+        
+        viewModel.fetchMenuCustomization(completion: { value in
+            self.data = value
+            
+        })
         
     }
     

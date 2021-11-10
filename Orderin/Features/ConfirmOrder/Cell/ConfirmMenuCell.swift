@@ -101,9 +101,7 @@ class ConfirmMenuCell: UITableViewCell {
         
         menuCustomizationTableView.dataSource = self
         menuCustomizationTableView.delegate = self
-        
-        menuCustomizationTableView.backgroundColor = .red
-        
+ 
         bindData()
        
     }
@@ -143,7 +141,7 @@ class ConfirmMenuCell: UITableViewCell {
         menuCustomizationTableView.topAnchor.constraint(equalTo: titleOrderLabel.bottomAnchor, constant: 0).isActive = true
         menuCustomizationTableView.leadingAnchor.constraint(equalTo: quantitiyLabel.trailingAnchor, constant: 13.0).isActive = true
         menuCustomizationTableView.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        menuCustomizationTableView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        menuCustomizationTableView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0) .isActive = true
       
     }
     
