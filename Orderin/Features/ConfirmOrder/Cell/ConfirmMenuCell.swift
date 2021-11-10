@@ -9,6 +9,8 @@ import UIKit
 
 class ConfirmMenuCell: UITableViewCell {
     
+    var menuCustomVM = CellConfirmationViewModel()
+    var data: [MenuCustomizationDummyData] = []
     
     var quantitiyLabel: UILabel = {
         
@@ -47,12 +49,13 @@ class ConfirmMenuCell: UITableViewCell {
         return label
     }()
     
+    // Cell Menu Customizationnya
     let menuCustomizationTableView: UITableView = {
         
         let customizeMenu = UITableView()
         customizeMenu.separatorStyle = .none
         customizeMenu.translatesAutoresizingMaskIntoConstraints = false
-        
+        customizeMenu.allowsSelection = false
         return customizeMenu
         
     }()
@@ -99,10 +102,10 @@ class ConfirmMenuCell: UITableViewCell {
         menuCustomizationTableView.dataSource = self
         menuCustomizationTableView.delegate = self
         
-       // menuCustomizationTableView.frame = CGRect(x: 13, y: 42, width: 140, height: 50)
         menuCustomizationTableView.backgroundColor = .red
         
-        
+        bindData()
+       
     }
     
     func cellAddSubviews() {
@@ -140,8 +143,8 @@ class ConfirmMenuCell: UITableViewCell {
         menuCustomizationTableView.topAnchor.constraint(equalTo: titleOrderLabel.bottomAnchor, constant: 0).isActive = true
         menuCustomizationTableView.leadingAnchor.constraint(equalTo: quantitiyLabel.trailingAnchor, constant: 13.0).isActive = true
         menuCustomizationTableView.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        menuCustomizationTableView.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
-        
+        menuCustomizationTableView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+      
     }
     
     // MARK: - Cell Content
@@ -156,5 +159,11 @@ class ConfirmMenuCell: UITableViewCell {
     
     // MARK: - Logic
     
+    func bindData() {
+        menuCustomVM.fetchMenuCustomization(completion: { value in
+            
+            self.data = value
+        })
+    }
   
 }

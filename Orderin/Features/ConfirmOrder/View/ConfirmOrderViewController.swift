@@ -64,6 +64,7 @@ class ConfirmOrderViewController: UIViewController {
         
         confirmMenuTableView.register(ConfirmMenuCell.self, forCellReuseIdentifier: Constant.ConfirmOrder.tableViewCellIdentifier)
         confirmMenuTableView.rowHeight = 150
+       
         
     }
     
@@ -121,6 +122,4 @@ extension ConfirmOrderViewController: UITableViewDelegate, UITableViewDataSource
         
         return cell
     }
-    
-    
 }

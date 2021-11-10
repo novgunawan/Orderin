@@ -9,6 +9,12 @@ import UIKit
 
 class MenuCustomizationCell: UITableViewCell {
     
+    var whatMenuCustom: MenuCustomizationDummyData? {
+        didSet {
+            changeText()
+        }
+    }
+        
     let menuCustomization: UILabel = {
        
         let label =  UILabel()
@@ -51,7 +57,10 @@ class MenuCustomizationCell: UITableViewCell {
         
     }
     
-    func setContextCustomization(whatMenuCustom: String) {
-        menuCustomization.text = whatMenuCustom
+    func changeText() {
+        guard let safeData = whatMenuCustom else { return }
+        menuCustomization.text = safeData.custom
     }
+    
+    
 }
