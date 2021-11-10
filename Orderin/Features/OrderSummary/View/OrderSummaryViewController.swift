@@ -14,19 +14,38 @@ class OrderSummaryViewController: UIViewController {
     //UI VIEW ON BOTTOM
     @IBOutlet weak var bottomView: UIView!{
         didSet{
-            bottomView.backgroundColor = .darkGray
+            bottomView.layer.cornerRadius = 5
+        }
+    }
+    
+    @IBOutlet weak var addOrderButton: UIButton!{
+        didSet{
+            addOrderButton.layer.cornerRadius = 13
+        }
+    }
+    
+    @IBOutlet weak var priceView: UIView!{
+        didSet{
+            priceView.layer.cornerRadius = 5
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setup()
         
     }
 
     //setup for viewDidLoad
     private func setup(){
+        
+        orderSummaryTable.register(OrderIDTableViewCell.nib(), forCellReuseIdentifier: OrderIDTableViewCell.identifier)
+        orderSummaryTable.register(OrderSummaryTableViewCell.nib(), forCellReuseIdentifier: OrderSummaryTableViewCell.identifier)
+        orderSummaryTable.register(NotesSummaryOrderTableViewCell.nib(), forCellReuseIdentifier: NotesSummaryOrderTableViewCell.identifier)
+      
+        
         orderSummaryTable.delegate = self
         orderSummaryTable.dataSource = self
+
     }
 }

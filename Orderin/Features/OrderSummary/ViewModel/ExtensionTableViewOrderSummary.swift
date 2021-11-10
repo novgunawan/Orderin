@@ -13,14 +13,28 @@ extension OrderSummaryViewController: UITableViewDelegate, UITableViewDataSource
     //MARK: - Setup Cell in Table View
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 68
+        if indexPath.row < 1{
+            return 125
+        }
+        if indexPath.row < 2{
+            return 87
+        }
+        return 43
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 3
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = orderSummaryTable.dequeueReusableCell(withIdentifier: OrderIDTableViewCell.identifier) as! OrderIDTableViewCell
-                return cell
+        if indexPath.row < 1{
+            let cellOrderID = orderSummaryTable.dequeueReusableCell(withIdentifier: OrderIDTableViewCell.identifier) as! OrderIDTableViewCell
+            return cellOrderID
+        }
+        if indexPath.row < 2{
+            let cellOrderSummary = orderSummaryTable.dequeueReusableCell(withIdentifier: OrderSummaryTableViewCell.identifier) as! OrderSummaryTableViewCell
+            return cellOrderSummary
+        }
+        let cellNotesSummaryOrder = orderSummaryTable.dequeueReusableCell(withIdentifier: NotesSummaryOrderTableViewCell.identifier) as! NotesSummaryOrderTableViewCell
+        return cellNotesSummaryOrder
     }
 }

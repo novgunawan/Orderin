@@ -61,7 +61,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="cartButton" destination="kbm-Fn-yyg" id="eeF-aB-8Fi"/>
+                <outlet property="cartButton" destination="kbm-Fn-yyg" id="SE1-VP-VfV"/>
                 <outlet property="totalPrice" destination="hPj-cU-0tf" id="cBx-PO-PrG"/>
                 <outlet property="viewCell" destination="WdN-yQ-tJQ" id="Yub-k8-XKK"/>
             </connections>

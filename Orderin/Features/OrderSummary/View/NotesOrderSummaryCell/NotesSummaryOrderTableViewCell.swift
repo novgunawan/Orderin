@@ -1,18 +1,20 @@
 //
-//  OrderIDTableViewCell.swift
+//  NotesSummaryOrderTableViewCell.swift
 //  Orderin
 //
-//  Created by Pieter Yonathan on 09/11/21.
+//  Created by Pieter Yonathan on 10/11/21.
 //
 
 import UIKit
 
-class OrderIDTableViewCell: UITableViewCell {
+class NotesSummaryOrderTableViewCell: UITableViewCell {
+
+    @IBOutlet weak var notesTextField: UITextField!
     
     //create identifier XIB
-    static let identifier = "cellOrderID"
+    static let identifier = "cellNotesSummaryOrder"
     static func nib() -> UINib{
-        return UINib(nibName: "OrderIDTableViewCell", bundle: nil)
+        return UINib(nibName: "NotesSummaryOrderTableViewCell", bundle: nil)
     }
     
     override func awakeFromNib() {
