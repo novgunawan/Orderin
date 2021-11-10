@@ -26,6 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 // MARK: User is not signed in.
                 let signInVC = SignInViewController()
                 self.window?.rootViewController = signInVC
+//                self.window?.rootViewController = home
             }
         })
         

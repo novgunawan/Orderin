@@ -38,6 +38,12 @@ extension SignInViewModel: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             
+            let userIdentifier = appleIDCredential.user
+            let fullName = appleIDCredential.fullName
+            let email = appleIDCredential.email
+            print("User id is \(userIdentifier) \n Full Name is \(String(describing: fullName)) \n Email id is \(String(describing: email))")
+
+            
             guard let nonce = SignInViewModel.authenticationManager.currentNonce else {
                 fatalError("Invalid state: a login call back was received but no login request was sent")
             }
@@ -57,6 +63,9 @@ extension SignInViewModel: ASAuthorizationControllerDelegate {
             Auth.auth().signIn(with: credential) { authDataResult, error in
                 if let user = authDataResult?.user {
                     //MARK: Sign in successful
+                    
+                    DataManipulation.shared.insertUser(with: Users(userID: user.uid, displayName: user.displayName ?? "no name", email: user.email ?? "no email"))
+                    
                     let homeVC = TabbarViewController()
                     homeVC.modalPresentationStyle = .fullScreen
                     let signinVC = SignInViewController()
@@ -68,7 +77,6 @@ extension SignInViewModel: ASAuthorizationControllerDelegate {
             }
         }
     }
-    
 }
 
 extension SignInViewModel: ASAuthorizationControllerPresentationContextProviding {

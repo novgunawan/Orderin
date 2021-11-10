@@ -135,8 +135,15 @@ class HomeViewController: UIViewController {
         button.addTarget(self, action: #selector(scanQR), for: .touchUpInside)
         return button
     }()
+    var signoutButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle(C.signoutButton, for: .normal)
+        button.setTitleColor(C.hexStringToUIColor(hex: C.red50), for: .normal)
+        button.addTarget(self, action: #selector(signout), for: .touchUpInside)
+        return button
+    }()
     
-
     // MARK: -App Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -244,7 +251,10 @@ class HomeViewController: UIViewController {
         scanAnotherMenuButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16.0).isActive = true
         scanAnotherMenuButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15.0).isActive = true
         scanAnotherMenuButton.heightAnchor.constraint(equalToConstant: 53.3).isActive = true
-
+        
+        // MARK: Constraint Sign Out Button
+        signoutButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16.0).isActive = true
+        signoutButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -120.0).isActive = true
     }
     
     override func viewDidLoad() {
@@ -265,6 +275,8 @@ class HomeViewController: UIViewController {
         view.addSubview(recommendedMenuLabel)
         view.addSubview(browseAllMenuButton)
         view.addSubview(scanAnotherMenuButton)
+        
+        view.addSubview(signoutButton)
     }
     
     // MARK: -Functions
