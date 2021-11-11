@@ -9,6 +9,7 @@ import UIKit
 
 class NotesSummaryOrderTableViewCell: UITableViewCell {
 
+    //note for resto/order (GET DATA FROM DATABASE)
     @IBOutlet weak var notesTextField: UITextField!
     
     //create identifier XIB

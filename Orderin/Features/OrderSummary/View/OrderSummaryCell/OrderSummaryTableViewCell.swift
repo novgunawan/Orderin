@@ -30,11 +30,33 @@ class OrderSummaryTableViewCell: UITableViewCell {
             totalItemView.layer.borderColor = UIColor(red: 0.87, green: 0.87, blue: 0.82, alpha: 1).cgColor
         }
     }
-    @IBOutlet weak var priceLabel: UILabel!{
+    
+    //Normal Price Label
+    @IBOutlet weak var normalPrice: UILabel!{
         didSet{
-            if
+            //Content Normal Price (GET DATA FROM DATABASE HERE)
+            normalPrice.text = " "
+            //normalPrice.text = "Rp 30.000"
+            
+            //Strikethrough UI
+            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: normalPrice.text ?? "")
+                attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
+            normalPrice.attributedText = attributeString
         }
     }
+    
+    @IBOutlet weak var priceLabel: UILabel!{
+        didSet{
+            //If Statement for promo or not (position price label)
+            if normalPrice.text == " "{
+                priceLabel.frame = CGRect(x: 275, y: 11, width: 79, height: 24)
+            }
+            else{
+            priceLabel.frame = CGRect(x: 275, y: 22, width: 79, height: 24)
+            }
+        }
+    }
+    
     //create identifier XIB
     static let identifier = "cellOrderSummary"
     static func nib() -> UINib{

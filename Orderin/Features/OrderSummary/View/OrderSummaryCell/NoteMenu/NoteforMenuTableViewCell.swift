@@ -9,6 +9,10 @@ import UIKit
 
 class NoteforMenuTableViewCell: UITableViewCell {
 
+    //set note (GET DATA FROM DATABASE)
+    @IBOutlet weak var noteforMenu: UILabel!
+    
+    
     //xib register
     static let identifier = "cellNoteMenu"
     static func nib() -> UINib{
