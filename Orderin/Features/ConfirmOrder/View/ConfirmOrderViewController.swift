@@ -21,6 +21,7 @@ class ConfirmOrderViewController: UIViewController {
         view.layer.cornerRadius = 13.0
         view.backgroundColor = UIColor(named: "broken white")
         
+        // MARK: Adding Tap Recognizer for the Button
         view.orderNowButton.addTarget(self, action: #selector(orderDidTap), for: .touchUpInside)
         return view
         
@@ -130,13 +131,13 @@ class ConfirmOrderViewController: UIViewController {
         navigationItem.title = "Confirm Order"
     }
     
+    // MARK: Function when button order are tap ( Not Finished )
     @objc func orderDidTap() {
         let alertController = UIAlertController(title: "Confirm Order?",
                                                 message: "Once you made your order, you only have 5 seconds to cancel it.",
                                                 preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: "Cancel", style: .default))
-        
         
         self.present(alertController, animated: true, completion: nil)
     }
