@@ -11,6 +11,7 @@ class ConfirmMenuCell: UITableViewCell {
     
     var menuCustomVM = CellConfirmationViewModel()
     var data: [MenuCustomizationDummyData] = []
+    var delegate: editButtonDelegate?
     
     var quantitiyLabel: UILabel = {
         

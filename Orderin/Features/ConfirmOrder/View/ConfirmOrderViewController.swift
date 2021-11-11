@@ -72,6 +72,8 @@ class ConfirmOrderViewController: UIViewController {
         
         confirmMenuTableView.rowHeight = rowHeight
         
+        
+        
        
         
     }
@@ -132,7 +134,18 @@ extension ConfirmOrderViewController: UITableViewDelegate, UITableViewDataSource
         let cell = confirmMenuTableView.dequeueReusableCell(withIdentifier: Constant.ConfirmOrder.tableViewCellIdentifier) as! ConfirmMenuCell
         
         cell.setContent(quantity: "2", titleOrder: "Azkake", price: "Rp.30.000")
+        cell.delegate = self
         
         return cell
     }
+}
+
+extension ConfirmOrderViewController: editButtonDelegate {
+    
+    func editButtonDidTap() {
+        let vc = MenuDetailViewController()
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    
 }

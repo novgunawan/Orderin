@@ -8,12 +8,14 @@
 import Foundation
 import UIKit
 
+protocol editButtonDelegate {
+    func editButtonDidTap()
+}
+
 // Menu Customization Cell
 
 extension ConfirmMenuCell: UITableViewDelegate, UITableViewDataSource{
-    
-    
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count + 1
     }
@@ -25,6 +27,8 @@ extension ConfirmMenuCell: UITableViewDelegate, UITableViewDataSource{
         case data.count :
             
             let editCell = menuCustomizationTableView.dequeueReusableCell(withIdentifier: Constant.ConfirmOrder.editButtonCell) as! EditButtonCell
+            editCell.editButton.addTarget(self, action: #selector(editButtonDidTap), for: .touchUpInside)
+            editCell.backgroundColor = .cyan
             return editCell
             
         default:
@@ -41,6 +45,11 @@ extension ConfirmMenuCell: UITableViewDelegate, UITableViewDataSource{
         return 25
     }
     
+    @objc func editButtonDidTap() {
+        print("edit pressed")
+        delegate?.editButtonDidTap()
+        
+    }
     
     
     

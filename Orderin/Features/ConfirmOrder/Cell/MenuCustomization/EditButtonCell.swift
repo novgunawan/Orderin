@@ -7,22 +7,26 @@
 
 import UIKit
 
+
+
 class EditButtonCell: UITableViewCell {
     
-    let editButton: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Edit"
-        label.textColor = .red
-        label.font = UIFont(name: C.fontPoppinsSemibold, size: C.fontsizeFootnote)
-        return label
+    let editButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Edit", for: .normal)
+        button.setTitleColor(.red, for: .normal)
+        button.titleLabel?.font = UIFont(name: C.fontPoppinsSemibold, size: 17)
+        button.frame = CGRect(x: -50, y: 0, width: 140, height: 20)
+        return button
     }()
+    
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.contentView.addSubview(editButton)
-        editButtonConstraint()
-        addTapRecognizer()
+        //editButtonConstraint()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -49,15 +53,4 @@ class EditButtonCell: UITableViewCell {
         editButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0) .isActive = true
     }
     
-    func addTapRecognizer() {
-        
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(editButtonDidTap))
-        self.addGestureRecognizer(gestureRecognizer)
-    }
-    
-    @objc func editButtonDidTap() {
-        print("editButton Tap")
-        
-    }
-
 }
