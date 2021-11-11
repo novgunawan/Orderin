@@ -99,6 +99,8 @@ class ConfirmMenuCell: UITableViewCell {
         
         menuCustomizationTableView.register(MenuCustomizationCell.self, forCellReuseIdentifier: Constant.ConfirmOrder.menuCustomCell)
         
+        menuCustomizationTableView.register(EditButtonCell.self, forCellReuseIdentifier: Constant.ConfirmOrder.editButtonCell)
+        
         menuCustomizationTableView.dataSource = self
         menuCustomizationTableView.delegate = self
  

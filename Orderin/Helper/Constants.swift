@@ -14,6 +14,7 @@ struct C {
     // MARK: -Fonts
     static let fontPoppinsRegular = "Poppins-Regular"
     static let fontPoppinsSemibold = "Poppins-SemiBold"
+    static let fontPoppinsBold = "Poppins-Bold"
     static let fontsizeTitle = 34.0
     static let fontsizeTitle1 = 28.0
     static let fontsizeTitle2 = 22.0
@@ -130,6 +131,7 @@ struct Constant {
     struct ConfirmOrder {
         static let tableViewCellIdentifier = "ConfirmMenuCell"
         static let menuCustomCell = "menuCustomCell"
+        static let editButtonCell = "editButtonCell"
     }
     
     

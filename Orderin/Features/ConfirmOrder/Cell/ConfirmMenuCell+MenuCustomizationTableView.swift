@@ -15,14 +15,26 @@ extension ConfirmMenuCell: UITableViewDelegate, UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return data.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = menuCustomizationTableView.dequeueReusableCell(withIdentifier: Constant.ConfirmOrder.menuCustomCell) as! MenuCustomizationCell
         
-        cell.whatMenuCustom = data[indexPath.row]
-        return cell
+        switch indexPath.row {
+            
+        case data.count :
+            
+            let editCell = menuCustomizationTableView.dequeueReusableCell(withIdentifier: Constant.ConfirmOrder.editButtonCell) as! EditButtonCell
+            return editCell
+            
+        default:
+            
+            let cell = menuCustomizationTableView.dequeueReusableCell(withIdentifier: Constant.ConfirmOrder.menuCustomCell) as! MenuCustomizationCell
+            cell.whatMenuCustom = data[indexPath.row]
+            
+            return cell
+        }
+      
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

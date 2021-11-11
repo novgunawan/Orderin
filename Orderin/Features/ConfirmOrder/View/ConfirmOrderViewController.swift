@@ -68,7 +68,7 @@ class ConfirmOrderViewController: UIViewController {
         
         
         confirmMenuTableView.register(ConfirmMenuCell.self, forCellReuseIdentifier: Constant.ConfirmOrder.tableViewCellIdentifier)
-        rowHeight += CGFloat(25 * data.count)
+        rowHeight += CGFloat(25 * (data.count + 1))
         
         confirmMenuTableView.rowHeight = rowHeight
         
