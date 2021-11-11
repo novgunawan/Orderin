@@ -22,6 +22,7 @@ class ChooseDetailTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    //create identifier XIB
     static let identifier = "cellChooseDetail"
     static func nib() -> UINib{
         return UINib(nibName: "ChooseDetailTableViewCell", bundle: nil)

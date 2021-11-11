@@ -43,6 +43,7 @@ class ChooseTableViewCell: UITableViewCell{
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         chooseTable.register(ChooseDetailTableViewCell.nib(), forCellReuseIdentifier: ChooseDetailTableViewCell.identifier)
         
         chooseTable.delegate = self
