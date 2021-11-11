@@ -11,6 +11,7 @@ class TotalItemTableViewCell: UITableViewCell {
     
     @IBOutlet weak var minusButton: UIButton!{
         didSet{
+            minusButton.setTitle("", for: .normal)
             minusButton.layer.cornerRadius = 13
             minusButton.layer.borderWidth = 1
             minusButton.layer.borderColor = UIColor(red: 0.87, green: 0.87, blue: 0.82, alpha: 1).cgColor
@@ -19,6 +20,7 @@ class TotalItemTableViewCell: UITableViewCell {
     @IBOutlet weak var totalItemLabel: UILabel!
     @IBOutlet weak var plusButton: UIButton!{
         didSet{
+            plusButton.setTitle("", for: .normal)
             plusButton.layer.cornerRadius = 13
             plusButton.layer.borderWidth = 1
             plusButton.layer.borderColor = UIColor(red: 0.87, green: 0.87, blue: 0.82, alpha: 1).cgColor

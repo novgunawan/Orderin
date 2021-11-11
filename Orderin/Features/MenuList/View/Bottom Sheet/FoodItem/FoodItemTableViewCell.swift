@@ -64,7 +64,7 @@ class FoodItemTableViewCell: UITableViewCell {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "BBQ Sauce, French Frise"
+        label.text = "BBQ Sauce, French Fries"
         label.font = UIFont(name: C.fontPoppinsRegular, size: C.fontsizeFootnote)
         label.numberOfLines = 2
         

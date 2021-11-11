@@ -7,18 +7,24 @@
 
 import UIKit
 
-class ChooseTableViewCell: UITableViewCell {
+class ChooseTableViewCell: UITableViewCell{
 
-    @IBOutlet weak var chooseTable: UITableView!{
-        didSet{
-            chooseTable.frame.size.height = (32 * 3)//count of cell
+    @IBOutlet weak var chooseLabel: UILabel! {
+        didSet {
+            chooseLabel.text = "Spicy"
         }
     }
+    @IBOutlet weak var chooseTable: UITableView! {
+        didSet{
+            chooseTable.frame.size.height = (32 * CGFloat(self.object?.sauceCustom.count ?? 2))//count of cell
+        }
+    }
+    
     @IBOutlet weak var viewCell: UIView!
         {
             didSet{
                 //height view
-                viewCell.frame.size.height = 55 + (32 * 3)//count of cell
+                viewCell.frame.size.height = 55 + (32 * CGFloat(self.object?.sauceCustom.count ?? 2))//count of cell
                 //corner radius
                 viewCell.layer.cornerRadius = 5
                 //shadow
@@ -33,6 +39,7 @@ class ChooseTableViewCell: UITableViewCell {
     static func nib() -> UINib{
         return UINib(nibName: "ChooseTableViewCell", bundle: nil)
     }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         chooseTable.register(ChooseDetailTableViewCell.nib(), forCellReuseIdentifier: ChooseDetailTableViewCell.identifier)
@@ -47,4 +54,7 @@ class ChooseTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    var object: Customization?
+    
 }
+

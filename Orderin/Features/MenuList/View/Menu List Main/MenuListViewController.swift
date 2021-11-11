@@ -7,7 +7,8 @@
 
 import UIKit
 
-class MenuListViewController: UIViewController {
+class MenuListViewController: UIViewController{
+    
     
     // MARK: - Components Declaration
     
@@ -15,6 +16,10 @@ class MenuListViewController: UIViewController {
     let floatingButton = FloatingButtonView()
     var data: [Menu] = []
     var menuListVM = MenuListViewModel()
+    var dataWithoutCategory: [MenuListModel] = []
+    var filteredData: [MenuListModel] = []
+    var searchingResult = ResultVC()
+    var searchingState = false
     
 
     
@@ -32,6 +37,7 @@ class MenuListViewController: UIViewController {
         super.viewDidLoad()
 
         bindData()
+        
         addComponents()
         view.backgroundColor = .white
         setup()
@@ -56,6 +62,9 @@ class MenuListViewController: UIViewController {
         // Setup delegates
         menuListView.tableView.delegate = self
         menuListView.tableView.dataSource = self
+        menuListView.searchController.searchBar.delegate = self
+        menuListView.searchController.searchResultsUpdater = self
+        
 
     }
     
@@ -112,6 +121,10 @@ class MenuListViewController: UIViewController {
             DispatchQueue.main.async {
                 self.menuListView.tableView.reloadData()
             }
+        }
+        
+        menuListVM.fetchMenuWithoutCategory { value in
+            self.dataWithoutCategory = value
         }
     }
     @objc func didSegmentChange(_ sender: UISegmentedControl){

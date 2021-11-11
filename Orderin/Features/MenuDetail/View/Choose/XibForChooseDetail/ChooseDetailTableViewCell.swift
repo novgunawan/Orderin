@@ -15,15 +15,26 @@ class ChooseDetailTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
     static let identifier = "cellChooseDetail"
     static func nib() -> UINib{
         return UINib(nibName: "ChooseDetailTableViewCell", bundle: nil)
+    }
+    
+    var object: String? {
+        didSet {
+            setupCell()
+        }
+    }
+    
+    func setupCell() {
+        guard let object = object else {return}
+        chooseName.text = object
     }
 }

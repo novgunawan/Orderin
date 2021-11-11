@@ -27,6 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 // MARK: User is not signed in.
                 let signInVC = MenuListViewController()   // MARK: RootVC are changed, please refer back to the original one, which is SignInViewController
                 self.window?.rootViewController = signInVC
+//                self.window?.rootViewController = home
             }
         })
         
