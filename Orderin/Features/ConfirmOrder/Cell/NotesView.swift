@@ -8,7 +8,7 @@
 import UIKit
 
 class NotesView: UIView {
-    
+
     
     let notesTextField: UITextField = {
         let notesTextField = UITextField()
@@ -21,20 +21,10 @@ class NotesView: UIView {
         return notesTextField
         
     }()
-    
-    let labelSubTotal: UILabel = {
-       let label = UILabel()
-        
-        label.text = "Sub total"
-        label.font = UIFont(name: C.fontPoppinsRegular, size: 15)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-        
+   
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(labelSubTotal)
-        subTotalConstraint()
+        addSubview(notesTextField)
         
     }
     
@@ -43,13 +33,5 @@ class NotesView: UIView {
         super.init(coder: coder)
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func subTotalConstraint() {
-        labelSubTotal.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
-        labelSubTotal.topAnchor.constraint(equalTo: topAnchor, constant: 11).isActive = true
-        labelSubTotal.widthAnchor.constraint(equalToConstant: 72).isActive = true
-        labelSubTotal.heightAnchor.constraint(equalToConstant: 17).isActive = true
-    }
-    
     
 }

@@ -132,6 +132,7 @@ struct Constant {
         static let tableViewCellIdentifier = "ConfirmMenuCell"
         static let menuCustomCell = "menuCustomCell"
         static let editButtonCell = "editButtonCell"
+        static let notesCell = "notesCell"
     }
     
     

@@ -18,14 +18,15 @@ class ConfirmOrderViewController: UIViewController {
         
         let view = OrderNowButton()
         view.translatesAutoresizingMaskIntoConstraints = false
-        
+        view.layer.cornerRadius = 13.0
+        view.backgroundColor = UIColor(named: "broken white")
         return view
         
     }()
     
-    var subtotalView: NotesView = {
+    var subtotalView: subTotalView = {
         
-        let view = NotesView()
+        let view = subTotalView()
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
@@ -43,6 +44,18 @@ class ConfirmOrderViewController: UIViewController {
         
     }()
     
+    let notesTextField: UITextField = {
+        let notesTextField = UITextField()
+        
+        notesTextField.placeholder = "E.g: Add 1 more Bowl"
+        notesTextField.font = UIFont.systemFont(ofSize: 17)
+        notesTextField.borderStyle = UITextField.BorderStyle.roundedRect
+        notesTextField.frame = CGRect(x: 0, y: 0, width: 150, height: 20)
+        
+        return notesTextField
+        
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         bindingData()
@@ -55,13 +68,11 @@ class ConfirmOrderViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-     
-        
+
         orderButtonView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         orderButtonView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         orderButtonView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-        orderButtonView.heightAnchor.constraint(equalToConstant: view.frame.height / 6).isActive = true
+        orderButtonView.heightAnchor.constraint(equalToConstant: view.frame.height / 8).isActive = true
         
         setupTableViewConstraint()
         setupTotalPriceConstraint()
@@ -82,6 +93,9 @@ class ConfirmOrderViewController: UIViewController {
         confirmMenuTableView.dataSource = self        
         
         confirmMenuTableView.register(ConfirmMenuCell.self, forCellReuseIdentifier: Constant.ConfirmOrder.tableViewCellIdentifier)
+        confirmMenuTableView.register(NotesCell.self, forCellReuseIdentifier: Constant.ConfirmOrder.notesCell)
+        
+        
         rowHeight += CGFloat(25 * (data.count + 1))
         
         confirmMenuTableView.rowHeight = rowHeight
@@ -93,13 +107,12 @@ class ConfirmOrderViewController: UIViewController {
         confirmMenuTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         confirmMenuTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         confirmMenuTableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
-        confirmMenuTableView.bottomAnchor.constraint(equalTo: subtotalView.topAnchor, constant: 11).isActive = true
+        confirmMenuTableView.bottomAnchor.constraint(equalTo: subtotalView.topAnchor, constant: 30).isActive = true
 
     }
     
     func setupTotalPriceConstraint() {
-        subtotalView.backgroundColor = .cyan
-        
+       
         subtotalView.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 0).isActive = true
         subtotalView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         subtotalView.bottomAnchor.constraint(equalTo: orderButtonView.topAnchor, constant: 0).isActive = true
@@ -159,12 +172,22 @@ extension ConfirmOrderViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = confirmMenuTableView.dequeueReusableCell(withIdentifier: Constant.ConfirmOrder.tableViewCellIdentifier) as! ConfirmMenuCell
+         
+            let cell = confirmMenuTableView.dequeueReusableCell(withIdentifier: Constant.ConfirmOrder.tableViewCellIdentifier) as! ConfirmMenuCell
+            
+            cell.setContent(quantity: "2", titleOrder: "Steak", price: "Rp 90.000")
+            cell.delegate = self
+            return cell
+      
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         
-        cell.setContent(quantity: "2", titleOrder: "Steak", price: "Rp 90.000")
-        cell.delegate = self
-        
-        return cell
+        return notesTextField
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 55
     }
 }
 
