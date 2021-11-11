@@ -10,5 +10,5 @@ import Foundation
 struct TableRestaurants {
     let tableNumber: Int
     let availability: Bool
-//    let orders: [Order]
+    let orders: [OrderModel]
 }
