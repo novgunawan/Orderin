@@ -10,12 +10,22 @@ import UIKit
 class ConfirmOrderViewController: UIViewController {
     
     var viewModel = CellConfirmationViewModel()
+   
     var data: [MenuCustomizationDummyData] = []
     var rowHeight: CGFloat = 50
     
     lazy var orderButtonView: OrderNowButton = {
         
         let view = OrderNowButton()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+        
+    }()
+    
+    var subtotalView: NotesView = {
+        
+        let view = NotesView()
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
@@ -39,24 +49,29 @@ class ConfirmOrderViewController: UIViewController {
         setupDelegate()
         setupNavigationController()
         setupAddView()
-        setupTableViewConstraint()
+        
         
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+     
+        
         orderButtonView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         orderButtonView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         orderButtonView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
         orderButtonView.heightAnchor.constraint(equalToConstant: view.frame.height / 6).isActive = true
         
+        setupTableViewConstraint()
+        setupTotalPriceConstraint()
     }
     
     func setupAddView() {
         
         view.addSubview(confirmMenuTableView)
         view.addSubview(orderButtonView)
+        view.addSubview(subtotalView)
         
         
     }
@@ -78,8 +93,17 @@ class ConfirmOrderViewController: UIViewController {
         confirmMenuTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         confirmMenuTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         confirmMenuTableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
-        confirmMenuTableView.bottomAnchor.constraint(equalTo: orderButtonView.topAnchor, constant: 0).isActive = true
+        confirmMenuTableView.bottomAnchor.constraint(equalTo: subtotalView.topAnchor, constant: 11).isActive = true
 
+    }
+    
+    func setupTotalPriceConstraint() {
+        subtotalView.backgroundColor = .cyan
+        
+        subtotalView.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 0).isActive = true
+        subtotalView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        subtotalView.bottomAnchor.constraint(equalTo: orderButtonView.topAnchor, constant: 0).isActive = true
+        subtotalView.heightAnchor.constraint(equalToConstant: 75).isActive = true
     }
     
     func setupNavigationController() {

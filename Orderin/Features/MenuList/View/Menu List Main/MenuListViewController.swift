@@ -18,7 +18,6 @@ class MenuListViewController: UIViewController{
     var menuListVM = MenuListViewModel()
     var dataWithoutCategory: [MenuListModel] = []
     var filteredData: [MenuListModel] = []
-    var searchingResult = ResultVC()
     var searchingState = false
     
 
