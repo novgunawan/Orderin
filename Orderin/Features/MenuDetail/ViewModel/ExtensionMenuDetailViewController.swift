@@ -42,10 +42,13 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
 func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if indexPath.row < 1{
     let cellChoose = detailListTable.dequeueReusableCell(withIdentifier: ChooseTableViewCell.identifier) as! ChooseTableViewCell
+        
+        cellChoose.object = customization
             return cellChoose
         }
     if indexPath.row < 2{
     let cell = detailListTable.dequeueReusableCell(withIdentifier: OptionalTableViewCell.identifier) as! OptionalTableViewCell
+        cell.object = customization
         return cell
         }
     if indexPath.row < 3{

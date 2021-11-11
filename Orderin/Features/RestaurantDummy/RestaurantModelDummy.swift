@@ -10,12 +10,8 @@ import Foundation
 struct RestaurantDummy {
     var restoId: String
     var restoEmail: String
-    var table: [Table] // TODO: Novi
+    var table: [TableRestaurants]
     var listOfMenu: [MenuListModel]
     
 }
 
-struct Table{
-    var tableNumber: Int
-    var availability: Bool
-}

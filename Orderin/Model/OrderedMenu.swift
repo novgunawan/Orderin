@@ -10,6 +10,5 @@ struct OrderedMenu {
     let menuID: String
     let qty: Int
     let price: Int
-    //TODO: Connect to customization
     let customization: [Customization]
 }
