@@ -49,9 +49,16 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rp 21.439" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6O1-Zq-uxV">
-                        <rect key="frame" x="275" y="11" width="79" height="24"/>
+                        <rect key="frame" x="275" y="22" width="79" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rp 32.000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LtX-S4-lhg">
+                        <rect key="frame" x="293" y="3" width="60" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -61,6 +68,7 @@
             <connections>
                 <outlet property="orderSummaryCellView" destination="H2p-sc-9uM" id="ZyZ-w1-OJf"/>
                 <outlet property="orderSummaryDetailTable" destination="QYV-Tr-ftG" id="NG5-bu-abs"/>
+                <outlet property="priceLabel" destination="6O1-Zq-uxV" id="e2p-TQ-l9b"/>
                 <outlet property="totalItemView" destination="yNO-rC-1oD" id="ga5-vP-OcH"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="109.82142857142857"/>

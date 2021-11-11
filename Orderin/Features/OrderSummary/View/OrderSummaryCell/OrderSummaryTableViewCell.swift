@@ -30,6 +30,11 @@ class OrderSummaryTableViewCell: UITableViewCell {
             totalItemView.layer.borderColor = UIColor(red: 0.87, green: 0.87, blue: 0.82, alpha: 1).cgColor
         }
     }
+    @IBOutlet weak var priceLabel: UILabel!{
+        didSet{
+            if
+        }
+    }
     //create identifier XIB
     static let identifier = "cellOrderSummary"
     static func nib() -> UINib{

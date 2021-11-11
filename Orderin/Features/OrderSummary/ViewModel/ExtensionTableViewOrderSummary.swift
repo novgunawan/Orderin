@@ -17,8 +17,8 @@ extension OrderSummaryViewController: UITableViewDelegate, UITableViewDataSource
         if indexPath.row < 1{
             return 125
         }
-        if indexPath.row < 4{
-            let HeightCell = 68 + (20 * 3)//count of cell
+        if indexPath.row < 5{
+            let HeightCell = 68 + (20 * 4)//count of cell
             return CGFloat(HeightCell)
         }
         return 43
@@ -26,7 +26,7 @@ extension OrderSummaryViewController: UITableViewDelegate, UITableViewDataSource
     
     //Number of Cell
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 6
     }
     
     //Content Cell
@@ -35,7 +35,7 @@ extension OrderSummaryViewController: UITableViewDelegate, UITableViewDataSource
             let cellOrderID = orderSummaryTable.dequeueReusableCell(withIdentifier: OrderIDTableViewCell.identifier) as! OrderIDTableViewCell
             return cellOrderID
         }
-        if indexPath.row < 4{
+        if indexPath.row < 5{
             let cellOrderSummary = orderSummaryTable.dequeueReusableCell(withIdentifier: OrderSummaryTableViewCell.identifier) as! OrderSummaryTableViewCell
             return cellOrderSummary
         }

@@ -57,4 +57,9 @@ class OrderSummaryViewController: UIViewController {
         orderSummaryTable.dataSource = self
 
     }
+    @IBAction func backButton(_ sender: Any) {
+        let vc = MenuDetailViewController()
+        vc.modalPresentationStyle = .formSheet
+        self.present(vc, animated: false, completion: nil)
+    }
 }
