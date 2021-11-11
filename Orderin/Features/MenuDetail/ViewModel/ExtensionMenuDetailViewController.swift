@@ -14,12 +14,14 @@ extension MenuDetailViewController: UITableViewDelegate, UITableViewDataSource{
 //MARK: - Setup Cell In Table View
 
 func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    // MARK: Choose Table View Cell
     if indexPath.row < 1{
-        let HeightCell = 75 + (32 * 3)//count of cell
+        let HeightCell = 75 + (32 * CGFloat(customization[0].options.count) )//count of cell
         return CGFloat(HeightCell)
     }
+    // MARK: Optional Table View Cell
     if indexPath.row < 2{
-        let HeightCell = 75 + (32 * 3)//count of cell
+        let HeightCell = 75 + (32 * CGFloat(customization[1].options.count))//count of cell
         return CGFloat(HeightCell)
     }
     if indexPath.row < 3{

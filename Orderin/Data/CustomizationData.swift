@@ -7,4 +7,8 @@
 
 import Foundation
 
-var customizationData = Customization(sauceCustom: ["pedas", "tidak pedas"], sideDishCustom: ["french fries", "mandu", "tomat"], notes: nil)
+var customizationData = [
+    Customization(custName: "Spiciness", options: ["pedas", "tidak pedas"], notes: nil),
+    Customization(custName: "Sauce", options: ["BBQ", "Original", "Hot and Spicy"], notes: nil)
+    
+]

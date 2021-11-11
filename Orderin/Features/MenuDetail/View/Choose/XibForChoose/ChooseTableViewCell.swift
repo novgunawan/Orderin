@@ -9,14 +9,15 @@ import UIKit
 
 class ChooseTableViewCell: UITableViewCell{
 
+    // TODO: Count of cell belum bisa dibuat dynamic
     @IBOutlet weak var chooseLabel: UILabel! {
         didSet {
-            chooseLabel.text = "Spicy"
+            chooseLabel.text = "Spiciness"
         }
     }
     @IBOutlet weak var chooseTable: UITableView! {
         didSet{
-            chooseTable.frame.size.height = (32 * CGFloat(self.object?.sauceCustom.count ?? 2))//count of cell
+            chooseTable.frame.size.height = (32 * 2)//count of cell
         }
     }
     
@@ -24,7 +25,7 @@ class ChooseTableViewCell: UITableViewCell{
         {
             didSet{
                 //height view
-                viewCell.frame.size.height = 55 + (32 * CGFloat(self.object?.sauceCustom.count ?? 2))//count of cell
+                viewCell.frame.size.height = 55 + (32 * 2)//count of cell
                 //corner radius
                 viewCell.layer.cornerRadius = 5
                 //shadow
@@ -54,7 +55,7 @@ class ChooseTableViewCell: UITableViewCell{
         // Configure the view for the selected state
     }
     
-    var object: Customization?
+    var object: [Customization] = []
     
 }
 

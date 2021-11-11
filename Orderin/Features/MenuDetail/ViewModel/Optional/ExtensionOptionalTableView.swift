@@ -22,7 +22,7 @@ extension OptionalTableViewCell: UITableViewDelegate, UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellOptionalDetail = optionalTable.dequeueReusableCell(withIdentifier: OptionalDetailTableViewCell.identifier) as! OptionalDetailTableViewCell
-        cellOptionalDetail.object = object?.sideDishCustom[indexPath.row]
+        cellOptionalDetail.object = object[1].options[indexPath.row]
         return cellOptionalDetail
     }
     

@@ -8,9 +8,9 @@
 import Foundation
 
 struct MenuDetailViewModel {
-    var custom: Customization = Customization(sauceCustom: [], sideDishCustom: [], notes: "")
+    var custom: [Customization] = []
     
-    mutating func assignDataCustomization(completion: @escaping(Customization)-> Void) {
+    mutating func assignDataCustomization(completion: @escaping([Customization])-> Void) {
         custom = customizationData
         completion(self.custom)
     }

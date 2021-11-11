@@ -22,16 +22,15 @@ class MenuDetailViewController: UIViewController {
         didSet{
             //strikethrough label
             let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: normalPrice.text ?? "")
-                attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
+            attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
             normalPrice.attributedText = attributeString
             
         }
     }
     
-    // MARK: Important Variables
+    // MARK: Declaration Variables
     var menuDetailViewModel = MenuDetailViewModel()
-    
-    var customization: Customization = Customization(sauceCustom: [], sideDishCustom: [], notes: nil)
+    var customization: [Customization] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,21 +46,21 @@ class MenuDetailViewController: UIViewController {
         
     }
     
-   private func setup(){
-       //xib register cell
-       detailListTable.register(ChooseTableViewCell.nib(), forCellReuseIdentifier: ChooseTableViewCell.identifier)
-       detailListTable.register(OptionalTableViewCell.nib(), forCellReuseIdentifier: OptionalTableViewCell.identifier)
-       detailListTable.register(NotesTableViewCell.nib(), forCellReuseIdentifier: NotesTableViewCell.identifier)
-       detailListTable.register(TotalItemTableViewCell.nib(), forCellReuseIdentifier: TotalItemTableViewCell.identifier)
-       detailListTable.register(CartButtonTableViewCell.nib(), forCellReuseIdentifier: CartButtonTableViewCell.identifier)
-       
-       detailListTable.delegate = self
-       detailListTable.dataSource = self
-       
-       //keyboard manage
-       NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-       NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-       self.dismissKeyboard()
+    private func setup(){
+        //xib register cell
+        detailListTable.register(ChooseTableViewCell.nib(), forCellReuseIdentifier: ChooseTableViewCell.identifier)
+        detailListTable.register(OptionalTableViewCell.nib(), forCellReuseIdentifier: OptionalTableViewCell.identifier)
+        detailListTable.register(NotesTableViewCell.nib(), forCellReuseIdentifier: NotesTableViewCell.identifier)
+        detailListTable.register(TotalItemTableViewCell.nib(), forCellReuseIdentifier: TotalItemTableViewCell.identifier)
+        detailListTable.register(CartButtonTableViewCell.nib(), forCellReuseIdentifier: CartButtonTableViewCell.identifier)
+        
+        detailListTable.delegate = self
+        detailListTable.dataSource = self
+        
+        //keyboard manage
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        self.dismissKeyboard()
     }
     
 }
