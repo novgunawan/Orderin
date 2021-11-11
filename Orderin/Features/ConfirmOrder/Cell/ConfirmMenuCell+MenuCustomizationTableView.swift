@@ -28,7 +28,7 @@ extension ConfirmMenuCell: UITableViewDelegate, UITableViewDataSource{
             
             let editCell = menuCustomizationTableView.dequeueReusableCell(withIdentifier: Constant.ConfirmOrder.editButtonCell) as! EditButtonCell
             editCell.editButton.addTarget(self, action: #selector(editButtonDidTap), for: .touchUpInside)
-            editCell.backgroundColor = .cyan
+            
             return editCell
             
         default:

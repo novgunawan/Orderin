@@ -27,6 +27,7 @@ class ConfirmOrderViewController: UIViewController {
         let table = UITableView()
         table.separatorStyle = .none
         table.allowsSelection = false
+        table.translatesAutoresizingMaskIntoConstraints = false
         
         return table
         
@@ -38,18 +39,18 @@ class ConfirmOrderViewController: UIViewController {
         setupDelegate()
         setupNavigationController()
         setupAddView()
+        setupTableViewConstraint()
         
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        //        orderButtonView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-        //        orderButtonView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-        //        orderButtonView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-        //        orderButtonView.frame.size.height = 130
-        //
-        orderButtonView.frame = CGRect(x: 0, y: 729, width: 390, height: 113)
+        orderButtonView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        orderButtonView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+        orderButtonView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        orderButtonView.heightAnchor.constraint(equalToConstant: view.frame.height / 6).isActive = true
+        
     }
     
     func setupAddView() {
@@ -63,19 +64,22 @@ class ConfirmOrderViewController: UIViewController {
     func setupDelegate() {
         
         confirmMenuTableView.delegate = self
-        confirmMenuTableView.dataSource = self
-        confirmMenuTableView.frame = view.bounds
-        
+        confirmMenuTableView.dataSource = self        
         
         confirmMenuTableView.register(ConfirmMenuCell.self, forCellReuseIdentifier: Constant.ConfirmOrder.tableViewCellIdentifier)
         rowHeight += CGFloat(25 * (data.count + 1))
         
         confirmMenuTableView.rowHeight = rowHeight
         
-        
-        
-       
-        
+    
+    }
+    
+    func setupTableViewConstraint() {
+        confirmMenuTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+        confirmMenuTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        confirmMenuTableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+        confirmMenuTableView.bottomAnchor.constraint(equalTo: orderButtonView.topAnchor, constant: 0).isActive = true
+
     }
     
     func setupNavigationController() {
@@ -133,7 +137,7 @@ extension ConfirmOrderViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = confirmMenuTableView.dequeueReusableCell(withIdentifier: Constant.ConfirmOrder.tableViewCellIdentifier) as! ConfirmMenuCell
         
-        cell.setContent(quantity: "2", titleOrder: "Azkake", price: "Rp.30.000")
+        cell.setContent(quantity: "2", titleOrder: "Steak", price: "Rp 90.000")
         cell.delegate = self
         
         return cell
