@@ -9,11 +9,11 @@ import Foundation
 
 
 struct OrderModel{
+    
     var orderID: String
-//    var orderedMenu: [OrderedMenu] TODO: Novi
+    var orderedMenu: [OrderedMenu]
     var menuCount: Int
     var totalPrice: Int
-    var customization: [String]
     var orderNotes: String
     
     
