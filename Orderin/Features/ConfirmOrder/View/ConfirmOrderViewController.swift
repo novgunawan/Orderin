@@ -10,7 +10,7 @@ import UIKit
 class ConfirmOrderViewController: UIViewController {
     
     var viewModel = CellConfirmationViewModel()
-   
+    
     var data: [MenuCustomizationDummyData] = []
     var rowHeight: CGFloat = 50
     
@@ -62,13 +62,16 @@ class ConfirmOrderViewController: UIViewController {
         setupDelegate()
         setupNavigationController()
         setupAddView()
+        dismissKeyboard()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-
+        
         orderButtonView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         orderButtonView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         orderButtonView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
@@ -90,17 +93,19 @@ class ConfirmOrderViewController: UIViewController {
     func setupDelegate() {
         
         confirmMenuTableView.delegate = self
-        confirmMenuTableView.dataSource = self        
+        confirmMenuTableView.dataSource = self
+        notesTextField.delegate = self
+        
+        
         
         confirmMenuTableView.register(ConfirmMenuCell.self, forCellReuseIdentifier: Constant.ConfirmOrder.tableViewCellIdentifier)
-        confirmMenuTableView.register(NotesCell.self, forCellReuseIdentifier: Constant.ConfirmOrder.notesCell)
         
         
         rowHeight += CGFloat(25 * (data.count + 1))
         
         confirmMenuTableView.rowHeight = rowHeight
         
-    
+        
     }
     
     func setupTableViewConstraint() {
@@ -108,11 +113,11 @@ class ConfirmOrderViewController: UIViewController {
         confirmMenuTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         confirmMenuTableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
         confirmMenuTableView.bottomAnchor.constraint(equalTo: subtotalView.topAnchor, constant: 30).isActive = true
-
+        
     }
     
     func setupTotalPriceConstraint() {
-       
+        
         subtotalView.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 0).isActive = true
         subtotalView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         subtotalView.bottomAnchor.constraint(equalTo: orderButtonView.topAnchor, constant: 0).isActive = true
@@ -172,13 +177,13 @@ extension ConfirmOrderViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         
-            let cell = confirmMenuTableView.dequeueReusableCell(withIdentifier: Constant.ConfirmOrder.tableViewCellIdentifier) as! ConfirmMenuCell
-            
-            cell.setContent(quantity: "2", titleOrder: "Steak", price: "Rp 90.000")
-            cell.delegate = self
-            return cell
-      
+        
+        let cell = confirmMenuTableView.dequeueReusableCell(withIdentifier: Constant.ConfirmOrder.tableViewCellIdentifier) as! ConfirmMenuCell
+        
+        cell.setContent(quantity: "2", titleOrder: "Steak", price: "Rp 90.000")
+        cell.delegate = self
+        return cell
+        
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -188,6 +193,16 @@ extension ConfirmOrderViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 55
+    }
+    
+    @objc private func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            confirmMenuTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height + confirmMenuTableView.rowHeight, right: 0)
+        }
+    }
+    
+    @objc private func keyboardWillHide(notification: NSNotification) {
+        confirmMenuTableView.contentInset = .zero
     }
 }
 
