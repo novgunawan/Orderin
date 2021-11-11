@@ -48,6 +48,7 @@ class MenuDetailViewController: UIViewController {
     }
     
    private func setup(){
+       
        //xib register cell
        detailListTable.register(ChooseTableViewCell.nib(), forCellReuseIdentifier: ChooseTableViewCell.identifier)
        detailListTable.register(OptionalTableViewCell.nib(), forCellReuseIdentifier: OptionalTableViewCell.identifier)

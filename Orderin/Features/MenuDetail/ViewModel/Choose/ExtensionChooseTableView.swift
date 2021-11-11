@@ -24,10 +24,13 @@ extension ChooseTableViewCell: UITableViewDelegate, UITableViewDataSource{
         cellChooseDetail.object = object?.sauceCustom[indexPath.row]
         return cellChooseDetail
     }
+    
+    //DidSelect
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cellChooseDetail = chooseTable.cellForRow(at: indexPath) as! ChooseDetailTableViewCell
         cellChooseDetail.checkerUI.image = UIImage(named: "checked")
     }
+    //DidDeselect
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cellChooseDetail = chooseTable.cellForRow(at: indexPath) as! ChooseDetailTableViewCell
         cellChooseDetail.checkerUI.image = UIImage(named: "unchecked")

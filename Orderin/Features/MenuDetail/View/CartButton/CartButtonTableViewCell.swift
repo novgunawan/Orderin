@@ -9,13 +9,14 @@ import UIKit
 
 class CartButtonTableViewCell: UITableViewCell {
 
+
+    @IBOutlet weak var cartButton: UIButton!
     @IBOutlet weak var totalPrice: UILabel!
     @IBOutlet weak var viewCell: UIView!{
         didSet{
         viewCell.layer.cornerRadius = 13
         }
     }
-    @IBOutlet weak var cartButton: UIButton!
     
     //create identifier XIB
     static let identifier = "cellCartButton"
@@ -33,4 +34,8 @@ class CartButtonTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    //Cart Button Did Tapped
+    @IBAction func cartButtonDidTapped(_ sender: Any) {
+        print("cartbuttondidtapped")
+    }
 }
