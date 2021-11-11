@@ -33,8 +33,9 @@ class TabbarViewController: UITabBarController {
     //MARK: -Setup ViewController for HomePage
     func setupVC() {
         viewControllers = [
-            createNavigationController(for: HomeViewController(), title: NSLocalizedString("Menu", comment: ""), image: UIImage(systemName: "menucard")!),
-            createNavigationController(for: HistoryViewController(), title: NSLocalizedString("History", comment: ""), image: UIImage(systemName: "clock")!)]
+            //MARK: -UiImage are not supported below iOS 15, the original was menucard and clock
+            createNavigationController(for: HomeViewController(), title: NSLocalizedString("Menu", comment: ""), image: UIImage(systemName: "square.and.arrow.up")!),
+            createNavigationController(for: HistoryViewController(), title: NSLocalizedString("History", comment: ""), image: UIImage(systemName: "square.and.arrow.up")!)]
     }
     
     
