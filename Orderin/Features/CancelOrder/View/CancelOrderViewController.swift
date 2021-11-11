@@ -154,9 +154,9 @@ class CancelOrderViewController: UIViewController {
     
     func goToPageSummary() {
         
-        let orderPageSummary = OrderSummary(nibName: Constant.OrderSummary.orderViewController, bundle: nil)
-        
-        self.present(orderPageSummary, animated: true, completion: nil)
+//        let orderPageSummary = OrderSummary(nibName: Constant.OrderSummary.orderViewController, bundle: nil)
+//        
+//        self.present(orderPageSummary, animated: true, completion: nil)
     }
 }
 

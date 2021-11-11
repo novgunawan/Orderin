@@ -14,12 +14,14 @@ extension MenuDetailViewController: UITableViewDelegate, UITableViewDataSource{
 //MARK: - Setup Cell In Table View
 
 func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    // MARK: Choose Table View Cell
     if indexPath.row < 1{
-        let HeightCell = 75 + (32 * 3)//count of cell
+        let HeightCell = 75 + (32 * CGFloat(customization[0].options.count) )//count of cell
         return CGFloat(HeightCell)
     }
+    // MARK: Optional Table View Cell
     if indexPath.row < 2{
-        let HeightCell = 75 + (32 * 3)//count of cell
+        let HeightCell = 75 + (32 * CGFloat(customization[1].options.count))//count of cell
         return CGFloat(HeightCell)
     }
     if indexPath.row < 3{
@@ -42,10 +44,13 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
 func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if indexPath.row < 1{
     let cellChoose = detailListTable.dequeueReusableCell(withIdentifier: ChooseTableViewCell.identifier) as! ChooseTableViewCell
+        
+        cellChoose.object = customization
             return cellChoose
         }
     if indexPath.row < 2{
     let cell = detailListTable.dequeueReusableCell(withIdentifier: OptionalTableViewCell.identifier) as! OptionalTableViewCell
+        cell.object = customization
         return cell
         }
     if indexPath.row < 3{
@@ -57,6 +62,15 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
         return cellTotalItem
     }
     let cellCartButton = detailListTable.dequeueReusableCell(withIdentifier: CartButtonTableViewCell.identifier) as! CartButtonTableViewCell
+    //TO-DO: Make a clear for flow
+    cellCartButton.cartButton.addTarget(self, action: #selector(didButtonCartTapped), for: .touchUpInside)
     return cellCartButton
+    }
+    
+    //present order summary
+    @objc func didButtonCartTapped(){
+        let vc = OrderSummaryViewController()
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
     }
 }

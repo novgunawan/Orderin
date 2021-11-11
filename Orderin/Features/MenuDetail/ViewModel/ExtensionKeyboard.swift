@@ -1,15 +1,14 @@
 //
-//  ExtentsionKeyboardManage.swift
+//  ExtensionKeyboard.swift
 //  Orderin
 //
-//  Created by Pieter Yonathan on 01/11/21.
+//  Created by Pieter Yonathan on 10/11/21.
 //
 
 import Foundation
 import UIKit
 
 extension MenuDetailViewController{
-    
     // MARK: - Keyboard Function
     // auto adjust keyboard and view
     @objc func keyboardWillShow(notification: NSNotification) {

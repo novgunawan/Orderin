@@ -10,7 +10,6 @@ import UIKit
 
 extension OptionalTableViewCell: UITableViewDelegate, UITableViewDataSource{
     
-    //
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 32
     }
@@ -22,6 +21,7 @@ extension OptionalTableViewCell: UITableViewDelegate, UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellOptionalDetail = optionalTable.dequeueReusableCell(withIdentifier: OptionalDetailTableViewCell.identifier) as! OptionalDetailTableViewCell
+        cellOptionalDetail.object = object[1].options[indexPath.row]
         return cellOptionalDetail
     }
     

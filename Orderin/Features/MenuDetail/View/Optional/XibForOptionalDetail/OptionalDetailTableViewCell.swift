@@ -28,4 +28,15 @@ class OptionalDetailTableViewCell: UITableViewCell {
     static func nib() -> UINib{
         return UINib(nibName: "OptionalDetailTableViewCell", bundle: nil)
     }
+    
+    var object: String? {
+        didSet {
+            setupCell()
+        }
+    }
+    
+    func setupCell() {
+        guard let object = object else {return}
+        optionalNameLabel.text = object
+    }
 }

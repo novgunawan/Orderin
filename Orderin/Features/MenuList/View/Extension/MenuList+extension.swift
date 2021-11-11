@@ -20,7 +20,7 @@ extension MenuListViewController:  UISearchResultsUpdating, UISearchBarDelegate 
         })
         
         searchingState  = true
-        searchingResult.tableView.reloadData()
+        
     }
 
 

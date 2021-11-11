@@ -7,7 +7,10 @@
 
 import Foundation
 struct Customization {
-    let sauceCustom: [String]
-    let sideDishCustom: [String]
-    let notes: String
+    let custName: String
+    let options: [String]
+    let notes: String?
+    
+    //TODO: Add customization to user default
 }
+

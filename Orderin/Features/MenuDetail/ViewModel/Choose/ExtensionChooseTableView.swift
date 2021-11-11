@@ -16,17 +16,21 @@ extension ChooseTableViewCell: UITableViewDelegate, UITableViewDataSource{
 
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 2
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellChooseDetail = chooseTable.dequeueReusableCell(withIdentifier: ChooseDetailTableViewCell.identifier) as! ChooseDetailTableViewCell
+        cellChooseDetail.object = object[0].options[indexPath.row]
         return cellChooseDetail
     }
+    
+    //DidSelect
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cellChooseDetail = chooseTable.cellForRow(at: indexPath) as! ChooseDetailTableViewCell
         cellChooseDetail.checkerUI.image = UIImage(named: "checked")
     }
+    //DidDeselect
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cellChooseDetail = chooseTable.cellForRow(at: indexPath) as! ChooseDetailTableViewCell
         cellChooseDetail.checkerUI.image = UIImage(named: "unchecked")
