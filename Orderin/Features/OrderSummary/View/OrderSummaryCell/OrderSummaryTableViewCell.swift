@@ -9,19 +9,20 @@ import UIKit
 
 class OrderSummaryTableViewCell: UITableViewCell {
 
+    //UI Table View
     @IBOutlet weak var orderSummaryDetailTable: UITableView!{
         didSet{
             orderSummaryDetailTable.frame.size.height = (20 * 3)
         }
     }
-    
+    //UI Cell View
     @IBOutlet weak var orderSummaryCellView: UIView!{
         didSet{
             orderSummaryCellView.frame.size.height = 68 + (20 * 3)
             orderSummaryCellView.layer.cornerRadius = 13
         }
     }
-    
+    //UI Total Item View
     @IBOutlet weak var totalItemView: UIView!{
         didSet{
             totalItemView.layer.cornerRadius = 5
@@ -37,7 +38,7 @@ class OrderSummaryTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        //xib register
         orderSummaryDetailTable.register(OrderSummaryDetailTableViewCell.nib(), forCellReuseIdentifier: OrderSummaryDetailTableViewCell.identifier)
         orderSummaryDetailTable.register(NoteforMenuTableViewCell.nib(), forCellReuseIdentifier: NoteforMenuTableViewCell.identifier)
         

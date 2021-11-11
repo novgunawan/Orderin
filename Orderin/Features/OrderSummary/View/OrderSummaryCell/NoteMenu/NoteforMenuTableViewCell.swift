@@ -9,6 +9,7 @@ import UIKit
 
 class NoteforMenuTableViewCell: UITableViewCell {
 
+    //xib register
     static let identifier = "cellNoteMenu"
     static func nib() -> UINib{
         return UINib(nibName: "NoteforMenuTableViewCell", bundle: nil)

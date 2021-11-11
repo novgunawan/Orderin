@@ -11,26 +11,26 @@ class OrderSummaryViewController: UIViewController {
 
     @IBOutlet weak var orderSummaryTable: UITableView!
     
-    //UI VIEW ON BOTTOM
+    //UI bottom view
     @IBOutlet weak var bottomView: UIView!{
         didSet{
             bottomView.layer.cornerRadius = 5
         }
     }
-    
+    //UI Add Order Button
     @IBOutlet weak var addOrderButton: UIButton!{
         didSet{
             addOrderButton.layer.cornerRadius = 13
         }
     }
-    
+    //UI Price View
     @IBOutlet weak var priceView: UIView!{
         didSet{
             priceView.layer.cornerRadius = 5
         }
     }
     
-    
+    //UI Normal Price
     @IBOutlet weak var normalPrice: UILabel!{
         didSet{
             let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: normalPrice.text ?? "")

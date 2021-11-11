@@ -9,6 +9,7 @@ import UIKit
 
 class OrderSummaryDetailTableViewCell: UITableViewCell {
 
+    //xib register
     static let identifier = "cellOrderSummaryDetail"
     static func nib() -> UINib{
         return UINib(nibName: "OrderSummaryDetailTableViewCell", bundle: nil)

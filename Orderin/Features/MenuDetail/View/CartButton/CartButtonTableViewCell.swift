@@ -17,6 +17,7 @@ class CartButtonTableViewCell: UITableViewCell {
         viewCell.layer.cornerRadius = 13
         }
     }
+    
     //create identifier XIB
     static let identifier = "cellCartButton"
     static func nib() -> UINib{
@@ -33,6 +34,7 @@ class CartButtonTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    //Cart Button Did Tapped
     @IBAction func cartButtonDidTapped(_ sender: Any) {
         print("cartbuttondidtapped")
     }
