@@ -20,6 +20,8 @@ class ConfirmOrderViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 13.0
         view.backgroundColor = UIColor(named: "broken white")
+        
+        view.orderNowButton.addTarget(self, action: #selector(orderDidTap), for: .touchUpInside)
         return view
         
     }()
@@ -126,6 +128,17 @@ class ConfirmOrderViewController: UIViewController {
     
     func setupNavigationController() {
         navigationItem.title = "Confirm Order"
+    }
+    
+    @objc func orderDidTap() {
+        let alertController = UIAlertController(title: "Confirm Order?",
+                                                message: "Once you made your order, you only have 5 seconds to cancel it.",
+                                                preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .default))
+        
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
     private func bindingData() {
