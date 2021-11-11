@@ -8,9 +8,49 @@
 import Foundation
 import UIKit
 
+// MARK: - Search Functionality
+
+extension MenuListViewController:  UISearchResultsUpdating, UISearchBarDelegate {
+    
+    func filterCurrentData(searchText: String){
+        
+       filteredData = dataWithoutCategory.filter({ menu in
+           
+           return menu.title.lowercased().contains(searchText.lowercased())
+        })
+        
+        searchingState  = true
+        searchingResult.tableView.reloadData()
+    }
+
+
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        if let searchText = searchController.searchBar.text{
+            if searchText.count > 0{
+                self.filterCurrentData(searchText: searchText)
+                menuListView.segmentedControl.isHidden = true
+            }
+            else{
+                searchingState = false
+                menuListView.segmentedControl.isHidden = false
+            }
+        }
+        menuListView.tableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchingState = false
+        filteredData.removeAll()
+        menuListView.tableView.reloadData()
+        menuListView.segmentedControl.isHidden = false
+    }
+}
+
+// MARK: - Table View Functionality
+
 extension MenuListViewController: UITableViewDelegate, UITableViewDataSource, CellDelegate {
   
-    
     func buttonTapped(tag: Int) {
         // TODO: Show Menu detail based on index data
     }
