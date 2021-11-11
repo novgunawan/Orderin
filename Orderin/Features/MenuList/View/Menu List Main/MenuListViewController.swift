@@ -18,7 +18,6 @@ class MenuListViewController: UIViewController{
     var menuListVM = MenuListViewModel()
     var dataWithoutCategory: [MenuListModel] = []
     var filteredData: [MenuListModel] = []
-    var searchingResult = ResultVC()
     var searchingState = false
     
 
@@ -42,12 +41,13 @@ class MenuListViewController: UIViewController{
         view.backgroundColor = .white
         setup()
         tableViewConfiguration()
+       
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.isNavigationBarHidden = false
         menuListView.segmentedControl.addTarget(self, action: #selector(didSegmentChange), for: .valueChanged)
         self.navigationController?.navigationBar.tintColor = C.hexStringToUIColor(hex: C.red50)
 
-        
+        floatingButton.delegate = self
         
     }
     
@@ -160,4 +160,14 @@ extension MenuListViewController: UIViewControllerTransitioningDelegate{
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
        PresentationController(presentedViewController: presented, presenting: presenting)
    }
+}
+
+extension MenuListViewController: NavigationControllerDelegate {
+    
+    func pushToConfirmOrder() {
+        let confirmOrderVC = ConfirmOrderViewController()
+        self.navigationController?.pushViewController(confirmOrderVC, animated: true)
+    }
+    
+    
 }
