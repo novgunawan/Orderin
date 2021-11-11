@@ -60,6 +60,7 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
         return cellTotalItem
     }
     let cellCartButton = detailListTable.dequeueReusableCell(withIdentifier: CartButtonTableViewCell.identifier) as! CartButtonTableViewCell
+    //TO-DO: Make a clear for flow
     cellCartButton.cartButton.addTarget(self, action: #selector(didButtonCartTapped), for: .touchUpInside)
     return cellCartButton
     }
