@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MenuListViewController: UIViewController, UISearchResultsUpdating, UISearchBarDelegate {
+class MenuListViewController: UIViewController{
     
     
     // MARK: - Components Declaration
@@ -18,7 +18,6 @@ class MenuListViewController: UIViewController, UISearchResultsUpdating, UISearc
     var menuListVM = MenuListViewModel()
     var dataWithoutCategory: [MenuListModel] = []
     var filteredData: [MenuListModel] = []
-    var searchingResult = ResultVC()
     var searchingState = false
     
 
@@ -42,12 +41,13 @@ class MenuListViewController: UIViewController, UISearchResultsUpdating, UISearc
         view.backgroundColor = .white
         setup()
         tableViewConfiguration()
+       
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.isNavigationBarHidden = false
         menuListView.segmentedControl.addTarget(self, action: #selector(didSegmentChange), for: .valueChanged)
         self.navigationController?.navigationBar.tintColor = C.hexStringToUIColor(hex: C.red50)
 
-        
+        floatingButton.delegate = self
         
     }
     
@@ -153,39 +153,6 @@ class MenuListViewController: UIViewController, UISearchResultsUpdating, UISearc
         }
     }
     
-    func filterCurrentData(searchText: String){
-       filteredData = dataWithoutCategory.filter({ menu in
-           return menu.title.lowercased().contains(searchText.lowercased())
-        })
-        print(filteredData.count)
-        searchingState  = true
-        
-        searchingResult.tableView.reloadData()
-       
-
-    }
-
-
-    func updateSearchResults(for searchController: UISearchController) {
-        
-        if let searchText = searchController.searchBar.text{
-            self.filterCurrentData(searchText: searchText)
-
-        }
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchingState = false
-        filteredData.removeAll()
-       menuListView.tableView.reloadData()
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        menuListView.tableView.reloadData()
-    }
-    
-    
-    
 
 }
 
@@ -193,4 +160,14 @@ extension MenuListViewController: UIViewControllerTransitioningDelegate{
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
        PresentationController(presentedViewController: presented, presenting: presenting)
    }
+}
+
+extension MenuListViewController: NavigationControllerDelegate {
+    
+    func pushToConfirmOrder() {
+        let confirmOrderVC = ConfirmOrderViewController()
+        self.navigationController?.pushViewController(confirmOrderVC, animated: true)
+    }
+    
+    
 }
