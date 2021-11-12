@@ -42,6 +42,9 @@
                                 <constraint firstAttribute="height" constant="265" id="NSu-gV-1fZ"/>
                                 <constraint firstAttribute="width" constant="357" id="Nay-gP-Cqg"/>
                                 <constraint firstAttribute="width" secondItem="WDi-pA-FAi" secondAttribute="height" multiplier="357:265" id="Qwq-fi-Eet"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="357" id="ghM-kN-tac"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="265" id="lc9-vn-C4Y"/>
+                                <constraint firstAttribute="width" secondItem="WDi-pA-FAi" secondAttribute="height" multiplier="357:265" id="oSI-rw-azm"/>
                             </constraints>
                         </imageView>
                     </subviews>
@@ -55,6 +58,11 @@
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steak" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ha-u7-q1n">
                     <rect key="frame" x="20" y="292" width="49" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="5Ha-u7-q1n" secondAttribute="height" multiplier="49:24" id="A5t-kh-b4g"/>
+                        <constraint firstAttribute="height" constant="24" id="bk2-yW-RmJ"/>
+                        <constraint firstAttribute="width" constant="49" id="fiI-Br-gw1"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -62,7 +70,7 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rp50.000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iGJ-dz-Bir">
                     <rect key="frame" x="217" y="296" width="75" height="18.333333333333314"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="75" id="jik-VH-UiD"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="xfr-pJ-Qhz"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="13"/>
                     <color key="textColor" red="0.61960784310000006" green="0.61960784310000006" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
@@ -79,6 +87,11 @@
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="A soft meat grilled with butter, rosemarry, and poured by mushroom sauce." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTF-Ir-5jc">
                     <rect key="frame" x="20" y="320" width="353" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="JTF-Ir-5jc" secondAttribute="height" multiplier="353:34" id="AiG-o0-CGU"/>
+                        <constraint firstAttribute="width" constant="353" id="QSF-eh-zLg"/>
+                        <constraint firstAttribute="height" constant="34" id="uD9-HB-LcM"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -88,6 +101,11 @@
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="knT-ME-Jnk">
                             <rect key="frame" x="0.0" y="0.0" width="359" height="408"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="408" id="ODD-c9-T4R"/>
+                                <constraint firstAttribute="width" constant="359" id="TX0-05-MER"/>
+                                <constraint firstAttribute="width" secondItem="knT-ME-Jnk" secondAttribute="height" multiplier="359:408" id="rvj-1a-MVb"/>
+                            </constraints>
                         </tableView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -108,7 +126,6 @@
                 <constraint firstItem="JTF-Ir-5jc" firstAttribute="top" secondItem="5Ha-u7-q1n" secondAttribute="bottom" constant="4" id="23x-g4-slO"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="qVu-Mn-HND" secondAttribute="trailing" constant="170" id="5OO-V7-rIB"/>
                 <constraint firstItem="H2N-HZ-F2d" firstAttribute="centerX" secondItem="3aX-FI-hlq" secondAttribute="centerX" id="5WY-ck-l9Z"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="iGJ-dz-Bir" secondAttribute="trailing" constant="98" id="5rN-sl-2Sz"/>
                 <constraint firstItem="H2N-HZ-F2d" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="16" id="GkW-fr-jOo"/>
                 <constraint firstItem="H2N-HZ-F2d" firstAttribute="top" secondItem="qVu-Mn-HND" secondAttribute="bottom" constant="6" id="LIt-Wo-2Gs"/>
                 <constraint firstItem="fP8-6Y-1YA" firstAttribute="baseline" secondItem="5Ha-u7-q1n" secondAttribute="baseline" id="NA6-gy-DlG"/>
@@ -122,11 +139,13 @@
                 <constraint firstItem="5Ha-u7-q1n" firstAttribute="top" secondItem="H2N-HZ-F2d" secondAttribute="bottom" constant="11" id="q7Z-jG-IPO"/>
                 <constraint firstItem="H2N-HZ-F2d" firstAttribute="trailing" secondItem="fP8-6Y-1YA" secondAttribute="trailing" id="qkg-vm-Do8"/>
                 <constraint firstItem="qVu-Mn-HND" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="5" id="r7T-xj-1Dw"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="iGJ-dz-Bir" secondAttribute="trailing" constant="98" id="tgv-Cf-E6f"/>
                 <constraint firstItem="qVu-Mn-HND" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="160" id="uYi-ZU-WCi"/>
                 <constraint firstItem="5Ha-u7-q1n" firstAttribute="top" secondItem="H2N-HZ-F2d" secondAttribute="bottom" constant="11" id="v3M-Zb-RrN"/>
                 <constraint firstItem="3aX-FI-hlq" firstAttribute="top" secondItem="JTF-Ir-5jc" secondAttribute="bottom" constant="20" id="vMU-Rs-Bzg"/>
                 <constraint firstItem="H2N-HZ-F2d" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="voe-k5-f0E"/>
                 <constraint firstItem="5Ha-u7-q1n" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="vuj-Qw-dc8"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fP8-6Y-1YA" secondAttribute="trailing" constant="17" id="vwo-9j-RN2"/>
                 <constraint firstItem="fP8-6Y-1YA" firstAttribute="top" secondItem="H2N-HZ-F2d" secondAttribute="bottom" constant="11" id="wV3-7C-fDe"/>
                 <constraint firstItem="3aX-FI-hlq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="374" id="xIG-1B-FMF"/>
                 <constraint firstItem="H2N-HZ-F2d" firstAttribute="top" secondItem="qVu-Mn-HND" secondAttribute="bottom" constant="6" id="ym6-6X-7Rf"/>

@@ -65,8 +65,14 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="32" id="5fw-yR-ota"/>
+                                    <constraint firstAttribute="width" secondItem="FRT-oq-PRa" secondAttribute="height" multiplier="171:16" id="OSb-VS-MVN"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="342" id="PdD-wD-jTY"/>
                                     <constraint firstAttribute="height" constant="32" id="PmN-wV-G8N"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="Z2S-IL-dTU"/>
+                                    <constraint firstAttribute="width" constant="342" id="nwz-jk-XGA"/>
                                     <constraint firstAttribute="width" secondItem="FRT-oq-PRa" secondAttribute="height" multiplier="171:16" id="sbg-pF-WBg"/>
+                                    <constraint firstAttribute="width" secondItem="FRT-oq-PRa" secondAttribute="height" multiplier="171:16" id="xyN-Zw-9zI"/>
                                 </constraints>
                             </tableView>
                         </subviews>
@@ -74,16 +80,13 @@
                         <constraints>
                             <constraint firstItem="FRT-oq-PRa" firstAttribute="top" secondItem="nib-NA-Ow3" secondAttribute="bottom" constant="20" id="AH5-nV-IvE"/>
                             <constraint firstItem="FRT-oq-PRa" firstAttribute="leading" secondItem="Tex-ha-CHS" secondAttribute="leadingMargin" id="BhK-kZ-goC"/>
-                            <constraint firstItem="FRT-oq-PRa" firstAttribute="top" secondItem="X6x-z5-mZ7" secondAttribute="bottom" constant="20" id="D8t-JR-uke"/>
                             <constraint firstItem="FRT-oq-PRa" firstAttribute="top" secondItem="xzX-oP-Fxy" secondAttribute="bottom" constant="16" id="EXw-LR-1Il"/>
                             <constraint firstItem="X6x-z5-mZ7" firstAttribute="top" secondItem="Tex-ha-CHS" secondAttribute="top" constant="10" id="GZg-XQ-ZOf"/>
                             <constraint firstItem="X6x-z5-mZ7" firstAttribute="leading" secondItem="xzX-oP-Fxy" secondAttribute="trailing" constant="52" id="IRW-Zg-RdK"/>
                             <constraint firstAttribute="bottom" secondItem="FRT-oq-PRa" secondAttribute="bottom" constant="2" id="Ive-EC-Ie7"/>
+                            <constraint firstItem="nib-NA-Ow3" firstAttribute="leading" secondItem="xzX-oP-Fxy" secondAttribute="trailing" id="NeU-d0-KEG"/>
                             <constraint firstItem="xzX-oP-Fxy" firstAttribute="top" secondItem="Tex-ha-CHS" secondAttribute="top" constant="6" id="OVw-dD-cVe"/>
-                            <constraint firstItem="nib-NA-Ow3" firstAttribute="top" secondItem="Tex-ha-CHS" secondAttribute="top" constant="10" id="a5g-OT-Ei8"/>
-                            <constraint firstItem="nib-NA-Ow3" firstAttribute="leading" secondItem="xzX-oP-Fxy" secondAttribute="trailing" id="aVo-bj-z9w"/>
                             <constraint firstItem="xzX-oP-Fxy" firstAttribute="leading" secondItem="Tex-ha-CHS" secondAttribute="leading" constant="9" id="iGf-G1-NOC"/>
-                            <constraint firstAttribute="trailing" secondItem="X6x-z5-mZ7" secondAttribute="trailing" constant="159" id="ifg-gb-Ktv"/>
                             <constraint firstAttribute="width" constant="358" id="tYe-Rr-GnY"/>
                             <constraint firstAttribute="trailing" secondItem="FRT-oq-PRa" secondAttribute="trailing" constant="8" id="wP7-hK-ffr"/>
                         </constraints>
