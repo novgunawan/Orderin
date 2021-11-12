@@ -24,33 +24,58 @@
                 <rect key="frame" x="0.0" y="0.0" width="358" height="80"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="puG-Pc-iF6">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="puG-Pc-iF6">
                         <rect key="frame" x="0.0" y="0.0" width="358" height="80"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPa-Gk-GTv">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPa-Gk-GTv">
                                 <rect key="frame" x="72" y="10" width="55" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="cPa-Gk-GTv" secondAttribute="height" multiplier="55:16" id="AFq-Ws-Lrh"/>
+                                    <constraint firstAttribute="width" constant="55" id="LJ8-LV-WHJ"/>
+                                    <constraint firstAttribute="height" constant="16" id="hhz-KL-e7O"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="11"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Spicy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OeC-MP-SG4">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spicy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OeC-MP-SG4">
                                 <rect key="frame" x="10" y="6" width="48" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="1v4-av-xzi"/>
+                                    <constraint firstAttribute="width" secondItem="OeC-MP-SG4" secondAttribute="height" multiplier="2:1" id="Gsx-US-cLK"/>
+                                    <constraint firstAttribute="height" constant="24" id="k5I-Bz-sCB"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="0mw-3F-zCr">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="0mw-3F-zCr">
                                 <rect key="frame" x="8" y="46" width="342" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="0mw-3F-zCr" firstAttribute="leading" secondItem="puG-Pc-iF6" secondAttribute="leadingMargin" id="6wm-WS-8pY"/>
+                            <constraint firstAttribute="width" secondItem="puG-Pc-iF6" secondAttribute="height" multiplier="179:40" id="6xj-fM-huA"/>
+                            <constraint firstAttribute="width" constant="358" id="JcM-Vi-8qq"/>
+                            <constraint firstItem="cPa-Gk-GTv" firstAttribute="centerY" secondItem="OeC-MP-SG4" secondAttribute="centerY" id="W4R-qK-Dft"/>
+                            <constraint firstItem="OeC-MP-SG4" firstAttribute="top" secondItem="puG-Pc-iF6" secondAttribute="top" constant="6" id="fiD-Rc-GVu"/>
+                            <constraint firstItem="OeC-MP-SG4" firstAttribute="leading" secondItem="puG-Pc-iF6" secondAttribute="leading" constant="10" id="p8Q-9x-GMQ"/>
+                            <constraint firstAttribute="bottom" secondItem="0mw-3F-zCr" secondAttribute="bottom" constant="2" id="s0Z-o3-ecD"/>
+                            <constraint firstItem="0mw-3F-zCr" firstAttribute="top" secondItem="cPa-Gk-GTv" secondAttribute="bottom" constant="20" id="tvZ-t3-RGZ"/>
+                            <constraint firstItem="cPa-Gk-GTv" firstAttribute="leading" secondItem="OeC-MP-SG4" secondAttribute="trailing" constant="14" id="vK7-sj-Dex"/>
+                            <constraint firstItem="0mw-3F-zCr" firstAttribute="trailing" secondItem="puG-Pc-iF6" secondAttribute="trailingMargin" id="wc2-Og-SuM"/>
+                            <constraint firstAttribute="height" constant="80" id="zWC-ip-1iy"/>
+                        </constraints>
                     </view>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="puG-Pc-iF6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="2bl-ga-pof"/>
+                    <constraint firstAttribute="trailing" secondItem="puG-Pc-iF6" secondAttribute="trailing" id="d0Q-he-307"/>
+                    <constraint firstItem="puG-Pc-iF6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="nEd-MV-i7D"/>
+                    <constraint firstAttribute="bottom" secondItem="puG-Pc-iF6" secondAttribute="bottom" id="w7s-8F-aYp"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
