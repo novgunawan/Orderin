@@ -137,7 +137,16 @@ class ConfirmOrderViewController: UIViewController {
                                                 message: "Once you made your order, you only have 5 seconds to cancel it.",
                                                 preferredStyle: .alert)
         
+        
+        
         alertController.addAction(UIAlertAction(title: "Cancel", style: .default))
+        alertController.addAction(UIAlertAction(title: "Order", style: .default, handler: { _  in
+            
+            let cancelViewController = CancelOrderViewController(nibName: Constant.CancelOrder.cancelViewController, bundle: nil)
+            cancelViewController.modalPresentationStyle = .fullScreen
+            self.present(cancelViewController, animated: true, completion: nil)
+            
+        }))
         
         self.present(alertController, animated: true, completion: nil)
     }
