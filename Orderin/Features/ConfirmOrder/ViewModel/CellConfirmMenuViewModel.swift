@@ -10,16 +10,16 @@ import UIKit
 
 struct CellConfirmationViewModel {
     
-    var menuCustomData: [MenuCustomizationDummyData] = []
+    var menuCustomData: [OrderedMenuCustomizationDummyData] = []
     
     // Fetching data dummy
     
-    mutating func fetchMenuCustomization(completion: @escaping([MenuCustomizationDummyData]) -> Void) {
+    mutating func fetchMenuCustomization(completion: @escaping([OrderedMenuCustomizationDummyData]) -> Void) {
         
-        let custom1 = MenuCustomizationDummyData(custom: "French Fries")
-        let custom2 = MenuCustomizationDummyData(custom: "BBQ Sauce ")
-        let custom3 = MenuCustomizationDummyData(custom: "More Ice")
-        let custom4 = MenuCustomizationDummyData(custom: "Less Sugar")
+        let custom1 = OrderedMenuCustomizationDummyData(custom: "French Fries")
+        let custom2 = OrderedMenuCustomizationDummyData(custom: "BBQ Sauce ")
+        let custom3 = OrderedMenuCustomizationDummyData(custom: "More Ice")
+        let custom4 = OrderedMenuCustomizationDummyData(custom: "Less Sugar")
         
         menuCustomData = [custom1, custom2, custom3, custom4]
         

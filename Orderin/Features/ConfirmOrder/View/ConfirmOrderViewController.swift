@@ -13,7 +13,7 @@ class ConfirmOrderViewController: UIViewController {
     
     var viewModel = CellConfirmationViewModel()
     
-    var data: [MenuCustomizationDummyData] = []
+    var data: [OrderedMenuCustomizationDummyData] = []
     var rowHeight: CGFloat = 50
     
     // MARK: Order now Button View
@@ -31,6 +31,7 @@ class ConfirmOrderViewController: UIViewController {
         
     }()
     
+    // MARK: Sub Total Label
     var subtotalView: subTotalView = {
         
         let view = subTotalView()
@@ -40,6 +41,7 @@ class ConfirmOrderViewController: UIViewController {
         
     }()
     
+    // MARK: Table View dengan Table Number sebagai header dan notes sebagai footer
     let confirmMenuTableView: UITableView = {
         
         let table = UITableView()
@@ -175,6 +177,7 @@ extension ConfirmOrderViewController: UITableViewDelegate, UITableViewDataSource
         let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
         headerView.backgroundColor = .white
         
+        // MARK: Configuration Table Number Label
         let tableNumberlabel = UILabel()
         let actualTableNumber = UILabel()
         

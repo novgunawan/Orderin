@@ -11,7 +11,7 @@ import UIKit
 extension OptionalTableViewCell: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 32
+        return 55
     }
 
 
@@ -21,20 +21,32 @@ extension OptionalTableViewCell: UITableViewDelegate, UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellOptionalDetail = optionalTable.dequeueReusableCell(withIdentifier: OptionalDetailTableViewCell.identifier) as! OptionalDetailTableViewCell
+        
+        // MARK: Insert optional customization from Customization Model to the UI
         cellOptionalDetail.object = object[1].options[indexPath.row]
+//        cellOptionalDetail.priceObject = object[1].prices[indexPath.row]
         return cellOptionalDetail
     }
     
-    //DidSelect
+    // MARK: Select
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cellOptionalDetail = optionalTable.cellForRow(at: indexPath) as! OptionalDetailTableViewCell
         cellOptionalDetail.checkerUI.image = UIImage(named: "checked")
+        
+        // MARK: Insert customization that user tap to customizationMenuOrdered Model
+        cellOptionalDetail.customMenuOrderedObject?.options.append(cellOptionalDetail.object ?? "no customization")
     }
     
-    //DidDeselect
+    // MARK: Deselect
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cellOptionalDetail = optionalTable.cellForRow(at: indexPath) as! OptionalDetailTableViewCell
         cellOptionalDetail.checkerUI.image = UIImage(named: "unchecked")
+        
+        // TODO: Novi Validate belom bener
+        // MARK: Validate if custommizationMenuOrdered model is not nil, it has to be removed
+        if cellOptionalDetail.customMenuOrderedObject?.options != nil {
+            cellOptionalDetail.customMenuOrderedObject?.options.removeAll()
+        }
     }
     
     //Maximal Option

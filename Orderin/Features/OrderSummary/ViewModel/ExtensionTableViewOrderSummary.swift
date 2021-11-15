@@ -12,8 +12,8 @@ extension OrderSummaryViewController: UITableViewDelegate, UITableViewDataSource
     
     //MARK: - Setup Cell in Table View
     
-    //TO-DO: Logic for number of row
-    //TO-DO: get data in database for number of row
+    //TODO: Logic for number of row
+    //TODO: get data in database for number of row
     
     //Height Cell
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
