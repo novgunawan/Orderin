@@ -8,8 +8,8 @@
 import Foundation
 import UIKit
 
-        //TO-DO: Logic for number of row
-        //TO-DO: get data in database for number of row
+        //TODO: Logic for number of row
+        //TODO: get data in database for number of row
 
 extension OrderSummaryTableViewCell: UITableViewDelegate, UITableViewDataSource{
     

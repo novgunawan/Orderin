@@ -12,7 +12,7 @@ class OptionalTableViewCell: UITableViewCell {
     // TODO: Count of cell belum bisa dibuat dynamic
     @IBOutlet weak var optionalTable: UITableView!{
         didSet{
-            optionalTable.frame.size.height = (32 * 3 )//count of cell
+            optionalTable.frame.size.height = (55 * 3 )//count of cell
         }
     }
     @IBOutlet weak var maxLabel: UILabel!
@@ -20,7 +20,7 @@ class OptionalTableViewCell: UITableViewCell {
     @IBOutlet weak var viewCell: UIView!{
         didSet{
             //height view
-            viewCell.frame.size.height = 55 + (32 * 3)//count of cell
+            viewCell.frame.size.height = 55 + (55 * 3)//count of cell
             //corner radius
             viewCell.layer.cornerRadius = 5
             //shadow

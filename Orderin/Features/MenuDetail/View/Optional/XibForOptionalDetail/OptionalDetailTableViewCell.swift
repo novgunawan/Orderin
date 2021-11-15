@@ -9,8 +9,24 @@ import UIKit
 
 class OptionalDetailTableViewCell: UITableViewCell {
  
+    @IBOutlet weak var viewCell: UIView!{
+        didSet{
+            priceLabel.text = " "
+            if priceLabel.text == " "{
+                rpLabel.isHidden = true
+                viewCell.frame = CGRect(x: 0, y: 0,width: 342, height: 32)
+                optionalNameLabel.frame = CGRect(x: 0, y: 15, width: 264, height: 21)
+            }
+        }
+    }
+    
+    @IBOutlet weak var rpLabel: UILabel!
+    
     @IBOutlet weak var priceLabel: UILabel!
+    
     @IBOutlet weak var checkerUI: UIImageView!
+    
+  
     @IBOutlet weak var optionalNameLabel: UILabel!
     
     override func awakeFromNib() {

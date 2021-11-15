@@ -11,7 +11,7 @@ import UIKit
 extension OptionalTableViewCell: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 32
+        return 55
     }
 
 
@@ -24,7 +24,7 @@ extension OptionalTableViewCell: UITableViewDelegate, UITableViewDataSource{
         
         // MARK: Insert optional customization from Customization Model to the UI
         cellOptionalDetail.object = object[1].options[indexPath.row]
-        cellOptionalDetail.priceObject = object[1].prices[indexPath.row]
+//        cellOptionalDetail.priceObject = object[1].prices[indexPath.row]
         return cellOptionalDetail
     }
     
