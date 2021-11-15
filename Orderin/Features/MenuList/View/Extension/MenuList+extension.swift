@@ -51,10 +51,6 @@ extension MenuListViewController:  UISearchResultsUpdating, UISearchBarDelegate 
 
 extension MenuListViewController: UITableViewDelegate, UITableViewDataSource, CellDelegate {
   
-    func buttonTapped(tag: Int) {
-        // TODO: Show Menu detail based on index data
-    }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         if searchingState == true{
             return 1
@@ -133,7 +129,7 @@ extension MenuListViewController: UITableViewDelegate, UITableViewDataSource, Ce
             cell.dataModel = dummy
             cell.button.tag = indexPath.row
             cell.delegate = self
-            cell.button.addTarget(self, action: #selector(didAddButtonTapped), for: .touchUpInside)
+
             
         }
         else{
@@ -141,7 +137,7 @@ extension MenuListViewController: UITableViewDelegate, UITableViewDataSource, Ce
             cell.dataModel = dummy
             cell.button.tag = indexPath.row
             cell.delegate = self
-            cell.button.addTarget(self, action: #selector(didAddButtonTapped), for: .touchUpInside)
+      
             
         }
         
@@ -157,7 +153,9 @@ extension MenuListViewController: UITableViewDelegate, UITableViewDataSource, Ce
     }
     
     
-    @objc func didAddButtonTapped(){
+
+    func buttonTapped(tag: Int) {
+        // TODO: Show Menu detail based on index data
         let vc = MenuDetailViewController()
         self.present(vc, animated: true, completion: nil)
     }
