@@ -86,8 +86,9 @@ class ConfirmOrderViewController: UIViewController {
         orderButtonView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
         orderButtonView.heightAnchor.constraint(equalToConstant: view.frame.height / 8).isActive = true
         
-        setupTableViewConstraint()
+       
         setupTotalPriceConstraint()
+        setupTableViewConstraint()
     }
     
     // MARK: Add View
@@ -123,7 +124,7 @@ class ConfirmOrderViewController: UIViewController {
         confirmMenuTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         confirmMenuTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         confirmMenuTableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
-        confirmMenuTableView.bottomAnchor.constraint(equalTo: subtotalView.topAnchor, constant: 30).isActive = true
+        confirmMenuTableView.bottomAnchor.constraint(equalTo: subtotalView.topAnchor, constant: -21).isActive = true
         
     }
     
