@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct MenuCustomizationDummyData {
+struct OrderedMenuCustomizationDummyData {
     var custom: String
 }

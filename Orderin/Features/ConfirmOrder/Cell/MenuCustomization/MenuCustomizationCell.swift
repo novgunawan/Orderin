@@ -9,7 +9,7 @@ import UIKit
 
 class MenuCustomizationCell: UITableViewCell {
     
-    var whatMenuCustom: MenuCustomizationDummyData? {
+    var whatMenuCustom: OrderedMenuCustomizationDummyData? {
         didSet {
             changeText()
         }
