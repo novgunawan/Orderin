@@ -95,6 +95,11 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="numberTableLabel" destination="pYK-ex-d5v" id="vVl-a6-0Dt"/>
+                <outlet property="orderIDLabel" destination="g8j-Uc-n4z" id="p2v-kx-G4r"/>
+                <outlet property="timeStampLabel" destination="9YO-DC-W5f" id="3uV-vW-won"/>
+            </connections>
             <point key="canvasLocation" x="120.28985507246378" y="110.82589285714285"/>
         </tableViewCell>
     </objects>

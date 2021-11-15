@@ -104,10 +104,12 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="nameMenuLabel" destination="jJv-SH-KEA" id="yf3-dc-m1v"/>
                 <outlet property="normalPrice" destination="LtX-S4-lhg" id="JrJ-D7-xVX"/>
                 <outlet property="orderSummaryCellView" destination="H2p-sc-9uM" id="ZyZ-w1-OJf"/>
                 <outlet property="orderSummaryDetailTable" destination="QYV-Tr-ftG" id="NG5-bu-abs"/>
                 <outlet property="priceLabel" destination="6O1-Zq-uxV" id="e2p-TQ-l9b"/>
+                <outlet property="totalItemLabel" destination="gYO-Q0-lhw" id="xXG-Iu-GmB"/>
                 <outlet property="totalItemView" destination="yNO-rC-1oD" id="ga5-vP-OcH"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="109.82142857142857"/>

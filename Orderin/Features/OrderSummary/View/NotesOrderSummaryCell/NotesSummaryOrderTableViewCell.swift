@@ -9,7 +9,7 @@ import UIKit
 
 class NotesSummaryOrderTableViewCell: UITableViewCell {
 
-    //TO-DO: Get database for notes restaurant
+    //TO-DO: Get database for notes restaurant (menggunakan didset)
     @IBOutlet weak var notesTextField: UITextField!
     
     //create identifier XIB
