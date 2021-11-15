@@ -53,18 +53,6 @@ class ConfirmOrderViewController: UIViewController {
         
     }()
     
-    let notesTextField: UITextField = {
-        let notesTextField = UITextField()
-        
-        notesTextField.placeholder = "E.g: Add 1 more Bowl"
-        notesTextField.font = UIFont.systemFont(ofSize: 17)
-        notesTextField.borderStyle = UITextField.BorderStyle.roundedRect
-        notesTextField.frame = CGRect(x: 0, y: 0, width: 150, height: 20)
-        
-        return notesTextField
-        
-    }()
-    
     // MARK: App Lifecycle
     
     override func viewDidLoad() {
@@ -88,8 +76,10 @@ class ConfirmOrderViewController: UIViewController {
         orderButtonView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
         orderButtonView.heightAnchor.constraint(equalToConstant: view.frame.height / 8).isActive = true
         
-        setupTableViewConstraint()
+       
         setupTotalPriceConstraint()
+        setupTableViewConstraint()
+       
     }
     
     // MARK: Add View
@@ -107,11 +97,11 @@ class ConfirmOrderViewController: UIViewController {
         
         confirmMenuTableView.delegate = self
         confirmMenuTableView.dataSource = self
-        notesTextField.delegate = self
-        
         
         
         confirmMenuTableView.register(ConfirmMenuCell.self, forCellReuseIdentifier: Constant.ConfirmOrder.tableViewCellIdentifier)
+        
+        confirmMenuTableView.register(NotesView.self, forHeaderFooterViewReuseIdentifier: Constant.ConfirmOrder.notesView)
         
         
         rowHeight += CGFloat(25 * (data.count + 1))
@@ -125,7 +115,7 @@ class ConfirmOrderViewController: UIViewController {
         confirmMenuTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         confirmMenuTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         confirmMenuTableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
-        confirmMenuTableView.bottomAnchor.constraint(equalTo: subtotalView.topAnchor, constant: 30).isActive = true
+        confirmMenuTableView.bottomAnchor.constraint(equalTo: subtotalView.topAnchor, constant: -21).isActive = true
         
     }
     
@@ -136,6 +126,7 @@ class ConfirmOrderViewController: UIViewController {
         subtotalView.bottomAnchor.constraint(equalTo: orderButtonView.topAnchor, constant: 0).isActive = true
         subtotalView.heightAnchor.constraint(equalToConstant: 75).isActive = true
     }
+    
     
     func setupNavigationController() {
         navigationItem.title = "Confirm Order"
@@ -224,7 +215,12 @@ extension ConfirmOrderViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         
-        return notesTextField
+        UITableViewHeaderFooterView.appearance().tintColor = .white
+        
+        let textFieldView = confirmMenuTableView.dequeueReusableHeaderFooterView(withIdentifier: Constant.ConfirmOrder.notesView) as! NotesView
+        
+        
+        return textFieldView
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
