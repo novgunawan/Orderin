@@ -15,6 +15,7 @@ class OptionalTableViewCell: UITableViewCell {
             optionalTable.frame.size.height = (55 * 3 )//count of cell
         }
     }
+    //TODO: get data max from database
     @IBOutlet weak var maxLabel: UILabel!
     @IBOutlet weak var optionalTitleLabel: UILabel!
     @IBOutlet weak var viewCell: UIView!{
