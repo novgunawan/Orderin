@@ -7,6 +7,12 @@
 
 import UIKit
 
+protocol EditbuttonDelegate {
+    
+    func buttonEdit(tag: Int)
+}
+
+
 class FoodItemTableViewCell: UITableViewCell {
     
     // MARK: - UI Components Declaration
@@ -55,6 +61,7 @@ class FoodItemTableViewCell: UITableViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.font = UIFont(name: C.fontPoppinsSemibold, size: C.fontsizeBody)
         button.setTitleColor(C.hexStringToUIColor(hex: C.red50), for: .normal)
+        button.addTarget(self, action: #selector(didEditButtonTapped), for: .touchUpInside)
        
         
         return button
@@ -71,6 +78,8 @@ class FoodItemTableViewCell: UITableViewCell {
         return label
     }()
     
+    // MARK: - Delegate Declaration
+    var delegate: EditbuttonDelegate?
     
     // MARK: - Life Cycle
     
@@ -156,6 +165,12 @@ class FoodItemTableViewCell: UITableViewCell {
     }
     
     // MARK: - Logic
+    
+    @objc func didEditButtonTapped(_ sender: UIButton){
+        delegate?.buttonEdit(tag: sender.tag)
+
+    }
+    
     
   
 }
