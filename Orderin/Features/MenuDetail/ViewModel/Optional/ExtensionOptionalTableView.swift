@@ -11,7 +11,7 @@ import UIKit
 extension OptionalTableViewCell: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 32
+        return 55
     }
 
 

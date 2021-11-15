@@ -21,7 +21,7 @@ func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) ->
     }
     // MARK: Optional Table View Cell
     if indexPath.row < 2{
-        let HeightCell = 75 + (32 * CGFloat(customization[1].options.count))//count of cell
+        let HeightCell = 75 + (55 * CGFloat(customization[1].options.count))//count of cell
         return CGFloat(HeightCell)
     }
     if indexPath.row < 3{
