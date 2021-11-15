@@ -74,10 +74,10 @@ class OrderSummaryViewController: UIViewController {
 
     }
     
-    //back button
-    @IBAction func backButton(_ sender: Any) {
-        let vc = MenuDetailViewController()
-        vc.modalPresentationStyle = .formSheet
+    // Order Button Action
+    @IBAction func addOrderButtonDidTapped(_ sender: Any) {
+        let vc = MenuListViewController()
+        vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: false, completion: nil)
     }
 }

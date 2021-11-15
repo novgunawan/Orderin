@@ -15,7 +15,7 @@ class OptionalDetailTableViewCell: UITableViewCell {
             if priceLabel.text == " "{
                 rpLabel.isHidden = true
                 viewCell.frame = CGRect(x: 0, y: 0,width: 342, height: 32)
-                optionalNameLabel.frame = CGRect(x: 0, y: 15, width: 264, height: 21)
+                optionalNameLabel.frame = CGRect(x: 0, y: 16, width: 264, height: 21)
             }
         }
     }

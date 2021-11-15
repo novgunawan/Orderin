@@ -16,7 +16,7 @@ extension MenuDetailViewController: UITableViewDelegate, UITableViewDataSource{
 func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     // MARK: Choose Table View Cell
     if indexPath.row < 1{
-        let HeightCell = 75 + (32 * CGFloat(customization[0].options.count) )//count of cell
+        let HeightCell = 75 + (53 * CGFloat(customization[0].options.count) )//count of cell
         return CGFloat(HeightCell)
     }
     // MARK: Optional Table View Cell
@@ -69,6 +69,7 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
     
     //present order summary
     @objc func didButtonCartTapped(){
+        self.navigationController?.popViewController(animated: true)
         let vc = OrderSummaryViewController()
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
