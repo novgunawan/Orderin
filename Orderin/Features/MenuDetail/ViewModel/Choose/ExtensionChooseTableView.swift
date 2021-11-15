@@ -21,18 +21,29 @@ extension ChooseTableViewCell: UITableViewDelegate, UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellChooseDetail = chooseTable.dequeueReusableCell(withIdentifier: ChooseDetailTableViewCell.identifier) as! ChooseDetailTableViewCell
+        // MARK: Insert mandatory customization from Customization Model to the UI
         cellChooseDetail.object = object[0].options[indexPath.row]
         return cellChooseDetail
     }
     
-    //DidSelect
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    // MARK: Select cell
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         let cellChooseDetail = chooseTable.cellForRow(at: indexPath) as! ChooseDetailTableViewCell
         cellChooseDetail.checkerUI.image = UIImage(named: "checked")
+        
+        // MARK: Insert customization that user tap to customizationMenuOrdered Model
+        cellChooseDetail.customMenuOrderedObject?.options.append(cellChooseDetail.object ?? "no customization")
+        
     }
-    //DidDeselect
+    // MARK: Deselect cell
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cellChooseDetail = chooseTable.cellForRow(at: indexPath) as! ChooseDetailTableViewCell
         cellChooseDetail.checkerUI.image = UIImage(named: "unchecked")
+        
+        // TODO: Novi Validate belom bener
+        // MARK: Validate if custommizationMenuOrdered model is not nil, it has to be removed
+        if cellChooseDetail.customMenuOrderedObject?.options != nil {
+            cellChooseDetail.customMenuOrderedObject?.options.removeAll()
+        }
     }
 }
