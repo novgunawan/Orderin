@@ -22,7 +22,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="French Fries" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1BD-JN-9ow">
-                        <rect key="frame" x="0.0" y="7" width="264" height="21"/>
+                        <rect key="frame" x="0.0" y="5" width="264" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="0lF-rP-kCL"/>
                             <constraint firstAttribute="width" constant="264" id="SnQ-V6-Qm2"/>
@@ -53,15 +53,15 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="1BD-JN-9ow" firstAttribute="leading" secondItem="yqP-On-vna" secondAttribute="trailing" constant="-324" id="38U-dw-UWe"/>
+                    <constraint firstItem="yqP-On-vna" firstAttribute="leading" secondItem="OX2-OE-o6Y" secondAttribute="trailing" constant="8" symbolic="YES" id="8h1-kT-8Rg"/>
+                    <constraint firstAttribute="trailing" secondItem="yqP-On-vna" secondAttribute="trailing" constant="18" id="9uP-Q3-2Mo"/>
                     <constraint firstItem="yqP-On-vna" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="B9z-S7-Wrm"/>
                     <constraint firstItem="OX2-OE-o6Y" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Gt2-Ng-hJ4"/>
                     <constraint firstAttribute="bottom" secondItem="OX2-OE-o6Y" secondAttribute="bottom" constant="6" id="PiL-Zf-9JC"/>
-                    <constraint firstItem="yqP-On-vna" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="304" id="Tfy-k2-5ng"/>
-                    <constraint firstAttribute="trailing" secondItem="OX2-OE-o6Y" secondAttribute="trailing" constant="46" id="Xtx-h2-vzk"/>
                     <constraint firstAttribute="bottom" secondItem="yqP-On-vna" secondAttribute="bottom" constant="6" id="dDv-bB-l5J"/>
-                    <constraint firstItem="OX2-OE-o6Y" firstAttribute="leading" secondItem="yqP-On-vna" secondAttribute="trailing" constant="-99" id="eeN-Wr-VlH"/>
-                    <constraint firstItem="1BD-JN-9ow" firstAttribute="firstBaseline" secondItem="OX2-OE-o6Y" secondAttribute="baseline" id="sZ3-v2-2Lr"/>
+                    <constraint firstItem="1BD-JN-9ow" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="eSz-3e-1Fe"/>
+                    <constraint firstAttribute="bottom" secondItem="OX2-OE-o6Y" secondAttribute="bottom" constant="6" id="tSx-bb-a8j"/>
+                    <constraint firstItem="OX2-OE-o6Y" firstAttribute="baseline" secondItem="1BD-JN-9ow" secondAttribute="firstBaseline" id="ytC-ef-lRC"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

@@ -39,10 +39,10 @@
                 <color key="backgroundColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="py9-Z2-zbn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="0A0-jQ-TcS"/>
+                    <constraint firstAttribute="trailing" secondItem="py9-Z2-zbn" secondAttribute="trailing" constant="17" id="6B9-AZ-M7P"/>
                     <constraint firstItem="F6L-T2-Zs5" firstAttribute="top" secondItem="py9-Z2-zbn" secondAttribute="top" constant="-1" id="No2-Vy-3xO"/>
-                    <constraint firstItem="py9-Z2-zbn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="305" id="eQY-R8-oNe"/>
+                    <constraint firstItem="F6L-T2-Zs5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Zhg-fY-w41"/>
                     <constraint firstAttribute="bottom" secondItem="py9-Z2-zbn" secondAttribute="bottom" constant="6" id="pvQ-lu-bOy"/>
-                    <constraint firstItem="F6L-T2-Zs5" firstAttribute="leading" secondItem="py9-Z2-zbn" secondAttribute="trailing" constant="-325" id="xu1-5P-ArR"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

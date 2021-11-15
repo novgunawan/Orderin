@@ -16,13 +16,23 @@
                 <rect key="frame" x="0.0" y="0.0" width="374" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="No Notes" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pYU-5E-z4C">
+                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="No Notes" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pYU-5E-z4C">
                         <rect key="frame" x="13" y="4" width="349" height="34"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="pYU-5E-z4C" secondAttribute="height" multiplier="349:34" id="Tzw-2Z-GNq"/>
+                            <constraint firstAttribute="height" constant="34" id="vBR-Xu-6Zu"/>
+                            <constraint firstAttribute="width" constant="349" id="yoa-wO-4Ml"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                     </textField>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="pYU-5E-z4C" secondAttribute="trailing" constant="12" id="B6p-66-XaO"/>
+                    <constraint firstItem="pYU-5E-z4C" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="13" id="SWL-FK-Hkh"/>
+                    <constraint firstItem="pYU-5E-z4C" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="Tka-9U-iag"/>
+                    <constraint firstAttribute="bottom" secondItem="pYU-5E-z4C" secondAttribute="bottom" constant="5" id="zlY-OB-o2x"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>

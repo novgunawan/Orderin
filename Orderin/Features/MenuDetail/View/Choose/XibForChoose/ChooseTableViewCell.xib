@@ -52,6 +52,11 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="0mw-3F-zCr">
                                 <rect key="frame" x="8" y="46" width="342" height="32"/>
                                 <color key="backgroundColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="342" id="EQf-2t-tVQ"/>
+                                    <constraint firstAttribute="width" secondItem="0mw-3F-zCr" secondAttribute="height" multiplier="171:16" id="PIl-wj-BNB"/>
+                                    <constraint firstAttribute="height" constant="32" id="nxs-sY-9cf"/>
+                                </constraints>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>

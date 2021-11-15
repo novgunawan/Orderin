@@ -21,20 +21,30 @@
                 <rect key="frame" x="0.0" y="0.0" width="220" height="20"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Put more fries" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dd-ZA-YCH">
-                        <rect key="frame" x="0.0" y="0.0" width="90" height="19"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Put more fries" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dd-ZA-YCH">
+                        <rect key="frame" x="0.0" y="0.0" width="220" height="19"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="220" id="HUP-kK-teC"/>
+                            <constraint firstAttribute="height" constant="19" id="Ty7-Lm-Cls"/>
+                            <constraint firstAttribute="width" secondItem="1dd-ZA-YCH" secondAttribute="height" multiplier="220:19" id="ZPm-sc-peQ"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="13"/>
                         <color key="textColor" red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="1dd-ZA-YCH" secondAttribute="trailing" id="Ek9-T7-eE9"/>
+                    <constraint firstItem="1dd-ZA-YCH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Goe-pv-Tpa"/>
+                    <constraint firstAttribute="bottom" secondItem="1dd-ZA-YCH" secondAttribute="bottom" constant="1" id="ZN8-Ez-pGI"/>
+                    <constraint firstItem="1dd-ZA-YCH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="pGs-Qi-u4Q"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="noteforMenu" destination="1dd-ZA-YCH" id="w9a-Qd-Per"/>
             </connections>
-            <point key="canvasLocation" x="132" y="102"/>
+            <point key="canvasLocation" x="131.8840579710145" y="101.78571428571428"/>
         </tableViewCell>
     </objects>
 </document>

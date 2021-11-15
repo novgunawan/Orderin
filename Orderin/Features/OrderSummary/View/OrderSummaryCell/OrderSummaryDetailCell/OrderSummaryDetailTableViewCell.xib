@@ -21,17 +21,27 @@
                 <rect key="frame" x="0.0" y="0.0" width="220" height="20"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BBQ Sauce" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YhF-da-4Zp">
-                        <rect key="frame" x="0.0" y="0.0" width="162" height="24"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BBQ Sauce" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YhF-da-4Zp">
+                        <rect key="frame" x="0.0" y="0.0" width="220" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="TrW-yr-Et1"/>
+                            <constraint firstAttribute="width" constant="220" id="ml8-mw-I7M"/>
+                            <constraint firstAttribute="width" secondItem="YhF-da-4Zp" secondAttribute="height" multiplier="55:6" id="sAi-wf-AfV"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="YhF-da-4Zp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="aeg-ia-7PW"/>
+                    <constraint firstAttribute="bottom" secondItem="YhF-da-4Zp" secondAttribute="bottom" constant="-4" id="nIV-fH-pHX"/>
+                    <constraint firstItem="YhF-da-4Zp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="xwT-dd-Ll3"/>
+                    <constraint firstAttribute="trailing" secondItem="YhF-da-4Zp" secondAttribute="trailing" id="zsl-gI-RaV"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <point key="canvasLocation" x="242.75362318840581" y="109.48660714285714"/>
+            <point key="canvasLocation" x="242.0289855072464" y="109.15178571428571"/>
         </tableViewCell>
     </objects>
 </document>

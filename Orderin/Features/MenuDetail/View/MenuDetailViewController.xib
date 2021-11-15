@@ -114,7 +114,8 @@
                         <constraint firstAttribute="trailing" secondItem="knT-ME-Jnk" secondAttribute="trailing" id="GTc-fx-nBH"/>
                         <constraint firstItem="knT-ME-Jnk" firstAttribute="top" secondItem="3aX-FI-hlq" secondAttribute="top" id="Oua-yg-XHu"/>
                         <constraint firstAttribute="bottom" secondItem="knT-ME-Jnk" secondAttribute="bottom" constant="8" id="SVv-Mb-EVL"/>
-                        <constraint firstItem="knT-ME-Jnk" firstAttribute="leading" secondItem="3aX-FI-hlq" secondAttribute="leading" id="ceg-Qh-YMl"/>
+                        <constraint firstAttribute="bottom" secondItem="knT-ME-Jnk" secondAttribute="bottom" constant="8" id="VnN-Rf-rCa"/>
+                        <constraint firstItem="knT-ME-Jnk" firstAttribute="top" secondItem="3aX-FI-hlq" secondAttribute="top" id="bCA-yb-qYr"/>
                         <constraint firstItem="knT-ME-Jnk" firstAttribute="centerX" secondItem="3aX-FI-hlq" secondAttribute="centerX" id="nje-9u-zwF"/>
                         <constraint firstAttribute="bottom" secondItem="knT-ME-Jnk" secondAttribute="bottom" constant="8" id="t2R-Kk-M5P"/>
                     </constraints>
