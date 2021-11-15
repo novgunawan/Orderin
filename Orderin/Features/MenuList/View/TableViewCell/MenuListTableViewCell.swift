@@ -186,6 +186,16 @@ class MenuListTableViewCell: UITableViewCell {
             priceLabel.textColor = C.hexStringToUIColor(hex: C.gray70)
             button.isHidden  = true
         }
+        else{
+            self.isUserInteractionEnabled = true
+            card.backgroundColor = UIColor(named: "white")
+            card.layer.opacity = 1.0
+            titleLabel.textColor = C.hexStringToUIColor(hex: C.black90)
+            descriptionLabel.textColor = C.hexStringToUIColor(hex: C.black90)
+//            priceLabel.text = "Sold Out"
+            priceLabel.textColor = C.hexStringToUIColor(hex: C.black90)
+            button.isHidden  = false
+        }
         
         image.image = data.image
         titleLabel.text = data.title
