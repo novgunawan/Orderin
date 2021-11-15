@@ -9,6 +9,7 @@ import Foundation
 struct Customization {
     let custName: String
     let options: [String]
+    let prices: [Int]?
     let notes: String?
     
     //TODO: Add customization to user default

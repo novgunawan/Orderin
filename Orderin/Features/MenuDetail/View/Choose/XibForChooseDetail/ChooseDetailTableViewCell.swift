@@ -34,6 +34,8 @@ class ChooseDetailTableViewCell: UITableViewCell {
         }
     }
     
+    var customMenuOrderedObject: CustomizationMenuOrdered?
+    
     func setupCell() {
         guard let object = object else {return}
         chooseName.text = object

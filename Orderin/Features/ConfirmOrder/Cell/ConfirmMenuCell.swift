@@ -10,7 +10,7 @@ import UIKit
 class ConfirmMenuCell: UITableViewCell {
     
     var menuCustomVM = CellConfirmationViewModel()
-    var data: [MenuCustomizationDummyData] = []
+    var data: [OrderedMenuCustomizationDummyData] = []
     var delegate: editButtonDelegate?
     
     var quantitiyLabel: UILabel = {

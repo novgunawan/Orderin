@@ -46,6 +46,7 @@
             <connections>
                 <outlet property="checkerUI" destination="yqP-On-vna" id="UMR-YO-8lB"/>
                 <outlet property="optionalNameLabel" destination="1BD-JN-9ow" id="8Bc-ul-CPw"/>
+                <outlet property="priceLabel" destination="OX2-OE-o6Y" id="UXf-6P-IR9"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="116.51785714285714"/>
         </tableViewCell>

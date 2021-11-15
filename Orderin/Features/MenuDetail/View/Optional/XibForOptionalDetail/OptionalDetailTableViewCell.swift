@@ -9,6 +9,7 @@ import UIKit
 
 class OptionalDetailTableViewCell: UITableViewCell {
  
+    @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var checkerUI: UIImageView!
     
     @IBOutlet weak var optionalNameLabel: UILabel!
@@ -35,8 +36,19 @@ class OptionalDetailTableViewCell: UITableViewCell {
         }
     }
     
+    var priceObject: String? {
+        didSet {
+            setupPrice()
+        }
+    }
+    var customMenuOrderedObject: CustomizationMenuOrdered?
+    
     func setupCell() {
         guard let object = object else {return}
         optionalNameLabel.text = object
+    }
+    func setupPrice() {
+        guard let object = priceObject else {return}
+
     }
 }
