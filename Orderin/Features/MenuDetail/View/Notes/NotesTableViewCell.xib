@@ -21,13 +21,23 @@
                 <rect key="frame" x="0.0" y="0.0" width="359" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add notes..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I0l-Q1-hCj">
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add notes..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I0l-Q1-hCj">
                         <rect key="frame" x="4" y="4" width="352" height="34"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="352" id="06y-ha-k0i"/>
+                            <constraint firstAttribute="width" secondItem="I0l-Q1-hCj" secondAttribute="height" multiplier="176:17" id="9bZ-pi-LlC"/>
+                            <constraint firstAttribute="height" constant="34" id="Thj-sa-KZ5"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                     </textField>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="I0l-Q1-hCj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="4" id="0Qa-mn-ZZM"/>
+                    <constraint firstItem="I0l-Q1-hCj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="9IM-mx-FrM"/>
+                    <constraint firstAttribute="bottom" secondItem="I0l-Q1-hCj" secondAttribute="bottom" constant="5" id="cb3-vE-mUy"/>
+                    <constraint firstAttribute="trailing" secondItem="I0l-Q1-hCj" secondAttribute="trailing" constant="3" id="riI-9K-0lE"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>

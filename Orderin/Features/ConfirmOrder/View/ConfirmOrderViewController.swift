@@ -9,17 +9,21 @@ import UIKit
 
 class ConfirmOrderViewController: UIViewController {
     
+    // MARK: Confirm Page
+    
     var viewModel = CellConfirmationViewModel()
     
     var data: [OrderedMenuCustomizationDummyData] = []
     var rowHeight: CGFloat = 50
     
+    // MARK: Order now Button View
     lazy var orderButtonView: OrderNowButton = {
         
         let view = OrderNowButton()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 13.0
         view.backgroundColor = UIColor(named: "broken white")
+        
         
         // MARK: Adding Tap Recognizer for the Button
         view.orderNowButton.addTarget(self, action: #selector(orderDidTap), for: .touchUpInside)
@@ -61,6 +65,8 @@ class ConfirmOrderViewController: UIViewController {
         
     }()
     
+    // MARK: App Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         bindingData()
@@ -85,6 +91,8 @@ class ConfirmOrderViewController: UIViewController {
         setupTableViewConstraint()
         setupTotalPriceConstraint()
     }
+    
+    // MARK: Add View
     
     func setupAddView() {
         
@@ -139,16 +147,18 @@ class ConfirmOrderViewController: UIViewController {
                                                 message: "Once you made your order, you only have 5 seconds to cancel it.",
                                                 preferredStyle: .alert)
         
-        
-        
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .default))
-        alertController.addAction(UIAlertAction(title: "Order", style: .default, handler: { _  in
+        let orderAlert = UIAlertAction(title: "Order", style: .default, handler: { _  in
             
             let cancelViewController = CancelOrderViewController(nibName: Constant.CancelOrder.cancelViewController, bundle: nil)
             cancelViewController.modalPresentationStyle = .fullScreen
             self.present(cancelViewController, animated: true, completion: nil)
             
-        }))
+        })
+        
+        orderAlert.setValue(UIColor(named: "blue alert"), forKey: "titleTextColor")
+        
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .destructive))
+        alertController.addAction(orderAlert)
         
         self.present(alertController, animated: true, completion: nil)
     }
@@ -223,7 +233,7 @@ extension ConfirmOrderViewController: UITableViewDelegate, UITableViewDataSource
     
     @objc private func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            confirmMenuTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height + confirmMenuTableView.rowHeight, right: 0)
+            confirmMenuTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height , right: 0)
         }
     }
     

@@ -21,7 +21,7 @@ struct CellConfirmationViewModel {
         let custom3 = OrderedMenuCustomizationDummyData(custom: "More Ice")
         let custom4 = OrderedMenuCustomizationDummyData(custom: "Less Sugar")
         
-        menuCustomData = [custom1, custom2]
+        menuCustomData = [custom1, custom2, custom3, custom4]
         
         completion(self.menuCustomData)
     }

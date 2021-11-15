@@ -11,8 +11,8 @@ class OptionalDetailTableViewCell: UITableViewCell {
  
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var checkerUI: UIImageView!
-    
     @IBOutlet weak var optionalNameLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
