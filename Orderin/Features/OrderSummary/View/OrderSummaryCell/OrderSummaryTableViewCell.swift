@@ -15,6 +15,7 @@ class OrderSummaryTableViewCell: UITableViewCell {
             orderSummaryDetailTable.frame.size.height = (20 * 3)
         }
     }
+    
     //UI Cell View
     @IBOutlet weak var orderSummaryCellView: UIView!{
         didSet{
@@ -22,6 +23,7 @@ class OrderSummaryTableViewCell: UITableViewCell {
             orderSummaryCellView.layer.cornerRadius = 13
         }
     }
+    
     //UI Total Item View
     @IBOutlet weak var totalItemView: UIView!{
         didSet{
@@ -31,7 +33,7 @@ class OrderSummaryTableViewCell: UITableViewCell {
         }
     }
     
-    //Normal Price Label
+    //TO-DO: Get database for normal price (menggunakan didset)
     @IBOutlet weak var normalPrice: UILabel!{
         didSet{
             //Content Normal Price (GET DATA FROM DATABASE HERE)
@@ -45,6 +47,7 @@ class OrderSummaryTableViewCell: UITableViewCell {
         }
     }
     
+    //TO-DO: Get database for discount price (menggunakan didset)
     @IBOutlet weak var priceLabel: UILabel!{
         didSet{
             //If Statement for promo or not (position price label)
@@ -57,11 +60,19 @@ class OrderSummaryTableViewCell: UITableViewCell {
         }
     }
     
+    //TO-DO: Get database for total item (menggunakan didset)
+    @IBOutlet weak var totalItemLabel: UILabel!
+    
+    
     //create identifier XIB
     static let identifier = "cellOrderSummary"
     static func nib() -> UINib{
         return UINib(nibName: "OrderSummaryTableViewCell", bundle: nil)
     }
+    
+    //TO-DO: Get database for menu name label (menggunakan didset)
+    @IBOutlet weak var nameMenuLabel: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -9,6 +9,9 @@ import UIKit
 
 class OrderSummaryDetailTableViewCell: UITableViewCell {
 
+    //TO-DO: Get database for detail menu (menggunakan didset)
+    @IBOutlet weak var detailMenuLabel: UILabel!
+    
     //xib register
     static let identifier = "cellOrderSummaryDetail"
     static func nib() -> UINib{
