@@ -9,13 +9,13 @@ import UIKit
 
 class OrderIDTableViewCell: UITableViewCell {
     
-    //TO-DO: Get database for order id (menggunakan didset)
+    //TODO: Get database for order id (menggunakan didset)
     @IBOutlet weak var orderIDLabel: UILabel!
     
-    //TO-DO: Get database for time stamp (menggunakan didset)
+    //TODO: Get database for time stamp (menggunakan didset)
     @IBOutlet weak var timeStampLabel: UILabel!
     
-    //TO-DO: Get database for table number (menggunakan didset)
+    //TODO: Get database for table number (menggunakan didset)
     @IBOutlet weak var numberTableLabel: UILabel!
     
     //create identifier XIB

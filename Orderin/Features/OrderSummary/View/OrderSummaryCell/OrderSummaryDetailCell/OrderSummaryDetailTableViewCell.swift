@@ -9,7 +9,7 @@ import UIKit
 
 class OrderSummaryDetailTableViewCell: UITableViewCell {
 
-    //TO-DO: Get database for detail menu (menggunakan didset)
+    //TODO: Get database for detail menu (menggunakan didset)
     @IBOutlet weak var detailMenuLabel: UILabel!
     
     //xib register

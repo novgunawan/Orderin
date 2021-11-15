@@ -33,7 +33,7 @@ class OrderSummaryTableViewCell: UITableViewCell {
         }
     }
     
-    //TO-DO: Get database for normal price (menggunakan didset)
+    //TODO: Get database for normal price (menggunakan didset)
     @IBOutlet weak var normalPrice: UILabel!{
         didSet{
             //Content Normal Price (GET DATA FROM DATABASE HERE)
@@ -47,7 +47,7 @@ class OrderSummaryTableViewCell: UITableViewCell {
         }
     }
     
-    //TO-DO: Get database for discount price (menggunakan didset)
+    //TODO: Get database for discount price (menggunakan didset)
     @IBOutlet weak var priceLabel: UILabel!{
         didSet{
             //If Statement for promo or not (position price label)
@@ -60,7 +60,7 @@ class OrderSummaryTableViewCell: UITableViewCell {
         }
     }
     
-    //TO-DO: Get database for total item (menggunakan didset)
+    //TODO: Get database for total item (menggunakan didset)
     @IBOutlet weak var totalItemLabel: UILabel!
     
     
@@ -70,7 +70,7 @@ class OrderSummaryTableViewCell: UITableViewCell {
         return UINib(nibName: "OrderSummaryTableViewCell", bundle: nil)
     }
     
-    //TO-DO: Get database for menu name label (menggunakan didset)
+    //TODO: Get database for menu name label (menggunakan didset)
     @IBOutlet weak var nameMenuLabel: UILabel!
     
     
