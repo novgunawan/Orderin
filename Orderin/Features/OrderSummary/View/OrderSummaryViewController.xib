@@ -20,9 +20,13 @@
             <connections>
                 <outlet property="addOrderButton" destination="kph-Sz-hS2" id="IFZ-qg-ow1"/>
                 <outlet property="bottomView" destination="753-jB-7t8" id="U5k-pT-7E4"/>
+                <outlet property="discountPrice" destination="mhi-aH-Hyx" id="Q6H-If-SFJ"/>
                 <outlet property="normalPrice" destination="KcM-nq-WuO" id="fkR-bU-GGe"/>
                 <outlet property="orderSummaryTable" destination="xkD-46-ihw" id="4Af-HL-zlF"/>
                 <outlet property="priceView" destination="OGO-1K-8TU" id="Xs4-6G-JFg"/>
+                <outlet property="serviceTax" destination="VVd-yf-kd6" id="5oJ-pq-3xs"/>
+                <outlet property="taxPrice" destination="SuW-3K-mVF" id="5fc-6P-I7s"/>
+                <outlet property="totalPrice" destination="3GX-s0-XLU" id="DHx-nI-tIs"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
