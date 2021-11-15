@@ -9,17 +9,21 @@ import UIKit
 
 class ConfirmOrderViewController: UIViewController {
     
+    // MARK: Confirm Page
+    
     var viewModel = CellConfirmationViewModel()
     
     var data: [MenuCustomizationDummyData] = []
     var rowHeight: CGFloat = 50
     
+    // MARK: Order now Button View
     lazy var orderButtonView: OrderNowButton = {
         
         let view = OrderNowButton()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 13.0
         view.backgroundColor = UIColor(named: "broken white")
+        
         
         // MARK: Adding Tap Recognizer for the Button
         view.orderNowButton.addTarget(self, action: #selector(orderDidTap), for: .touchUpInside)
@@ -59,6 +63,8 @@ class ConfirmOrderViewController: UIViewController {
         
     }()
     
+    // MARK: App Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         bindingData()
@@ -83,6 +89,8 @@ class ConfirmOrderViewController: UIViewController {
         setupTableViewConstraint()
         setupTotalPriceConstraint()
     }
+    
+    // MARK: Add View
     
     func setupAddView() {
         
@@ -222,7 +230,7 @@ extension ConfirmOrderViewController: UITableViewDelegate, UITableViewDataSource
     
     @objc private func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            confirmMenuTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height + confirmMenuTableView.rowHeight, right: 0)
+            confirmMenuTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height , right: 0)
         }
     }
     
