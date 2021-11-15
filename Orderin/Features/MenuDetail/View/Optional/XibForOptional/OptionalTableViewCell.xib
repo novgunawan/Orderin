@@ -39,7 +39,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FRT-oq-PRa">
-                                <rect key="frame" x="8" y="46" width="342" height="32"/>
+                                <rect key="frame" x="10" y="46" width="342" height="32"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -79,7 +79,7 @@
                         <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="FRT-oq-PRa" firstAttribute="top" secondItem="nib-NA-Ow3" secondAttribute="bottom" constant="2" id="AH5-nV-IvE"/>
-                            <constraint firstItem="FRT-oq-PRa" firstAttribute="leading" secondItem="Tex-ha-CHS" secondAttribute="leadingMargin" id="BhK-kZ-goC"/>
+                            <constraint firstItem="FRT-oq-PRa" firstAttribute="leading" secondItem="Tex-ha-CHS" secondAttribute="leadingMargin" constant="2" id="BhK-kZ-goC"/>
                             <constraint firstItem="FRT-oq-PRa" firstAttribute="top" secondItem="xzX-oP-Fxy" secondAttribute="bottom" constant="14" id="EXw-LR-1Il"/>
                             <constraint firstItem="X6x-z5-mZ7" firstAttribute="top" secondItem="Tex-ha-CHS" secondAttribute="top" constant="28" id="GZg-XQ-ZOf"/>
                             <constraint firstItem="X6x-z5-mZ7" firstAttribute="leading" secondItem="xzX-oP-Fxy" secondAttribute="trailing" constant="-294" id="IRW-Zg-RdK"/>
@@ -88,7 +88,7 @@
                             <constraint firstItem="xzX-oP-Fxy" firstAttribute="top" secondItem="Tex-ha-CHS" secondAttribute="top" constant="8" id="OVw-dD-cVe"/>
                             <constraint firstItem="xzX-oP-Fxy" firstAttribute="leading" secondItem="Tex-ha-CHS" secondAttribute="leading" constant="10" id="iGf-G1-NOC"/>
                             <constraint firstAttribute="width" constant="358" id="tYe-Rr-GnY"/>
-                            <constraint firstAttribute="trailing" secondItem="FRT-oq-PRa" secondAttribute="trailing" constant="8" id="wP7-hK-ffr"/>
+                            <constraint firstAttribute="trailing" secondItem="FRT-oq-PRa" secondAttribute="trailing" constant="6" id="wP7-hK-ffr"/>
                         </constraints>
                     </view>
                 </subviews>

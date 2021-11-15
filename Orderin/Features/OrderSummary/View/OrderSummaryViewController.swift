@@ -76,8 +76,15 @@ class OrderSummaryViewController: UIViewController {
     
     // Order Button Action
     @IBAction func addOrderButtonDidTapped(_ sender: Any) {
-        let vc = MenuListViewController()
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: false, completion: nil)
+        presentingViewController?.presentingViewController?.dismiss(animated: true){
+            self.popToMenuList()
+         }
     }
+    
+    func popToMenuList() {
+        print("menu list")
+//        self.dismiss(animated: true, completion: nil)
+//        self.navigationController?.popViewController(animated: true)
+        _ = navigationController?.popToRootViewController(animated: true)
+        }
 }

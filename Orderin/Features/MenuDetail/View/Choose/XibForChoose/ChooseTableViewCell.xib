@@ -50,7 +50,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="0mw-3F-zCr">
-                                <rect key="frame" x="8" y="46" width="342" height="32"/>
+                                <rect key="frame" x="10" y="46" width="342" height="32"/>
                                 <color key="backgroundColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="342" id="EQf-2t-tVQ"/>
@@ -61,7 +61,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="0mw-3F-zCr" firstAttribute="leading" secondItem="puG-Pc-iF6" secondAttribute="leadingMargin" id="6wm-WS-8pY"/>
+                            <constraint firstItem="0mw-3F-zCr" firstAttribute="leading" secondItem="puG-Pc-iF6" secondAttribute="leadingMargin" constant="2" id="6wm-WS-8pY"/>
                             <constraint firstAttribute="width" secondItem="puG-Pc-iF6" secondAttribute="height" multiplier="179:40" id="6xj-fM-huA"/>
                             <constraint firstAttribute="width" constant="358" id="JcM-Vi-8qq"/>
                             <constraint firstItem="cPa-Gk-GTv" firstAttribute="centerY" secondItem="OeC-MP-SG4" secondAttribute="centerY" constant="16" id="W4R-qK-Dft"/>
@@ -70,7 +70,7 @@
                             <constraint firstAttribute="bottom" secondItem="0mw-3F-zCr" secondAttribute="bottom" constant="2" id="s0Z-o3-ecD"/>
                             <constraint firstItem="0mw-3F-zCr" firstAttribute="top" secondItem="cPa-Gk-GTv" secondAttribute="bottom" constant="2" id="tvZ-t3-RGZ"/>
                             <constraint firstItem="cPa-Gk-GTv" firstAttribute="leading" secondItem="OeC-MP-SG4" secondAttribute="trailing" constant="-345" id="vK7-sj-Dex"/>
-                            <constraint firstItem="0mw-3F-zCr" firstAttribute="trailing" secondItem="puG-Pc-iF6" secondAttribute="trailingMargin" id="wc2-Og-SuM"/>
+                            <constraint firstItem="0mw-3F-zCr" firstAttribute="trailing" secondItem="puG-Pc-iF6" secondAttribute="trailingMargin" constant="2" id="wc2-Og-SuM"/>
                             <constraint firstAttribute="height" constant="80" id="zWC-ip-1iy"/>
                         </constraints>
                     </view>
