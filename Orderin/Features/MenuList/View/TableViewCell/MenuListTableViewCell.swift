@@ -176,10 +176,22 @@ class MenuListTableViewCell: UITableViewCell {
         
         guard let data = dataModel else { return  }
         
+        if !data.availability{
+            self.isUserInteractionEnabled = false
+            card.backgroundColor = C.hexStringToUIColor(hex: C.gray50)
+            card.layer.opacity = 0.6
+            titleLabel.textColor = C.hexStringToUIColor(hex: C.gray70)
+            descriptionLabel.textColor = C.hexStringToUIColor(hex: C.gray70)
+            priceLabel.text = "Sold Out"
+            priceLabel.textColor = C.hexStringToUIColor(hex: C.gray70)
+            button.isHidden  = true
+        }
+        
         image.image = data.image
         titleLabel.text = data.title
         descriptionLabel.text = data.description
         priceLabel.text = data.price
+        
     }
     
 }

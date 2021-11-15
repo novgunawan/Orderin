@@ -20,7 +20,7 @@ struct MenuListViewModel {
         // TODO: under develop
    
         let data1 = Menu(category: .appetizer, MenuList: [
-            MenuListModel(menuID:"XYZ123",image: UIImage(named: "french-fries")!, title: "French Fries", description: "ini kentang enak banget", price: "Rp25.000",availability: true),
+            MenuListModel(menuID:"XYZ123",image: UIImage(named: "french-fries")!, title: "French Fries", description: "ini kentang enak banget", price: "Rp25.000",availability: false),
             MenuListModel(menuID:"XYZ456",image: UIImage(named: "salad")!, title: "Salad", description: "ini salad enak banget", price: "Rp45.000", availability: true),
             MenuListModel(menuID: "XYZ456",image: UIImage(named: "sausages")!, title: "Sausages", description: "ini sosis enak banget", price: "Rp30.000", availability: true),
            ]
@@ -58,7 +58,7 @@ struct MenuListViewModel {
     
     mutating func fetchMenuWithoutCategory(completion: @escaping ([MenuListModel])->Void){
         
-        let data1 =  MenuListModel(menuID:"XYZ123",image: UIImage(named: "french-fries")!, title: "French Fries", description: "ini kentang enak banget", price: "Rp25.000",availability: true)
+        let data1 =  MenuListModel(menuID:"XYZ123",image: UIImage(named: "french-fries")!, title: "French Fries", description: "ini kentang enak banget", price: "Rp25.000",availability: false)
         
         let data2 =  MenuListModel(menuID:"XYZ456",image: UIImage(named: "salad")!, title: "Salad", description: "ini salad enak banget", price: "Rp45.000", availability: true)
         

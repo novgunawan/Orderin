@@ -129,8 +129,7 @@ extension MenuListViewController: UITableViewDelegate, UITableViewDataSource, Ce
             cell.dataModel = dummy
             cell.button.tag = indexPath.row
             cell.delegate = self
-
-            
+                        
         }
         else{
             let dummy = data[indexPath.section].MenuList[indexPath.row]
