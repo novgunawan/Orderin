@@ -62,9 +62,10 @@ class ConfirmOrderViewController: UIViewController {
         setupNavigationController()
         setupAddView()
         dismissKeyboard()
-        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
         
     }
     
@@ -76,10 +77,10 @@ class ConfirmOrderViewController: UIViewController {
         orderButtonView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
         orderButtonView.heightAnchor.constraint(equalToConstant: view.frame.height / 8).isActive = true
         
-       
+        
         setupTotalPriceConstraint()
         setupTableViewConstraint()
-       
+        
     }
     
     // MARK: Add View
@@ -130,6 +131,16 @@ class ConfirmOrderViewController: UIViewController {
     
     func setupNavigationController() {
         navigationItem.title = "Confirm Order"
+    }
+    
+    @objc private func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            confirmMenuTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height/3, right: 0)
+        }
+    }
+    
+    @objc private func keyboardWillHide(notification: NSNotification) {
+        confirmMenuTableView.contentInset = .zero
     }
     
     // MARK: Function when button order are tap ( Not Finished )
@@ -219,22 +230,13 @@ extension ConfirmOrderViewController: UITableViewDelegate, UITableViewDataSource
         
         let textFieldView = confirmMenuTableView.dequeueReusableHeaderFooterView(withIdentifier: Constant.ConfirmOrder.notesView) as! NotesView
         
+        textFieldView.notesTextField.delegate = self
         
         return textFieldView
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 55
-    }
-    
-    @objc private func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            confirmMenuTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height/2 , right: 0)
-        }
-    }
-    
-    @objc private func keyboardWillHide(notification: NSNotification) {
-        confirmMenuTableView.contentInset = .zero
     }
 }
 
