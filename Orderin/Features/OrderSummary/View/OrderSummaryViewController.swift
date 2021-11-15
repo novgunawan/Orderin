@@ -31,7 +31,7 @@ class OrderSummaryViewController: UIViewController {
     }
     
     //UI Normal Price
-    // TO-DO: Get data normal price in database here
+    // TODO: Get data normal price in database here
     @IBOutlet weak var normalPrice: UILabel!{
         didSet{
             let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: normalPrice.text ?? "")
@@ -40,16 +40,16 @@ class OrderSummaryViewController: UIViewController {
         }
     }
     
-    // TO-DO: Get data discount price in database here (use didset)
+    // TODO: Get data discount price in database here (use didset)
     @IBOutlet weak var discountPrice: UILabel!
     
-    // TO-DO: Get data tax price in database here and func calculation (use didset)
+    // TODO: Get data tax price in database here and func calculation (use didset)
     @IBOutlet weak var taxPrice: UILabel!
     
-    // TO-DO: Get data service price in database here and func calculation (use didset)
+    // TODO: Get data service price in database here and func calculation (use didset)
     @IBOutlet weak var serviceTax: UILabel!
     
-    // TO-DO: Get data total price in database here and func calculation (use didset)
+    // TODO: Get data total price in database here and func calculation (use didset)
     @IBOutlet weak var totalPrice: UILabel!
     
     

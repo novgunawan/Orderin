@@ -9,7 +9,7 @@ import UIKit
 
 class NoteforMenuTableViewCell: UITableViewCell {
 
-    //set note (GET DATA FROM DATABASE)
+    //TODO: get data for notes Menu (use didset)
     @IBOutlet weak var noteforMenu: UILabel!
     
     
