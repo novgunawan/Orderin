@@ -21,9 +21,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="358" height="68"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qpp-V3-kjN">
-                        <rect key="frame" x="119" y="27" width="38" height="38"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qpp-V3-kjN">
+                        <rect key="frame" x="115.5" y="30.5" width="41" height="31"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="41" id="O8O-Fy-68p"/>
+                            <constraint firstAttribute="width" secondItem="Qpp-V3-kjN" secondAttribute="height" multiplier="41:31" id="Vx2-sY-zKc"/>
+                            <constraint firstAttribute="height" constant="31" id="Yy3-Rp-WNJ"/>
+                        </constraints>
                         <color key="tintColor" red="0.90980392156862744" green="0.29803921568627451" blue="0.20392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" image="minus" catalog="system"/>
@@ -31,16 +35,13 @@
                             <action selector="minButtonDidTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="LFE-I8-YAh"/>
                         </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zOm-gs-bqc">
-                        <rect key="frame" x="163" y="34" width="38" height="24"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6C3-iq-CzJ">
-                        <rect key="frame" x="206" y="27" width="38" height="38"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6C3-iq-CzJ">
+                        <rect key="frame" x="206.5" y="30.5" width="41" height="31"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="31" id="8Uu-ye-QYh"/>
+                            <constraint firstAttribute="width" constant="41" id="XtP-WG-J0s"/>
+                            <constraint firstAttribute="width" secondItem="6C3-iq-CzJ" secondAttribute="height" multiplier="41:31" id="oqU-RZ-tYR"/>
+                        </constraints>
                         <color key="tintColor" red="0.90980392160000001" green="0.29803921570000003" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
@@ -48,7 +49,29 @@
                             <action selector="plusButtonDidTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="EAw-jI-dce"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zOm-gs-bqc">
+                        <rect key="frame" x="160" y="33" width="38" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="zOm-gs-bqc" secondAttribute="height" multiplier="19:12" id="BhF-Jj-xdk"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="6C3-iq-CzJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30.5" id="5A0-xV-gMD"/>
+                    <constraint firstItem="6C3-iq-CzJ" firstAttribute="leading" secondItem="zOm-gs-bqc" secondAttribute="trailing" constant="8.5" id="C5g-Ch-D6n"/>
+                    <constraint firstItem="6C3-iq-CzJ" firstAttribute="leading" secondItem="zOm-gs-bqc" secondAttribute="trailing" constant="8.5" id="CPQ-gU-MYp"/>
+                    <constraint firstItem="Qpp-V3-kjN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="115.5" id="HH2-Aa-zNp"/>
+                    <constraint firstAttribute="bottom" secondItem="zOm-gs-bqc" secondAttribute="bottom" constant="11" id="IHr-VF-F2H"/>
+                    <constraint firstItem="Qpp-V3-kjN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30.5" id="J1O-Cm-PCf"/>
+                    <constraint firstItem="zOm-gs-bqc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="33" id="JQs-cM-AFm"/>
+                    <constraint firstAttribute="trailing" secondItem="6C3-iq-CzJ" secondAttribute="trailing" constant="110.5" id="MeH-06-ckr"/>
+                    <constraint firstItem="zOm-gs-bqc" firstAttribute="leading" secondItem="Qpp-V3-kjN" secondAttribute="trailing" constant="3.5" id="cUL-QQ-R4F"/>
+                    <constraint firstAttribute="bottom" secondItem="Qpp-V3-kjN" secondAttribute="bottom" constant="6.5" id="rha-FJ-6Z3"/>
+                    <constraint firstAttribute="bottom" secondItem="6C3-iq-CzJ" secondAttribute="bottom" constant="6.5" id="uy3-QO-m3m"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
