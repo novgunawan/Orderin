@@ -133,6 +133,7 @@ struct Constant {
         static let menuCustomCell = "menuCustomCell"
         static let editButtonCell = "editButtonCell"
         static let notesCell = "notesCell"
+        static let notesView = "notesViewIdentifier"
     }
     
     
