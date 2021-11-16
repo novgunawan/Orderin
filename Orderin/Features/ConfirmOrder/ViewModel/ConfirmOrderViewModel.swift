@@ -18,7 +18,7 @@ struct ConfirmOrderViewModel{
     // MARK: - Database Function
     
     // MARK: Insert Fucntion
-    func insertOrderdDataToFireStore(userID: String, tableNumber: Int){
+    func insertOrderdDataToFireStore(userID: String, tableNumber: Int, model: OrderModel){
         
         // TODO: Add insert data functionality here!
         
@@ -28,10 +28,12 @@ struct ConfirmOrderViewModel{
         
  
         // declare  the path of data
-        let path = db.document("users/\(userID)/orders/\(tableNumber)").collection(orderID).document("item\(indexData)")
+        let path = db.document("users/\(userID)/orders/\(tableNumber)").collection(orderID)
+        
+        // TODO: Add loop functionality here to  iterate data from model!
         
         // store data in the  dictionary format and push data to database
-        path.setData([
+        path.document("item\(indexData)").setData([
             "foodName" : "placeholder food name",
             "qty" : "placeholder for food qty , it will be Integer",
             "customization" : "placholder for customization in menu, it wil be array of String | [String]",
