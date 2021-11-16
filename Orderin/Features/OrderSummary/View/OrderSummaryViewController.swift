@@ -8,6 +8,7 @@
 import UIKit
 
 class OrderSummaryViewController: UIViewController {
+    
 
     @IBOutlet weak var orderSummaryTable: UITableView!
     
@@ -74,10 +75,15 @@ class OrderSummaryViewController: UIViewController {
 
     }
     
-    //back button
-    @IBAction func backButton(_ sender: Any) {
-        let vc = MenuDetailViewController()
-        vc.modalPresentationStyle = .formSheet
-        self.present(vc, animated: false, completion: nil)
+    // Order Button Action
+    @IBAction func addOrderButtonDidTapped(_ sender: Any) {
+
+        presentingViewController?.presentingViewController?.dismiss(animated: true, completion: {
+            self.popVC()
+        })
+    }
+    
+    func popVC() {
+        self.dismiss(animated: true, completion: nil)
     }
 }

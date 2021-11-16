@@ -142,7 +142,6 @@ class FloatingButtonView: UIView {
     @objc func didCartButtonTapped(){
         
         // TODO: Go to summary page
-       
         delegate?.pushToConfirmOrder()
     }
     
