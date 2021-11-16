@@ -11,7 +11,6 @@ class OptionalDetailTableViewCell: UITableViewCell {
  
     @IBOutlet weak var viewCell: UIView!{
         didSet{
-            priceLabel.text = "5000"
             if priceLabel.text == " "{
                 rpLabel.isHidden = true
                 viewCell.frame = CGRect(x: 0, y: 0,width: 342, height: 32)
