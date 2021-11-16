@@ -30,21 +30,23 @@ struct ConfirmOrderViewModel{
         // declare  the path of data
         let path = db.document("users/\(userID)/orders/\(tableNumber)").collection(orderID)
         
-        // TODO: Add loop functionality here to  iterate data from model!
+        // TODO: Add loop functionality here to  iterate data from model!›
         for data in model.orderedMenu{
+            
+            // store data in the  dictionary format and push data to database
             path.document("item\(indexData)").setData([
                 "foodID" : data.menuID,
                 "foodName" : data.foodName,
                 "qty" : data.qty,
-                "customization" : data.customization,
-                "notes" : "placholder for food oreder notes, it will be String",
+                "customization" : data.customization, // MARK: masih ragu harus dicoba ato fi ganti array of String
+                "notes" : (data.notes ?? "You don't have any notes") as String ,
                 "price" : data.price,
                 
             ])
             indexData += 1
             
         }
-        // store data in the  dictionary format and push data to database
+      
        
         
     
