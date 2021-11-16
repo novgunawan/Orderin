@@ -18,7 +18,7 @@ class ChooseTableViewCell: UITableViewCell{
     }
     @IBOutlet weak var chooseTable: UITableView! {
         didSet{
-            chooseTable.frame.size.height = (32 * 2)//count of cell
+            chooseTable.frame.size.height = (53 * 2)//count of cell
         }
     }
     
@@ -26,7 +26,7 @@ class ChooseTableViewCell: UITableViewCell{
         {
             didSet{
                 //height view
-                viewCell.frame.size.height = 55 + (32 * 2)//count of cell
+                viewCell.frame.size.height = 55 + (53 * 2)//count of cell
                 //corner radius
                 viewCell.layer.cornerRadius = 5
                 //shadow

@@ -28,12 +28,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="359" height="53"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="kbm-Fn-yyg" secondAttribute="height" multiplier="359:53" id="MS6-qC-ooE"/>
-                                    <constraint firstAttribute="height" constant="53" id="aYw-At-FpJ"/>
-                                    <constraint firstAttribute="width" constant="359" id="zcs-2s-WeB"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title=""/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title=""/>
                                 <connections>
                                     <action selector="cartButtonDidTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="SZo-ej-Qtn"/>
                                 </connections>
@@ -47,7 +45,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="3w9-cn-fcD"/>
                                     <constraint firstAttribute="width" secondItem="Mud-0Q-PD2" secondAttribute="height" multiplier="129:25" id="6ij-0T-tdh"/>
-                                    <constraint firstAttribute="width" constant="129" id="jBX-if-TkW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -58,7 +55,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="2IF-Hh-tlI"/>
                                     <constraint firstAttribute="width" secondItem="hPj-cU-0tf" secondAttribute="height" multiplier="104:25" id="Ds1-XK-NTR"/>
-                                    <constraint firstAttribute="width" constant="104" id="xd8-Pl-fv2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -82,7 +78,6 @@
                             <constraint firstItem="kbm-Fn-yyg" firstAttribute="leading" secondItem="WdN-yQ-tJQ" secondAttribute="leading" id="cpY-Ga-Hhm"/>
                             <constraint firstItem="Mud-0Q-PD2" firstAttribute="leading" secondItem="q5Y-Kn-Ece" secondAttribute="trailing" constant="4" id="g0E-aM-cFi"/>
                             <constraint firstItem="Mud-0Q-PD2" firstAttribute="leading" secondItem="q5Y-Kn-Ece" secondAttribute="trailing" constant="4" id="qGk-ei-jKf"/>
-                            <constraint firstAttribute="width" constant="359" id="vL0-pb-hpe"/>
                         </constraints>
                     </view>
                 </subviews>

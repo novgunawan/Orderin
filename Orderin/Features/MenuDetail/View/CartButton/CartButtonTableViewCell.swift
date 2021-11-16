@@ -41,6 +41,5 @@ class CartButtonTableViewCell: UITableViewCell {
     //Cart Button Did Tapped
     @IBAction func cartButtonDidTapped(_ sender: Any) {
         delegate?.saveCustom()
-        
     }
 }
