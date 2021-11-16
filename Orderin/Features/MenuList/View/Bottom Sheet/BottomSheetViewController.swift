@@ -49,6 +49,8 @@ class BottomSheetViewController: UIViewController{
         button.titleLabel?.font = UIFont(name: C.fontPoppinsSemibold, size: C.fontsizeBody)
         button.translatesAutoresizingMaskIntoConstraints = false
         
+        button.addTarget(self, action: #selector(proccedToMenuDetail), for: .touchUpInside)
+        
         return button
         
     }()
@@ -130,6 +132,14 @@ class BottomSheetViewController: UIViewController{
                 }
             }
         }
+    }
+    
+    @objc func proccedToMenuDetail() {
+        
+        let vc = MenuDetailViewController()
+        vc.modalPresentationStyle = .formSheet
+        self.present(vc, animated: true, completion: nil)
+        
     }
     
     
