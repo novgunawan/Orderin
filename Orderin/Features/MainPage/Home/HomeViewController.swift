@@ -90,8 +90,10 @@ class HomeViewController: UIViewController {
                 // TODO: Go to Scan QR
                 self.present(self.scanQRVC, animated: true, completion: nil)
             } else {
-                // MARK: User is signed in.
-                AlertServices.presentAlertSignedIn(onVC: self, message: "To Scan QR Code, you need to sign in first")
+                // MARK: User is not signed in.
+//                AlertServices.presentAlertSignedIn(onVC: self, message: "To Scan QR Code, you need to sign in first")
+                self.present(self.scanQRVC, animated: true, completion: nil)
+
             }
         })
     }
@@ -281,7 +283,7 @@ class HomeViewController: UIViewController {
         return button
     }()
     
-    
+    // MARK: -Constraints
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
