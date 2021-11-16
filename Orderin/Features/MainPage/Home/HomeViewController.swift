@@ -9,6 +9,7 @@ import UIKit
 import AuthenticationServices
 import Firebase
 
+
 class HomeViewController: UIViewController {
     
     // MARK: Declaration Variables
@@ -33,31 +34,32 @@ class HomeViewController: UIViewController {
         
         // MARK: Set navigation bar hidden [the large title in the left]
         self.navigationController?.isNavigationBarHidden = true
-        Auth.auth().addStateDidChangeListener({ auth, user in
-            if let user = user {
-                // MARK: User is signed in.
-                
-                // MARK: Set Home Before Sign In view hidden
-                self.titleLabel.isHidden = true
-                self.homeImage.isHidden = true
-                self.captionLabel.isHidden = true
-                self.scanQRButton.isHidden = true
-                self.smallCaptionLabel.isHidden = true
-                
-            } else {
-                // MARK: User is not signed in.
-                
-                // MARK: Set Home After Sign In view hidden
-                self.helloLabel.isHidden = true
-                self.infoLabel.isHidden = true
-                self.orderShortcut.isHidden = true
-                self.recommendedMenuLabel.isHidden = true
-                self.browseAllMenuButton.isHidden = true
-                self.scanAnotherMenuButton.isHidden = true
-            }
-        })
+//        Auth.auth().addStateDidChangeListener({ auth, user in
+//            if let user = user {
+//                // MARK: User is signed in.
+//
+//                // MARK: Set Home Before Sign In view hidden
+//                self.titleLabel.isHidden = true
+//                self.homeImage.isHidden = true
+//                self.captionLabel.isHidden = true
+//                self.scanQRButton.isHidden = true
+//                self.smallCaptionLabel.isHidden = true
+//
+//            } else {
+//                // MARK: User is not signed in.
+//
+//                // MARK: Set Home After Sign In view hidden
+//                self.helloLabel.isHidden = true
+//                self.infoLabel.isHidden = true
+//                self.orderShortcut.isHidden = true
+//                self.recommendedMenuLabel.isHidden = true
+//                self.browseAllMenuButton.isHidden = true
+//                self.scanAnotherMenuButton.isHidden = true
+//            }
+//        })
         
     }
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -78,9 +80,44 @@ class HomeViewController: UIViewController {
         view.addSubview(scanAnotherMenuButton)
         
         view.addSubview(signoutButton)
+        
+        homeAfterScan()
     }
     
     // MARK: -Functions
+    
+    // MARK: State Home After Scan QR
+    func homeAfterScan() {
+        self.titleLabel.isHidden = true
+        self.homeImage.isHidden = true
+        self.captionLabel.isHidden = true
+        self.scanQRButton.isHidden = true
+        self.smallCaptionLabel.isHidden = true
+        
+        self.helloLabel.isHidden = false
+        self.infoLabel.isHidden = false
+        self.orderShortcut.isHidden = false
+        self.recommendedMenuLabel.isHidden = false
+        self.browseAllMenuButton.isHidden = false
+        self.scanAnotherMenuButton.isHidden = false
+    }
+    
+    // MARK: State Home Before Scan QR
+    func homeBeforeScan() {
+        self.titleLabel.isHidden = false
+        self.homeImage.isHidden = false
+        self.captionLabel.isHidden = false
+        self.scanQRButton.isHidden = false
+        self.smallCaptionLabel.isHidden = false
+        
+        self.helloLabel.isHidden = true
+        self.infoLabel.isHidden = true
+        self.orderShortcut.isHidden = true
+        self.recommendedMenuLabel.isHidden = true
+        self.browseAllMenuButton.isHidden = true
+        self.scanAnotherMenuButton.isHidden = true 
+    }
+    
     @objc func scanQR() {
         // MARK: Check user has signed in or not
         
@@ -240,6 +277,7 @@ class HomeViewController: UIViewController {
         view.layer.shouldRasterize = true
         view.layer.rasterizationScale = UIScreen.main.scale
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.delegate = self
         return view
     }()
     
@@ -351,5 +389,11 @@ class HomeViewController: UIViewController {
         // MARK: Constraint Sign Out Button
         signoutButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16.0).isActive = true
         signoutButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -120.0).isActive = true
+    }
+}
+extension HomeViewController: NavigationControllerDelegate {
+    func pushToConfirmOrder() {
+        let confirmOrderVC = ConfirmOrderViewController()
+        self.navigationController?.pushViewController(confirmOrderVC, animated: true)
     }
 }
