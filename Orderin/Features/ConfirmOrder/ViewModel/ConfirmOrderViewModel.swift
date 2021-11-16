@@ -18,27 +18,36 @@ struct ConfirmOrderViewModel{
     // MARK: - Database Function
     
     // MARK: Insert Fucntion
-    func insertOrderdDataToFireStore(userID: String, tableNumber: Int){
+    func insertOrderdDataToFireStore(userID: String, tableNumber: Int, model: OrderModel){
         
         // TODO: Add insert data functionality here!
         
         // generate orderID
         let orderID = Functionality.shared.generateUniqueID()
-        let indexData  = 0 // TODO: Change let to var if the looping function is ready!
+        var indexData  = 0 // TODO: Change let to var if the looping function is ready!
         
  
         // declare  the path of data
-        let path = db.document("users/\(userID)/orders/\(tableNumber)").collection(orderID).document("item\(indexData)")
+        let path = db.document("users/\(userID)/orders/\(tableNumber)").collection(orderID)
         
-        // store data in the  dictionary format and push data to database
-        path.setData([
-            "foodName" : "placeholder food name",
-            "qty" : "placeholder for food qty , it will be Integer",
-            "customization" : "placholder for customization in menu, it wil be array of String | [String]",
-            "notes" : "placholder for food oreder notes, it will be String",
-            "price" : "placeholder for  food price , it will be Integer",
+        // TODO: Add loop functionality here to  iterate data from model!›
+        for data in model.orderedMenu{
             
-        ])
+            // store data in the  dictionary format and push data to database
+            path.document("item\(indexData)").setData([
+                "foodID" : data.menuID,
+                "foodName" : data.foodName,
+                "qty" : data.qty,
+                "customization" : data.customization, // MARK: masih ragu harus dicoba ato fi ganti array of String
+                "notes" : (data.notes ?? "You don't have any notes") as String ,
+                "price" : data.price,
+                
+            ])
+            indexData += 1
+            
+        }
+      
+       
         
     
     }
