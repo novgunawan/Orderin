@@ -12,13 +12,14 @@ extension ConfirmOrderViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
-        //MARK: Ngambil data dari TextField
+        //MARK: Ngambil data dari TextField dan parsing ke variable ke ViewModel
         
-        textFieldViewModel.textfieldDataToDatabase(textfieldValue: textField.text)
+        textFieldViewModel.textNotesValue = textField.text 
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)
     }
-
+    
 }

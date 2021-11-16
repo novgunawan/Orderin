@@ -10,11 +10,8 @@ import Foundation
 
 struct TextFieldViewModel {
     
-    //MARK: Function ini ambil value dari textfield Notes di Confirm Order. function dipanggil di TextFieldDidEndEditing di File Extension ConfirmOrderViewController 
+    //MARK: variable ini dari textfield Notes di Confirm Order. function dipanggil di TextFieldDidEndEditing di File Extension ConfirmOrderViewController
     
-    func textfieldDataToDatabase(textfieldValue: String?) {
-        
-        print(textfieldValue)
-      
-    }
+    var textNotesValue: String?
+
 }
