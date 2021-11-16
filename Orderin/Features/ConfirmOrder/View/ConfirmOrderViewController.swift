@@ -14,7 +14,6 @@ class ConfirmOrderViewController: UIViewController {
     
     var confirmationCellViewModel = CellConfirmationViewModel()
     var textFieldViewModel = TextFieldViewModel()
-    
     var data: [OrderedMenuCustomizationDummyData] = []
     var rowHeight: CGFloat = 50
     
@@ -161,6 +160,7 @@ class ConfirmOrderViewController: UIViewController {
         
         let orderAlert = UIAlertAction(title: "Order", style: .default, handler: { _  in
             let cancelViewController = CancelOrderViewController(nibName: Constant.CancelOrder.cancelViewController, bundle: nil)
+            cancelViewController.delegate = self
             cancelViewController.modalPresentationStyle = .fullScreen
             self.present(cancelViewController, animated: true, completion: nil)
             

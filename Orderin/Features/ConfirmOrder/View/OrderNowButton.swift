@@ -9,6 +9,8 @@ import UIKit
 
 class OrderNowButton: UIView {
     
+    // MARK: Order Now button View
+    
     let orderNowButton: UIButton = {
         
         
