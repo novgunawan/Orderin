@@ -9,6 +9,5 @@ import Foundation
 
 struct CustomizationMenuOrdered {
     var options: [String]
-    var notes: String?
     
 }
