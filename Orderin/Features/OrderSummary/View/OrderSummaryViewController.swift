@@ -8,6 +8,7 @@
 import UIKit
 
 class OrderSummaryViewController: UIViewController {
+    
 
     @IBOutlet weak var orderSummaryTable: UITableView!
     
@@ -76,15 +77,13 @@ class OrderSummaryViewController: UIViewController {
     
     // Order Button Action
     @IBAction func addOrderButtonDidTapped(_ sender: Any) {
-        presentingViewController?.presentingViewController?.dismiss(animated: true){
-            self.popToMenuList()
-         }
+
+        presentingViewController?.presentingViewController?.dismiss(animated: true, completion: {
+            self.popVC()
+        })
     }
     
-    func popToMenuList() {
-        print("menu list")
-//        self.dismiss(animated: true, completion: nil)
-//        self.navigationController?.popViewController(animated: true)
-        _ = navigationController?.popToRootViewController(animated: true)
-        }
+    func popVC() {
+        self.dismiss(animated: true, completion: nil)
+    }
 }

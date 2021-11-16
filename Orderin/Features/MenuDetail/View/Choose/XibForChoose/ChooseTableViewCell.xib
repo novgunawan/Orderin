@@ -31,7 +31,6 @@
                                 <rect key="frame" x="10" y="28" width="55" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="cPa-Gk-GTv" secondAttribute="height" multiplier="55:16" id="AFq-Ws-Lrh"/>
-                                    <constraint firstAttribute="width" constant="55" id="LJ8-LV-WHJ"/>
                                     <constraint firstAttribute="height" constant="16" id="hhz-KL-e7O"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="11"/>
@@ -41,7 +40,6 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spicy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OeC-MP-SG4">
                                 <rect key="frame" x="10" y="8" width="345" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="345" id="1v4-av-xzi"/>
                                     <constraint firstAttribute="width" secondItem="OeC-MP-SG4" secondAttribute="height" multiplier="2:1" constant="297" id="Gsx-US-cLK"/>
                                     <constraint firstAttribute="height" constant="24" id="k5I-Bz-sCB"/>
                                 </constraints>
@@ -53,7 +51,6 @@
                                 <rect key="frame" x="10" y="46" width="342" height="32"/>
                                 <color key="backgroundColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="342" id="EQf-2t-tVQ"/>
                                     <constraint firstAttribute="width" secondItem="0mw-3F-zCr" secondAttribute="height" multiplier="171:16" id="PIl-wj-BNB"/>
                                     <constraint firstAttribute="height" constant="32" id="nxs-sY-9cf"/>
                                 </constraints>
@@ -63,7 +60,6 @@
                         <constraints>
                             <constraint firstItem="0mw-3F-zCr" firstAttribute="leading" secondItem="puG-Pc-iF6" secondAttribute="leadingMargin" constant="2" id="6wm-WS-8pY"/>
                             <constraint firstAttribute="width" secondItem="puG-Pc-iF6" secondAttribute="height" multiplier="179:40" id="6xj-fM-huA"/>
-                            <constraint firstAttribute="width" constant="358" id="JcM-Vi-8qq"/>
                             <constraint firstItem="cPa-Gk-GTv" firstAttribute="centerY" secondItem="OeC-MP-SG4" secondAttribute="centerY" constant="16" id="W4R-qK-Dft"/>
                             <constraint firstItem="OeC-MP-SG4" firstAttribute="top" secondItem="puG-Pc-iF6" secondAttribute="top" constant="8" id="fiD-Rc-GVu"/>
                             <constraint firstItem="OeC-MP-SG4" firstAttribute="leading" secondItem="puG-Pc-iF6" secondAttribute="leading" constant="10" id="p8Q-9x-GMQ"/>
