@@ -109,23 +109,26 @@ class ScanQRCameraViewController: UIViewController, AVCaptureMetadataOutputObjec
     
     // MARK: Funtion When QR Detected
     func found(code: String) {
+        print(code)
         let tableNumber = code[15..<16]
-        print(tableNumber)
+        let restoID = code.substring(fromIndex: code.length-3)
+        print(restoID)
+
     }
     
     override var prefersStatusBarHidden: Bool {
         return true
     }
     
-    //Roatation Device
+    //Rotation Device
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }
     
     // MARK: Go to menu list
     func gotoMenuList(){
-        dismiss(animated: true)
         let menulistVC = MenuListViewController()
+        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
         self.navigationController?.pushViewController(menulistVC, animated: true)
     }
 }
