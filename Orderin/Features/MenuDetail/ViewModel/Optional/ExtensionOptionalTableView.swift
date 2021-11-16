@@ -24,6 +24,8 @@ extension OptionalTableViewCell: UITableViewDelegate, UITableViewDataSource{
         
         // MARK: Insert optional customization from Customization Model to the UI
         cellOptionalDetail.object = object[1].options[indexPath.row]
+        
+        cellOptionalDetail.priceObject = object[1].prices?[indexPath.row] ?? 0
 //        cellOptionalDetail.priceObject = object[1].prices[indexPath.row]
         return cellOptionalDetail
     }
@@ -34,7 +36,11 @@ extension OptionalTableViewCell: UITableViewDelegate, UITableViewDataSource{
         cellOptionalDetail.checkerUI.image = UIImage(named: "checked")
         
         // MARK: Insert customization that user tap to customizationMenuOrdered Model
-        cellOptionalDetail.customMenuOrderedObject?.options.append(cellOptionalDetail.object ?? "no customization")
+//        cellOptionalDetail.customMenuOrderedObject?.options.append(cellOptionalDetail.object ?? "no customization")
+        
+        // MARK: Insert customization ordered into singletone
+        Functionality.shared.tempOptionalCustom.append(cellOptionalDetail.object ?? "no customization")
+        Functionality.shared.tempOptionalCustomPrice.append(cellOptionalDetail.priceObject ?? 0)
     }
     
     // MARK: Deselect

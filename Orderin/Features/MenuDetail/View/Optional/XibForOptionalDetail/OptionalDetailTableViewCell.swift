@@ -25,7 +25,6 @@ class OptionalDetailTableViewCell: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     
     @IBOutlet weak var checkerUI: UIImageView!
-    
   
     @IBOutlet weak var optionalNameLabel: UILabel!
     
@@ -52,7 +51,7 @@ class OptionalDetailTableViewCell: UITableViewCell {
         }
     }
     
-    var priceObject: String? {
+    var priceObject: Int? {
         didSet {
             setupPrice()
         }
@@ -63,8 +62,14 @@ class OptionalDetailTableViewCell: UITableViewCell {
         guard let object = object else {return}
         optionalNameLabel.text = object
     }
+    
     func setupPrice() {
+        var stringPrice = ""
         guard let object = priceObject else {return}
-
+        
+        stringPrice = String(object)
+        stringPrice.insert(".", at: stringPrice.index(stringPrice.endIndex, offsetBy: -3))
+        priceLabel.text = stringPrice
+        
     }
 }

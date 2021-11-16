@@ -9,6 +9,7 @@ import UIKit
 
 class ChooseTableViewCell: UITableViewCell{
 
+
     // TODO: Count of cell belum bisa dibuat dynamic
     @IBOutlet weak var chooseLabel: UILabel! {
         didSet {

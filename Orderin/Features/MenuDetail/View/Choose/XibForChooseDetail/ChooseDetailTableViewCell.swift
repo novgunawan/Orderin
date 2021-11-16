@@ -41,3 +41,8 @@ class ChooseDetailTableViewCell: UITableViewCell {
         chooseName.text = object
     }
 }
+//extension ChooseDetailTableViewCell: SaveCustomizationDelegate {
+//    func saveCustom() {
+//        print("test delegate save customization")
+//    }
+//}
