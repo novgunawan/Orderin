@@ -11,7 +11,8 @@ class ConfirmOrderViewController: UIViewController {
     
     // MARK: Confirm Page
     
-    var viewModel = CellConfirmationViewModel()
+    var confirmationCellViewModel = CellConfirmationViewModel()
+    var textFieldViewModel = TextFieldViewModel()
     
     var data: [OrderedMenuCustomizationDummyData] = []
     var rowHeight: CGFloat = 50
@@ -61,23 +62,13 @@ class ConfirmOrderViewController: UIViewController {
         setupDelegate()
         setupNavigationController()
         setupAddView()
-        dismissKeyboard()
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        
+        viewDismissIfUserTapOutsideKeyboard()
+       
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        orderButtonView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-        orderButtonView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-        orderButtonView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-        orderButtonView.heightAnchor.constraint(equalToConstant: view.frame.height / 8).isActive = true
-        
-        
+        setupOrdernowViewButtonConstraint()
         setupTotalPriceConstraint()
         setupTableViewConstraint()
         
@@ -128,6 +119,20 @@ class ConfirmOrderViewController: UIViewController {
         subtotalView.heightAnchor.constraint(equalToConstant: 75).isActive = true
     }
     
+    func setupOrdernowViewButtonConstraint() {
+        
+        orderButtonView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        orderButtonView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+        orderButtonView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        orderButtonView.heightAnchor.constraint(equalToConstant: view.frame.height / 8).isActive = true
+    }
+    
+    func viewDismissIfUserTapOutsideKeyboard() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
     
     func setupNavigationController() {
         navigationItem.title = "Confirm Order"
@@ -161,16 +166,23 @@ class ConfirmOrderViewController: UIViewController {
         
         alertController.addAction(UIAlertAction(title: "Cancel", style: .destructive))
         alertController.addAction(orderAlert)
+        saveTextfieldToDatabase()
         
         self.present(alertController, animated: true, completion: nil)
     }
     
     private func bindingData() {
         
-        viewModel.fetchMenuCustomization(completion: { value in
+        confirmationCellViewModel.fetchMenuCustomization(completion: { value in
             self.data = value
             
         })
+        
+    }
+    
+    func saveTextfieldToDatabase() {
+        
+       
         
     }
     

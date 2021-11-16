@@ -33,9 +33,6 @@ class NotesView: UITableViewHeaderFooterView {
     
     func configureContent() {
         addSubview(notesTextField)
-        
-        
-        
         notesTextField.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor, constant: 0).isActive = true
         notesTextField.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor, constant: 0).isActive = true
         notesTextField.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
