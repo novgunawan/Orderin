@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "menuicon.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
