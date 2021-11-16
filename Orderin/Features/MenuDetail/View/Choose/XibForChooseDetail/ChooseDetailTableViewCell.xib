@@ -10,14 +10,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="ChooseDetailTableViewCell" customModule="Orderin" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="342" height="32"/>
+            <rect key="frame" x="0.0" y="0.0" width="342" height="53"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="342" height="32"/>
+                <rect key="frame" x="0.0" y="0.0" width="342" height="53"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unchecked" translatesAutoresizingMaskIntoConstraints="NO" id="py9-Z2-zbn">
-                        <rect key="frame" x="305" y="6" width="20" height="20"/>
+                        <rect key="frame" x="305" y="16" width="20" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="20" id="Wte-Pc-nz0"/>
                             <constraint firstAttribute="width" secondItem="py9-Z2-zbn" secondAttribute="height" multiplier="1:1" id="fkH-nC-YV7"/>
@@ -25,7 +25,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BBQ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6L-T2-Zs5">
-                        <rect key="frame" x="0.0" y="5" width="264" height="21"/>
+                        <rect key="frame" x="0.0" y="16" width="264" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="F6L-T2-Zs5" secondAttribute="height" multiplier="88:7" id="fTA-no-Tnd"/>
                             <constraint firstAttribute="width" constant="264" id="km9-zg-uR2"/>
@@ -38,11 +38,11 @@
                 </subviews>
                 <color key="backgroundColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
-                    <constraint firstItem="py9-Z2-zbn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="0A0-jQ-TcS"/>
+                    <constraint firstItem="py9-Z2-zbn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="0A0-jQ-TcS"/>
                     <constraint firstAttribute="trailing" secondItem="py9-Z2-zbn" secondAttribute="trailing" constant="17" id="6B9-AZ-M7P"/>
-                    <constraint firstItem="F6L-T2-Zs5" firstAttribute="top" secondItem="py9-Z2-zbn" secondAttribute="top" constant="-1" id="No2-Vy-3xO"/>
+                    <constraint firstItem="F6L-T2-Zs5" firstAttribute="top" secondItem="py9-Z2-zbn" secondAttribute="top" id="No2-Vy-3xO"/>
                     <constraint firstItem="F6L-T2-Zs5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Zhg-fY-w41"/>
-                    <constraint firstAttribute="bottom" secondItem="py9-Z2-zbn" secondAttribute="bottom" constant="6" id="pvQ-lu-bOy"/>
+                    <constraint firstAttribute="bottom" secondItem="py9-Z2-zbn" secondAttribute="bottom" constant="17" id="pvQ-lu-bOy"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

@@ -24,7 +24,6 @@
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add notes..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I0l-Q1-hCj">
                         <rect key="frame" x="4" y="4" width="352" height="34"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="352" id="06y-ha-k0i"/>
                             <constraint firstAttribute="width" secondItem="I0l-Q1-hCj" secondAttribute="height" multiplier="176:17" id="9bZ-pi-LlC"/>
                             <constraint firstAttribute="height" constant="34" id="Thj-sa-KZ5"/>
                         </constraints>

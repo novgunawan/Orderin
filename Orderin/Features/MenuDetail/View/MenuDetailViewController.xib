@@ -45,9 +45,6 @@
                             <rect key="frame" x="0.0" y="0.0" width="357" height="265"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="265" id="NSu-gV-1fZ"/>
-                                <constraint firstAttribute="width" constant="357" id="Nay-gP-Cqg"/>
-                                <constraint firstAttribute="width" secondItem="WDi-pA-FAi" secondAttribute="height" multiplier="357:265" id="Qwq-fi-Eet"/>
-                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="357" id="ghM-kN-tac"/>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="265" id="lc9-vn-C4Y"/>
                                 <constraint firstAttribute="width" secondItem="WDi-pA-FAi" secondAttribute="height" multiplier="357:265" id="oSI-rw-azm"/>
                             </constraints>
@@ -66,7 +63,6 @@
                     <constraints>
                         <constraint firstAttribute="width" secondItem="5Ha-u7-q1n" secondAttribute="height" multiplier="49:24" id="A5t-kh-b4g"/>
                         <constraint firstAttribute="height" constant="24" id="bk2-yW-RmJ"/>
-                        <constraint firstAttribute="width" constant="49" id="fiI-Br-gw1"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="17"/>
                     <nil key="textColor"/>
@@ -94,7 +90,6 @@
                     <rect key="frame" x="20" y="320" width="353" height="34"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="JTF-Ir-5jc" secondAttribute="height" multiplier="353:34" id="AiG-o0-CGU"/>
-                        <constraint firstAttribute="width" constant="353" id="QSF-eh-zLg"/>
                         <constraint firstAttribute="height" constant="34" id="uD9-HB-LcM"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
@@ -108,7 +103,6 @@
                             <rect key="frame" x="0.0" y="0.0" width="359" height="408"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="408" id="ODD-c9-T4R"/>
-                                <constraint firstAttribute="width" constant="359" id="TX0-05-MER"/>
                                 <constraint firstAttribute="width" secondItem="knT-ME-Jnk" secondAttribute="height" multiplier="359:408" id="rvj-1a-MVb"/>
                             </constraints>
                         </tableView>
