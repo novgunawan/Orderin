@@ -11,9 +11,146 @@ import Firebase
 
 class HomeViewController: UIViewController {
     
+    // MARK: Declaration Variables
     static var signinViewController = SignInViewController()
     var tabBarTag: Bool = true
     var scanQRVC = ScanQRCameraViewController()
+    
+    
+    // MARK: -App Lifecycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // MARK: Set selected tab bar item's color
+        if tabBarTag == true {
+            self.tabBarController?.tabBar.tintColor = C.hexStringToUIColor(hex: C.teal50)
+        } else {
+            self.tabBarController?.tabBar.tintColor = C.hexStringToUIColor(hex: C.gray70)
+        }
+        
+        // MARK: Set Tab Bar Not To Be Hidden
+        self.tabBarController?.tabBar.isHidden = false
+        
+        // MARK: Set navigation bar hidden [the large title in the left]
+        self.navigationController?.isNavigationBarHidden = true
+        Auth.auth().addStateDidChangeListener({ auth, user in
+            if let user = user {
+                // MARK: User is signed in.
+                
+                // MARK: Set Home Before Sign In view hidden
+                self.titleLabel.isHidden = true
+                self.homeImage.isHidden = true
+                self.captionLabel.isHidden = true
+                self.scanQRButton.isHidden = true
+                self.smallCaptionLabel.isHidden = true
+                
+            } else {
+                // MARK: User is not signed in.
+                
+                // MARK: Set Home After Sign In view hidden
+                self.helloLabel.isHidden = true
+                self.infoLabel.isHidden = true
+                self.orderShortcut.isHidden = true
+                self.recommendedMenuLabel.isHidden = true
+                self.browseAllMenuButton.isHidden = true
+                self.scanAnotherMenuButton.isHidden = true
+            }
+        })
+        
+    }
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        // MARK: -Add subview Home Before Sign In
+        view.addSubview(titleLabel)
+        view.addSubview(homeImage)
+        view.addSubview(captionLabel)
+        view.addSubview(scanQRButton)
+        view.addSubview(smallCaptionLabel)
+        
+        // MARK: -Add subview Home After Sign In
+        
+        view.addSubview(orderShortcut)
+        view.addSubview(helloLabel)
+        view.addSubview(infoLabel)
+        view.addSubview(recommendedMenuLabel)
+        view.addSubview(browseAllMenuButton)
+        view.addSubview(scanAnotherMenuButton)
+        
+        view.addSubview(signoutButton)
+    }
+    
+    // MARK: -Functions
+    @objc func scanQR() {
+        // MARK: Check user has signed in or not
+        
+        Auth.auth().addStateDidChangeListener({ auth, user in
+            if let user = user {
+                // MARK: User is signed in.
+                // TODO: Go to Scan QR
+                self.present(self.scanQRVC, animated: true, completion: nil)
+            } else {
+                // MARK: User is signed in.
+                AlertServices.presentAlertSignedIn(onVC: self, message: "To Scan QR Code, you need to sign in first")
+            }
+        })
+    }
+    
+    // MARK: Sign Out
+    @objc func signout() {
+        Auth.auth().addStateDidChangeListener({ auth, user in
+            if let user = user {
+                // MARK: User is signed in.
+                
+                let firebaseAuth = Auth.auth()
+                let user = Auth.auth().currentUser
+                do {
+                    try firebaseAuth.signOut()
+                } catch let signOutError as NSError {
+                    print("Error signing out: %@", signOutError)
+                }
+                user?.delete { error in
+                    if let error = error {
+                        // An error happened.
+                    } else {
+                        // Account deleted.
+                        print("acount deleted")
+                    }
+                }
+            } else {
+                // MARK: User is not signed in.
+                print("from home view controller : you haven't signed in")
+            }
+        })
+    }
+    
+    
+    // MARK: Go to Menu List
+    @objc func goToMenuListVC() {
+        let menulistVC = MenuListViewController()
+        self.navigationController?.pushViewController(menulistVC, animated: true)
+    }
+    
+    // MARK: Go to menudetail when Menu Detail Tapped
+    @IBAction func menuDetailDidtTapped(_ sender: Any) {
+        let vc = MenuDetailViewController()
+        vc.modalPresentationStyle = .formSheet
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    // MARK: Go to direct scan qr
+    @IBAction func directScanQR(_ sender: Any) {
+        let directScanQR = ScanQRCameraViewController()
+        self.navigationController?.pushViewController(directScanQR, animated: true)
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    // MARK: Generate QR
+    @IBAction func generateQRAction(_ sender: Any) {
+        let generateQR = GenerateQRViewController()
+        self.navigationController?.pushViewController(generateQR, animated: true)
+        self.tabBarController?.tabBar.isHidden = true
+    }
     
     // MARK: -Properties for Home Before Sign In
     // MARK: Title Label
@@ -50,7 +187,7 @@ class HomeViewController: UIViewController {
     }()
     // MARK: Scan QR Menu Button
     var scanQRButton: UIButton = {
-       let button = UIButton()
+        let button = UIButton()
         button.setTitle(C.scanMenu, for: .normal)
         button.setTitleColor(C.hexStringToUIColor(hex: C.white), for: .normal)
         button.titleLabel?.font = UIFont(name: C.fontPoppinsSemibold, size: C.fontsizeBody)
@@ -105,7 +242,7 @@ class HomeViewController: UIViewController {
     }()
     
     var recommendedMenuLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: C.fontPoppinsSemibold, size: C.fontsizeBody)
         label.text = C.recommendedMenuLabel
@@ -144,47 +281,6 @@ class HomeViewController: UIViewController {
         return button
     }()
     
-    // MARK: -App Lifecycle
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        // MARK: Set selected tab bar item's color
-        if tabBarTag == true {
-            self.tabBarController?.tabBar.tintColor = C.hexStringToUIColor(hex: C.teal50)
-        } else {
-            self.tabBarController?.tabBar.tintColor = C.hexStringToUIColor(hex: C.gray70)
-        }
-        
-        // MARK: Set Tab Bar Not To Be Hidden
-        self.tabBarController?.tabBar.isHidden = false
-        
-        // MARK: Set navigation bar hidden [the large title in the left]
-        self.navigationController?.isNavigationBarHidden = true
-        Auth.auth().addStateDidChangeListener({ auth, user in
-            if let user = user {
-                // MARK: User is signed in.
-                
-                // MARK: Set Home Before Sign In view hidden
-                self.titleLabel.isHidden = true
-                self.homeImage.isHidden = true
-                self.captionLabel.isHidden = true
-                self.scanQRButton.isHidden = true
-                self.smallCaptionLabel.isHidden = true
-                
-            } else {
-                // MARK: User is not signed in.
-                
-                // MARK: Set Home After Sign In view hidden
-                self.helloLabel.isHidden = true
-                self.infoLabel.isHidden = true
-                self.orderShortcut.isHidden = true
-                self.recommendedMenuLabel.isHidden = true
-                self.browseAllMenuButton.isHidden = true
-                self.scanAnotherMenuButton.isHidden = true
-            }
-        })
-        
-    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -194,23 +290,23 @@ class HomeViewController: UIViewController {
         titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 69).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 96.5).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -96.5).isActive = true
-
+        
         // MARK: Constraint for image
         homeImage.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 63.0).isActive = true
         homeImage.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 26.0).isActive = true
         homeImage.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -26.0).isActive = true
-
-//        // MARK: Constraint caption
+        
+        //        // MARK: Constraint caption
         captionLabel.topAnchor.constraint(equalTo: homeImage.bottomAnchor, constant: 8.0).isActive = true
         captionLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 37.0).isActive = true
         captionLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -38.0).isActive = true
-
-//        // MARK: Constraint scan qr button
+        
+        //        // MARK: Constraint scan qr button
         scanQRButton.topAnchor.constraint(equalTo: captionLabel.bottomAnchor, constant: 24.5).isActive = true
         scanQRButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 61.5).isActive = true
         scanQRButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -61.5).isActive = true
-
-//        // MARK: Constraint small caption
+        
+        //        // MARK: Constraint small caption
         smallCaptionLabel.topAnchor.constraint(equalTo: scanQRButton.bottomAnchor, constant: 7.5).isActive = true
         smallCaptionLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 42.0).isActive = true
         smallCaptionLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -43.0).isActive = true
@@ -221,8 +317,7 @@ class HomeViewController: UIViewController {
         helloLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32.0).isActive = true
         helloLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 31.5).isActive = true
         helloLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -116.5).isActive = true
-        
-        
+   
         // MARK: Constraint Info Label
         infoLabel.topAnchor.constraint(equalTo: helloLabel.bottomAnchor, constant: 30.0).isActive = true
         infoLabel.leadingAnchor.constraint(equalTo: helloLabel.leadingAnchor, constant: 0.0).isActive = true
@@ -238,8 +333,7 @@ class HomeViewController: UIViewController {
         recommendedMenuLabel.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: 235.0).isActive = true
         recommendedMenuLabel.leadingAnchor.constraint(equalTo: helloLabel.leadingAnchor, constant: 0.0).isActive = true
         recommendedMenuLabel.trailingAnchor.constraint(equalTo: helloLabel.trailingAnchor, constant: 0.0).isActive = true
-        
-        
+   
         // MARK: Constraint Button Browse All Menu
         browseAllMenuButton.topAnchor.constraint(equalTo: recommendedMenuLabel.bottomAnchor, constant: 221.5).isActive = true
         browseAllMenuButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 15.5).isActive = true
@@ -256,120 +350,4 @@ class HomeViewController: UIViewController {
         signoutButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16.0).isActive = true
         signoutButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -120.0).isActive = true
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-//        cancelOrder()
-        // MARK: -Add subview Home Before Sign In
-        view.addSubview(titleLabel)
-        view.addSubview(homeImage)
-        view.addSubview(captionLabel)
-        view.addSubview(scanQRButton)
-        view.addSubview(smallCaptionLabel)
-        
-        // MARK: -Add subview Home After Sign In
-        
-        view.addSubview(orderShortcut)
-        view.addSubview(helloLabel)
-        view.addSubview(infoLabel)
-        view.addSubview(recommendedMenuLabel)
-        view.addSubview(browseAllMenuButton)
-        view.addSubview(scanAnotherMenuButton)
-        
-        view.addSubview(signoutButton)
-    }
-    
-    // MARK: -Functions
-    @objc func scanQR() {
-        // MARK: Check user has signed in or not
-        
-        Auth.auth().addStateDidChangeListener({ auth, user in
-            if let user = user {
-                // MARK: User is signed in.
-                // TODO: Go to Scan QR
-                self.present(self.scanQRVC, animated: true, completion: nil)
-            } else {
-                // MARK: User is signed in.
-                AlertServices.presentAlertSignedIn(onVC: self, message: "To Scan QR Code, you need to sign in first")
-            }
-        })
-    }
-    
-    @objc func signout() {
-        Auth.auth().addStateDidChangeListener({ auth, user in
-            if let user = user {
-                // MARK: User is signed in.
-                
-                let firebaseAuth = Auth.auth()
-                let user = Auth.auth().currentUser
-                do {
-                    try firebaseAuth.signOut()
-                } catch let signOutError as NSError {
-                    print("Error signing out: %@", signOutError)
-                }
-                user?.delete { error in
-                    if let error = error {
-                        // An error happened.
-                    } else {
-                        // Account deleted.
-                        print("acount deleted")
-                    }
-                }
-            } else {
-                // MARK: User is not signed in.
-                print("from home view controller : you haven't even signed in")
-            }
-        })
-    }
-    
-    
-    // MARK: Go to Menu List
-    @objc func goToMenuListVC() {
-        let menulistVC = MenuListViewController()
-        self.navigationController?.pushViewController(menulistVC, animated: true)
-    }
-    
-    //go to menudetail when tapped button
-    @IBAction func menuDetailDidtTapped(_ sender: Any) {
-        let vc = MenuDetailViewController()
-        vc.modalPresentationStyle = .formSheet
-        self.present(vc, animated: true, completion: nil)
-    }
-    
-    //go to direct scan qr
-    @IBAction func directScanQR(_ sender: Any) {
-        let directScanQR = ScanQRCameraViewController()
-        self.navigationController?.pushViewController(directScanQR, animated: true)
-        self.tabBarController?.tabBar.isHidden = true
-    }
-    
-    @IBAction func generateQRAction(_ sender: Any) {
-        let generateQR = GenerateQRViewController()
-        self.navigationController?.pushViewController(generateQR, animated: true)
-        self.tabBarController?.tabBar.isHidden = true
-    }
-    
-    
-    // MARK: Cancel Order
-    func cancelOrder() {
-        
-        let button = UIButton()
-        button.frame = CGRect(x: 150, y: 250, width: 250, height: 50)
-        button.backgroundColor = UIColor.red
-        button.setTitle("Cancel Order Button ", for: .normal)
-        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        self.view.addSubview(button)
-        
-        
-    }
-    
-    @objc func buttonAction(sender: UIButton!) {
-        
-        let cancelViewController = CancelOrderViewController(nibName: Constant.CancelOrder.cancelViewController, bundle: nil)
-        cancelViewController.modalPresentationStyle = .fullScreen
-        self.present(cancelViewController, animated: true, completion: nil)
-        
-    }
-    
 }
-

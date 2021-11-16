@@ -24,13 +24,13 @@ class TabbarViewController: UITabBarController {
         let navigationController = UINavigationController(rootViewController: rootViewController)
         navigationController.tabBarItem.title = title
         navigationController.tabBarItem.image = image
-//        navigationController.navigationBar.prefersLargeTitles = true
         rootViewController.navigationItem.title = title
         
         return navigationController
     }
     
     //MARK: -Setup ViewController for HomePage
+    
     func setupVC() {
         viewControllers = [
             //MARK: -UiImage are not supported below iOS 15, the original was menucard and clock

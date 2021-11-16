@@ -8,9 +8,8 @@
 import UIKit
 
 class OrderShortcutView: UIView {
-    // MARK: Properties
     
-
+    // MARK: Properties
     var restaurantNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -59,23 +58,7 @@ class OrderShortcutView: UIView {
         return images
         
     }()
-    
-    
-//    var collectionView: UICollectionView = {
-//
-//        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-//        layout.itemSize = CGSize(width: 164, height: 202)
-//
-//        let collectionView = UICollectionView()
-////        collectionView.lay
-//
-//
-//
-//        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: C.recommendedMenuCellIdentifier)
-//
-//        return collectionView
-//    }()
-//
+
     // MARK: Initialization
     
     override init(frame: CGRect) {

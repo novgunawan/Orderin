@@ -14,7 +14,6 @@ extension OptionalTableViewCell: UITableViewDelegate, UITableViewDataSource{
         return 55
     }
 
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
@@ -55,7 +54,7 @@ extension OptionalTableViewCell: UITableViewDelegate, UITableViewDataSource{
         }
     }
     
-    //Maximal Option
+    // MARK: Maximal Option
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if let sr = tableView.indexPathsForSelectedRows {
                     if sr.count == 2 { //limit

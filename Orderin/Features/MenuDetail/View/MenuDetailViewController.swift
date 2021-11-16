@@ -9,18 +9,16 @@ import UIKit
 
 class MenuDetailViewController: UIViewController {
     
+    // MARK: -Outlets
     @IBOutlet weak var detailListTable: UITableView!
-    
     @IBOutlet weak var topCursor: UIView!{
         didSet{
             topCursor.layer.cornerRadius = 2.5
         }
     }
-    
-    //UI Label Normal Price
     @IBOutlet weak var normalPrice: UILabel!{
         didSet{
-            //strikethrough label
+            // MARK: Strikethrough label
             let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: normalPrice.text ?? "")
             attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
             normalPrice.attributedText = attributeString
@@ -28,10 +26,11 @@ class MenuDetailViewController: UIViewController {
         }
     }
     
-    // MARK: Declaration Variables
+    // MARK: -Declaration Variables
     var menuDetailViewModel = MenuDetailViewModel()
     var customization: [Customization] = []
     
+    // MARK: -App Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -42,32 +41,24 @@ class MenuDetailViewController: UIViewController {
                 self.detailListTable.reloadData()
             }
         }
-        
-        
     }
     
-   private func setup(){
-       
-       //xib register cell
-       detailListTable.register(ChooseTableViewCell.nib(), forCellReuseIdentifier: ChooseTableViewCell.identifier)
-       detailListTable.register(OptionalTableViewCell.nib(), forCellReuseIdentifier: OptionalTableViewCell.identifier)
-       detailListTable.register(NotesTableViewCell.nib(), forCellReuseIdentifier: NotesTableViewCell.identifier)
-       detailListTable.register(TotalItemTableViewCell.nib(), forCellReuseIdentifier: TotalItemTableViewCell.identifier)
-       detailListTable.register(CartButtonTableViewCell.nib(), forCellReuseIdentifier: CartButtonTableViewCell.identifier)
-       
-       detailListTable.delegate = self
-       detailListTable.dataSource = self
-       
-       //keyboard manage
-       NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-       NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-       self.dismissKeyboard()
+    // MARK: -Function
+    private func setup(){
+        
+        // MARK: Register XIB cell
+        detailListTable.register(ChooseTableViewCell.nib(), forCellReuseIdentifier: ChooseTableViewCell.identifier)
+        detailListTable.register(OptionalTableViewCell.nib(), forCellReuseIdentifier: OptionalTableViewCell.identifier)
+        detailListTable.register(NotesTableViewCell.nib(), forCellReuseIdentifier: NotesTableViewCell.identifier)
+        detailListTable.register(TotalItemTableViewCell.nib(), forCellReuseIdentifier: TotalItemTableViewCell.identifier)
+        detailListTable.register(CartButtonTableViewCell.nib(), forCellReuseIdentifier: CartButtonTableViewCell.identifier)
+        
+        detailListTable.delegate = self
+        detailListTable.dataSource = self
+        
+        // MARK: Keyboard Management
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        self.dismissKeyboard()
     }
-    
 }
-
-//Function to push this modal
-//let vc = MenuDetailViewController()
-// vc.modalPresentationStyle = .formSheet
-// self.present(vc, animated: true, completion: nil)
-
