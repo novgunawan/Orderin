@@ -43,7 +43,7 @@
         </view>
     </objects>
     <resources>
-        <image name="scan" width="9825" height="10260"/>
+        <image name="scan" width="1140" height="1135"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
