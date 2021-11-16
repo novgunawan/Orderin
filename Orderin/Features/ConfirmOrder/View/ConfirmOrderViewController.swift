@@ -11,7 +11,8 @@ class ConfirmOrderViewController: UIViewController {
     
     // MARK: Confirm Page
     
-    var viewModel = CellConfirmationViewModel()
+    var confirmationCellViewModel = CellConfirmationViewModel()
+    var textFieldViewModel = TextFieldViewModel()
     
     var data: [OrderedMenuCustomizationDummyData] = []
     var rowHeight: CGFloat = 50
@@ -58,28 +59,21 @@ class ConfirmOrderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindingData()
-        setupDelegate()
+        setupTableViewDelegate()
         setupNavigationController()
         setupAddView()
-        dismissKeyboard()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
+        viewDismissIfUserTapOutsideKeyboard()
+       
     }
+    
+    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        orderButtonView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-        orderButtonView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-        orderButtonView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-        orderButtonView.heightAnchor.constraint(equalToConstant: view.frame.height / 8).isActive = true
-        
-       
+        setupOrdernowViewButtonConstraint()
         setupTotalPriceConstraint()
         setupTableViewConstraint()
-       
+        
     }
     
     // MARK: Add View
@@ -89,11 +83,9 @@ class ConfirmOrderViewController: UIViewController {
         view.addSubview(confirmMenuTableView)
         view.addSubview(orderButtonView)
         view.addSubview(subtotalView)
-        
-        
     }
     
-    func setupDelegate() {
+    func setupTableViewDelegate() {
         
         confirmMenuTableView.delegate = self
         confirmMenuTableView.dataSource = self
@@ -111,6 +103,13 @@ class ConfirmOrderViewController: UIViewController {
         
     }
     
+    func setupNavigationController() {
+        navigationItem.title = "Confirm Order"
+    }
+    
+    
+    // MARK: Add Constraint
+    
     func setupTableViewConstraint() {
         confirmMenuTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         confirmMenuTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
@@ -127,12 +126,34 @@ class ConfirmOrderViewController: UIViewController {
         subtotalView.heightAnchor.constraint(equalToConstant: 75).isActive = true
     }
     
-    
-    func setupNavigationController() {
-        navigationItem.title = "Confirm Order"
+    func setupOrdernowViewButtonConstraint() {
+        
+        orderButtonView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        orderButtonView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+        orderButtonView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        orderButtonView.heightAnchor.constraint(equalToConstant: view.frame.height / 8).isActive = true
     }
     
-    // MARK: Function when button order are tap ( Not Finished )
+    // MARK: Logic for user Tap Outside the View when keyboard are shown
+    
+    func viewDismissIfUserTapOutsideKeyboard() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    @objc private func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            confirmMenuTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height/3, right: 0)
+        }
+    }
+    
+    @objc private func keyboardWillHide(notification: NSNotification) {
+        confirmMenuTableView.contentInset = .zero
+    }
+    
+    // MARK: Function when button order are tap
+    
     @objc func orderDidTap() {
         let alertController = UIAlertController(title: "Confirm Order?",
                                                 message: "Once you made your order, you only have 5 seconds to cancel it.",
@@ -154,23 +175,28 @@ class ConfirmOrderViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    // MARK: Binding data for TableView Row Dynamic Heigt
+    
     private func bindingData() {
         
-        viewModel.fetchMenuCustomization(completion: { value in
+        confirmationCellViewModel.fetchMenuCustomization(completion: { value in
             self.data = value
             
         })
         
     }
     
-    
 }
+
+// MARK: Table View Delegate
 
 extension ConfirmOrderViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
+    // MARK: View for header in table view
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
@@ -199,6 +225,8 @@ extension ConfirmOrderViewController: UITableViewDelegate, UITableViewDataSource
         return 65
     }
     
+    // MARK: Tableview Cell Setup
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
@@ -213,12 +241,15 @@ extension ConfirmOrderViewController: UITableViewDelegate, UITableViewDataSource
         
     }
     
+    // MARK: TableView Footer Setup
+    
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         
         UITableViewHeaderFooterView.appearance().tintColor = .white
         
         let textFieldView = confirmMenuTableView.dequeueReusableHeaderFooterView(withIdentifier: Constant.ConfirmOrder.notesView) as! NotesView
         
+        textFieldView.notesTextField.delegate = self
         
         return textFieldView
     }
@@ -226,17 +257,9 @@ extension ConfirmOrderViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 55
     }
-    
-    @objc private func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            confirmMenuTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height , right: 0)
-        }
-    }
-    
-    @objc private func keyboardWillHide(notification: NSNotification) {
-        confirmMenuTableView.contentInset = .zero
-    }
 }
+
+// MARK: Edit Button Cell Setup Delegate
 
 extension ConfirmOrderViewController: editButtonDelegate {
     
