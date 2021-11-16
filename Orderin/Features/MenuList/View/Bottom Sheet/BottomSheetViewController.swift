@@ -9,7 +9,6 @@ import UIKit
 
 class BottomSheetViewController: UIViewController{
 
-    
     // MARK: - Variables Declaration
     
     var hasSetPointOrigin = false
@@ -136,10 +135,13 @@ class BottomSheetViewController: UIViewController{
     
     @objc func proccedToMenuDetail() {
         
-        let vc = MenuDetailViewController()
-        vc.modalPresentationStyle = .formSheet
-        self.present(vc, animated: true, completion: nil)
+        weak var pvc = self.presentingViewController
         
+        self.dismiss(animated: true, completion: {
+            let vc = MenuDetailViewController()
+            pvc?.present(vc, animated: true)
+        })
+         
     }
     
     

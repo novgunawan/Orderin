@@ -37,7 +37,9 @@ struct Functionality {
     }
     
     // MARK: Set Data to User Default
+    
     // MARK: - Generate unique ID
+    
     func generateUniqueID(length: Int = 6) -> String {
       precondition(length > 0)
       let charset: [Character] =
@@ -81,11 +83,8 @@ struct Functionality {
  
     
     // Delete all data in userdefault after pushing to database!
-    func deleteDataInUserDefault(){
-        // TODO: Add functionality to delete data in userDefault!
-        // TODO: Uncomment the code below, if you already have the data object!
-//        UserDefaults.standard.removeObject(forKey: <#T##String#>)
-        
+    func deleteDataInUserDefault(key: String){
+        UserDefaults.standard.removeObject(forKey: key)
     }
     
     // Get all temporary data in userDefaults!
