@@ -7,9 +7,13 @@
 
 import UIKit
 
+protocol SaveCustomizationDelegate {
+    func saveCustom()
+}
+
 class CartButtonTableViewCell: UITableViewCell {
 
-
+    var delegate: SaveCustomizationDelegate?
     @IBOutlet weak var cartButton: UIButton!
     @IBOutlet weak var totalPrice: UILabel!
     @IBOutlet weak var viewCell: UIView!{
@@ -36,6 +40,7 @@ class CartButtonTableViewCell: UITableViewCell {
     
     //Cart Button Did Tapped
     @IBAction func cartButtonDidTapped(_ sender: Any) {
-        print("cartbuttondidtapped")
+        delegate?.saveCustom()
+        
     }
 }

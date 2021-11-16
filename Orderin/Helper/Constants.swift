@@ -116,6 +116,12 @@ struct C {
             alpha: CGFloat(1.0)
         )
     }
+    
+    struct UserDefaultKey {
+        static let keyChooseCustomization = "chooseCustomization"
+        static let keyOptionalCustomization = "optionalCustomization"
+        static let keyOptionalCustomizationPrice = "optionalCustomizationPrice"
+    }
 }
 
 struct Constant {

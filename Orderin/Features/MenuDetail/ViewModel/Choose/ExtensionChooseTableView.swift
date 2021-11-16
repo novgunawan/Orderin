@@ -32,8 +32,9 @@ extension ChooseTableViewCell: UITableViewDelegate, UITableViewDataSource{
         cellChooseDetail.checkerUI.image = UIImage(named: "checked")
         
         // MARK: Insert customization that user tap to customizationMenuOrdered Model
-        cellChooseDetail.customMenuOrderedObject?.options.append(cellChooseDetail.object ?? "no customization")
-        
+//        cellChooseDetail.customMenuOrderedObject?.options.append(cellChooseDetail.object ?? "no customization")
+        Functionality.shared.tempChooseCustom = cellChooseDetail.object ?? ""
+        //        print(cellChooseDetail.object)
     }
     // MARK: Deselect cell
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {

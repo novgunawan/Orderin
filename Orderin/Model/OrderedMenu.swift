@@ -10,5 +10,5 @@ struct OrderedMenu {
     let menuID: String
     let qty: Int
     let price: Int
-    let customization: [Customization]
+    let customization: [CustomizationMenuOrdered]
 }

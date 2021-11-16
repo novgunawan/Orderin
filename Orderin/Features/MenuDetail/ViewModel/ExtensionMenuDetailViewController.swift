@@ -9,7 +9,23 @@ import Foundation
 import UIKit
 
 
-extension MenuDetailViewController: UITableViewDelegate, UITableViewDataSource{
+extension MenuDetailViewController: UITableViewDelegate, UITableViewDataSource, SaveCustomizationDelegate{
+    
+    func saveCustom() {
+        // MARK: Set customization to user defaults
+        
+        let tempChooseCustom = Functionality.shared.tempChooseCustom
+        
+        let tempOptionalCustom = Functionality.shared.tempOptionalCustom
+        
+        let tempOptionalCustomPrice = Functionality.shared.tempOptionalCustomPrice
+        
+        Functionality.shared.setDataToUserDefault(data: tempChooseCustom, key: C.UserDefaultKey.keyChooseCustomization)
+        
+        Functionality.shared.setDataToUserDefault(data: tempOptionalCustom, key: C.UserDefaultKey.keyOptionalCustomization)
+        
+        Functionality.shared.setDataToUserDefault(data: tempOptionalCustomPrice, key: C.UserDefaultKey.keyOptionalCustomizationPrice)
+    }
     
 //MARK: - Setup Cell In Table View
 
@@ -62,15 +78,19 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
         return cellTotalItem
     }
     let cellCartButton = detailListTable.dequeueReusableCell(withIdentifier: CartButtonTableViewCell.identifier) as! CartButtonTableViewCell
-    //TO-DO: Make a clear for flow
-    cellCartButton.cartButton.addTarget(self, action: #selector(didButtonCartTapped), for: .touchUpInside)
+    
+    cellCartButton.delegate = self
+    //TODO: Make a clear for flow
+//    cellCartButton.cartButton.addTarget(self, action: #selector(didButtonCartTapped), for: .touchUpInside)
     return cellCartButton
     }
     
     //present order summary
     @objc func didButtonCartTapped(){
-        let vc = OrderSummaryViewController()
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true, completion: nil)
+//        let vc = OrderSummaryViewController()
+//        vc.modalPresentationStyle = .fullScreen
+//        self.present(vc, animated: true, completion: nil)
+
     }
 }
+
