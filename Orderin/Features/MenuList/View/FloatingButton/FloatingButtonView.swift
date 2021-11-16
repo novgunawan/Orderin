@@ -145,5 +145,4 @@ class FloatingButtonView: UIView {
         delegate?.pushToConfirmOrder()
     }
     
-    
 }
