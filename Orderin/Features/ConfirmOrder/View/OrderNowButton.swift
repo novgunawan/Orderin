@@ -11,6 +11,7 @@ class OrderNowButton: UIView {
     
     let orderNowButton: UIButton = {
         
+        
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Order Now", for: .normal)

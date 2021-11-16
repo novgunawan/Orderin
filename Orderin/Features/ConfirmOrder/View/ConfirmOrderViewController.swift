@@ -7,9 +7,10 @@
 
 import UIKit
 
+// MARK: Confirm Page
 class ConfirmOrderViewController: UIViewController {
     
-    // MARK: Confirm Page
+   
     
     var confirmationCellViewModel = CellConfirmationViewModel()
     var textFieldViewModel = TextFieldViewModel()
@@ -65,7 +66,6 @@ class ConfirmOrderViewController: UIViewController {
         viewDismissIfUserTapOutsideKeyboard()
        
     }
-    
     
     
     override func viewDidLayoutSubviews() {
