@@ -8,6 +8,7 @@
 import Foundation
 struct OrderedMenu {
     let menuID: String
+    let foodName: String
     let qty: Int
     let price: Int
     let customization: [CustomizationMenuOrdered]
