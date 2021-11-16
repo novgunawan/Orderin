@@ -9,7 +9,7 @@ import UIKit
 
 protocol CellDelegate {
     
-    func buttonTapped(tag: Int)
+    func buttonTapped(tag: Int, sectionIndex: Int, rowIndex: Int)
 }
 
 
@@ -17,13 +17,24 @@ class MenuListTableViewCell: UITableViewCell {
     
     // MARK: - Components Declaration
     
-    var dataModel: MenuListModel?{
+    var dataModel: MenuListModel? {
         didSet{
             setContent()
         }
     }
     
+    var orderModel: FoodItemOrderModel? { // TODO: change this model if fixed model done!
+        didSet{
+            
+            changeStateAddButton()
+        }
+    }
+    
+    var indexSection = 0
+    var indexRow = 0
     var delegate: CellDelegate?
+    
+    
     
     let card: UIView = {
         let view = UIView()
@@ -169,7 +180,9 @@ class MenuListTableViewCell: UITableViewCell {
     // MARK: - Logic
     
     @objc func didButtonTapped(_ sender: UIButton){
-        delegate?.buttonTapped(tag: sender.tag)
+        delegate?.buttonTapped(tag: tag, sectionIndex: indexSection , rowIndex: indexRow )
+//        print(self.indexSection)
+//        print(self.indexRow)
     }
                 
     func setContent(){
@@ -202,6 +215,16 @@ class MenuListTableViewCell: UITableViewCell {
         descriptionLabel.text = data.description
         priceLabel.text = data.price
         
+    }
+    
+    func changeStateAddButton(){
+        guard let data = orderModel else { return  }
+        
+        if data.quantitiy > 0 {
+            button.setTitle("\(data.quantitiy)", for: .normal)
+            button.setImage(UIImage(systemName: "cart"), for: .normal)
+            button.tintColor = C.hexStringToUIColor(hex: C.white)
+        }
     }
     
 }

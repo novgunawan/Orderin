@@ -10,6 +10,7 @@ import UIKit
 class MenuDetailViewController: UIViewController {
     
     // MARK: -Outlets
+
     @IBOutlet weak var detailListTable: UITableView!
     @IBOutlet weak var topCursor: UIView!{
         didSet{
@@ -26,16 +27,30 @@ class MenuDetailViewController: UIViewController {
         }
     }
     
+    // MARK: -Outlets
+  
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var imageMenu: UIImageView!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var foodName: UILabel!
+
     // MARK: -Declaration Variables
+
     var menuDetailViewModel = MenuDetailViewModel()
     var customization: [Customization] = []
+    var dataObject: MenuListModel?
+    
+    
+    // MARK: - Life Cycle
     
     // MARK: -App Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+//        priceLabel.text = "test"
         menuDetailViewModel.assignDataCustomization { value in
             self.customization = value
+            self.setupComponents()
             
             DispatchQueue.main.async {
                 self.detailListTable.reloadData()
@@ -43,22 +58,41 @@ class MenuDetailViewController: UIViewController {
         }
     }
     
-    // MARK: -Function
-    private func setup(){
-        
-        // MARK: Register XIB cell
-        detailListTable.register(ChooseTableViewCell.nib(), forCellReuseIdentifier: ChooseTableViewCell.identifier)
-        detailListTable.register(OptionalTableViewCell.nib(), forCellReuseIdentifier: OptionalTableViewCell.identifier)
-        detailListTable.register(NotesTableViewCell.nib(), forCellReuseIdentifier: NotesTableViewCell.identifier)
-        detailListTable.register(TotalItemTableViewCell.nib(), forCellReuseIdentifier: TotalItemTableViewCell.identifier)
-        detailListTable.register(CartButtonTableViewCell.nib(), forCellReuseIdentifier: CartButtonTableViewCell.identifier)
-        
-        detailListTable.delegate = self
-        detailListTable.dataSource = self
-        
-        // MARK: Keyboard Management
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        self.dismissKeyboard()
+    // MARK: - Setup Function
+    
+   private func setup(){
+       
+       //xib register cell
+       detailListTable.register(ChooseTableViewCell.nib(), forCellReuseIdentifier: ChooseTableViewCell.identifier)
+       detailListTable.register(OptionalTableViewCell.nib(), forCellReuseIdentifier: OptionalTableViewCell.identifier)
+       detailListTable.register(NotesTableViewCell.nib(), forCellReuseIdentifier: NotesTableViewCell.identifier)
+       detailListTable.register(TotalItemTableViewCell.nib(), forCellReuseIdentifier: TotalItemTableViewCell.identifier)
+       detailListTable.register(CartButtonTableViewCell.nib(), forCellReuseIdentifier: CartButtonTableViewCell.identifier)
+       
+       detailListTable.delegate = self
+       detailListTable.dataSource = self
+       
+       //keyboard manage
+       NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+       NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+       self.dismissKeyboard()
     }
+    
+    // MARK: Setup top components
+    
+    func setupComponents(){
+        guard let data = dataObject else { return  }
+        
+        imageMenu.image = data.image
+        priceLabel.text = data.price
+        descriptionLabel.text = data.description
+        foodName.text = data.title
+        
+        
+    }
+    
+    // MARK: - Logic Function 
+    
+    
+    
 }

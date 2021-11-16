@@ -19,6 +19,8 @@ class MenuListViewController: UIViewController{
     var dataWithoutCategory: [MenuListModel] = []
     var filteredData: [MenuListModel] = []
     var searchingState = false
+    var sectionIndex = 0
+    var rowIndex = 0
     
 
     
