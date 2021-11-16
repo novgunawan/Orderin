@@ -10,19 +10,15 @@ import UIKit
 
 extension ConfirmOrderViewController: UITextFieldDelegate {
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        //MARK: Ngambil data dari TextField
+        
+        textFieldViewModel.textfieldDataToDatabase(textfieldValue: textField.text)
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)
     }
-    
-    func dismissKeyboard() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer( target: self, action:    #selector(dismissKeyboardTouchOutside))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc private func dismissKeyboardTouchOutside() {
-        view.endEditing(true)
-    }
-    
-    
+
 }
