@@ -35,8 +35,7 @@ struct Functionality {
         
         return timeStamp
     }
-    
-    // MARK: Set Data to User Default
+
     // MARK: - Generate unique ID
     func generateUniqueID(length: Int = 6) -> String {
       precondition(length > 0)
@@ -71,14 +70,7 @@ struct Functionality {
 
       return result
     }
-    
-    
-    
-    
-    
     // MARK: - userDefaults
-    
- 
     
     // Delete all data in userdefault after pushing to database!
     func deleteDataInUserDefault(){
