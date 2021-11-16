@@ -50,6 +50,8 @@ extension MenuListViewController:  UISearchResultsUpdating, UISearchBarDelegate 
 // MARK: - Table View Functionality
 
 extension MenuListViewController: UITableViewDelegate, UITableViewDataSource, CellDelegate {
+   
+    
   
     func numberOfSections(in tableView: UITableView) -> Int {
         if searchingState == true{
@@ -133,15 +135,17 @@ extension MenuListViewController: UITableViewDelegate, UITableViewDataSource, Ce
         }
         else{
             let dummy = data[indexPath.section].MenuList[indexPath.row]
+            cell.indexSection = indexPath.section
+            cell.indexRow = indexPath.row
             cell.dataModel = dummy
             cell.button.tag = indexPath.row
             cell.delegate = self
-      
-            
         }
         
         return cell
     }
+    
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // TODO: show bottom card
@@ -153,10 +157,12 @@ extension MenuListViewController: UITableViewDelegate, UITableViewDataSource, Ce
     
     
 
-    func buttonTapped(tag: Int) {
-        // TODO: Show Menu detail based on index data
+    func buttonTapped(tag: Int, sectionIndex: Int, rowIndex rowIndes: Int) {
+      
         let vc = MenuDetailViewController()
+        vc.dataObject = data[sectionIndex].MenuList[rowIndes]
         self.present(vc, animated: true, completion: nil)
+     
     }
     
     

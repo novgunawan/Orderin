@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -18,8 +19,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuDetailViewController" customModule="Orderin" customModuleProvider="target">
             <connections>
+                <outlet property="descriptionLabel" destination="JTF-Ir-5jc" id="qzN-Ce-44U"/>
                 <outlet property="detailListTable" destination="knT-ME-Jnk" id="3wV-kM-Frn"/>
+                <outlet property="foodName" destination="5Ha-u7-q1n" id="IwU-d0-QVH"/>
+                <outlet property="imageMenu" destination="WDi-pA-FAi" id="p6D-Ub-SbO"/>
                 <outlet property="normalPrice" destination="iGJ-dz-Bir" id="Hi4-M3-xDG"/>
+                <outlet property="priceLabel" destination="fP8-6Y-1YA" id="cfH-TT-0Z1"/>
                 <outlet property="topCursor" destination="qVu-Mn-HND" id="1ba-Vx-WPT"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

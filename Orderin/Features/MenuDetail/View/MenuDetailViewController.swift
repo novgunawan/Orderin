@@ -9,6 +9,8 @@ import UIKit
 
 class MenuDetailViewController: UIViewController {
     
+    // MARK: - UI Components Declaration
+    
     @IBOutlet weak var detailListTable: UITableView!
     
     @IBOutlet weak var topCursor: UIView!{
@@ -28,23 +30,36 @@ class MenuDetailViewController: UIViewController {
         }
     }
     
-    // MARK: Declaration Variables
+  
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var imageMenu: UIImageView!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var foodName: UILabel!
+    
+    
+    // MARK: - Declaration Variables
     var menuDetailViewModel = MenuDetailViewModel()
     var customization: [Customization] = []
+    var dataObject: MenuListModel?
+    
+    
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+//        priceLabel.text = "test"
         menuDetailViewModel.assignDataCustomization { value in
             self.customization = value
+            self.setupComponents()
             
             DispatchQueue.main.async {
                 self.detailListTable.reloadData()
             }
         }
-        
-        
     }
+    
+    // MARK: - Setup Function
     
    private func setup(){
        
@@ -63,6 +78,23 @@ class MenuDetailViewController: UIViewController {
        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
        self.dismissKeyboard()
     }
+    
+    // MARK: Setup top components
+    
+    func setupComponents(){
+        guard let data = dataObject else { return  }
+        
+        imageMenu.image = data.image
+        priceLabel.text = data.price
+        descriptionLabel.text = data.description
+        foodName.text = data.title
+        
+        
+    }
+    
+    // MARK: - Logic Function 
+    
+    
     
 }
 
