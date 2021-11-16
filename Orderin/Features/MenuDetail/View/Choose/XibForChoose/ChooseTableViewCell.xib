@@ -28,7 +28,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="358" height="80"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPa-Gk-GTv">
-                                <rect key="frame" x="10" y="28" width="55" height="16"/>
+                                <rect key="frame" x="10" y="32" width="55" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="cPa-Gk-GTv" secondAttribute="height" multiplier="55:16" id="AFq-Ws-Lrh"/>
                                     <constraint firstAttribute="height" constant="16" id="hhz-KL-e7O"/>
@@ -60,11 +60,11 @@
                         <constraints>
                             <constraint firstItem="0mw-3F-zCr" firstAttribute="leading" secondItem="puG-Pc-iF6" secondAttribute="leadingMargin" constant="2" id="6wm-WS-8pY"/>
                             <constraint firstAttribute="width" secondItem="puG-Pc-iF6" secondAttribute="height" multiplier="179:40" id="6xj-fM-huA"/>
-                            <constraint firstItem="cPa-Gk-GTv" firstAttribute="centerY" secondItem="OeC-MP-SG4" secondAttribute="centerY" constant="16" id="W4R-qK-Dft"/>
+                            <constraint firstItem="cPa-Gk-GTv" firstAttribute="centerY" secondItem="OeC-MP-SG4" secondAttribute="centerY" constant="20" id="W4R-qK-Dft"/>
                             <constraint firstItem="OeC-MP-SG4" firstAttribute="top" secondItem="puG-Pc-iF6" secondAttribute="top" constant="8" id="fiD-Rc-GVu"/>
                             <constraint firstItem="OeC-MP-SG4" firstAttribute="leading" secondItem="puG-Pc-iF6" secondAttribute="leading" constant="10" id="p8Q-9x-GMQ"/>
                             <constraint firstAttribute="bottom" secondItem="0mw-3F-zCr" secondAttribute="bottom" constant="2" id="s0Z-o3-ecD"/>
-                            <constraint firstItem="0mw-3F-zCr" firstAttribute="top" secondItem="cPa-Gk-GTv" secondAttribute="bottom" constant="2" id="tvZ-t3-RGZ"/>
+                            <constraint firstItem="0mw-3F-zCr" firstAttribute="top" secondItem="cPa-Gk-GTv" secondAttribute="bottom" constant="-2" id="tvZ-t3-RGZ"/>
                             <constraint firstItem="cPa-Gk-GTv" firstAttribute="leading" secondItem="OeC-MP-SG4" secondAttribute="trailing" constant="-345" id="vK7-sj-Dex"/>
                             <constraint firstItem="0mw-3F-zCr" firstAttribute="trailing" secondItem="puG-Pc-iF6" secondAttribute="trailingMargin" constant="2" id="wc2-Og-SuM"/>
                             <constraint firstAttribute="height" constant="80" id="zWC-ip-1iy"/>
