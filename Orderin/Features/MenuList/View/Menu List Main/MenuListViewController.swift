@@ -50,6 +50,7 @@ class MenuListViewController: UIViewController{
         self.navigationController?.navigationBar.tintColor = C.hexStringToUIColor(hex: C.red50)
 
         floatingButton.delegate = self
+
         
     }
     
