@@ -41,8 +41,6 @@ class MenuDetailViewController: UIViewController {
     var dataObject: MenuListModel?
     
     
-    // MARK: - Life Cycle
-    
     // MARK: -App Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,8 +85,7 @@ class MenuDetailViewController: UIViewController {
         priceLabel.text = data.price
         descriptionLabel.text = data.description
         foodName.text = data.title
-        
-        
+ 
     }
     
     // MARK: - Logic Function 
