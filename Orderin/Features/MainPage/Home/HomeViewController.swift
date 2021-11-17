@@ -85,6 +85,7 @@ class HomeViewController: UIViewController {
         self.captionLabel.isHidden = true
         self.scanQRButton.isHidden = true
         self.smallCaptionLabel.isHidden = true
+        self.signoutButton.isHidden = true
         
         self.helloLabel.isHidden = false
         self.infoLabel.isHidden = false
@@ -101,6 +102,7 @@ class HomeViewController: UIViewController {
         self.captionLabel.isHidden = false
         self.scanQRButton.isHidden = false
         self.smallCaptionLabel.isHidden = false
+        self.signoutButton.isHidden = false
         
         self.helloLabel.isHidden = true
         self.infoLabel.isHidden = true
@@ -128,30 +130,32 @@ class HomeViewController: UIViewController {
     
     // MARK: Sign Out
     @objc func signout() {
-        Auth.auth().addStateDidChangeListener({ auth, user in
-            if let user = user {
-                // MARK: User is signed in.
-                
-                let firebaseAuth = Auth.auth()
-                let user = Auth.auth().currentUser
-                do {
-                    try firebaseAuth.signOut()
-                } catch let signOutError as NSError {
-                    print("Error signing out: %@", signOutError)
-                }
-                user?.delete { error in
-                    if let error = error {
-                        // An error happened.
-                    } else {
-                        // Account deleted.
-                        print("acount deleted")
-                    }
-                }
-            } else {
-                // MARK: User is not signed in.
-                print("from home view controller : you haven't signed in")
-            }
-        })
+//        Auth.auth().addStateDidChangeListener({ auth, user in
+//            if let user = user {
+//                // MARK: User is signed in.
+//
+//                let firebaseAuth = Auth.auth()
+//                let user = Auth.auth().currentUser
+//                do {
+//                    try firebaseAuth.signOut()
+//                } catch let signOutError as NSError {
+//                    print("Error signing out: %@", signOutError)
+//                }
+//                user?.delete { error in
+//                    if let error = error {
+//                        // An error happened.
+//                    } else {
+//                        // Account deleted.
+//                        print("acount deleted")
+//                    }
+//                }
+//            } else {
+//                // MARK: User is not signed in.
+//                print("from home view controller : you haven't signed in")
+//            }
+//        })
+        AlertServices.presentAlertNotYetDeveloped(onVC: self)
+        
     }
     
     
@@ -246,7 +250,7 @@ class HomeViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: C.fontPoppinsSemibold, size: C.fontsizeBody)
-        label.text = "Hello, Sally!"
+        label.text = "Hello there!"
         return label
     }()
     
@@ -309,6 +313,7 @@ class HomeViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(C.signoutButton, for: .normal)
+        button.titleLabel?.font = UIFont(name: C.fontPoppinsSemibold, size: C.fontsizeBody)
         button.setTitleColor(C.hexStringToUIColor(hex: C.red50), for: .normal)
         button.addTarget(self, action: #selector(signout), for: .touchUpInside)
         return button
@@ -321,12 +326,12 @@ class HomeViewController: UIViewController {
         // MARK: -Constraint Home Before Sign In
         
         // MARK: Constraint for title label
-        titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 69).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 96.5).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -96.5).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 74.5).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -73.5).isActive = true
         
         // MARK: Constraint for image
-        homeImage.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 63.0).isActive = true
+        homeImage.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0.0).isActive = true
         homeImage.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 26.0).isActive = true
         homeImage.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -26.0).isActive = true
         
@@ -339,12 +344,17 @@ class HomeViewController: UIViewController {
         scanQRButton.topAnchor.constraint(equalTo: captionLabel.bottomAnchor, constant: 24.5).isActive = true
         scanQRButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 61.5).isActive = true
         scanQRButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -61.5).isActive = true
+        scanQRButton.heightAnchor.constraint(equalToConstant: 53.3).isActive = true
         
         //        // MARK: Constraint small caption
         smallCaptionLabel.topAnchor.constraint(equalTo: scanQRButton.bottomAnchor, constant: 7.5).isActive = true
         smallCaptionLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 42.0).isActive = true
         smallCaptionLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -43.0).isActive = true
         
+        // MARK: Constraint Sign Out Button
+        signoutButton.leadingAnchor.constraint(equalTo: smallCaptionLabel.leadingAnchor, constant: 0.0).isActive = true
+        signoutButton.trailingAnchor.constraint(equalTo: smallCaptionLabel.trailingAnchor, constant: 0.0).isActive = true
+        signoutButton.bottomAnchor.constraint(equalTo: smallCaptionLabel.bottomAnchor, constant: 53.0).isActive = true
         // MARK: -Constraint Home After Sign In
         
         // MARK: Constraint Hello Label
@@ -379,10 +389,6 @@ class HomeViewController: UIViewController {
         scanAnotherMenuButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16.0).isActive = true
         scanAnotherMenuButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15.0).isActive = true
         scanAnotherMenuButton.heightAnchor.constraint(equalToConstant: 53.3).isActive = true
-        
-        // MARK: Constraint Sign Out Button
-        signoutButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16.0).isActive = true
-        signoutButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -120.0).isActive = true
     }
 }
 extension HomeViewController: NavigationControllerDelegate {

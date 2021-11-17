@@ -102,7 +102,7 @@ class OrderShortcutView: UIView {
 
 
             // MARK: Constraint Instruction Label
-            instructionLabel.topAnchor.constraint(equalTo: restaurantNameLabel.bottomAnchor, constant: 3.0),
+            instructionLabel.topAnchor.constraint(equalTo: restaurantNameLabel.bottomAnchor, constant: -33.0),
             instructionLabel.leadingAnchor.constraint(equalTo: restaurantNameLabel.leadingAnchor, constant: 0.0),
             instructionLabel.trailingAnchor.constraint(equalTo: restaurantNameLabel.trailingAnchor, constant: 0.0),
 
