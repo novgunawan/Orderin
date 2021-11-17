@@ -39,13 +39,14 @@ class MenuDetailViewController: UIViewController {
     var menuDetailViewModel = MenuDetailViewModel()
     var customization: [Customization] = []
     var dataObject: MenuListModel?
+    var orderedMenu: [OrderedMenu]?
     
     
     // MARK: -App Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-//        priceLabel.text = "test"
+
         menuDetailViewModel.assignDataCustomization { value in
             self.customization = value
             self.setupComponents()
