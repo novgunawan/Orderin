@@ -12,8 +12,12 @@ protocol SaveCustomizationDelegate {
 }
 
 class CartButtonTableViewCell: UITableViewCell {
-
+    
+    
+// MARK: - UI Components Declaration
+    
     var delegate: SaveCustomizationDelegate?
+    @IBOutlet weak var numberOfItem: UILabel!
     @IBOutlet weak var cartButton: UIButton!
     @IBOutlet weak var totalPrice: UILabel!
     @IBOutlet weak var viewCell: UIView!{
