@@ -8,6 +8,9 @@
 import UIKit
 import AVFoundation
 
+protocol GoToHomeAfterScanDelegate {
+    func gotoHomeAfterScan()
+}
 class ScanQRCameraViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate{
     
     // MARK: -Outlets
@@ -16,6 +19,9 @@ class ScanQRCameraViewController: UIViewController, AVCaptureMetadataOutputObjec
     
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
+    var delegate: GoToHomeAfterScanDelegate?
+    var tempRestoID: String?
+    var tempTableNumber: Int?
     
     // MARK: -App Lifecycles
     override func viewDidLoad() {
@@ -101,7 +107,7 @@ class ScanQRCameraViewController: UIViewController, AVCaptureMetadataOutputObjec
             guard let stringValue = readableObject.stringValue else { return }
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
             found(code: stringValue)
-            gotoMenuList()
+            goToHomeAfterScan()
         }
         
         
@@ -112,7 +118,9 @@ class ScanQRCameraViewController: UIViewController, AVCaptureMetadataOutputObjec
         print(code)
         let tableNumber = code[15..<16]
         let restoID = code.substring(fromIndex: code.length-3)
-        print(restoID)
+        
+        tempTableNumber = Int(tableNumber)
+        tempRestoID = restoID
 
     }
     
@@ -126,9 +134,12 @@ class ScanQRCameraViewController: UIViewController, AVCaptureMetadataOutputObjec
     }
     
     // MARK: Go to menu list
-    func gotoMenuList(){
-        let menulistVC = MenuListViewController()
-        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
-        self.navigationController?.pushViewController(menulistVC, animated: true)
+    func goToHomeAfterScan(){
+        let home = HomeViewController()
+        home.tempRestoID = tempRestoID
+        home.tempTableNumber = tempTableNumber
+        self.dismiss(animated: true, completion: nil)
+//        self.navigationController?.pushViewController(menulistVC, animated: true)
+        delegate?.gotoHomeAfterScan()
     }
 }

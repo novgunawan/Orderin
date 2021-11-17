@@ -34,7 +34,7 @@ struct ConfirmOrderViewModel{
         path.setData([
             "foodName" : "placeholder food name",
             "qty" : "placeholder for food qty , it will be Integer",
-            "customization" : "placholder for customization in menu, it wil be array of String | [String]",
+            "customization" : "placeholder for customization in menu, it wil be array of String | [String]",
             "notes" : "placholder for food oreder notes, it will be String",
             "price" : "placeholder for  food price , it will be Integer",
             

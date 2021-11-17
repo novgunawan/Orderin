@@ -7,11 +7,12 @@
 
 import Foundation
 
-struct RestaurantDummy {
+struct Restaurant {
     var restoId: String
+    var restoName: String
     var restoEmail: String
-    var table: [TableRestaurants]
-    var listOfMenu: [MenuListModel]
+    var table: [TableRestaurants]?
+    var listOfMenu: [MenuListModel]?
     
 }
 

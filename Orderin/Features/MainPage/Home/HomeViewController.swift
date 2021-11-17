@@ -16,7 +16,17 @@ class HomeViewController: UIViewController {
     static var signinViewController = SignInViewController()
     var tabBarTag: Bool = true
     var scanQRVC = ScanQRCameraViewController()
-    
+    var countScan = 0
+    var tempRestoID: String? {
+        didSet {
+            guard let tempRestoID = tempRestoID else { return }
+        }
+    }
+    var tempTableNumber: Int? {
+        didSet {
+            guard let tempTableNumber = tempTableNumber else { return }
+        }
+    }
     
     // MARK: -App Lifecycle
     override func viewWillAppear(_ animated: Bool) {
@@ -29,35 +39,17 @@ class HomeViewController: UIViewController {
             self.tabBarController?.tabBar.tintColor = C.hexStringToUIColor(hex: C.gray70)
         }
         
+        if countScan < 1 {
+            homeBeforeScan()
+        } else {
+            homeAfterScan()
+        }
         // MARK: Set Tab Bar Not To Be Hidden
         self.tabBarController?.tabBar.isHidden = false
         
         // MARK: Set navigation bar hidden [the large title in the left]
         self.navigationController?.isNavigationBarHidden = true
-//        Auth.auth().addStateDidChangeListener({ auth, user in
-//            if let user = user {
-//                // MARK: User is signed in.
-//
-//                // MARK: Set Home Before Sign In view hidden
-//                self.titleLabel.isHidden = true
-//                self.homeImage.isHidden = true
-//                self.captionLabel.isHidden = true
-//                self.scanQRButton.isHidden = true
-//                self.smallCaptionLabel.isHidden = true
-//
-//            } else {
-//                // MARK: User is not signed in.
-//
-//                // MARK: Set Home After Sign In view hidden
-//                self.helloLabel.isHidden = true
-//                self.infoLabel.isHidden = true
-//                self.orderShortcut.isHidden = true
-//                self.recommendedMenuLabel.isHidden = true
-//                self.browseAllMenuButton.isHidden = true
-//                self.scanAnotherMenuButton.isHidden = true
-//            }
-//        })
-        
+
     }
 
     override func viewDidLoad() {
@@ -80,8 +72,7 @@ class HomeViewController: UIViewController {
         view.addSubview(scanAnotherMenuButton)
         
         view.addSubview(signoutButton)
-        
-        homeAfterScan()
+        scanQRVC.delegate = self
     }
     
     // MARK: -Functions
@@ -255,7 +246,7 @@ class HomeViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: C.fontPoppinsSemibold, size: C.fontsizeBody)
-        label.text = "Hello, name!"
+        label.text = "Hello, Sally!"
         return label
     }()
     
@@ -278,6 +269,8 @@ class HomeViewController: UIViewController {
         view.layer.rasterizationScale = UIScreen.main.scale
         view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
+        let stringTableNumber: String = String(tempTableNumber ?? 0)
+        view.tableNumberLabel.text = stringTableNumber
         return view
     }()
     
@@ -326,6 +319,7 @@ class HomeViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         // MARK: -Constraint Home Before Sign In
+        
         // MARK: Constraint for title label
         titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 69).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 96.5).isActive = true
@@ -396,4 +390,17 @@ extension HomeViewController: NavigationControllerDelegate {
         let confirmOrderVC = ConfirmOrderViewController()
         self.navigationController?.pushViewController(confirmOrderVC, animated: true)
     }
+}
+
+extension HomeViewController: GoToHomeAfterScanDelegate {
+    func gotoHomeAfterScan() {
+        let homeAfterScanVC = HomeViewController()
+        
+        homeAfterScanVC.countScan += 1
+        homeAfterScanVC.tempRestoID = scanQRVC.tempRestoID
+        homeAfterScanVC.tempTableNumber = scanQRVC.tempTableNumber
+        self.navigationController?.pushViewController(homeAfterScanVC, animated: false)
+    }
+    
+    
 }
