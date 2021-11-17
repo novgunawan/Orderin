@@ -39,6 +39,7 @@ class HomeViewController: UIViewController {
             self.tabBarController?.tabBar.tintColor = C.hexStringToUIColor(hex: C.gray70)
         }
         
+        // MARK: State Home Page
         if countScan < 1 {
             homeBeforeScan()
         } else {
@@ -110,8 +111,8 @@ class HomeViewController: UIViewController {
     }
     
     @objc func scanQR() {
-        // MARK: Check user has signed in or not
         
+        // MARK: Check user has signed in or not
         Auth.auth().addStateDidChangeListener({ auth, user in
             if let user = user {
                 // MARK: User is signed in.
@@ -119,11 +120,10 @@ class HomeViewController: UIViewController {
                 self.present(self.scanQRVC, animated: true, completion: nil)
             } else {
                 // MARK: User is not signed in.
-//                AlertServices.presentAlertSignedIn(onVC: self, message: "To Scan QR Code, you need to sign in first")
-                self.present(self.scanQRVC, animated: true, completion: nil)
-
+                AlertServices.presentAlertSignedIn(onVC: self, message: "To Scan QR Code, you need to sign in first")
             }
         })
+        
     }
     
     // MARK: Sign Out
