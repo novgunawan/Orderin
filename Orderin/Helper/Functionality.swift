@@ -75,9 +75,6 @@ struct Functionality {
     }
     
     
-    
-    
-    
     // MARK: - userDefaults
     
  
@@ -87,11 +84,6 @@ struct Functionality {
         UserDefaults.standard.removeObject(forKey: key)
     }
     
-    // Get all temporary data in userDefaults!
-    func getDataFromUserDefaults(){
-        // TODO: Add functionality to get data from userDefault!
-        
-    }
     
     
     func setDataToUserDefault(data: Any, key: String) {

@@ -121,6 +121,7 @@ struct C {
         static let keyChooseCustomization = "chooseCustomization"
         static let keyOptionalCustomization = "optionalCustomization"
         static let keyOptionalCustomizationPrice = "optionalCustomizationPrice"
+        static let keyUserID = "userID"
     }
 }
 

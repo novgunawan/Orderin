@@ -28,6 +28,7 @@ class DataManipulation {
                 print("Error adding document \(error)")
             } else {
                 print("Document added with ID : \(self.ref!.documentID)")
+                Functionality.shared.setDataToUserDefault(data: self.ref!.documentID, key: C.UserDefaultKey.keyUserID)
             }
         }
     }
