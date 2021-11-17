@@ -8,6 +8,7 @@
 import UIKit
 
 class CancelOrderViewController: UIViewController {
+  
     
     // Buat Circle
     let bgShapeLayer = CAShapeLayer()
@@ -18,6 +19,7 @@ class CancelOrderViewController: UIViewController {
     let viewModel = CancelOrderViewModel()
     var endTime: Date?
     var timer = Timer()
+    var delegate: addNewMenuDelegate?
     
     // Buat UI
  
@@ -154,8 +156,11 @@ class CancelOrderViewController: UIViewController {
     
     func goToPageSummary() {
         let vc = OrderSummaryViewController()
+        vc.delegate = delegate
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
     }
+    
+    
 }
 

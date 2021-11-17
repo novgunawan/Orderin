@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol addNewMenuDelegate {
+    func addOrder()
+}
+
 class OrderSummaryViewController: UIViewController {
     
 
@@ -54,6 +58,7 @@ class OrderSummaryViewController: UIViewController {
     @IBOutlet weak var totalPrice: UILabel!
     
     
+    var delegate: addNewMenuDelegate?
     
     
     override func viewDidLoad() {
@@ -84,6 +89,6 @@ class OrderSummaryViewController: UIViewController {
     }
     
     func popVC() {
-        self.dismiss(animated: true, completion: nil)
+        delegate?.addOrder()
     }
 }
