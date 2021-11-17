@@ -28,6 +28,4 @@ extension TotalItemTableViewCell{
             minusButton.isEnabled = false
         }
     }
-    
-    
 }
