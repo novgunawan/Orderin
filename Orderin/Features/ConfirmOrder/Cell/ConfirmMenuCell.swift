@@ -9,6 +9,8 @@ import UIKit
 
 class ConfirmMenuCell: UITableViewCell {
     
+    // MARK: TableView Cell
+    
     var menuCustomVM = CellConfirmationViewModel()
     var data: [OrderedMenuCustomizationDummyData] = []
     var delegate: editButtonDelegate?
@@ -50,7 +52,7 @@ class ConfirmMenuCell: UITableViewCell {
         return label
     }()
     
-    // Cell Menu Customizationnya
+    // MARK: Menu Customization
     let menuCustomizationTableView: UITableView = {
         
         let customizeMenu = UITableView()

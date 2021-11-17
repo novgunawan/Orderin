@@ -9,9 +9,7 @@ import UIKit
 
 // MARK: Confirm Page
 class ConfirmOrderViewController: UIViewController {
-    
-   
-    
+
     var confirmationCellViewModel = CellConfirmationViewModel()
     var textFieldViewModel = TextFieldViewModel()
     var data: [OrderedMenuCustomizationDummyData] = []
