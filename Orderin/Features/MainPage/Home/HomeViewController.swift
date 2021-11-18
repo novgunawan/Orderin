@@ -74,6 +74,11 @@ class HomeViewController: UIViewController {
         
         view.addSubview(signoutButton)
         scanQRVC.delegate = self
+        
+        //data source
+        view.addSubview(tableView)
+        tableView.dataSource = self
+        tableView.delegate = self
     }
     
     // MARK: -Functions
@@ -319,9 +324,23 @@ class HomeViewController: UIViewController {
         return button
     }()
     
+    //MARK: - Collection View
+    
+    private let tableView: UITableView = {
+        let table = UITableView()
+        table.register(CarouselCollectionTableViewCell.self, forCellReuseIdentifier: CarouselCollectionTableViewCell.identifier)
+        return table
+    }()
+    
+    let viewModels: [CarouselCollectionTableViewCellViewModel] = [
+        CarouselCollectionTableViewCellViewModel(viewModels: [TileCollectionViewCellViewModel(name: "French Fries", image: UIImage(named: "french-fries")!), TileCollectionViewCellViewModel(name: "Sausages", image: UIImage(named: "sausages")!), TileCollectionViewCellViewModel(name: "Salad", image: UIImage(named: "salad")!), TileCollectionViewCellViewModel(name: "Chicken Katsu", image: UIImage(named: "chiken-katsu")!), TileCollectionViewCellViewModel(name: "Fried Rice", image: UIImage(named: "fried-rice")!)
+                                                             ])
+    ]
+    
     // MARK: -Constraints
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        tableView.frame = view.bounds
         
         // MARK: -Constraint Home Before Sign In
         
