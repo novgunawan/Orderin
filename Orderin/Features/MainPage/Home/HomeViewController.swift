@@ -63,6 +63,7 @@ class HomeViewController: UIViewController {
         view.addSubview(scanQRButton)
         view.addSubview(smallCaptionLabel)
         
+        
         // MARK: -Add subview Home After Sign In
         
         view.addSubview(orderShortcut)
@@ -70,13 +71,13 @@ class HomeViewController: UIViewController {
         view.addSubview(infoLabel)
         view.addSubview(recommendedMenuLabel)
         view.addSubview(browseAllMenuButton)
+        view.addSubview(tableView)
         view.addSubview(scanAnotherMenuButton)
-        
+
         view.addSubview(signoutButton)
         scanQRVC.delegate = self
         
         //data source
-        view.addSubview(tableView)
         tableView.dataSource = self
         tableView.delegate = self
     }
@@ -329,6 +330,7 @@ class HomeViewController: UIViewController {
     private let tableView: UITableView = {
         let table = UITableView()
         table.register(CarouselCollectionTableViewCell.self, forCellReuseIdentifier: CarouselCollectionTableViewCell.identifier)
+        table.separatorColor = .clear
         return table
     }()
     
@@ -408,6 +410,12 @@ class HomeViewController: UIViewController {
         scanAnotherMenuButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16.0).isActive = true
         scanAnotherMenuButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15.0).isActive = true
         scanAnotherMenuButton.heightAnchor.constraint(equalToConstant: 53.3).isActive = true
+        
+//        //MARK: Constraint Collection View (Carousel)
+//        tableView.topAnchor.constraint(equalTo: recommendedMenuLabel.bottomAnchor, constant: 16.0).isActive = true
+//        tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 18).isActive = true
+//        tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,constant: 0.0).isActive = true
+//        tableView.heightAnchor.constraint(equalToConstant: 202.0).isActive = true
     }
 }
 extension HomeViewController: NavigationControllerDelegate {

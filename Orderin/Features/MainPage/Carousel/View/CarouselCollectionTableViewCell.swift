@@ -64,6 +64,8 @@ class CarouselCollectionTableViewCell: UITableViewCell, UICollectionViewDelegate
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TileCollectionViewCell.identifier, for: indexPath) as? TileCollectionViewCell else{
             fatalError()
         }
+        cell.contentView.layer.cornerRadius = 13
+        cell.contentView.layer.masksToBounds = true
         cell.configure(with: viewModels[indexPath.row])
         return cell
     }
