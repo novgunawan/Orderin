@@ -7,6 +7,7 @@
 
 import UIKit
 
+//TODO: - move struct data to model
 struct TileCollectionViewCellViewModel{
     let name: String
     let image: UIImage
@@ -16,6 +17,7 @@ struct TileCollectionViewCellViewModel{
 class TileCollectionViewCell: UICollectionViewCell {
     static let identifier  = "TileCollectionViewCell"
     
+    //MARK: - Componenet
     var viewCart: UIView = {
         let view = UIView()
         view.frame = CGRect(x: 96, y: 160, width: 63, height: 38)
@@ -51,6 +53,7 @@ class TileCollectionViewCell: UICollectionViewCell {
         fatalError()
     }
     
+    //MARK: - Function Configure Cell Collection View
     func configure(with viewModel: TileCollectionViewCellViewModel){
         
         let nameImage = viewModel.image

@@ -7,6 +7,7 @@
 
 import UIKit
 
+//TODO: - move struct data to model
 struct CarouselCollectionTableViewCellViewModel{
     let viewModels: [TileCollectionViewCellViewModel]
 }
