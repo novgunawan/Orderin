@@ -21,7 +21,8 @@ class MenuListViewController: UIViewController{
     var searchingState = false
     var sectionIndex = 0
     var rowIndex = 0
-    
+   
+
 
     
     // MARK: - Life Cycle
@@ -32,6 +33,7 @@ class MenuListViewController: UIViewController{
         setSegmentedControlConstraint()
         setTableViewConstraint()
         setModalBackViewConstraint()
+        
     }
 
     override func viewDidLoad() {
@@ -50,7 +52,6 @@ class MenuListViewController: UIViewController{
         self.navigationController?.navigationBar.tintColor = C.hexStringToUIColor(hex: C.red50)
 
         floatingButton.delegate = self
-
         
     }
     
@@ -74,7 +75,7 @@ class MenuListViewController: UIViewController{
         view.addSubview(menuListView.segmentedControl)
         view.addSubview(menuListView.tableView)
         view.addSubview(floatingButton)
-            
+     
     }
     
     private func tableViewConfiguration(){
@@ -82,6 +83,23 @@ class MenuListViewController: UIViewController{
         menuListView.tableView.rowHeight = 150
         // register cells
         menuListView.tableView.register(MenuListTableViewCell.self , forCellReuseIdentifier: "FoodCell")
+    }
+    
+    
+// MARK: create activity indicator view
+    
+    func createActivityIndicatorView(){
+        let child =  ActivityIndicatorViewController()
+        addChild(child)
+        child.view.frame = view.frame
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            child.willMove(toParent: nil)
+            child.view.removeFromSuperview()
+            child.removeFromParent()
+        }
     }
     
     
@@ -122,6 +140,8 @@ class MenuListViewController: UIViewController{
             
             DispatchQueue.main.async {
                 self.menuListView.tableView.reloadData()
+
+
             }
         }
         

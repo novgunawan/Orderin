@@ -45,6 +45,7 @@ extension MenuListViewController:  UISearchResultsUpdating, UISearchBarDelegate 
         menuListView.tableView.reloadData()
         menuListView.segmentedControl.isHidden = false
     }
+    
 }
 
 // MARK: - Table View Functionality

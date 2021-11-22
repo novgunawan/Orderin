@@ -183,12 +183,11 @@ class MenuListTableViewCell: UITableViewCell {
     
     @objc func didButtonTapped(_ sender: UIButton){
         delegate?.buttonTapped(tag: tag, sectionIndex: indexSection , rowIndex: indexRow )
-//        print(self.indexSection)
-//        print(self.indexRow)
+
     }
                 
     func setContent(){
-        
+     
         guard let data = dataModel else { return  }
         
         if !data.availability{
@@ -200,6 +199,8 @@ class MenuListTableViewCell: UITableViewCell {
             priceLabel.text = "Sold Out"
             priceLabel.textColor = C.hexStringToUIColor(hex: C.gray70)
             button.isHidden  = true
+           
+            
         }
         else{
             self.isUserInteractionEnabled = true
@@ -207,9 +208,8 @@ class MenuListTableViewCell: UITableViewCell {
             card.layer.opacity = 1.0
             titleLabel.textColor = C.hexStringToUIColor(hex: C.black90)
             descriptionLabel.textColor = C.hexStringToUIColor(hex: C.black90)
-//            priceLabel.text = "Sold Out"
             priceLabel.textColor = C.hexStringToUIColor(hex: C.black90)
-            button.isHidden  = false
+
         }
         
         image.image = data.image
