@@ -54,6 +54,14 @@ class ConfirmOrderViewController: UIViewController {
     
     // MARK: App Lifecycle
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // MARK: Set navigation bar to not be hidden
+        self.navigationController?.isNavigationBarHidden = false
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         bindingData()

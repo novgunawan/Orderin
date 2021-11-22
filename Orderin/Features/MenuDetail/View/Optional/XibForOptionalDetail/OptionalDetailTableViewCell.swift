@@ -9,6 +9,7 @@ import UIKit
 
 class OptionalDetailTableViewCell: UITableViewCell {
  
+    // MARK: Outlets
     @IBOutlet weak var viewCell: UIView!{
         didSet{
             if priceLabel.text == " "{
@@ -20,11 +21,8 @@ class OptionalDetailTableViewCell: UITableViewCell {
     }
     
     @IBOutlet weak var rpLabel: UILabel!
-    
     @IBOutlet weak var priceLabel: UILabel!
-    
     @IBOutlet weak var checkerUI: UIImageView!
-  
     @IBOutlet weak var optionalNameLabel: UILabel!
     
     override func awakeFromNib() {
@@ -44,12 +42,12 @@ class OptionalDetailTableViewCell: UITableViewCell {
         return UINib(nibName: "OptionalDetailTableViewCell", bundle: nil)
     }
     
+    // MARK: Declared Variables
     var object: String? {
         didSet {
             setupCell()
         }
     }
-    
     var priceObject: Int? {
         didSet {
             setupPrice()
@@ -57,6 +55,7 @@ class OptionalDetailTableViewCell: UITableViewCell {
     }
     var customMenuOrderedObject: CustomizationMenuOrdered?
     
+    // MARK: -Functions
     func setupCell() {
         guard let object = object else {return}
         optionalNameLabel.text = object

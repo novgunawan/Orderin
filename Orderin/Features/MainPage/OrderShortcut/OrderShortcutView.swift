@@ -58,7 +58,8 @@ class OrderShortcutView: UIView {
         return images
         
     }()
-
+    
+    var delegate: NavigationControllerDelegate?
     // MARK: Initialization
     
     override init(frame: CGRect) {
@@ -66,7 +67,7 @@ class OrderShortcutView: UIView {
         self.isUserInteractionEnabled = true
         setup()
         
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(goToOrderList))
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(goToConfirmOrder))
         self.addGestureRecognizer(gestureRecognizer)
     }
     
@@ -79,8 +80,9 @@ class OrderShortcutView: UIView {
     
     
     // TODO: Go to order list
-    @objc func goToOrderList() {
-        print("go to order list")
+    @objc func goToConfirmOrder() {
+        delegate?.pushToConfirmOrder()
+
     }
     private func setup() {
         
@@ -100,7 +102,7 @@ class OrderShortcutView: UIView {
 
 
             // MARK: Constraint Instruction Label
-            instructionLabel.topAnchor.constraint(equalTo: restaurantNameLabel.bottomAnchor, constant: 3.0),
+            instructionLabel.topAnchor.constraint(equalTo: restaurantNameLabel.bottomAnchor, constant: -33.0),
             instructionLabel.leadingAnchor.constraint(equalTo: restaurantNameLabel.leadingAnchor, constant: 0.0),
             instructionLabel.trailingAnchor.constraint(equalTo: restaurantNameLabel.trailingAnchor, constant: 0.0),
 

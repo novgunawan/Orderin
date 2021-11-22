@@ -16,7 +16,7 @@ class GenerateQRViewController: UIViewController {
         super.viewDidLoad()
         
         //keyboard manage
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         self.dismissKeyboard()
         // Do any additional setup after loading the view.

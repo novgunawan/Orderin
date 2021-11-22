@@ -35,4 +35,13 @@ class AlertServices {
         
         onVC.present(signinAlertVC, animated: true, completion: nil)
     }
+    static func presentAlertNotYetDeveloped(onVC: UIViewController) {
+        let notYetDevelopedAlertVC = UIAlertController(title: "This hasn't been developed yet", message: "This feature has not been developed yet. Please wait for the newer updates", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        
+        notYetDevelopedAlertVC.addAction(okAction)
+        
+        onVC.present(notYetDevelopedAlertVC, animated: true, completion: nil)
+    }
 }

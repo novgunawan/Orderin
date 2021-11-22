@@ -9,13 +9,24 @@ import UIKit
 import AuthenticationServices
 import Firebase
 
+
 class HomeViewController: UIViewController {
     
     // MARK: Declaration Variables
     static var signinViewController = SignInViewController()
     var tabBarTag: Bool = true
     var scanQRVC = ScanQRCameraViewController()
-    
+    var countScan = 0
+    var tempRestoID: String? {
+        didSet {
+            guard let tempRestoID = tempRestoID else { return }
+        }
+    }
+    var tempTableNumber: Int? {
+        didSet {
+            guard let tempTableNumber = tempTableNumber else { return }
+        }
+    }
     
     // MARK: -App Lifecycle
     override func viewWillAppear(_ animated: Bool) {
@@ -28,36 +39,20 @@ class HomeViewController: UIViewController {
             self.tabBarController?.tabBar.tintColor = C.hexStringToUIColor(hex: C.gray70)
         }
         
+        // MARK: State Home Page
+        if countScan < 1 {
+            homeBeforeScan()
+        } else {
+            homeAfterScan()
+        }
         // MARK: Set Tab Bar Not To Be Hidden
         self.tabBarController?.tabBar.isHidden = false
         
         // MARK: Set navigation bar hidden [the large title in the left]
         self.navigationController?.isNavigationBarHidden = true
-        Auth.auth().addStateDidChangeListener({ auth, user in
-            if let user = user {
-                // MARK: User is signed in.
-                
-                // MARK: Set Home Before Sign In view hidden
-                self.titleLabel.isHidden = true
-                self.homeImage.isHidden = true
-                self.captionLabel.isHidden = true
-                self.scanQRButton.isHidden = true
-                self.smallCaptionLabel.isHidden = true
-                
-            } else {
-                // MARK: User is not signed in.
-                
-                // MARK: Set Home After Sign In view hidden
-                self.helloLabel.isHidden = true
-                self.infoLabel.isHidden = true
-                self.orderShortcut.isHidden = true
-                self.recommendedMenuLabel.isHidden = true
-                self.browseAllMenuButton.isHidden = true
-                self.scanAnotherMenuButton.isHidden = true
-            }
-        })
-        
+
     }
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -78,50 +73,89 @@ class HomeViewController: UIViewController {
         view.addSubview(scanAnotherMenuButton)
         
         view.addSubview(signoutButton)
+        scanQRVC.delegate = self
     }
     
     // MARK: -Functions
-    @objc func scanQR() {
-        // MARK: Check user has signed in or not
+    
+    // MARK: State Home After Scan QR
+    func homeAfterScan() {
+        self.titleLabel.isHidden = true
+        self.homeImage.isHidden = true
+        self.captionLabel.isHidden = true
+        self.scanQRButton.isHidden = true
+        self.smallCaptionLabel.isHidden = true
+        self.signoutButton.isHidden = true
         
+        self.helloLabel.isHidden = false
+        self.infoLabel.isHidden = false
+        self.orderShortcut.isHidden = false
+        self.recommendedMenuLabel.isHidden = false
+        self.browseAllMenuButton.isHidden = false
+        self.scanAnotherMenuButton.isHidden = false
+    }
+    
+    // MARK: State Home Before Scan QR
+    func homeBeforeScan() {
+        self.titleLabel.isHidden = false
+        self.homeImage.isHidden = false
+        self.captionLabel.isHidden = false
+        self.scanQRButton.isHidden = false
+        self.smallCaptionLabel.isHidden = false
+        self.signoutButton.isHidden = false
+        
+        self.helloLabel.isHidden = true
+        self.infoLabel.isHidden = true
+        self.orderShortcut.isHidden = true
+        self.recommendedMenuLabel.isHidden = true
+        self.browseAllMenuButton.isHidden = true
+        self.scanAnotherMenuButton.isHidden = true 
+    }
+    
+    @objc func scanQR() {
+        
+        // MARK: Check user has signed in or not
         Auth.auth().addStateDidChangeListener({ auth, user in
             if let user = user {
                 // MARK: User is signed in.
                 // TODO: Go to Scan QR
                 self.present(self.scanQRVC, animated: true, completion: nil)
             } else {
-                // MARK: User is signed in.
+                // MARK: User is not signed in.
                 AlertServices.presentAlertSignedIn(onVC: self, message: "To Scan QR Code, you need to sign in first")
             }
         })
+        
     }
     
     // MARK: Sign Out
     @objc func signout() {
-        Auth.auth().addStateDidChangeListener({ auth, user in
-            if let user = user {
-                // MARK: User is signed in.
-                
-                let firebaseAuth = Auth.auth()
-                let user = Auth.auth().currentUser
-                do {
-                    try firebaseAuth.signOut()
-                } catch let signOutError as NSError {
-                    print("Error signing out: %@", signOutError)
-                }
-                user?.delete { error in
-                    if let error = error {
-                        // An error happened.
-                    } else {
-                        // Account deleted.
-                        print("acount deleted")
-                    }
-                }
-            } else {
-                // MARK: User is not signed in.
-                print("from home view controller : you haven't signed in")
-            }
-        })
+//        Auth.auth().addStateDidChangeListener({ auth, user in
+//            if let user = user {
+//                // MARK: User is signed in.
+//
+//                let firebaseAuth = Auth.auth()
+//                let user = Auth.auth().currentUser
+//                do {
+//                    try firebaseAuth.signOut()
+//                } catch let signOutError as NSError {
+//                    print("Error signing out: %@", signOutError)
+//                }
+//                user?.delete { error in
+//                    if let error = error {
+//                        // An error happened.
+//                    } else {
+//                        // Account deleted.
+//                        print("acount deleted")
+//                    }
+//                }
+//            } else {
+//                // MARK: User is not signed in.
+//                print("from home view controller : you haven't signed in")
+//            }
+//        })
+        AlertServices.presentAlertNotYetDeveloped(onVC: self)
+        
     }
     
     
@@ -216,7 +250,7 @@ class HomeViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: C.fontPoppinsSemibold, size: C.fontsizeBody)
-        label.text = "Hello, name!"
+        label.text = "Hello there!"
         return label
     }()
     
@@ -238,6 +272,9 @@ class HomeViewController: UIViewController {
         view.layer.shouldRasterize = true
         view.layer.rasterizationScale = UIScreen.main.scale
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.delegate = self
+        let stringTableNumber: String = String(tempTableNumber ?? 0)
+        view.tableNumberLabel.text = stringTableNumber
         return view
     }()
     
@@ -276,23 +313,25 @@ class HomeViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(C.signoutButton, for: .normal)
+        button.titleLabel?.font = UIFont(name: C.fontPoppinsSemibold, size: C.fontsizeBody)
         button.setTitleColor(C.hexStringToUIColor(hex: C.red50), for: .normal)
         button.addTarget(self, action: #selector(signout), for: .touchUpInside)
         return button
     }()
     
-    
+    // MARK: -Constraints
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         // MARK: -Constraint Home Before Sign In
+        
         // MARK: Constraint for title label
-        titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 69).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 96.5).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -96.5).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 74.5).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -73.5).isActive = true
         
         // MARK: Constraint for image
-        homeImage.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 63.0).isActive = true
+        homeImage.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0.0).isActive = true
         homeImage.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 26.0).isActive = true
         homeImage.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -26.0).isActive = true
         
@@ -305,12 +344,17 @@ class HomeViewController: UIViewController {
         scanQRButton.topAnchor.constraint(equalTo: captionLabel.bottomAnchor, constant: 24.5).isActive = true
         scanQRButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 61.5).isActive = true
         scanQRButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -61.5).isActive = true
+        scanQRButton.heightAnchor.constraint(equalToConstant: 53.3).isActive = true
         
         //        // MARK: Constraint small caption
         smallCaptionLabel.topAnchor.constraint(equalTo: scanQRButton.bottomAnchor, constant: 7.5).isActive = true
         smallCaptionLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 42.0).isActive = true
         smallCaptionLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -43.0).isActive = true
         
+        // MARK: Constraint Sign Out Button
+        signoutButton.leadingAnchor.constraint(equalTo: smallCaptionLabel.leadingAnchor, constant: 0.0).isActive = true
+        signoutButton.trailingAnchor.constraint(equalTo: smallCaptionLabel.trailingAnchor, constant: 0.0).isActive = true
+        signoutButton.bottomAnchor.constraint(equalTo: smallCaptionLabel.bottomAnchor, constant: 53.0).isActive = true
         // MARK: -Constraint Home After Sign In
         
         // MARK: Constraint Hello Label
@@ -345,9 +389,24 @@ class HomeViewController: UIViewController {
         scanAnotherMenuButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16.0).isActive = true
         scanAnotherMenuButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15.0).isActive = true
         scanAnotherMenuButton.heightAnchor.constraint(equalToConstant: 53.3).isActive = true
-        
-        // MARK: Constraint Sign Out Button
-        signoutButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16.0).isActive = true
-        signoutButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -120.0).isActive = true
     }
+}
+extension HomeViewController: NavigationControllerDelegate {
+    func pushToConfirmOrder() {
+        let confirmOrderVC = ConfirmOrderViewController()
+        self.navigationController?.pushViewController(confirmOrderVC, animated: true)
+    }
+}
+
+extension HomeViewController: GoToHomeAfterScanDelegate {
+    func gotoHomeAfterScan() {
+        let homeAfterScanVC = HomeViewController()
+        
+        homeAfterScanVC.countScan += 1
+        homeAfterScanVC.tempRestoID = scanQRVC.tempRestoID
+        homeAfterScanVC.tempTableNumber = scanQRVC.tempTableNumber
+        self.navigationController?.pushViewController(homeAfterScanVC, animated: false)
+    }
+    
+    
 }

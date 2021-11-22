@@ -63,7 +63,7 @@ struct C {
     
     // MARK: Home Before Sign In
     static let titleLabelHome0 = "Hello There"
-    static let captionLabelHome0 = "Delicious food are waiting for you"
+    static let captionLabelHome0 = "Delicious food are waiting for you!"
     static let buttonTextHome0 = "Scan Menu"
     static let smallCaptionLabelHome0 = "Scan the QR at your table to start ordering."
     
@@ -121,6 +121,7 @@ struct C {
         static let keyChooseCustomization = "chooseCustomization"
         static let keyOptionalCustomization = "optionalCustomization"
         static let keyOptionalCustomizationPrice = "optionalCustomizationPrice"
+        static let keyUserID = "userID"
     }
 }
 

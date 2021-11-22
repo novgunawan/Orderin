@@ -30,6 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         })
         window?.makeKeyAndVisible()
+        
+        // MARK: Set Navigation Bar Tint Color to be orange
+        UINavigationBar.appearance().tintColor = C.hexStringToUIColor(hex: C.red50)
         return true
     }
     
