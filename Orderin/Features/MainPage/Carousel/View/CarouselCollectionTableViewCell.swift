@@ -15,7 +15,6 @@ struct CarouselCollectionTableViewCellViewModel{
 class CarouselCollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     static let identifier = "CarouselCollectionTableViewCell"
-    
     private var viewModels: [TileCollectionViewCellViewModel] = []
 
     private let collectionView: UICollectionView = {

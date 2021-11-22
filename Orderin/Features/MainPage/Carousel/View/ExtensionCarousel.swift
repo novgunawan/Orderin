@@ -27,4 +27,6 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
 //        return view.frame.size.width/2
         return 202
     }
+    
+    
 }

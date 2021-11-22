@@ -70,16 +70,16 @@ class HomeViewController: UIViewController {
         view.addSubview(helloLabel)
         view.addSubview(infoLabel)
         view.addSubview(recommendedMenuLabel)
+        view.addSubview(tableViewCollection)
         view.addSubview(browseAllMenuButton)
-        view.addSubview(tableView)
         view.addSubview(scanAnotherMenuButton)
 
         view.addSubview(signoutButton)
         scanQRVC.delegate = self
         
         //data source
-        tableView.dataSource = self
-        tableView.delegate = self
+        tableViewCollection.dataSource = self
+        tableViewCollection.delegate = self
     }
     
     // MARK: -Functions
@@ -92,7 +92,7 @@ class HomeViewController: UIViewController {
         self.scanQRButton.isHidden = true
         self.smallCaptionLabel.isHidden = true
         self.signoutButton.isHidden = true
-        
+        self.tableViewCollection.isHidden = false
         self.helloLabel.isHidden = false
         self.infoLabel.isHidden = false
         self.orderShortcut.isHidden = false
@@ -109,7 +109,7 @@ class HomeViewController: UIViewController {
         self.scanQRButton.isHidden = false
         self.smallCaptionLabel.isHidden = false
         self.signoutButton.isHidden = false
-        
+        self.tableViewCollection.isHidden = true
         self.helloLabel.isHidden = true
         self.infoLabel.isHidden = true
         self.orderShortcut.isHidden = true
@@ -327,10 +327,11 @@ class HomeViewController: UIViewController {
     
     //MARK: - Collection View
     
-    private let tableView: UITableView = {
+    var tableViewCollection: UITableView = {
         let table = UITableView()
         table.register(CarouselCollectionTableViewCell.self, forCellReuseIdentifier: CarouselCollectionTableViewCell.identifier)
         table.separatorColor = .clear
+        table.translatesAutoresizingMaskIntoConstraints = false
         return table
     }()
     
@@ -342,7 +343,7 @@ class HomeViewController: UIViewController {
     // MARK: -Constraints
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        tableView.frame = view.bounds
+//        tableViewCollection.frame = view.bounds
         
         // MARK: -Constraint Home Before Sign In
         
@@ -392,15 +393,15 @@ class HomeViewController: UIViewController {
         orderShortcut.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: 19.0).isActive = true
         orderShortcut.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12.0).isActive = true
         orderShortcut.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -19.0).isActive = true
-        orderShortcut.heightAnchor.constraint(equalToConstant: 176.0).isActive = true
+        orderShortcut.heightAnchor.constraint(equalToConstant: 154.0).isActive = true
         
-        // MARK: Constraint Recommended Menu Collection View
-        recommendedMenuLabel.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: 235.0).isActive = true
+        // MARK: Constraint Recommended Menu Label Collection View
+        recommendedMenuLabel.topAnchor.constraint(equalTo: orderShortcut.bottomAnchor, constant: 24.0).isActive = true
         recommendedMenuLabel.leadingAnchor.constraint(equalTo: helloLabel.leadingAnchor, constant: 0.0).isActive = true
         recommendedMenuLabel.trailingAnchor.constraint(equalTo: helloLabel.trailingAnchor, constant: 0.0).isActive = true
    
         // MARK: Constraint Button Browse All Menu
-        browseAllMenuButton.topAnchor.constraint(equalTo: recommendedMenuLabel.bottomAnchor, constant: 221.5).isActive = true
+        browseAllMenuButton.topAnchor.constraint(equalTo: tableViewCollection.bottomAnchor, constant: 32.0).isActive = true
         browseAllMenuButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 15.5).isActive = true
         browseAllMenuButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15.5).isActive = true
         browseAllMenuButton.heightAnchor.constraint(equalToConstant: 53.3).isActive = true
@@ -411,11 +412,11 @@ class HomeViewController: UIViewController {
         scanAnotherMenuButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15.0).isActive = true
         scanAnotherMenuButton.heightAnchor.constraint(equalToConstant: 53.3).isActive = true
         
-//        //MARK: Constraint Collection View (Carousel)
-//        tableView.topAnchor.constraint(equalTo: recommendedMenuLabel.bottomAnchor, constant: 16.0).isActive = true
-//        tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 18).isActive = true
-//        tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,constant: 0.0).isActive = true
-//        tableView.heightAnchor.constraint(equalToConstant: 202.0).isActive = true
+        //MARK: Constraint Collection View (Carousel)
+        tableViewCollection.topAnchor.constraint(equalTo: recommendedMenuLabel.bottomAnchor, constant: 16.0).isActive = true
+        tableViewCollection.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12.0).isActive = true
+        tableViewCollection.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,constant: -19.0).isActive = true
+        tableViewCollection.heightAnchor.constraint(equalToConstant: 202.0).isActive = true
     }
 }
 extension HomeViewController: NavigationControllerDelegate {

@@ -27,8 +27,6 @@ class TileCollectionViewCell: UICollectionViewCell {
     
     func configure(with viewModel: TileCollectionViewCellViewModel){
         
-        
-        let width: CGFloat = contentView.frame.size.width
         let viewCell = UIView()
         viewCell.frame.size.width = 164
         viewCell.frame.size.height = 202
@@ -37,7 +35,7 @@ class TileCollectionViewCell: UICollectionViewCell {
         
         let nameImage = viewModel.image
         let imageView:UIImageView = UIImageView()
-        imageView.contentMode = UIView.ContentMode.scaleToFill
+        imageView.contentMode = UIView.ContentMode.scaleAspectFill
         imageView.frame.size.width = 164
         imageView.frame.size.height = 202
         imageView.center = self.contentView.center
@@ -49,5 +47,9 @@ class TileCollectionViewCell: UICollectionViewCell {
 //
         
 //        contentView.backgroundColor = UIColor(patternImage: viewModel.image)
+        
+        func setup(){
+            
+        }
     }
 }
