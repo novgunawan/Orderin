@@ -239,7 +239,7 @@ extension ConfirmOrderViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = confirmMenuTableView.dequeueReusableCell(withIdentifier: Constant.ConfirmOrder.tableViewCellIdentifier) as! ConfirmMenuCell
-        
+        // TODO: Connect to Backend for label Text Content
         cell.setContent(quantity: "2", titleOrder: "Steak", price: "Rp 90.000")
         cell.delegate = self
         return cell
