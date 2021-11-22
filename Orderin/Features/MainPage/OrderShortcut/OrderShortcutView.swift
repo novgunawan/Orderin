@@ -96,9 +96,9 @@ class OrderShortcutView: UIView {
         NSLayoutConstraint.activate([
             
             // MARK: Constraint Restaurant Name Label
-            restaurantNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 19.0),
-            restaurantNameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20.5),
-            restaurantNameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20.5),
+            restaurantNameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 19.0),
+            restaurantNameLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20.5),
+            restaurantNameLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20.5),
 
 
             // MARK: Constraint Instruction Label
