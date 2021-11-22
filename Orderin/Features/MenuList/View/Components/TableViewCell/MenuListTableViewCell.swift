@@ -30,6 +30,8 @@ class MenuListTableViewCell: UITableViewCell {
         }
     }
     
+    // MARK: - Variables declaration
+    
     var indexSection = 0
     var indexRow = 0
     var delegate: CellDelegate?
