@@ -335,6 +335,7 @@ class HomeViewController: UIViewController {
         return table
     }()
     
+    //TODO: - Move Assign Data to the right model data
     let viewModels: [CarouselCollectionTableViewCellViewModel] = [
         CarouselCollectionTableViewCellViewModel(viewModels: [TileCollectionViewCellViewModel(name: "French Fries", image: UIImage(named: "french-fries")!), TileCollectionViewCellViewModel(name: "Sausages", image: UIImage(named: "sausages")!), TileCollectionViewCellViewModel(name: "Salad", image: UIImage(named: "salad")!), TileCollectionViewCellViewModel(name: "Chicken Katsu", image: UIImage(named: "chiken-katsu")!), TileCollectionViewCellViewModel(name: "Fried Rice", image: UIImage(named: "fried-rice")!)
                                                              ])
