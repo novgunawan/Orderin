@@ -24,6 +24,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return view.frame.size.width/2
+//        return view.frame.size.width/2
+        return 202
     }
 }
