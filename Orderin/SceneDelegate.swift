@@ -35,7 +35,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 
             } else {
                 // MARK: User is not signed in.
-                let signInVC = HomeViewController()  // MARK: RootVC are changed, please refer back to the original one, which is SignInViewController
+                let signInVC = SignInViewController()  // MARK: RootVC are changed, please refer back to the original one, which is SignInViewController
                 self.window?.rootViewController = signInVC
 //                self.window?.rootViewController = home
             }
