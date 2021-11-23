@@ -59,7 +59,7 @@ extension MenuListViewController: UITableViewDelegate, UITableViewDataSource, Ce
             return 1
         }
         else{
-            return data.count
+            return finalMenu.count
         }
        
     }
@@ -70,7 +70,7 @@ extension MenuListViewController: UITableViewDelegate, UITableViewDataSource, Ce
             return filteredData.count
         }
         else{
-            return data[section].MenuList.count
+            return finalMenu[section].MenuList.count
         }
         
       
@@ -125,24 +125,25 @@ extension MenuListViewController: UITableViewDelegate, UITableViewDataSource, Ce
         let cell = tableView.dequeueReusableCell(withIdentifier: "FoodCell") as! MenuListTableViewCell
         cell.selectionStyle = .none
         cell.isUserInteractionEnabled = true
+
+            if self.searchingState == true{
+                let dummy = self.filteredData[indexPath.row]
+                cell.indexSection = indexPath.section
+                cell.indexRow = indexPath.row
+                cell.dataModel = dummy
+                cell.button.tag = indexPath.row
+                cell.delegate = self
+                            
+            }
+            else{
+                let dummy = finalMenu[indexPath.section].MenuList[indexPath.row]
+                cell.indexSection = indexPath.section
+                cell.indexRow = indexPath.row
+                cell.dataModel = dummy
+                cell.button.tag = indexPath.row
+                cell.delegate = self
+            }
         
-        if searchingState == true{
-            let dummy = filteredData[indexPath.row]
-            cell.indexSection = indexPath.section
-            cell.indexRow = indexPath.row
-            cell.dataModel = dummy
-            cell.button.tag = indexPath.row
-            cell.delegate = self
-                        
-        }
-        else{
-            let dummy = data[indexPath.section].MenuList[indexPath.row]
-            cell.indexSection = indexPath.section
-            cell.indexRow = indexPath.row
-            cell.dataModel = dummy
-            cell.button.tag = indexPath.row
-            cell.delegate = self
-        }
         
         return cell
     }
