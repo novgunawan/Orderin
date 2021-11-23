@@ -32,12 +32,12 @@ extension MenuDetailViewController: UITableViewDelegate, UITableViewDataSource, 
 func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     // MARK: Choose Table View Cell
     if indexPath.row < 1{
-        let HeightCell = 75 + (53 * CGFloat(customization[0].options.count) )//count of cell
+        let HeightCell = 80 + (53 * CGFloat(customization[0].options.count) )//count of cell
         return CGFloat(HeightCell)
     }
     // MARK: Optional Table View Cell
     if indexPath.row < 2{
-        let HeightCell = 75 + (55 * CGFloat(customization[1].options.count))//count of cell
+        let HeightCell = 90 + (55 * CGFloat(customization[1].options.count))//count of cell
         return CGFloat(HeightCell)
     }
     if indexPath.row < 3{

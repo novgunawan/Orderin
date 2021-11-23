@@ -17,11 +17,11 @@ class MenuUIView: UIView {
         
         let segment = UISegmentedControl()
         
-        segment.insertSegment(withTitle: "Others", at: 0, animated: true)
-        segment.insertSegment(withTitle: "Appetizer", at: 1, animated: true)
-        segment.insertSegment(withTitle: "Main", at: 2, animated: true)
-        segment.insertSegment(withTitle: "Desert", at: 3, animated: true)
-        segment.insertSegment(withTitle: "Beverage", at: 4, animated: true)
+        segment.insertSegment(withTitle: "Appetizer", at: 0, animated: true)
+        segment.insertSegment(withTitle: "Main", at: 1, animated: true)
+        segment.insertSegment(withTitle: "Desert", at: 2, animated: true)
+        segment.insertSegment(withTitle: "Beverage", at: 3, animated: true)
+        segment.insertSegment(withTitle: "Others", at: 4, animated: true)
         segment.translatesAutoresizingMaskIntoConstraints = false
         segment.selectedSegmentIndex = 0
         segment.selectedSegmentTintColor = .clear

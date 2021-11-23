@@ -138,19 +138,19 @@ class MenuListViewController: UIViewController{
             menuListView.tableView.scrollToRow(at: index as IndexPath, at: .top, animated: true)
             
         case 1:
-            let index = NSIndexPath(row: 0, section: 0)
-            menuListView.tableView.scrollToRow(at: index as IndexPath, at: .top, animated: true)
-            
-        case 2:
             let index = NSIndexPath(row: 0, section: 1)
             menuListView.tableView.scrollToRow(at: index as IndexPath, at: .top, animated: true)
             
-        case 3:
+        case 2:
             let index = NSIndexPath(row: 0, section: 2)
             menuListView.tableView.scrollToRow(at: index as IndexPath, at: .top, animated: true)
             
-        case 4:
+        case 3:
             let index = NSIndexPath(row: 0, section: 3)
+            menuListView.tableView.scrollToRow(at: index as IndexPath, at: .top, animated: true)
+            
+        case 4:
+            let index = NSIndexPath(row: 0, section: 0)
             menuListView.tableView.scrollToRow(at: index as IndexPath, at: .top, animated: true)
             
         default:
