@@ -8,12 +8,15 @@
 import Foundation
 import UIKit
 
+
 struct MenuListViewModel {
     
     var menuData: [Menu] = []
     var menuWithoutCategory: [MenuListModel] = []
-    
-    
+    var tempMenu : [MenuListModel] = []
+    var finaldata :  [Menu] = []
+    var finaldataWihtouCategory: [MenuListModel] = []
+
     // Fetching data
     mutating func fetchMenuListData(completion: @escaping([Menu])-> Void) {
         
@@ -48,13 +51,13 @@ struct MenuListViewModel {
             ]
         )
         
-      
-        
         menuData = [data1,data2,data3,data4]
-        completion(self.menuData)
         
-        
+        completion(self.filterMenuData(menu: menuData))
+
     }
+    
+    
     
     mutating func fetchMenuWithoutCategory(completion: @escaping ([MenuListModel])->Void){
         
@@ -83,12 +86,67 @@ struct MenuListViewModel {
         let data12 = MenuListModel(menuID: "JKL909",image: UIImage(named: "orange-juice")!, title: "Orange Juice", description: "ini jus jeruk enak banget", price: "20000", availability: true)
         
       
-        
+
         menuWithoutCategory = [data1,data2,data3,data4,data5,data6,data7,data8,data9,data10,data11,data12]
-        completion(self.menuWithoutCategory)
+        completion(self.filterMenuWihtoutCategory(menu: menuWithoutCategory))
         
         
     }
     
+    mutating func filterMenuData(menu: [Menu]) -> [Menu]{
+        for data in menu{
+            switch data.category{
+                
+            case .appetizer:
+                for list in data.MenuList{
+                    if list.availability{
+                        tempMenu.append(MenuListModel(menuID: list.menuID, image: list.image, title: list.title, description: list.description, price: list.price, availability: list.availability))
+                    }
+                }
+                finaldata.append(Menu(category: data.category, MenuList: tempMenu))
+                tempMenu.removeAll()
+            case .main:
+                for list in data.MenuList{
+                    if list.availability{
+                        tempMenu.append(MenuListModel(menuID: list.menuID, image: list.image, title: list.title, description: list.description, price: list.price, availability: list.availability))
+                    }
+                }
+                finaldata.append(Menu(category: data.category, MenuList: tempMenu))
+                tempMenu.removeAll()
+            case .desert:
+                for list in data.MenuList{
+                    if list.availability{
+                        tempMenu.append(MenuListModel(menuID: list.menuID, image: list.image, title: list.title, description: list.description, price: list.price, availability: list.availability))
+                    }
+                }
+                finaldata.append(Menu(category: data.category, MenuList: tempMenu))
+                tempMenu.removeAll()
+            case .beverage:
+                for list in data.MenuList{
+                    if list.availability{
+                        tempMenu.append(MenuListModel(menuID: list.menuID, image: list.image, title: list.title, description: list.description, price: list.price, availability: list.availability))
+                    }
+                }
+                finaldata.append(Menu(category: data.category, MenuList: tempMenu))
+                tempMenu.removeAll()
+            }
+           
+        }
+    
+        return finaldata
+    }
+    
+    mutating func filterMenuWihtoutCategory(menu: [MenuListModel]) -> [MenuListModel]{
+        
+        for list in menu{
+            if list.availability{
+                finaldataWihtouCategory.append(MenuListModel(menuID: list.menuID, image: list.image, title: list.title, description: list.description, price: list.price, availability: list.availability))
+                
+            }
+        
+        }
+        return finaldataWihtouCategory
+        
+    }
     
 }
