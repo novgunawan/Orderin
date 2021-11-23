@@ -59,7 +59,7 @@ extension MenuListViewController: UITableViewDelegate, UITableViewDataSource, Ce
             return 1
         }
         else{
-            return finalMenu.count
+            return data.count
         }
        
     }
@@ -70,7 +70,7 @@ extension MenuListViewController: UITableViewDelegate, UITableViewDataSource, Ce
             return filteredData.count
         }
         else{
-            return finalMenu[section].MenuList.count
+            return data[section].MenuList.count
         }
         
       
@@ -136,7 +136,7 @@ extension MenuListViewController: UITableViewDelegate, UITableViewDataSource, Ce
                             
             }
             else{
-                let dummy = finalMenu[indexPath.section].MenuList[indexPath.row]
+                let dummy = data[indexPath.section].MenuList[indexPath.row]
                 cell.indexSection = indexPath.section
                 cell.indexRow = indexPath.row
                 cell.dataModel = dummy

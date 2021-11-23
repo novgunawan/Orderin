@@ -25,6 +25,7 @@ class MenuListViewController: UIViewController{
     // MARK:  Temporary
     var tempMenuList : [MenuListModel] = []
     var finalMenu : [Menu] = []
+    var tempMenu: [Menu] = []
    
 
 
@@ -56,6 +57,7 @@ class MenuListViewController: UIViewController{
         self.navigationController?.navigationBar.tintColor = C.hexStringToUIColor(hex: C.red50)
 
         floatingButton.delegate = self
+
         
     }
     
@@ -141,7 +143,7 @@ class MenuListViewController: UIViewController{
     func bindData(){
         menuListVM.fetchMenuListData { value in
             self.data = value
-            self.filterMenuData(menu: value)
+         
             DispatchQueue.main.async {
                 self.menuListView.tableView.reloadData()
 
@@ -154,46 +156,7 @@ class MenuListViewController: UIViewController{
         }
     }
     
-    func filterMenuData(menu: [Menu]){
-        for data in menu{
-            switch data.category{
-                
-            case .appetizer:
-                for list in data.MenuList{
-                    if list.availability{
-                        tempMenuList.append(MenuListModel(menuID: list.menuID, image: list.image, title: list.title, description: list.description, price: list.price, availability: list.availability))
-                    }
-                }
-                finalMenu.append(Menu(category: data.category, MenuList: tempMenuList))
-                tempMenuList.removeAll()
-            case .main:
-                for list in data.MenuList{
-                    if list.availability{
-                        tempMenuList.append(MenuListModel(menuID: list.menuID, image: list.image, title: list.title, description: list.description, price: list.price, availability: list.availability))
-                    }
-                }
-                finalMenu.append(Menu(category: data.category, MenuList: tempMenuList))
-                tempMenuList.removeAll()
-            case .desert:
-                for list in data.MenuList{
-                    if list.availability{
-                        tempMenuList.append(MenuListModel(menuID: list.menuID, image: list.image, title: list.title, description: list.description, price: list.price, availability: list.availability))
-                    }
-                }
-                finalMenu.append(Menu(category: data.category, MenuList: tempMenuList))
-                tempMenuList.removeAll()
-            case .beverage:
-                for list in data.MenuList{
-                    if list.availability{
-                        tempMenuList.append(MenuListModel(menuID: list.menuID, image: list.image, title: list.title, description: list.description, price: list.price, availability: list.availability))
-                    }
-                }
-                finalMenu.append(Menu(category: data.category, MenuList: tempMenuList))
-                tempMenuList.removeAll()
-            }
-        }
-        print(finalMenu)
-    }
+    
     
     @objc func didSegmentChange(_ sender: UISegmentedControl){
         switch menuListView.segmentedControl.selectedSegmentIndex{
