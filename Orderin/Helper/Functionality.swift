@@ -13,9 +13,10 @@ struct Functionality {
     
     // MARK: -Value Holder Temporary
     
+    var tempQty: Int = 1
     // Must Choose Customization
     var tempChooseCustom: String = ""
-    
+    var tempNotes: String = ""
     // Optional Choose Customization
     var tempOptionalCustom: [String] = []
     // Optional Choose Customization Price

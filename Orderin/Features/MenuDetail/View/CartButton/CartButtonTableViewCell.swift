@@ -7,8 +7,8 @@
 
 import UIKit
 
-protocol SaveCustomizationDelegate {
-    func saveCustom()
+protocol SaveOrderedMenuDelegate {
+    func saveOrderedMenu()
 }
 
 class CartButtonTableViewCell: UITableViewCell {
@@ -16,7 +16,7 @@ class CartButtonTableViewCell: UITableViewCell {
     
 // MARK: - UI Components Declaration
     
-    var delegate: SaveCustomizationDelegate?
+    var delegate: SaveOrderedMenuDelegate?
     @IBOutlet weak var numberOfItem: UILabel!
     @IBOutlet weak var cartButton: UIButton!
     @IBOutlet weak var totalPrice: UILabel!
@@ -44,6 +44,6 @@ class CartButtonTableViewCell: UITableViewCell {
     
     //Cart Button Did Tapped
     @IBAction func cartButtonDidTapped(_ sender: Any) {
-        delegate?.saveCustom()
+        delegate?.saveOrderedMenu()
     }
 }

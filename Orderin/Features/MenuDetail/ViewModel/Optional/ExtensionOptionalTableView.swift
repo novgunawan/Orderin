@@ -26,6 +26,7 @@ extension OptionalTableViewCell: UITableViewDelegate, UITableViewDataSource{
         
         cellOptionalDetail.priceObject = object[1].prices?[indexPath.row] ?? 0
 //        cellOptionalDetail.priceObject = object[1].prices[indexPath.row]
+        
         return cellOptionalDetail
     }
     
@@ -36,11 +37,13 @@ extension OptionalTableViewCell: UITableViewDelegate, UITableViewDataSource{
         
         // MARK: Insert customization that user tap to customizationMenuOrdered Model
 //        cellOptionalDetail.customMenuOrderedObject?.options.append(cellOptionalDetail.object ?? "no customization")
-        
+//        cellOptionalDetail.customMenuOrderedObject?.price?.append(cellOptionalDetail.priceObject ?? 0)
+
         // MARK: Insert customization ordered into singletone
-        Functionality.shared.tempOptionalCustom.append(cellOptionalDetail.object ?? "no customization")
+        Functionality.shared.tempOptionalCustom.append(cellOptionalDetail.object ?? "")
         Functionality.shared.tempOptionalCustomPrice.append(cellOptionalDetail.priceObject ?? 0)
-    }
+
+     }
     
     // MARK: Deselect
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
@@ -64,4 +67,5 @@ extension OptionalTableViewCell: UITableViewDelegate, UITableViewDataSource{
                 
                 return indexPath
     }
+
 }

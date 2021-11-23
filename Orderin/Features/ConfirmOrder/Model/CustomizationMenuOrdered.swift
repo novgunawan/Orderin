@@ -9,5 +9,6 @@ import Foundation
 
 struct CustomizationMenuOrdered {
     var options: [String]
+    var price: [Int]?
     
 }
