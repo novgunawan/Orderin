@@ -188,6 +188,7 @@ class MenuListTableViewCell: UITableViewCell {
                 
     func setContent(){
      
+        var stringPrice = ""
         guard let data = dataModel else { return  }
         
         if !data.availability{
@@ -215,7 +216,10 @@ class MenuListTableViewCell: UITableViewCell {
         image.image = data.image
         titleLabel.text = data.title
         descriptionLabel.text = data.description
-        priceLabel.text = data.price
+        
+        stringPrice = data.price
+        stringPrice.insert(".", at: stringPrice.index(stringPrice.endIndex, offsetBy: -3))
+        priceLabel.text = "Rp\(stringPrice)"
         
     }
     

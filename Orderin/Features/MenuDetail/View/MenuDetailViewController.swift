@@ -68,7 +68,9 @@ class MenuDetailViewController: UIViewController {
         }
         foodName.text = menuName
         descriptionLabel.text = menuDesc
-        priceLabel.text = menuPrice
+        
+        menuPrice.insert(".", at: menuPrice.index(menuPrice.endIndex, offsetBy: -3))
+        priceLabel.text = "Rp\(menuPrice)"
         
     }
     // MARK: - Setup Function
