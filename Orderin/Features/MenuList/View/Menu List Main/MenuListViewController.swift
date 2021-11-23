@@ -67,7 +67,9 @@ class MenuListViewController: UIViewController{
         menuListView.searchController.searchBar.delegate = self
         menuListView.searchController.searchResultsUpdater = self
         
-
+        //keyboard manage
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        self.dismissKeyboard()
     }
     
     private func addComponents(){
