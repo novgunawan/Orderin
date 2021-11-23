@@ -391,9 +391,11 @@ class HomeViewController: UIViewController {
         scanAnotherMenuButton.heightAnchor.constraint(equalToConstant: 53.3).isActive = true
     }
 }
+
 extension HomeViewController: NavigationControllerDelegate {
     func pushToConfirmOrder() {
         let confirmOrderVC = ConfirmOrderViewController()
+        tabBarController?.tabBar.isHidden = true
         self.navigationController?.pushViewController(confirmOrderVC, animated: true)
     }
 }
