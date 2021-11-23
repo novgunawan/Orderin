@@ -18,12 +18,18 @@ class HistoryViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
         
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+    }
+    
+    func setup() {
+        navigationItem.title = "Order History"
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 
 }
