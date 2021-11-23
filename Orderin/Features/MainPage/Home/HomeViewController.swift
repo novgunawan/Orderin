@@ -331,6 +331,7 @@ class HomeViewController: UIViewController {
         let table = UITableView()
         table.register(CarouselCollectionTableViewCell.self, forCellReuseIdentifier: CarouselCollectionTableViewCell.identifier)
         table.separatorColor = .clear
+        table.isScrollEnabled = false
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
     }()

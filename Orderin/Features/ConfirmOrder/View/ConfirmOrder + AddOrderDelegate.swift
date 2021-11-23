@@ -13,5 +13,9 @@ extension ConfirmOrderViewController: addNewMenuDelegate {
         navigationController?.popViewController(animated: true)
     }
     
+    func dropButtonNav(){
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
     
 }

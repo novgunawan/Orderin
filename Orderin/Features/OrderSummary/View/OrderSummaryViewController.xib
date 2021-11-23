@@ -178,6 +178,16 @@
                         <constraint firstAttribute="height" constant="479" id="paX-Xo-hV4"/>
                     </constraints>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jeJ-zW-qYC">
+                    <rect key="frame" x="16" y="49" width="46" height="31"/>
+                    <color key="tintColor" red="0.90980392160000001" green="0.29803921570000003" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <buttonConfiguration key="configuration" style="plain" image="chevron.down" catalog="system">
+                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large" weight="bold"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="dropDownButtonAction:" destination="-1" eventType="touchUpInside" id="3Fn-ci-Obp"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
@@ -190,13 +200,16 @@
                 <constraint firstAttribute="bottom" secondItem="753-jB-7t8" secondAttribute="bottom" id="By6-mH-MaF"/>
                 <constraint firstItem="wIp-ay-ypM" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="8" id="H9G-Lp-1aI"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wIp-ay-ypM" secondAttribute="trailing" constant="125" id="JnF-nC-V1v"/>
+                <constraint firstItem="jeJ-zW-qYC" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="5" id="U68-eC-Wmz"/>
                 <constraint firstItem="xkD-46-ihw" firstAttribute="top" secondItem="wIp-ay-ypM" secondAttribute="bottom" constant="8" symbolic="YES" id="VHF-AE-GIL"/>
                 <constraint firstItem="wIp-ay-ypM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="125" id="ccP-YB-0SZ"/>
+                <constraint firstItem="jeJ-zW-qYC" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="qrU-gz-Jvr"/>
             </constraints>
             <point key="canvasLocation" x="130.76923076923077" y="122.27488151658767"/>
         </view>
     </objects>
     <resources>
+        <image name="chevron.down" catalog="system" width="128" height="72"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
