@@ -15,7 +15,6 @@ class OrderShortcutView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: C.fontPoppinsRegular, size: C.fontsizeTitle2)
         label.text = "Restaurant's Name"
-        label.layer.zPosition = 1
         return label
     }()
     
@@ -96,13 +95,14 @@ class OrderShortcutView: UIView {
         NSLayoutConstraint.activate([
             
             // MARK: Constraint Restaurant Name Label
-            restaurantNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 19.0),
+            restaurantNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 22),
             restaurantNameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20.5),
             restaurantNameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20.5),
+            restaurantNameLabel.heightAnchor.constraint(equalToConstant: 31),
 
 
             // MARK: Constraint Instruction Label
-            instructionLabel.topAnchor.constraint(equalTo: restaurantNameLabel.bottomAnchor, constant: -33.0),
+            instructionLabel.topAnchor.constraint(equalTo: restaurantNameLabel.bottomAnchor, constant: -30.0),
             instructionLabel.leadingAnchor.constraint(equalTo: restaurantNameLabel.leadingAnchor, constant: 0.0),
             instructionLabel.trailingAnchor.constraint(equalTo: restaurantNameLabel.trailingAnchor, constant: 0.0),
 
