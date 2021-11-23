@@ -426,6 +426,12 @@ extension HomeViewController: NavigationControllerDelegate {
         let confirmOrderVC = ConfirmOrderViewController()
         self.navigationController?.pushViewController(confirmOrderVC, animated: true)
     }
+    func pushToOrderSummary() {
+        let orderSummaryVC = OrderSummaryViewController()
+        orderSummaryVC.modalPresentationStyle = .fullScreen
+        self.navigationController?.present(orderSummaryVC, animated: true, completion: nil)
+        self.tabBarController?.tabBar.isHidden = true
+    }
 }
 
 extension HomeViewController: GoToHomeAfterScanDelegate {
@@ -437,6 +443,7 @@ extension HomeViewController: GoToHomeAfterScanDelegate {
         homeAfterScanVC.tempTableNumber = scanQRVC.tempTableNumber
         self.navigationController?.pushViewController(homeAfterScanVC, animated: false)
     }
+    
     
     
 }

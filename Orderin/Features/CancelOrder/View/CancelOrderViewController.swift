@@ -158,10 +158,14 @@ class CancelOrderViewController: UIViewController {
     }
     
     func goToPageSummary() {
+        weak var pvc = self.presentingViewController
+        
+        self.dismiss(animated: true, completion: {
         let vc = OrderSummaryViewController()
-        vc.delegate = delegate
+        vc.delegate = self.delegate
         vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true, completion: nil)
+        pvc?.present(vc, animated: true, completion: nil)
+        })
     }
     
     

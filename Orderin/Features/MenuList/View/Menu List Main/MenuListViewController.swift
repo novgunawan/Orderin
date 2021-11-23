@@ -173,6 +173,12 @@ extension MenuListViewController: NavigationControllerDelegate {
         let confirmOrderVC = ConfirmOrderViewController()
         self.navigationController?.pushViewController(confirmOrderVC, animated: true)
     }
+    func pushToOrderSummary() {
+        let orderSummaryVC = OrderSummaryViewController()
+        orderSummaryVC.modalPresentationStyle = .fullScreen
+        self.navigationController?.present(orderSummaryVC, animated: true)
+        self.tabBarController?.tabBar.isHidden = true
+    }
     
     
 }

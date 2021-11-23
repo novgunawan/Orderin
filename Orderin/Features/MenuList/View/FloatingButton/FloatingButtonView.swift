@@ -9,6 +9,7 @@ import UIKit
 
 protocol NavigationControllerDelegate {
     func pushToConfirmOrder()
+    func pushToOrderSummary()
 }
 
 class FloatingButtonView: UIView {
