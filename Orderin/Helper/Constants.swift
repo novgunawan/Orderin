@@ -89,7 +89,7 @@ struct C {
     
     // MARK: Home After Sign In
     static let browseMenu = "Browse All Menu"
-    static let scanOtherMenu = "Scan Another Menu"
+    static let scanOtherMenu = "Move Table or Restaurant"
     
     
     // MARK: -Name

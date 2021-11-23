@@ -421,9 +421,11 @@ class HomeViewController: UIViewController {
         tableViewCollection.heightAnchor.constraint(equalToConstant: 202.0).isActive = true
     }
 }
+
 extension HomeViewController: NavigationControllerDelegate {
     func pushToConfirmOrder() {
         let confirmOrderVC = ConfirmOrderViewController()
+        tabBarController?.tabBar.isHidden = true
         self.navigationController?.pushViewController(confirmOrderVC, animated: true)
     }
 }
