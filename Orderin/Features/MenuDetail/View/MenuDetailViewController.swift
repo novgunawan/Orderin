@@ -35,12 +35,12 @@ class MenuDetailViewController: UIViewController {
     @IBOutlet weak var foodName: UILabel!
 
     // MARK: -Declaration Variables
-
+    
     var menuDetailViewModel = MenuDetailViewModel()
     var customizationOrderedMenu: CustomizationMenuOrdered?
     var customization: [Customization] = []
     var dataObject: MenuListModel?
-    var orderedMenu: [OrderedMenu] = []
+    static var orderedMenu: [OrderedMenu] = []
     var menuID: String = ""
     var menuName: String = ""
     var menuPrice: String = ""
@@ -53,6 +53,7 @@ class MenuDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        print("Ordered Menu : \(MenuDetailViewController.orderedMenu)")
     }
     
     override func viewWillAppear(_ animated: Bool) {

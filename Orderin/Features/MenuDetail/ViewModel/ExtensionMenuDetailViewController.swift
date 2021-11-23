@@ -24,15 +24,17 @@ extension MenuDetailViewController: UITableViewDelegate, UITableViewDataSource, 
         
         let tempNotes = Functionality.shared.tempNotes
         
+        let tempQuantity = Functionality.shared.tempQty
+        
         let totalOptionalPrice = tempOptionalCustomPrice.reduce(0, +)
         
         // MARK: Combine choose and optional into one array of string
         var tempCustomization = [tempChooseCustom]
         tempCustomization.append(contentsOf: tempOptionalCustom)
 
-        var tempQuantity = Functionality.shared.tempQty
-        orderedMenu.append(OrderedMenu(menuID: menuID, foodName: menuName, qty: 2, price: Int(menuPrice) ?? 0, customization: tempCustomization, notes: tempNotes))
+        ArrayOrderedMenu.shared.orders.append(OrderedMenu(menuID: menuID, foodName: menuName, qty: tempQuantity, price: Int(menuPrice) ?? 0, customization: tempCustomization, notes: tempNotes))
 
+        print(ArrayOrderedMenu.shared.orders)
         
 //        Functionality.shared.setDataToUserDefault(data: tempChooseCustom, key: C.UserDefaultKey.keyChooseCustomization)
 //
