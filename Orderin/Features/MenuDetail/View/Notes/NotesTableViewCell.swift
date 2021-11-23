@@ -10,6 +10,7 @@ import UIKit
 class NotesTableViewCell: UITableViewCell, UITextFieldDelegate{
     @IBOutlet weak var notesTextField: UITextField!
     
+    var notes: String = ""
     //create identifier XIB
     static let identifier = "cellNotes"
     static func nib() -> UINib{
@@ -32,6 +33,11 @@ class NotesTableViewCell: UITableViewCell, UITextFieldDelegate{
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true;
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        notes = notesTextField.text ?? "no notes"
+        Functionality.shared.tempNotes = notes
     }
     
 }

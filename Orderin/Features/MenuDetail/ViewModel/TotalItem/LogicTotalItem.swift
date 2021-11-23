@@ -12,20 +12,23 @@ import Combine
 extension TotalItemTableViewCell{
     
     @IBAction func plusButtonDidTapped(_ sender: Any) {
-        guard let totalItem = Int(totalItemLabel!.text ?? "1") else {return}
-        let sumItem = totalItem + 1
-        totalItemLabel!.text = String(sumItem)
-        if sumItem > 0{
+        totalItem += 1
+        let stringTotalItems = String (totalItem)
+        totalItemLabel!.text = stringTotalItems
+        if totalItem > 0{
             minusButton.isEnabled = true
         }
+        Functionality.shared.tempQty = totalItem
     }
     
     @IBAction func minButtonDidTapped(_ sender: Any) {
-        guard let totalItem = Int(totalItemLabel!.text ?? "1") else {return}
-        let sumItem = totalItem - 1
-        totalItemLabel!.text = String(sumItem)
-        if sumItem < 1{
+        totalItem -= 1
+        let stringSumItem = String(totalItem)
+        totalItemLabel!.text = stringSumItem
+        if totalItem < 1{
             minusButton.isEnabled = false
         }
+        Functionality.shared.tempQty = totalItem
     }
+    
 }

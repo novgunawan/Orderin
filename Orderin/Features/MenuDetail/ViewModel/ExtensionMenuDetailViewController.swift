@@ -9,9 +9,11 @@ import Foundation
 import UIKit
 
 
-extension MenuDetailViewController: UITableViewDelegate, UITableViewDataSource, SaveCustomizationDelegate{
+extension MenuDetailViewController: UITableViewDelegate, UITableViewDataSource, SaveOrderedMenuDelegate{
     
-    func saveCustom() {
+    func saveOrderedMenu() {
+        
+        
         // MARK: Set customization to user defaults
         
         let tempChooseCustom = Functionality.shared.tempChooseCustom
@@ -20,11 +22,27 @@ extension MenuDetailViewController: UITableViewDelegate, UITableViewDataSource, 
         
         let tempOptionalCustomPrice = Functionality.shared.tempOptionalCustomPrice
         
-        Functionality.shared.setDataToUserDefault(data: tempChooseCustom, key: C.UserDefaultKey.keyChooseCustomization)
+        let tempNotes = Functionality.shared.tempNotes
         
-        Functionality.shared.setDataToUserDefault(data: tempOptionalCustom, key: C.UserDefaultKey.keyOptionalCustomization)
+        let tempQuantity = Functionality.shared.tempQty
         
-        Functionality.shared.setDataToUserDefault(data: tempOptionalCustomPrice, key: C.UserDefaultKey.keyOptionalCustomizationPrice)
+        let totalOptionalPrice = tempOptionalCustomPrice.reduce(0, +)
+        
+        // MARK: Combine choose and optional into one array of string
+        var tempCustomization = [tempChooseCustom]
+        tempCustomization.append(contentsOf: tempOptionalCustom)
+
+        ArrayOrderedMenu.shared.orders.append(OrderedMenu(menuID: menuID, foodName: menuName, qty: tempQuantity, price: Int(menuPrice) ?? 0, customization: tempCustomization, notes: tempNotes))
+
+        print(ArrayOrderedMenu.shared.orders)
+        
+//        Functionality.shared.setDataToUserDefault(data: tempChooseCustom, key: C.UserDefaultKey.keyChooseCustomization)
+//
+//        Functionality.shared.setDataToUserDefault(data: tempOptionalCustom, key: C.UserDefaultKey.keyOptionalCustomization)
+//
+//        Functionality.shared.setDataToUserDefault(data: tempOptionalCustomPrice, key: C.UserDefaultKey.keyOptionalCustomizationPrice)
+        
+        
     }
     
 //MARK: - Setup Cell In Table View
