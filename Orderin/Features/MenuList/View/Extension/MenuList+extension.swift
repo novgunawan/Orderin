@@ -11,7 +11,7 @@ import UIKit
 // MARK: - Search Functionality
 
 extension MenuListViewController:  UISearchResultsUpdating, UISearchBarDelegate {
-    
+        
     func filterCurrentData(searchText: String){
         
        filteredData = dataWithoutCategory.filter({ menu in
@@ -44,6 +44,27 @@ extension MenuListViewController:  UISearchResultsUpdating, UISearchBarDelegate 
         filteredData.removeAll()
         menuListView.tableView.reloadData()
         menuListView.segmentedControl.isHidden = false
+    }
+    
+    //dismiss keyboard when scrolling
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        menuListView.searchController.searchBar.endEditing(true)    }
+    
+    //dismiss keyboard when tap in outside keyboard
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
+    
+    func dismissKeyboard() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer( target:self, action:    #selector(MenuListViewController.dismissKeyboardTouchOutside))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc private func dismissKeyboardTouchOutside() {
+        menuListView.searchController.searchBar.endEditing(true)
     }
 }
 
@@ -155,8 +176,6 @@ extension MenuListViewController: UITableViewDelegate, UITableViewDataSource, Ce
         self.present(vc, animated: true, completion: nil)
     }
     
-    
-
     func buttonTapped(tag: Int, sectionIndex: Int, rowIndex rowIndes: Int) {
       
         let vc = MenuDetailViewController()
@@ -164,7 +183,4 @@ extension MenuListViewController: UITableViewDelegate, UITableViewDataSource, Ce
         self.present(vc, animated: true, completion: nil)
      
     }
-    
-    
-    
 }
