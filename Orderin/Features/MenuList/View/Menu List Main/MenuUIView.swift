@@ -17,7 +17,7 @@ class MenuUIView: UIView {
         
         let segment = UISegmentedControl()
         
-        segment.insertSegment(withTitle: "All", at: 0, animated: true)
+        segment.insertSegment(withTitle: "Others", at: 0, animated: true)
         segment.insertSegment(withTitle: "Appetizer", at: 1, animated: true)
         segment.insertSegment(withTitle: "Main", at: 2, animated: true)
         segment.insertSegment(withTitle: "Desert", at: 3, animated: true)
