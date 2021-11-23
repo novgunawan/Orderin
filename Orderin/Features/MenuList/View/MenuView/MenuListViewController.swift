@@ -22,6 +22,12 @@ class MenuListViewController: UIViewController{
     var sectionIndex = 0
     var rowIndex = 0
     
+    // MARK:  Temporary
+    var tempMenuList : [MenuListModel] = []
+    var finalMenu : [Menu] = []
+    var tempMenu: [Menu] = []
+   
+
 
     
     // MARK: - Life Cycle
@@ -32,6 +38,7 @@ class MenuListViewController: UIViewController{
         setSegmentedControlConstraint()
         setTableViewConstraint()
         setModalBackViewConstraint()
+        
     }
 
     override func viewDidLoad() {
@@ -76,7 +83,7 @@ class MenuListViewController: UIViewController{
         view.addSubview(menuListView.segmentedControl)
         view.addSubview(menuListView.tableView)
         view.addSubview(floatingButton)
-            
+     
     }
     
     private func tableViewConfiguration(){
@@ -84,6 +91,23 @@ class MenuListViewController: UIViewController{
         menuListView.tableView.rowHeight = 150
         // register cells
         menuListView.tableView.register(MenuListTableViewCell.self , forCellReuseIdentifier: "FoodCell")
+    }
+    
+    
+// MARK: create activity indicator view
+    
+    func createActivityIndicatorView(){
+        let child =  ActivityIndicatorViewController()
+        addChild(child)
+        child.view.frame = view.frame
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            child.willMove(toParent: nil)
+            child.view.removeFromSuperview()
+            child.removeFromParent()
+        }
     }
     
     
@@ -121,9 +145,11 @@ class MenuListViewController: UIViewController{
     func bindData(){
         menuListVM.fetchMenuListData { value in
             self.data = value
-            
+         
             DispatchQueue.main.async {
                 self.menuListView.tableView.reloadData()
+
+
             }
         }
         
@@ -131,6 +157,9 @@ class MenuListViewController: UIViewController{
             self.dataWithoutCategory = value
         }
     }
+    
+    
+    
     @objc func didSegmentChange(_ sender: UISegmentedControl){
         switch menuListView.segmentedControl.selectedSegmentIndex{
         case 0 :

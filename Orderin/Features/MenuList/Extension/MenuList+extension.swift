@@ -145,23 +145,25 @@ extension MenuListViewController: UITableViewDelegate, UITableViewDataSource, Ce
         let cell = tableView.dequeueReusableCell(withIdentifier: "FoodCell") as! MenuListTableViewCell
         cell.selectionStyle = .none
         cell.isUserInteractionEnabled = true
+
+            if self.searchingState == true{
+                let dummy = self.filteredData[indexPath.row]
+                cell.indexSection = indexPath.section
+                cell.indexRow = indexPath.row
+                cell.dataModel = dummy
+                cell.button.tag = indexPath.row
+                cell.delegate = self
+                            
+            }
+            else{
+                let dummy = data[indexPath.section].MenuList[indexPath.row]
+                cell.indexSection = indexPath.section
+                cell.indexRow = indexPath.row
+                cell.dataModel = dummy
+                cell.button.tag = indexPath.row
+                cell.delegate = self
+            }
         
-        if searchingState == true{
-            let dummy = filteredData[indexPath.row]
-            print(indexPath.row)
-            cell.dataModel = dummy
-            cell.button.tag = indexPath.row
-            cell.delegate = self
-                        
-        }
-        else{
-            let dummy = data[indexPath.section].MenuList[indexPath.row]
-            cell.indexSection = indexPath.section
-            cell.indexRow = indexPath.row
-            cell.dataModel = dummy
-            cell.button.tag = indexPath.row
-            cell.delegate = self
-        }
         
         return cell
     }
@@ -176,10 +178,12 @@ extension MenuListViewController: UITableViewDelegate, UITableViewDataSource, Ce
         self.present(vc, animated: true, completion: nil)
     }
     
-    func buttonTapped(tag: Int, sectionIndex: Int, rowIndex rowIndes: Int) {
+    
+
+    func buttonTapped(tag: Int, sectionIndex: Int, rowIndex: Int) {
       
         let vc = MenuDetailViewController()
-        vc.dataObject = data[sectionIndex].MenuList[rowIndes]
+        vc.dataObject = data[sectionIndex].MenuList[rowIndex]
         self.present(vc, animated: true, completion: nil)
      
     }
