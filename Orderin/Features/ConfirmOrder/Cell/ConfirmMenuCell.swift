@@ -9,6 +9,8 @@ import UIKit
 
 class ConfirmMenuCell: UITableViewCell {
     
+    // MARK: TableView Cell
+    
     var menuCustomVM = CellConfirmationViewModel()
     var data: [OrderedMenuCustomizationDummyData] = []
     var delegate: editButtonDelegate?
@@ -22,6 +24,7 @@ class ConfirmMenuCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.layer.cornerRadius = 5.0
         label.font = UIFont(name: C.fontPoppinsRegular, size: C.fontsizeFootnote)
+        // TODO: Connect to Backend for label Text Quantity
         label.text = "1X"
         label.textAlignment = .center
         
@@ -34,6 +37,7 @@ class ConfirmMenuCell: UITableViewCell {
         
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: C.fontPoppinsSemibold, size: C.fontsizeBody)
+        // TODO: Connect to Backend for label Text Order
         label.text = "Steak"
         
         return label
@@ -45,12 +49,13 @@ class ConfirmMenuCell: UITableViewCell {
         
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: C.fontPoppinsSemibold, size: C.fontsizeBody)
+        // TODO: Connect to Backend for label Text Price
         label.text = "Rp30.000"
         
         return label
     }()
     
-    // Cell Menu Customizationnya
+    // MARK: Menu Customization
     let menuCustomizationTableView: UITableView = {
         
         let customizeMenu = UITableView()

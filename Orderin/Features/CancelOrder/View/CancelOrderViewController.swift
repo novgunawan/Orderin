@@ -9,6 +9,7 @@ import UIKit
 
 class CancelOrderViewController: UIViewController {
   
+    // MARK: Creating Variable
     
     // Buat Circle
     let bgShapeLayer = CAShapeLayer()
@@ -65,6 +66,7 @@ class CancelOrderViewController: UIViewController {
         
     }()
     
+    // MARK: App Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,6 +89,8 @@ class CancelOrderViewController: UIViewController {
         
     }
     
+    // MARK: Circle UI
+    
     func getCircle() {
         // Path
         let center = CGPoint(x: view.bounds.size.width / 2, y: view.frame.midY - 110)
@@ -100,7 +104,6 @@ class CancelOrderViewController: UIViewController {
         
         bgShapeLayer.lineWidth = 25
         bgShapeLayer.strokeEnd = 1
-//        bgShapeLayer.position = self.view.center
         
         
         // Track
