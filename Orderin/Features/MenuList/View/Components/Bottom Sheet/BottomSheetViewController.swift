@@ -139,6 +139,7 @@ class BottomSheetViewController: UIViewController{
         
         self.dismiss(animated: true, completion: {
             let vc = MenuDetailViewController()
+//            vc.dataObject = 
             pvc?.present(vc, animated: true)
         })
          

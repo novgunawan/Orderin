@@ -13,6 +13,8 @@ protocol addNewMenuDelegate {
 
 class OrderSummaryViewController: UIViewController {
     
+    // View model declaration
+    let orderSumamryVM = OrderSummaryViewModel()
 
     @IBOutlet weak var orderSummaryTable: UITableView!
     
@@ -64,6 +66,7 @@ class OrderSummaryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        orderSumamryVM.fetchDataOrderFromFireStoreDatabase(userID: UserDefaults.standard.string(forKey: "userId") ?? " ", orderID: UserDefaults.standard.string(forKey: "orderId") ?? "", tableNumber: UserDefaults.standard.integer(forKey: "tableNumber"))
         
     }
 

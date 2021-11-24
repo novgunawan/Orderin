@@ -136,31 +136,31 @@ class HomeViewController: UIViewController {
     
     // MARK: Sign Out
     @objc func signout() {
-//        Auth.auth().addStateDidChangeListener({ auth, user in
-//            if let user = user {
-//                // MARK: User is signed in.
-//
-//                let firebaseAuth = Auth.auth()
-//                let user = Auth.auth().currentUser
-//                do {
-//                    try firebaseAuth.signOut()
-//                } catch let signOutError as NSError {
-//                    print("Error signing out: %@", signOutError)
-//                }
-//                user?.delete { error in
-//                    if let error = error {
-//                        // An error happened.
-//                    } else {
-//                        // Account deleted.
-//                        print("acount deleted")
-//                    }
-//                }
-//            } else {
-//                // MARK: User is not signed in.
-//                print("from home view controller : you haven't signed in")
-//            }
-//        })
-        AlertServices.presentAlertNotYetDeveloped(onVC: self)
+        Auth.auth().addStateDidChangeListener({ auth, user in
+            if let user = user {
+                // MARK: User is signed in.
+
+                let firebaseAuth = Auth.auth()
+                let user = Auth.auth().currentUser
+                do {
+                    try firebaseAuth.signOut()
+                } catch let signOutError as NSError {
+                    print("Error signing out: %@", signOutError)
+                }
+                user?.delete { error in
+                    if let error = error {
+                        // An error happened.
+                    } else {
+                        // Account deleted.
+                        print("acount deleted")
+                    }
+                }
+            } else {
+                // MARK: User is not signed in.
+                print("from home view controller : you haven't signed in")
+            }
+        })
+//        AlertServices.presentAlertNotYetDeveloped(onVC: self)
         
     }
     
@@ -437,6 +437,7 @@ extension HomeViewController: GoToHomeAfterScanDelegate {
         homeAfterScanVC.countScan += 1
         homeAfterScanVC.tempRestoID = scanQRVC.tempRestoID
         homeAfterScanVC.tempTableNumber = scanQRVC.tempTableNumber
+        UserDefaults.standard.set(scanQRVC.tempTableNumber, forKey: "tableNumber")
         self.navigationController?.pushViewController(homeAfterScanVC, animated: false)
     }
     

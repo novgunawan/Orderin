@@ -9,12 +9,17 @@ import UIKit
 
 protocol NavigationControllerDelegate {
     func pushToConfirmOrder()
+  
+}
+protocol UpdateCart{
+    func updateValue(data: [OrderedMenu])
 }
 
 class FloatingButtonView: UIView {
     
     
     var delegate: NavigationControllerDelegate?
+    var updateDelegate: UpdateCart?
     
     // MARK: - Declare UI Components
     
@@ -35,11 +40,10 @@ class FloatingButtonView: UIView {
        let label = UILabel()
         
         label.font = UIFont(name: C.fontPoppinsSemibold, size: C.fontsizeBody)
-        label.text = "0 Items"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .white
-                
-        
+        label.text = "0 Items"
+           
         return label
     }()
     
@@ -49,8 +53,8 @@ class FloatingButtonView: UIView {
         
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: C.fontPoppinsSemibold, size: C.fontsizeBody)
-        label.text = "Rp0"
         label.textColor = .white
+        label.text = "Rp0"
         
         
         return label
@@ -69,6 +73,7 @@ class FloatingButtonView: UIView {
         return view
     }()
     
+
     
     
     // MARK: - Life Cycle
@@ -77,6 +82,7 @@ class FloatingButtonView: UIView {
         super.init(frame: frame)
         setup()
         addSubview(cartButton)
+  
         
         cartButton.addSubview(cartImage)
         cartButton.addSubview(itemsLabel)
@@ -94,6 +100,7 @@ class FloatingButtonView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         fatalError("init(coder:) has not been implemented")
+
     }
     
     private func setup(){
@@ -138,11 +145,25 @@ class FloatingButtonView: UIView {
         
         ])
     }
+//    
+//    func updateCartComponents(){
+//     
+//        var totalPrice = 0
+//        itemsLabel.text = "\(ArrayOrderedMenu.shared.orders.count) Items"
+//       for  data in ArrayOrderedMenu.shared.orders{
+//           
+//           totalPrice += data.price
+//           
+//       }
+//      totalPriceLabel.text = "Rp\(totalPrice)"
+//    }
     
     @objc func didCartButtonTapped(){
         
         // TODO: Go to summary page
         delegate?.pushToConfirmOrder()
     }
+    
+    
     
 }
