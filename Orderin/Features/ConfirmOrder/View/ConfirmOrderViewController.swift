@@ -170,9 +170,9 @@ class ConfirmOrderViewController: UIViewController {
             cancelViewController.modalPresentationStyle = .fullScreen
 
             //TODO: Set model to user default
-//            Functionality.shared.setDataToUserDefault(data: ArrayOrderedMenu.shared.orders, key: "OrderedMenu")
+            Functionality.shared.setOrderedMenuToUserDefault(data: ArrayOrderedMenu.shared.orders, key: C.UserDefaultKey.keyOrderedMenu)
             
-//            Functionality.shared.getOrderedMenuFromUserDefault(key: "OrderedMenu")
+            Functionality.shared.getOrderedMenuFromUserDefault(key: C.UserDefaultKey.keyOrderedMenu)
             
             self.present(cancelViewController, animated: true, completion: nil)
             

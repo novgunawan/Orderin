@@ -53,7 +53,6 @@ class MenuDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        print("Ordered Menu : \(MenuDetailViewController.orderedMenu)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
