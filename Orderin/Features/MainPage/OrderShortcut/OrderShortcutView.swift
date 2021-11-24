@@ -80,7 +80,7 @@ class OrderShortcutView: UIView {
     
     // TODO: Go to order list
     @objc func goToConfirmOrder() {
-        delegate?.pushToConfirmOrder()
+        delegate?.pushToOrderSummary()
 
     }
     private func setup() {
