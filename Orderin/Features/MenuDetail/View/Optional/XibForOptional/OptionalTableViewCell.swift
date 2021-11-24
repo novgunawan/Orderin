@@ -43,6 +43,7 @@ class OptionalTableViewCell: UITableViewCell {
         
         optionalTable.delegate = self
         optionalTable.dataSource = self
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

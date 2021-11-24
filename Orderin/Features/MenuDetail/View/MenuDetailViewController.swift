@@ -35,18 +35,29 @@ class MenuDetailViewController: UIViewController {
     @IBOutlet weak var foodName: UILabel!
 
     // MARK: -Declaration Variables
-
+    
     var menuDetailViewModel = MenuDetailViewModel()
+    var customizationOrderedMenu: CustomizationMenuOrdered?
     var customization: [Customization] = []
     var dataObject: MenuListModel?
-    var orderedMenu: [OrderedMenu]?
+    static var orderedMenu: [OrderedMenu] = []
+    var menuID: String = ""
+    var menuName: String = ""
+    var menuPrice: String = ""
+    var menuDesc: String = ""
+    var qty: Int = 0
+    
     
     
     // MARK: -App Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-
+        print("Ordered Menu : \(MenuDetailViewController.orderedMenu)")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         menuDetailViewModel.assignDataCustomization { value in
             self.customization = value
             self.setupComponents()
@@ -55,8 +66,13 @@ class MenuDetailViewController: UIViewController {
                 self.detailListTable.reloadData()
             }
         }
+        foodName.text = menuName
+        descriptionLabel.text = menuDesc
+        
+        menuPrice.insert(".", at: menuPrice.index(menuPrice.endIndex, offsetBy: -3))
+        priceLabel.text = "Rp\(menuPrice)"
+        
     }
-    
     // MARK: - Setup Function
     
    private func setup(){
@@ -76,16 +92,15 @@ class MenuDetailViewController: UIViewController {
        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
        self.dismissKeyboard()
     }
-    
-    // MARK: Setup top components
-    
+
+    // MARK: Set menu list's [foodName, image, price] to menu detail's [foodName, image, price]
     func setupComponents(){
-        guard let data = dataObject else { return  }
-        
+        guard let data = dataObject else { return }
+        menuID = data.menuID
         imageMenu.image = data.image
-        priceLabel.text = data.price
-        descriptionLabel.text = data.description
-        foodName.text = data.title
+        menuPrice = data.price
+        menuDesc = data.description
+        menuName = data.title
  
     }
     

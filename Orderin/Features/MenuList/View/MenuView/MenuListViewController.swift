@@ -58,7 +58,6 @@ class MenuListViewController: UIViewController{
 
         floatingButton.delegate = self
 
-        
     }
     
     // MARK: - UI Setup
