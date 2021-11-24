@@ -25,6 +25,8 @@ class HomeViewController: UIViewController {
     var tempTableNumber: Int? {
         didSet {
             guard let tempTableNumber = tempTableNumber else { return }
+            TableNumber.tableNumber = String(tempTableNumber)
+            
         }
     }
     
@@ -279,8 +281,7 @@ class HomeViewController: UIViewController {
         view.layer.rasterizationScale = UIScreen.main.scale
         view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
-        let stringTableNumber: String = String(tempTableNumber ?? 0)
-        view.tableNumberLabel.text = stringTableNumber
+        view.tableNumberLabel.text = TableNumber.fetchTableNumber()
         return view
     }()
     

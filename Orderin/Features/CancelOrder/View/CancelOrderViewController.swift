@@ -29,10 +29,10 @@ class CancelOrderViewController: UIViewController {
  
     let topLabel: UILabel = {
         
-        let label = UILabel(frame: CGRect(x: 57, y: 94, width: 276, height: 72))
+        let label = UILabel()
         label.numberOfLines = 2
         label.textAlignment = .center
-        
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: Constant.CancelOrder.fontName, size: 20)
         label.text = "Cancel to recheck or change your order"
         
@@ -89,6 +89,7 @@ class CancelOrderViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        topLabelAutoLayout()
         
     }
     
@@ -173,6 +174,17 @@ class CancelOrderViewController: UIViewController {
         })
     }
     
+    // MARK: Auto Layout Constraint
+    
+    func topLabelAutoLayout() {
+        topLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 57).isActive = true
+        topLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -57).isActive = true
+        topLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 94).isActive = true
+    }
+    
+    func bottomLabelAutoLayout() {
+       
+    }
     
 }
 

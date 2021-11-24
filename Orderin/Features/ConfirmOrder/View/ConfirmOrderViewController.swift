@@ -223,7 +223,7 @@ extension ConfirmOrderViewController: UITableViewDelegate, UITableViewDataSource
         tableNumberlabel.font = UIFont(name: C.fontPoppinsRegular, size: 17)
         
         actualTableNumber.frame = CGRect.init(x: 330, y: 20, width: headerView.frame.width-10, height: headerView.frame.height-10)
-        actualTableNumber.text = "#20"
+        actualTableNumber.text = "#\(TableNumber.fetchTableNumber())"
         actualTableNumber.font = UIFont(name: C.fontPoppinsSemibold, size: 17)
         
         headerView.addSubview(tableNumberlabel)

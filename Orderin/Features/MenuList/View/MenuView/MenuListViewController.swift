@@ -83,8 +83,6 @@ class MenuListViewController: UIViewController{
         view.addSubview(menuListView.segmentedControl)
         view.addSubview(menuListView.tableView)
         view.addSubview(floatingButton)
-       
-     
     }
     
     func setupFloatingButtonComponents(){
