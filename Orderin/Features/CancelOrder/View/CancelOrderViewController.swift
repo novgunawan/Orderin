@@ -173,5 +173,9 @@ class CancelOrderViewController: UIViewController {
         topLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 94).isActive = true
     }
     
+    func bottomLabelAutoLayout() {
+       
+    }
+    
 }
 
