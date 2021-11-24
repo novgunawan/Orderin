@@ -86,7 +86,7 @@ class OrderSummaryViewController: UIViewController {
     // Order Button Action
     @IBAction func addOrderButtonDidTapped(_ sender: Any) {
 
-        presentingViewController?.presentingViewController?.dismiss(animated: true, completion: {
+        presentingViewController?.dismiss(animated: true, completion: {
             self.popVC()
         })
     }
@@ -100,7 +100,7 @@ class OrderSummaryViewController: UIViewController {
     }
     
     @IBAction func dropDownButtonAction(_ sender: Any) {
-        presentingViewController?.presentingViewController?.dismiss(animated: true, completion: {
+        presentingViewController?.dismiss(animated: true, completion: {
             self.popRootVC()
         })
     }

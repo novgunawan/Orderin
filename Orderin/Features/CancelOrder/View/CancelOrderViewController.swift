@@ -161,11 +161,16 @@ class CancelOrderViewController: UIViewController {
     }
     
     func goToPageSummary() {
+        weak var pvc = self.presentingViewController
+        
+        self.dismiss(animated: true, completion: {
         let vc = OrderSummaryViewController()
-        vc.delegate = delegate
+        vc.delegate = self.delegate
         vc.modalPresentationStyle = .fullScreen
         OrderViewModel.insertOrderdDataToFireStore(userID: UserDefaults.standard.string(forKey: "userId") ?? "", tableNumber: UserDefaults.standard.integer(forKey: "tableNumber"), model: ArrayOrderedMenu.shared.orders)
-        self.present(vc, animated: true, completion: nil)
+      
+        pvc?.present(vc, animated: true, completion: nil)
+        })
     }
     
     
