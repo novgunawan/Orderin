@@ -29,6 +29,7 @@ struct C {
     static let red50 = "#E84C34"
     static let red30 = "#F49688"
     static let red10 = "#FCDCD8"
+    static let redWarning = "#FB3A22"
     
     static let teal90 = "#0B1316"
     static let teal70 = "#273A3F"
@@ -53,6 +54,8 @@ struct C {
     static let blackOlive = "3F3F3F"
     
     static let chineseWhite = "E0E0E0"
+    
+    static let disabledWhite = "#999999"
     
     // MARK: -Labels
     // MARK: Sign in
@@ -141,6 +144,13 @@ struct Constant {
         static let editButtonCell = "editButtonCell"
         static let notesCell = "notesCell"
         static let notesView = "notesViewIdentifier"
+        static let confirmOrderEmptyState = "order_cart_empty_state"
+        static let confirmOrderEmptyLabelhead = "You haven’t ordered anything yet"
+        static let confirmOrderEmptyDetail = "Browse the menu and order now! You can see your ongoing order here."
+    }
+    struct OrderHistory {
+        static let orderHistoryEmptyState = "order_history_empty_state"
+        static let historyEmptyLabel = "Hmm… Let’s finish an order to add something here."
     }
     
     

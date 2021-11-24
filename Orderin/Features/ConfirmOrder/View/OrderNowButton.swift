@@ -18,7 +18,7 @@ class OrderNowButton: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Order Now", for: .normal)
         button.titleLabel?.font = UIFont(name: C.fontPoppinsSemibold , size: 17)
-        button.backgroundColor = .red
+        button.backgroundColor = C.hexStringToUIColor(hex: C.redWarning)
         button.layer.cornerRadius = 10
         return button
         
