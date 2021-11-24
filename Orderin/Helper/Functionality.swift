@@ -86,35 +86,20 @@ struct Functionality {
         defaults.set(data, forKey: key)
     }
     
-    func setOrderedMenuToUserDefault(data: AnyObject, key: String) {
+    func setOrderedMenuToUserDefault(data: [OrderedMenu], key: String) {
         let defaults = UserDefaults.standard
-        
-        defaults.set(NSKeyedArchiver.archivedData(withRootObject: data), forKey: key)
-//        do {
-//            let encodedData = try NSKeyedArchiver.archivedData(withRootObject: data, requiringSecureCoding: false)
-//            defaults.set(encodedData, forKey: key)
-//        }
-//        catch let error as NSError
-//        {
-//            print(error.localizedDescription)
-//        }
-        
-    }
-    
-    func getOrderedMenuFromUserDefault(key: String){
-        let defaults = UserDefaults.standard
-        
         do {
-            let decoded = defaults.object(forKey: key) as! Data
-            let decodedTeams = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(decoded) as! ArrayOrderedMenu
-            print(decodedTeams.orders)
-            
+            let encodedData = try NSKeyedArchiver.archivedData(withRootObject: data, requiringSecureCoding: false)
+            defaults.set(encodedData, forKey: key)
+            defaults.synchronize()
         }
         catch let error as NSError
         {
             print(error.localizedDescription)
         }
+        
     }
+
 }
 
 

@@ -16,6 +16,8 @@ struct OrderedMenu: Encodable {
     let notes: String?
 }
 
+
+
 struct ArrayOrderedMenu {
     static var shared = ArrayOrderedMenu()
     var orders: [OrderedMenu] = []
