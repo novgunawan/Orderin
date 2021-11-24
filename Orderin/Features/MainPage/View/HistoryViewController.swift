@@ -30,8 +30,8 @@ class HistoryViewController: UIViewController {
         
         label.font = UIFont(name: C.fontPoppinsRegular , size: C.fontsizeBody)
         label.textColor = C.hexStringToUIColor(hex: C.disabledWhite)
-        
-        label.frame = CGRect(x: 46, y: 633, width: 299, height: 48)
+        label.textAlignment = .center
+        label.layer.zPosition = 1
         
         return label
     }()
@@ -72,9 +72,9 @@ class HistoryViewController: UIViewController {
         
         // TODO: Auto Layout Labelnya belom jalan -> karena bringSubviewToFront
         
-//        emptyStatelabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 49).isActive = true
-//        emptyStatelabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 41).isActive = true
-//        emptyStatelabel.heightAnchor.constraint(equalToConstant: 48).isActive = true
-//        emptyStatelabel.bottomAnchor.constraint(equalTo: emptyStatesUI.bottomAnchor, constant: 0).isActive = true
+        emptyStatelabel.trailingAnchor.constraint(equalTo: emptyStatesUI.trailingAnchor, constant: 0).isActive = true
+        emptyStatelabel.leadingAnchor.constraint(equalTo: emptyStatesUI.leadingAnchor, constant: 0).isActive = true
+        emptyStatelabel.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        emptyStatelabel.bottomAnchor.constraint(equalTo: emptyStatesUI.bottomAnchor, constant: 0).isActive = true
     }
 }

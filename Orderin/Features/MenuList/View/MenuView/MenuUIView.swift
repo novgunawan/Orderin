@@ -45,7 +45,7 @@ class MenuUIView: UIView {
         
         return searchController
     }()
-    
+
     // MARK: Table View [Content View]
     
     let tableView: UITableView = {
