@@ -437,6 +437,7 @@ extension HomeViewController: GoToHomeAfterScanDelegate {
         homeAfterScanVC.countScan += 1
         homeAfterScanVC.tempRestoID = scanQRVC.tempRestoID
         homeAfterScanVC.tempTableNumber = scanQRVC.tempTableNumber
+        UserDefaults.standard.set(scanQRVC.tempTableNumber, forKey: "tableNumber")
         self.navigationController?.pushViewController(homeAfterScanVC, animated: false)
     }
     

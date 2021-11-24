@@ -41,11 +41,11 @@ class MenuListViewController: UIViewController{
         
     }
 
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         bindData()
-        
         addComponents()
         view.backgroundColor = .white
         setup()
@@ -57,6 +57,7 @@ class MenuListViewController: UIViewController{
         self.navigationController?.navigationBar.tintColor = C.hexStringToUIColor(hex: C.red50)
 
         floatingButton.delegate = self
+   
 
     }
     
@@ -82,7 +83,19 @@ class MenuListViewController: UIViewController{
         view.addSubview(menuListView.segmentedControl)
         view.addSubview(menuListView.tableView)
         view.addSubview(floatingButton)
+       
      
+    }
+    
+    func setupFloatingButtonComponents(){
+         var totalPrice = 0
+        floatingButton.itemsLabel.text = "\(ArrayOrderedMenu.shared.orders.count) items"
+        for  data in ArrayOrderedMenu.shared.orders{
+            
+            totalPrice += data.price
+            
+        }
+        floatingButton.totalPriceLabel.text = "Rp\(totalPrice)"
     }
     
     private func tableViewConfiguration(){ 

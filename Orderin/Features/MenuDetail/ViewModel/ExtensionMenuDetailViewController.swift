@@ -41,6 +41,8 @@ extension MenuDetailViewController: UITableViewDelegate, UITableViewDataSource, 
 //        Functionality.shared.setDataToUserDefault(data: tempOptionalCustom, key: C.UserDefaultKey.keyOptionalCustomization)
 //
 //        Functionality.shared.setDataToUserDefault(data: tempOptionalCustomPrice, key: C.UserDefaultKey.keyOptionalCustomizationPrice)
+    
+     
         
         
     }
@@ -105,7 +107,9 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
     
     //TODO: Dismiss modal and passing data
     @objc func didButtonCartTapped(){
+        
         self.dismiss(animated: true, completion: nil)
+        
     }
 }
 

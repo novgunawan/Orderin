@@ -11,6 +11,9 @@ class CancelOrderViewController: UIViewController {
   
     // MARK: Creating Variable
     
+    // view Model
+    let OrderViewModel = ConfirmOrderViewModel()
+    
     // Buat Circle
     let bgShapeLayer = CAShapeLayer()
     let trackLayer = CAShapeLayer()
@@ -161,6 +164,7 @@ class CancelOrderViewController: UIViewController {
         let vc = OrderSummaryViewController()
         vc.delegate = delegate
         vc.modalPresentationStyle = .fullScreen
+        OrderViewModel.insertOrderdDataToFireStore(userID: "w21rnUp1OLtWHmoEAaim", tableNumber: UserDefaults.standard.integer(forKey: "tableNumber"), model: ArrayOrderedMenu.shared.orders)
         self.present(vc, animated: true, completion: nil)
     }
     

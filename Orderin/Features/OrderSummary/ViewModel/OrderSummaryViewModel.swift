@@ -13,7 +13,7 @@ struct OrderSummaryViewModel{
     var orderModel: [OrderModel] = []
     let db = Firestore.firestore()
     
-    func fetchDataOrderFromFireStoreDatabase(userID: String, orderID: String,tableNumber: Int, model: OrderModel){
+    func fetchDataOrderFromFireStoreDatabase(userID: String, orderID: String,tableNumber: Int){ // TODO: Add Model here to store the value
         
         // TODO: add fetch odrder functionality here !
         
@@ -27,7 +27,7 @@ struct OrderSummaryViewModel{
                 guard let query = querySnapshot else { return  }
                 for doc in query.documents{
                     // TODO: Append data in array of model
-                    print(doc)
+                    print(doc["foodName"] as! String)
                 }
             }
         }
