@@ -13,9 +13,10 @@ struct Functionality {
     
     // MARK: -Value Holder Temporary
     
+    var tempQty: Int = 1
     // Must Choose Customization
     var tempChooseCustom: String = ""
-    
+    var tempNotes: String = ""
     // Optional Choose Customization
     var tempOptionalCustom: [String] = []
     // Optional Choose Customization Price
@@ -25,7 +26,7 @@ struct Functionality {
     // MARK: -Functions
     
     // MARK: Get Timestamp
-
+    
     func getTimeStamp() -> String {
         
         let date = Date()
@@ -41,37 +42,37 @@ struct Functionality {
     // MARK: - Generate unique ID
     
     func generateUniqueID(length: Int = 6) -> String {
-      precondition(length > 0)
-      let charset: [Character] =
+        precondition(length > 0)
+        let charset: [Character] =
         Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz")
-      var result = ""
-      var remainingLength = length
-
-      while remainingLength > 0 {
-        let randoms: [UInt8] = (0 ..< 16).map { _ in
-          var random: UInt8 = 0
-          let errorCode = SecRandomCopyBytes(kSecRandomDefault, 1, &random)
-          if errorCode != errSecSuccess {
-            fatalError(
-              "Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)"
-            )
-          }
-          return random
+        var result = ""
+        var remainingLength = length
+        
+        while remainingLength > 0 {
+            let randoms: [UInt8] = (0 ..< 16).map { _ in
+                var random: UInt8 = 0
+                let errorCode = SecRandomCopyBytes(kSecRandomDefault, 1, &random)
+                if errorCode != errSecSuccess {
+                    fatalError(
+                        "Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)"
+                    )
+                }
+                return random
+            }
+            
+            randoms.forEach { random in
+                if remainingLength == 0 {
+                    return
+                }
+                
+                if random < charset.count {
+                    result.append(charset[Int(random)])
+                    remainingLength -= 1
+                }
+            }
         }
-
-        randoms.forEach { random in
-          if remainingLength == 0 {
-            return
-          }
-
-          if random < charset.count {
-            result.append(charset[Int(random)])
-            remainingLength -= 1
-          }
-        }
-      }
-
-      return result
+        
+        return result
     }
     // MARK: - userDefaults
     
@@ -80,32 +81,62 @@ struct Functionality {
         UserDefaults.standard.removeObject(forKey: key)
     }
     
-    
-    
     func setDataToUserDefault(data: Any, key: String) {
         let defaults = UserDefaults.standard
         defaults.set(data, forKey: key)
     }
+    
+    func setOrderedMenuToUserDefault(data: AnyObject, key: String) {
+        let defaults = UserDefaults.standard
+        
+        defaults.set(NSKeyedArchiver.archivedData(withRootObject: data), forKey: key)
+//        do {
+//            let encodedData = try NSKeyedArchiver.archivedData(withRootObject: data, requiringSecureCoding: false)
+//            defaults.set(encodedData, forKey: key)
+//        }
+//        catch let error as NSError
+//        {
+//            print(error.localizedDescription)
+//        }
+        
+    }
+    
+    func getOrderedMenuFromUserDefault(key: String){
+        let defaults = UserDefaults.standard
+        
+        do {
+            let decoded = defaults.object(forKey: key) as! Data
+            let decodedTeams = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(decoded) as! ArrayOrderedMenu
+            print(decodedTeams.orders)
+            
+        }
+        catch let error as NSError
+        {
+            print(error.localizedDescription)
+        }
+    }
 }
 
-extension String {
 
+
+extension String {
+    
     var length: Int {
         return count
     }
-
+    
     subscript (i: Int) -> String {
         return self[i ..< i + 1]
     }
-
+    
     func substring(fromIndex: Int) -> String {
         return self[min(fromIndex, length) ..< length]
     }
-
+    
     func substring(toIndex: Int) -> String {
         return self[0 ..< max(0, toIndex)]
     }
-
+    
     subscript (r: Range<Int>) -> String {
         let range = Range(uncheckedBounds: (lower: max(0, min(length, r.lowerBound)),
                                             upper: min(length, max(0, r.upperBound))))

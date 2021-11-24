@@ -6,9 +6,9 @@
 //
 
 import UIKit
-
 protocol addNewMenuDelegate {
     func addOrder()
+    func dropButtonNav()
 }
 
 class OrderSummaryViewController: UIViewController {
@@ -91,4 +91,15 @@ class OrderSummaryViewController: UIViewController {
     func popVC() {
         delegate?.addOrder()
     }
+    
+    func popRootVC() {
+        delegate?.dropButtonNav()
+    }
+    
+    @IBAction func dropDownButtonAction(_ sender: Any) {
+        presentingViewController?.presentingViewController?.dismiss(animated: true, completion: {
+            self.popRootVC()
+        })
+    }
+    
 }

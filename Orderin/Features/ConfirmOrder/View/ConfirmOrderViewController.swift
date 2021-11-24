@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: Confirm Page
 class ConfirmOrderViewController: UIViewController {
-
+    
     var confirmationCellViewModel = CellConfirmationViewModel()
     var textFieldViewModel = TextFieldViewModel()
     var data: [OrderedMenuCustomizationDummyData] = []
@@ -69,7 +69,7 @@ class ConfirmOrderViewController: UIViewController {
         setupNavigationController()
         setupAddView()
         viewDismissIfUserTapOutsideKeyboard()
-       
+        
     }
     
     
@@ -146,7 +146,7 @@ class ConfirmOrderViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-
+    
     @objc private func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             confirmMenuTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height/3, right: 0)
@@ -168,6 +168,12 @@ class ConfirmOrderViewController: UIViewController {
             let cancelViewController = CancelOrderViewController(nibName: Constant.CancelOrder.cancelViewController, bundle: nil)
             cancelViewController.delegate = self
             cancelViewController.modalPresentationStyle = .fullScreen
+
+            //TODO: Set model to user default
+//            Functionality.shared.setDataToUserDefault(data: ArrayOrderedMenu.shared.orders, key: "OrderedMenu")
+            
+//            Functionality.shared.getOrderedMenuFromUserDefault(key: "OrderedMenu")
+            
             self.present(cancelViewController, animated: true, completion: nil)
             
         })

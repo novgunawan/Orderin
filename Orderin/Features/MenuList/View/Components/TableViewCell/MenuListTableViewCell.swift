@@ -30,6 +30,8 @@ class MenuListTableViewCell: UITableViewCell {
         }
     }
     
+    // MARK: - Variables declaration
+    
     var indexSection = 0
     var indexRow = 0
     var delegate: CellDelegate?
@@ -181,12 +183,12 @@ class MenuListTableViewCell: UITableViewCell {
     
     @objc func didButtonTapped(_ sender: UIButton){
         delegate?.buttonTapped(tag: tag, sectionIndex: indexSection , rowIndex: indexRow )
-//        print(self.indexSection)
-//        print(self.indexRow)
+
     }
                 
     func setContent(){
-        
+     
+        var stringPrice = ""
         guard let data = dataModel else { return  }
         
         if !data.availability{
@@ -198,6 +200,8 @@ class MenuListTableViewCell: UITableViewCell {
             priceLabel.text = "Sold Out"
             priceLabel.textColor = C.hexStringToUIColor(hex: C.gray70)
             button.isHidden  = true
+           
+            
         }
         else{
             self.isUserInteractionEnabled = true
@@ -205,15 +209,17 @@ class MenuListTableViewCell: UITableViewCell {
             card.layer.opacity = 1.0
             titleLabel.textColor = C.hexStringToUIColor(hex: C.black90)
             descriptionLabel.textColor = C.hexStringToUIColor(hex: C.black90)
-//            priceLabel.text = "Sold Out"
             priceLabel.textColor = C.hexStringToUIColor(hex: C.black90)
-            button.isHidden  = false
+
         }
         
         image.image = data.image
         titleLabel.text = data.title
         descriptionLabel.text = data.description
-        priceLabel.text = data.price
+        
+        stringPrice = data.price
+        stringPrice.insert(".", at: stringPrice.index(stringPrice.endIndex, offsetBy: -3))
+        priceLabel.text = "Rp\(stringPrice)"
         
     }
     

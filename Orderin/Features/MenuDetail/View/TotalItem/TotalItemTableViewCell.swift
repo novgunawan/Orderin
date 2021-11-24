@@ -9,15 +9,21 @@ import UIKit
 
 class TotalItemTableViewCell: UITableViewCell {
     
+    var totalItem: Int = 1
     @IBOutlet weak var minusButton: UIButton!{
         didSet{
             minusButton.setTitle("", for: .normal)
             minusButton.layer.cornerRadius = 13
             minusButton.layer.borderWidth = 1
             minusButton.layer.borderColor = UIColor(red: 0.87, green: 0.87, blue: 0.82, alpha: 1).cgColor
+        
         }
     }
-    @IBOutlet weak var totalItemLabel: UILabel!
+    @IBOutlet weak var totalItemLabel: UILabel! {
+        didSet {
+            totalItemLabel.text = String(totalItem)
+        }
+    }
     @IBOutlet weak var plusButton: UIButton!{
         didSet{
             plusButton.setTitle("", for: .normal)
