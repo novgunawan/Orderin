@@ -424,7 +424,7 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: NavigationControllerDelegate {
     func pushToConfirmOrder() {
-        let confirmOrderVC = ConfirmOrderViewController()
+        let confirmOrderVC = EmptyStateViewController()
         tabBarController?.tabBar.isHidden = true
         self.navigationController?.pushViewController(confirmOrderVC, animated: true)
     }
