@@ -178,6 +178,9 @@ extension MenuListViewController: UITableViewDelegate, UITableViewDataSource, Ce
         self.present(vc, animated: true, completion: nil)
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
+    }
     
 
     func buttonTapped(tag: Int, sectionIndex: Int, rowIndex: Int) {

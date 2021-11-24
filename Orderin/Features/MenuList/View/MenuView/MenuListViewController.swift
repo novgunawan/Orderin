@@ -86,9 +86,7 @@ class MenuListViewController: UIViewController{
      
     }
     
-    private func tableViewConfiguration(){
-        // set row height
-        menuListView.tableView.rowHeight = 150
+    private func tableViewConfiguration(){ 
         // register cells
         menuListView.tableView.register(MenuListTableViewCell.self , forCellReuseIdentifier: "FoodCell")
     }
