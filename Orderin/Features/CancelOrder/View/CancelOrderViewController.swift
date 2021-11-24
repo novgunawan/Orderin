@@ -164,7 +164,7 @@ class CancelOrderViewController: UIViewController {
         let vc = OrderSummaryViewController()
         vc.delegate = delegate
         vc.modalPresentationStyle = .fullScreen
-        OrderViewModel.insertOrderdDataToFireStore(userID: "w21rnUp1OLtWHmoEAaim", tableNumber: UserDefaults.standard.integer(forKey: "tableNumber"), model: ArrayOrderedMenu.shared.orders)
+        OrderViewModel.insertOrderdDataToFireStore(userID: UserDefaults.standard.string(forKey: "userId") ?? "", tableNumber: UserDefaults.standard.integer(forKey: "tableNumber"), model: ArrayOrderedMenu.shared.orders)
         self.present(vc, animated: true, completion: nil)
     }
     

@@ -24,6 +24,7 @@ struct ConfirmOrderViewModel{
         
         // generate orderID
         let orderID = Functionality.shared.generateUniqueID()
+        UserDefaults.standard.set(orderID, forKey: "orderId")
         var indexData  = 0 // TODO: Change let to var if the looping function is ready!
         
  

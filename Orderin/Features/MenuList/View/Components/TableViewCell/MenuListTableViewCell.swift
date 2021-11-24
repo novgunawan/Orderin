@@ -93,7 +93,7 @@ class MenuListTableViewCell: UITableViewCell {
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont(name: C.fontPoppinsSemibold, size: C.fontsizeBody)
         button.addTarget(self, action: #selector(didButtonTapped), for: .touchUpInside)
-        
+        button.isUserInteractionEnabled = false
         return button
     }()
     

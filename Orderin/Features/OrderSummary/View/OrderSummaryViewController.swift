@@ -66,7 +66,7 @@ class OrderSummaryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        orderSumamryVM.fetchDataOrderFromFireStoreDatabase(userID: "w21rnUp1OLtWHmoEAaim", orderID: "mZybgJ", tableNumber: UserDefaults.standard.integer(forKey: "tableNumber"))
+        orderSumamryVM.fetchDataOrderFromFireStoreDatabase(userID: UserDefaults.standard.string(forKey: "userId") ?? " ", orderID: UserDefaults.standard.string(forKey: "orderId") ?? "", tableNumber: UserDefaults.standard.integer(forKey: "tableNumber"))
         
     }
 
