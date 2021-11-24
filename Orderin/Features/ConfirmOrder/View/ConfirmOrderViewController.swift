@@ -169,11 +169,6 @@ class ConfirmOrderViewController: UIViewController {
             cancelViewController.delegate = self
             cancelViewController.modalPresentationStyle = .fullScreen
 
-            //TODO: Set model to user default
-            Functionality.shared.setOrderedMenuToUserDefault(data: ArrayOrderedMenu.shared.orders, key: C.UserDefaultKey.keyOrderedMenu)
-            
-            Functionality.shared.getOrderedMenuFromUserDefault(key: C.UserDefaultKey.keyOrderedMenu)
-            
             self.present(cancelViewController, animated: true, completion: nil)
             
         })
@@ -190,6 +185,7 @@ class ConfirmOrderViewController: UIViewController {
     
     private func bindingData() {
         
+        // MARK: Binding data customization
         confirmationCellViewModel.fetchMenuCustomization(completion: { value in
             self.data = value
             
