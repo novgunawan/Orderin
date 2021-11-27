@@ -41,6 +41,7 @@ class MenuUIView: UIView {
         
         searchController.searchBar.showsBookmarkButton = true
         searchController.searchBar.setImage(UIImage(systemName: "arrow.up.arrow.down.circle"), for: .bookmark, state: .normal)
+//        searchController.searchBar.setImage(UIImage(named: "filter"), for: .bookmark, state: .normal)
         searchController.searchBar.setPositionAdjustment(UIOffset(horizontal: 0, vertical: 0), for: .bookmark)
         
         return searchController
