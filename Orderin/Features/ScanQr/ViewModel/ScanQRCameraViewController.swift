@@ -115,7 +115,7 @@ class ScanQRCameraViewController: UIViewController, AVCaptureMetadataOutputObjec
     
     // MARK: Funtion When QR Detected
     func found(code: String) {
-        print(code)
+        // MARK: Substring table number and resto id
         let tableNumber = code[15..<16]
         let restoID = code.substring(fromIndex: code.length-3)
         

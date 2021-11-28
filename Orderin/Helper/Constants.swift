@@ -125,6 +125,14 @@ struct C {
         static let keyOptionalCustomization = "optionalCustomization"
         static let keyOptionalCustomizationPrice = "optionalCustomizationPrice"
         static let keyUserID = "userID"
+        static let keyOrderedMenu = "orderedMenu"
+        static let keyMenuID = "menuID"
+        static let keyFoodName = "foodName"
+        static let keyQuantity = "quantity"
+        static let keyMenuPrice = "menuPrice"
+        static let keyCustomization = "customization"
+        static let keyNotes = "notes"
+        
     }
 }
 

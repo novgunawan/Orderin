@@ -19,15 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
         let home = TabbarViewController()
         let user = Auth.auth().currentUser
-        
-        user?.delete { error in
-            if let error = error {
-                // An error happened.
-            } else {
-                // Account deleted.
-                print("acount deleted")
-            }
-        }
+
         Auth.auth().addStateDidChangeListener({ auth, user in
             if let user = user {
                 // MARK: User is signed in.
