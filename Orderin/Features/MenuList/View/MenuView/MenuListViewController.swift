@@ -22,6 +22,7 @@ class MenuListViewController: UIViewController{
     var sectionIndex = 0
     var rowIndex = 0
     
+    
     // MARK:  Temporary
     var tempMenuList : [MenuListModel] = []
     var finalMenu : [Menu] = []
