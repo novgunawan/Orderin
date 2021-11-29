@@ -113,7 +113,7 @@ class MenuListViewController: UIViewController{
         view.addSubview(child.view)
         child.didMove(toParent: self)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.async {
             child.willMove(toParent: nil)
             child.view.removeFromSuperview()
             child.removeFromParent()
@@ -208,7 +208,7 @@ extension MenuListViewController: UIViewControllerTransitioningDelegate{
 
 extension MenuListViewController: NavigationControllerDelegate {
     
-    func pushToConfirmOrder() {
+    func pushToEmptyState() {
         let confirmOrderVC = ConfirmOrderViewController()
         self.navigationController?.pushViewController(confirmOrderVC, animated: true)
     }

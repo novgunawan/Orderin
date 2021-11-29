@@ -8,7 +8,7 @@
 import UIKit
 
 class CancelOrderViewController: UIViewController {
-  
+    
     // MARK: Creating Variable
     
     // view Model
@@ -26,7 +26,7 @@ class CancelOrderViewController: UIViewController {
     var delegate: addNewMenuDelegate?
     
     // Buat UI
- 
+    
     let topLabel: UILabel = {
         
         let label = UILabel()
@@ -99,7 +99,7 @@ class CancelOrderViewController: UIViewController {
         // Path
         let center = CGPoint(x: view.bounds.size.width / 2, y: view.frame.midY - 110)
         let path = UIBezierPath(arcCenter: center, radius: 120, startAngle: -CGFloat.pi/2, endAngle: 2 * CGFloat.pi, clockwise: true)
-       
+        
         bgShapeLayer.frame = self.view.frame
         bgShapeLayer.path = path.cgPath
         
@@ -165,12 +165,13 @@ class CancelOrderViewController: UIViewController {
         weak var pvc = self.presentingViewController
         
         self.dismiss(animated: true, completion: {
-        let vc = OrderSummaryViewController()
-        vc.delegate = self.delegate
-        vc.modalPresentationStyle = .fullScreen
-        self.OrderViewModel.insertOrderdDataToFireStore(userID: UserDefaults.standard.string(forKey: "userId") ?? "", tableNumber: UserDefaults.standard.integer(forKey: "tableNumber"), model: ArrayOrderedMenu.shared.orders)
-      
-        pvc?.present(vc, animated: true, completion: nil)
+            let vc = OrderSummaryViewController()
+            vc.delegate = self.delegate
+            vc.orderShortcut = false
+            vc.modalPresentationStyle = .fullScreen
+            self.OrderViewModel.insertOrderdDataToFireStore(userID: UserDefaults.standard.string(forKey: "userId") ?? "", tableNumber: UserDefaults.standard.integer(forKey: "tableNumber"), model: ArrayOrderedMenu.shared.orders)
+            
+            pvc?.present(vc, animated: true, completion: nil)
         })
     }
     
@@ -183,7 +184,7 @@ class CancelOrderViewController: UIViewController {
     }
     
     func bottomLabelAutoLayout() {
-       
+        
     }
     
 }
