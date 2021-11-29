@@ -79,11 +79,12 @@ class OrderShortcutView: UIView {
     // MARK: -Functions
     
     
-    // TODO: Conditionals for user didtap
+    // TODO: Conditionals for user didtap, kalo datanya kosong ke empty state, kalo ada ke order summary
     @objc func orderShortcutDidTap() {
         delegate?.pushToOrderSummary()
 
     }
+    
     private func setup() {
         
         self.translatesAutoresizingMaskIntoConstraints = false

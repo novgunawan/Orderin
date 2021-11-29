@@ -435,6 +435,8 @@ extension HomeViewController: NavigationControllerDelegate {
     
     func pushToOrderSummary() {
         let orderSummaryVC = OrderSummaryViewController()
+        orderSummaryVC.orderShortcut = true
+        orderSummaryVC.delegatefromHomeVC = self
         orderSummaryVC.modalPresentationStyle = .fullScreen
         self.navigationController?.present(orderSummaryVC, animated: true, completion: nil)
         self.tabBarController?.tabBar.isHidden = true

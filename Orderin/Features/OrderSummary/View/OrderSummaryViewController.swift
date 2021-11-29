@@ -10,11 +10,17 @@ protocol addNewMenuDelegate {
     func addOrder()
     func dropButtonNav()
 }
+protocol addNewMenuFromHomeVCDelegate {
+    func addOrderFromHome()
+}
 
 class OrderSummaryViewController: UIViewController {
     
     // View model declaration
     let orderSumamryVM = OrderSummaryViewModel()
+    
+    //variable for AddOrder Button
+    var orderShortcut = false
 
     @IBOutlet weak var orderSummaryTable: UITableView!
     
@@ -61,6 +67,7 @@ class OrderSummaryViewController: UIViewController {
     
     
     var delegate: addNewMenuDelegate?
+    var delegatefromHomeVC: addNewMenuFromHomeVCDelegate?
     
     
     override func viewDidLoad() {
@@ -87,12 +94,22 @@ class OrderSummaryViewController: UIViewController {
     @IBAction func addOrderButtonDidTapped(_ sender: Any) {
 
         presentingViewController?.dismiss(animated: true, completion: {
-            self.popVC()
+            if self.orderShortcut == false {
+                self.popVC()
+            }
+            else {
+                self.goToMenuList()
+            }
+            
         })
     }
     
     func popVC() {
         delegate?.addOrder()
+    }
+    
+    func goToMenuList() {
+        delegatefromHomeVC?.addOrderFromHome()
     }
     
     func popRootVC() {
