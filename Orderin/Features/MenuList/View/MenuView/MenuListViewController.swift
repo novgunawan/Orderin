@@ -206,7 +206,7 @@ extension MenuListViewController: UIViewControllerTransitioningDelegate{
 
 extension MenuListViewController: NavigationControllerDelegate {
     
-    func pushToConfirmOrder() {
+    func pushToEmptyState() {
         let confirmOrderVC = ConfirmOrderViewController()
         self.navigationController?.pushViewController(confirmOrderVC, animated: true)
     }

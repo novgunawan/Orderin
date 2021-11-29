@@ -66,7 +66,7 @@ class OrderShortcutView: UIView {
         self.isUserInteractionEnabled = true
         setup()
         
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(goToConfirmOrder))
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(orderShortcutDidTap))
         self.addGestureRecognizer(gestureRecognizer)
     }
     
@@ -78,9 +78,9 @@ class OrderShortcutView: UIView {
     // MARK: -Functions
     
     
-    // TODO: Go to order list
-    @objc func goToConfirmOrder() {
-        delegate?.pushToConfirmOrder()
+    // TODO: Conditionals for user didtap
+    @objc func orderShortcutDidTap() {
+        delegate?.pushToOrderSummary()
 
     }
     private func setup() {

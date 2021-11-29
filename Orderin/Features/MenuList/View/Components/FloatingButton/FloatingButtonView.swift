@@ -8,7 +8,7 @@
 import UIKit
 
 protocol NavigationControllerDelegate {
-    func pushToConfirmOrder()
+    func pushToEmptyState()
     func pushToOrderSummary()
   
 }
@@ -162,7 +162,7 @@ class FloatingButtonView: UIView {
     @objc func didCartButtonTapped(){
         
         // TODO: Go to summary page
-        delegate?.pushToConfirmOrder()
+        delegate?.pushToEmptyState()
     }
     
     

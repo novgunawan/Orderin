@@ -424,11 +424,15 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: NavigationControllerDelegate {
-    func pushToConfirmOrder() {
+    
+    // MARK: Function to Choose empty State or Confirm Order
+    
+    func pushToEmptyState() {
         let confirmOrderVC = EmptyStateViewController()
         tabBarController?.tabBar.isHidden = true
         self.navigationController?.pushViewController(confirmOrderVC, animated: true)
     }
+    
     func pushToOrderSummary() {
         let orderSummaryVC = OrderSummaryViewController()
         orderSummaryVC.modalPresentationStyle = .fullScreen
