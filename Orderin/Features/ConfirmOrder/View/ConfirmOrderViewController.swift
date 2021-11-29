@@ -176,18 +176,15 @@ class ConfirmOrderViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    // MARK: Binding data for TableView Row Dynamic Heigt
+    // MARK: Binding data for TableView Row Dynamic Height
     
     private func bindingData() {
         
         // MARK: Binding data customization
         confirmationCellViewModel.fetchMenuCustomization(completion: { value in
             self.data = value
-            
         })
-        
     }
-    
 }
 
 // MARK: Table View Delegate
@@ -230,7 +227,7 @@ extension ConfirmOrderViewController: UITableViewDelegate, UITableViewDataSource
     // MARK: Tableview Cell Setup
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return orderedMenu.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -239,9 +236,9 @@ extension ConfirmOrderViewController: UITableViewDelegate, UITableViewDataSource
         
         var order = orderedMenu[indexPath.row]
         var totalPerMenu = order.price * order.qty
-        // TODO: Connect to Backend for label Text Content
-        cell.setContent(quantity: "\(order.qty)" , titleOrder: "\(order.foodName)", price: "Rp \(totalPerMenu)")
         cell.delegate = self
+        // TODO: Front end auto layoutnya belum bener
+        cell.setContent(quantity: "\(order.qty)" , titleOrder: "\(order.foodName)", price: "Rp \(totalPerMenu)")
         return cell
         
     }
@@ -253,9 +250,7 @@ extension ConfirmOrderViewController: UITableViewDelegate, UITableViewDataSource
         UITableViewHeaderFooterView.appearance().tintColor = .white
         
         let textFieldView = confirmMenuTableView.dequeueReusableHeaderFooterView(withIdentifier: Constant.ConfirmOrder.notesView) as! NotesView
-        
         textFieldView.notesTextField.delegate = self
-        
         return textFieldView
     }
     
