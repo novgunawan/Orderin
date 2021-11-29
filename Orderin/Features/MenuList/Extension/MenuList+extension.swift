@@ -172,10 +172,12 @@ extension MenuListViewController: UITableViewDelegate, UITableViewDataSource, Ce
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // TODO: show bottom card
+        TempMenuList.shared.menuModel =   data[indexPath.section].MenuList[indexPath.row]
         let vc = BottomSheetViewController()
         vc.modalPresentationStyle = .custom
         vc.transitioningDelegate = self
         self.present(vc, animated: true, completion: nil)
+     
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

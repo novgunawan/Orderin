@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class MenuDetailViewController: UIViewController {
     
     // MARK: -Outlets
@@ -59,6 +60,7 @@ class MenuDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         menuDetailViewModel.assignDataCustomization { value in
             self.customization = value
+            self.dataObject = TempMenuList.shared.menuModel
             self.setupComponents()
             
             DispatchQueue.main.async {

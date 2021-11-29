@@ -22,6 +22,11 @@ struct MenuListModel{
     var availability: Bool
 }
 
+struct TempMenuList{
+    static var shared = TempMenuList()
+    var menuModel: MenuListModel?
+}
+
 
 enum Category{
     
