@@ -22,6 +22,7 @@ class MenuListViewController: UIViewController{
     var sectionIndex = 0
     var rowIndex = 0
     
+    
     // MARK:  Temporary
     var tempMenuList : [MenuListModel] = []
     var finalMenu : [Menu] = []
@@ -64,7 +65,8 @@ class MenuListViewController: UIViewController{
     // MARK: - UI Setup
     
     private func setup(){
-        navigationItem.title = "Restaurant ABCD"
+        // TODO: Backend Set restaurant's name from database
+        navigationItem.title = "Restaurant Jaya"
         navigationItem.largeTitleDisplayMode = .automatic
         navigationItem.searchController = menuListView.searchController
         

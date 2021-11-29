@@ -7,12 +7,15 @@
 
 import UIKit
 
+
 class BottomSheetViewController: UIViewController{
 
     // MARK: - Variables Declaration
     
     var hasSetPointOrigin = false
     var pointOrigin: CGPoint?
+    var indexSection: Int = 0
+    var indexRow: Int = 0
     
     // MARK: - UI Components Declaration
     
