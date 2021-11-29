@@ -17,11 +17,12 @@ extension OrderSummaryViewController: UITableViewDelegate, UITableViewDataSource
     
     //Height Cell
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        var orderedMenu = ArrayOrderedMenu.shared.orders
         if indexPath.row < 1{
             return 125
         }
-        if indexPath.row < 5{
-            let HeightCell = 68 + (20 * 4)//count of cell
+        if indexPath.row < orderedMenu.count + 1{
+            let HeightCell = 68 + (20 *  orderedMenu.count)//count of cell
             return CGFloat(HeightCell)
         }
         return 43
