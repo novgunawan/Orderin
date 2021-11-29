@@ -14,7 +14,8 @@ class OrderShortcutView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: C.fontPoppinsRegular, size: C.fontsizeTitle2)
-        label.text = "Restaurant's Name"
+        // TODO: Backend set restaurant's name from database
+        label.text = "Restaurant Jaya"
         return label
     }()
     

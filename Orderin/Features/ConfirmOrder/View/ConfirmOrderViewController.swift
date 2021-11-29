@@ -12,8 +12,11 @@ class ConfirmOrderViewController: UIViewController {
     
     var confirmationCellViewModel = CellConfirmationViewModel()
     var textFieldViewModel = TextFieldViewModel()
-    var data: [OrderedMenuCustomizationDummyData] = []
     var rowHeight: CGFloat = 50
+    var orderedMenu = ArrayOrderedMenu.shared.orders
+    // TODO: NOVI After model is done, remove this
+    var data: [OrderedMenuCustomizationDummyData] = []
+
     
     // MARK: Order now Button View
     lazy var orderButtonView: OrderNowButton = {
@@ -24,7 +27,7 @@ class ConfirmOrderViewController: UIViewController {
         view.backgroundColor = UIColor(named: "broken white")
         
         
-        // MARK: Adding Tap Recognizer for the Button
+        // MARK: Adding Tap Recognizer for the Order Now Button
         view.orderNowButton.addTarget(self, action: #selector(orderDidTap), for: .touchUpInside)
         return view
         
@@ -69,7 +72,7 @@ class ConfirmOrderViewController: UIViewController {
         setupNavigationController()
         setupAddView()
         viewDismissIfUserTapOutsideKeyboard()
-        
+
     }
     
     
@@ -94,18 +97,10 @@ class ConfirmOrderViewController: UIViewController {
         
         confirmMenuTableView.delegate = self
         confirmMenuTableView.dataSource = self
-        
-        
         confirmMenuTableView.register(ConfirmMenuCell.self, forCellReuseIdentifier: Constant.ConfirmOrder.tableViewCellIdentifier)
-        
         confirmMenuTableView.register(NotesView.self, forHeaderFooterViewReuseIdentifier: Constant.ConfirmOrder.notesView)
-        
-        
         rowHeight += CGFloat(25 * (data.count + 1))
-        
         confirmMenuTableView.rowHeight = rowHeight
-        
-        
     }
     
     func setupNavigationController() {
@@ -241,8 +236,11 @@ extension ConfirmOrderViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = confirmMenuTableView.dequeueReusableCell(withIdentifier: Constant.ConfirmOrder.tableViewCellIdentifier) as! ConfirmMenuCell
+        
+        var order = orderedMenu[indexPath.row]
+        var totalPerMenu = order.price * order.qty
         // TODO: Connect to Backend for label Text Content
-        cell.setContent(quantity: "2", titleOrder: "Steak", price: "Rp 90.000")
+        cell.setContent(quantity: "\(order.qty)" , titleOrder: "\(order.foodName)", price: "Rp \(totalPerMenu)")
         cell.delegate = self
         return cell
         
