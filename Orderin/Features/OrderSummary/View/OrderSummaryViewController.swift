@@ -90,6 +90,8 @@ class OrderSummaryViewController: UIViewController {
 
     }
     
+    // MARK: Add Order Button Did tap
+    
     // Order Button Action
     @IBAction func addOrderButtonDidTapped(_ sender: Any) {
 
@@ -98,20 +100,22 @@ class OrderSummaryViewController: UIViewController {
                 self.popVC()
             }
             else {
-                self.goToMenuList()
+                self.goToMenuListfromHomeVC()
             }
             
         })
     }
-    
+    // MARK: Add Order from Confirm order page
     func popVC() {
         delegate?.addOrder()
     }
     
-    func goToMenuList() {
+    // MARK: Add Order from HomeVC page
+    func goToMenuListfromHomeVC() {
         delegatefromHomeVC?.addOrderFromHome()
     }
     
+    // MARK: Function for Drop Button in Navigation controller
     func popRootVC() {
         delegate?.dropButtonNav()
     }
