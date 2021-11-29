@@ -48,15 +48,15 @@
                             <constraint firstAttribute="width" secondItem="yNO-rC-1oD" secondAttribute="height" multiplier="55:47" id="spz-Cx-csi"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steak" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJv-SH-KEA">
-                        <rect key="frame" x="83" y="0.0" width="49" height="24"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steak" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJv-SH-KEA">
+                        <rect key="frame" x="83" y="0.0" width="184" height="24"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="49" id="32D-HM-58f"/>
                             <constraint firstAttribute="height" constant="24" id="4QI-Jg-3PW"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="Nos-jB-z1W"/>
-                            <constraint firstAttribute="width" constant="49" id="biv-Az-WpH"/>
-                            <constraint firstAttribute="width" secondItem="jJv-SH-KEA" secondAttribute="height" multiplier="49:24" id="bta-TI-m7H"/>
-                            <constraint firstAttribute="width" secondItem="jJv-SH-KEA" secondAttribute="height" multiplier="49:24" id="r17-66-Ypb"/>
+                            <constraint firstAttribute="width" constant="184" id="biv-Az-WpH"/>
+                            <constraint firstAttribute="width" secondItem="jJv-SH-KEA" secondAttribute="height" multiplier="49:24" constant="135" id="bta-TI-m7H"/>
+                            <constraint firstAttribute="width" secondItem="jJv-SH-KEA" secondAttribute="height" multiplier="49:24" constant="135" id="r17-66-Ypb"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="17"/>
                         <nil key="textColor"/>

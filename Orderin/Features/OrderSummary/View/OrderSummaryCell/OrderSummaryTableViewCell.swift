@@ -36,8 +36,8 @@ class OrderSummaryTableViewCell: UITableViewCell {
     //TODO: Get database for normal price (menggunakan didset)
     @IBOutlet weak var normalPrice: UILabel!{
         didSet{
-            //Content Normal Price (GET DATA FROM DATABASE HERE)
-            normalPrice.text = " "
+            //TODO: Back end Content Normal Price (GET DATA FROM DATABASE HERE)
+            normalPrice.text = ""
             //normalPrice.text = "Rp 30.000"
             
             //Strikethrough UI
@@ -51,7 +51,7 @@ class OrderSummaryTableViewCell: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!{
         didSet{
             //If Statement for promo or not (position price label)
-            if normalPrice.text == " "{
+            if normalPrice.text == ""{
                 priceLabel.frame = CGRect(x: 275, y: 11, width: 79, height: 24)
             }
             else{
@@ -71,7 +71,11 @@ class OrderSummaryTableViewCell: UITableViewCell {
     }
     
     //TODO: Get database for menu name label (menggunakan didset)
-    @IBOutlet weak var nameMenuLabel: UILabel!
+    @IBOutlet weak var nameMenuLabel: UILabel! {
+        didSet {
+            nameMenuLabel.text = ArrayOrderedMenu.shared.orders[0].foodName
+        }
+    }
     
     
     override func awakeFromNib() {

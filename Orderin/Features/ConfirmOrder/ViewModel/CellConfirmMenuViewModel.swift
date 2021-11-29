@@ -18,7 +18,6 @@ struct CellConfirmationViewModel {
         
         // TODO: Backend [create condition if user hasn't ordered any menu and go to confirm order page
         
-//        print(ArrayOrderedMenu.shared.orders[0].customization)
         let custom1 = OrderedMenuCustomizationDummyData(custom: "French Fries")
         let custom2 = OrderedMenuCustomizationDummyData(custom: "BBQ Sauce ")
         let custom3 = OrderedMenuCustomizationDummyData(custom: "More Ice")

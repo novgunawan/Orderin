@@ -29,17 +29,20 @@ extension OrderSummaryViewController: UITableViewDelegate, UITableViewDataSource
     
     //Number of Cell
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        var orderedMenu = ArrayOrderedMenu.shared.orders
+        return orderedMenu.count + 2
     }
     
     //Content Cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var orderedMenu = ArrayOrderedMenu.shared.orders
         if indexPath.row < 1{
             let cellOrderID = orderSummaryTable.dequeueReusableCell(withIdentifier: OrderIDTableViewCell.identifier) as! OrderIDTableViewCell
             return cellOrderID
         }
-        if indexPath.row < 5{
+        if indexPath.row < orderedMenu.count + 1{
             let cellOrderSummary = orderSummaryTable.dequeueReusableCell(withIdentifier: OrderSummaryTableViewCell.identifier) as! OrderSummaryTableViewCell
+            cellOrderSummary.nameMenuLabel.text = orderedMenu[indexPath.row-1].foodName
             return cellOrderSummary
         }
         let cellNotesSummaryOrder = orderSummaryTable.dequeueReusableCell(withIdentifier: NotesSummaryOrderTableViewCell.identifier) as! NotesSummaryOrderTableViewCell
