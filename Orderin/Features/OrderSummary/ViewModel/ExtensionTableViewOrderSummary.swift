@@ -17,7 +17,6 @@ extension OrderSummaryViewController: UITableViewDelegate, UITableViewDataSource
     
     //Height Cell
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        var orderedMenu = ArrayOrderedMenu.shared.orders
         if indexPath.row < 1{
             return 125
         }
