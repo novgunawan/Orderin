@@ -142,7 +142,7 @@ class ConfirmMenuCell: UITableViewCell {
     func setPriceLabelConstraint(){
         
         priceLabel.topAnchor.constraint(equalTo: topAnchor,constant: 20.0).isActive = true
-        priceLabel.leadingAnchor.constraint(equalTo: titleOrderLabel.trailingAnchor,constant: 165.0 ).isActive = true
+        priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -19).isActive = true
     }
     
     func setTableViewConstraint() {
