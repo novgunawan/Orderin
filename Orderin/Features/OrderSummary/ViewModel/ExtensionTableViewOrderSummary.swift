@@ -35,7 +35,7 @@ extension OrderSummaryViewController: UITableViewDelegate, UITableViewDataSource
     
     //Content Cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var orderedMenu = ArrayOrderedMenu.shared.orders
+        
         if indexPath.row < 1{
             let cellOrderID = orderSummaryTable.dequeueReusableCell(withIdentifier: OrderIDTableViewCell.identifier) as! OrderIDTableViewCell
             return cellOrderID

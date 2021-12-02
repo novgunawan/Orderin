@@ -15,6 +15,7 @@ class OrderSummaryViewController: UIViewController {
     
     // View model declaration
     let orderSumamryVM = OrderSummaryViewModel()
+    var orderedMenu = ArrayOrderedMenu.shared.orders
 
     @IBOutlet weak var orderSummaryTable: UITableView!
     

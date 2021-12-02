@@ -13,6 +13,7 @@ class ConfirmMenuCell: UITableViewCell {
     
     var menuCustomVM = CellConfirmationViewModel()
     var data: [OrderedMenuCustomizationDummyData] = []
+    var orderedMenu = ArrayOrderedMenu.shared.orders
     var delegate: editButtonDelegate?
     
     var quantitiyLabel: UILabel = {
